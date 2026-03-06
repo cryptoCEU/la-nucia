@@ -98,7 +98,18 @@ const ContactSection = () => {
             <Input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} placeholder="Tu nombre completo" className="bg-background border-border font-body" />
           </div>
 
-          {/* Destino + CP */}
+          {/* Teléfono + Email */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">Teléfono *</label>
+              <Input required type="tel" value={formData.telefono} onChange={(e) => setFormData({ ...formData, telefono: e.target.value })} placeholder="+34 600 000 000" className="bg-background border-border font-body" />
+            </div>
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">Correo electrónico *</label>
+              <Input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="tu@email.com" className="bg-background border-border font-body" />
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-6">
             <div>
               <label className="font-body text-sm text-muted-foreground mb-2 block">Destino de Vivienda</label>
@@ -172,17 +183,6 @@ const ContactSection = () => {
             </select>
           </div>
 
-          {/* Teléfono + Email */}
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <label className="font-body text-sm text-muted-foreground mb-2 block">Teléfono *</label>
-              <Input required type="tel" value={formData.telefono} onChange={(e) => setFormData({ ...formData, telefono: e.target.value })} placeholder="+34 600 000 000" className="bg-background border-border font-body" />
-            </div>
-            <div>
-              <label className="font-body text-sm text-muted-foreground mb-2 block">Correo electrónico *</label>
-              <Input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder="tu@email.com" className="bg-background border-border font-body" />
-            </div>
-          </div>
 
           {/* Zonas comunes soñadas - Multi select */}
           <div>
