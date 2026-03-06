@@ -15,7 +15,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 210 40% 12%;
 
-    --primary: 205 65% 28%;
+    --primary: 158 61% 14%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 35 50% 92%;
@@ -32,13 +32,13 @@
 
     --border: 210 20% 90%;
     --input: 210 20% 90%;
-    --ring: 205 65% 28%;
+    --ring: 158 61% 14%;
 
     --radius: 0.5rem;
 
-    --ocean: 205 65% 28%;
-    --ocean-light: 205 50% 45%;
-    --ocean-dark: 205 70% 18%;
+    --ocean: 158 61% 14%;
+    --ocean-light: 158 45% 28%;
+    --ocean-dark: 158 70% 8%;
     --sand: 35 50% 92%;
     --sand-dark: 35 30% 75%;
     --gold: 35 60% 55%;
