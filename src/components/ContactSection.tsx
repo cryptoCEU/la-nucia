@@ -45,22 +45,32 @@ const ContactSection = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.privacidad) {
       toast({ title: "Error", description: "Debes aceptar la política de privacidad.", variant: "destructive" });
       return;
     }
     setIsSubmitting(true);
-    setTimeout(() => {
+    try {
+      const { privacidad, ...payload } = formData;
+      const res = await fetch("https://form-la-nucia-lovable.vercel.app/api/webhook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error("Error en el servidor");
       toast({ title: "¡Solicitud enviada!", description: "Nos pondremos en contacto contigo lo antes posible." });
       setFormData({
         nombre: "", destinoVivienda: "", codigoPostal: "", edad: "",
         dormitorios: [], idioma: "", presupuesto: "", telefono: "",
         zonasComunes: [], email: "", privacidad: false,
       });
+    } catch {
+      toast({ title: "Error", description: "No se pudo enviar el formulario. Inténtalo de nuevo.", variant: "destructive" });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const selectClass = "w-full h-10 rounded-md border border-border bg-background px-3 font-body text-sm text-foreground";
