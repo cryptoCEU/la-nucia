@@ -31,9 +31,9 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-primary-foreground leading-tight mb-6"
         >
-          107 viviendas de
+          Designed for
           <br />
-          <span className="italic">obra nueva</span>
+          <span className="italic">Mediterranean Living</span>
         </motion.h1>
 
         <motion.p
