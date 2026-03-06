@@ -215,7 +215,7 @@ const ContactSection = () => {
             />
             <label htmlFor="privacidad" className="font-body text-sm text-muted-foreground leading-relaxed cursor-pointer">
               Acepto la{" "}
-              <a href="#" className="text-primary underline hover:text-ocean-light">
+              <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-ocean-light">
                 política de privacidad
               </a>
             </label>
