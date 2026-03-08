@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 
 const PrivacyPolicy = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Navbar />
