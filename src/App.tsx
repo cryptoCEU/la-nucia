@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Landing from "./pages/Landing";
 import Caracteristicas from "./pages/Caracteristicas";
+import Viviendas from "./pages/Viviendas";
 import Galeria from "./pages/Galeria";
 import Ubicacion from "./pages/Ubicacion";
 import Contacto from "./pages/Contacto";

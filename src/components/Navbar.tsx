@@ -6,6 +6,7 @@ import logoNuciaOne from "@/assets/logo-nucia-one-horizontal.svg";
 
 const navLinks = [
   { label: "Inicio", href: "/" },
+  { label: "Viviendas", href: "/viviendas" },
   { label: "Características", href: "/caracteristicas" },
   { label: "Galería", href: "/galeria" },
   { label: "Ubicación", href: "/ubicacion" },
