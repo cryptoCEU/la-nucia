@@ -68,7 +68,7 @@ const MapComponent = () => {
       .setPopup(
         new mapboxgl.Popup({ offset: 25, className: "activum-popup" }).setHTML(
           `<div style="font-family: 'DM Sans', sans-serif; padding: 4px;">
-            <strong style="color: hsl(158, 61%, 14%);">Residencial La Nucía</strong><br/>
+            <strong style="color: hsl(158, 61%, 14%);">La Nucía One</strong><br/>
             <span style="font-size: 13px; color: #666;">La Nucía, Alicante</span>
           </div>`
         )

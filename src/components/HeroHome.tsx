@@ -31,7 +31,7 @@ const HeroHome = () => {
                 transition={{ duration: 0.5 }}
                 className="font-body text-sm tracking-[0.2em] uppercase text-primary-foreground/60 mb-4"
               >
-                Residencial La Nucía
+                La Nucía One
               </motion.p>
 
               <motion.h1

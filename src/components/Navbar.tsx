@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoActivum from "@/assets/logo-activum.png";
+import logoNuciaOne from "@/assets/logo-nucia-one.png";
 
 const navLinks = [
   { label: "Inicio", href: "/" },
@@ -41,8 +41,8 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src={logoActivum}
-              alt="Residencial La Nucía"
+              src={logoNuciaOne}
+              alt="La Nucía One"
               className="h-10 brightness-0 invert opacity-90"
             />
           </Link>
@@ -84,8 +84,8 @@ const Navbar = () => {
             <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
               <Link to="/" className="flex items-center gap-3">
                 <img
-                  src={logoActivum}
-                  alt="Residencial La Nucía"
+                  src={logoNuciaOne}
+                  alt="La Nucía One"
                   className="h-10 brightness-0 invert opacity-90"
                 />
               </Link>
