@@ -43,7 +43,7 @@ const Navbar = () => {
             <img
               src={logoNuciaOne}
               alt="La Nucía One"
-              className="h-10 brightness-0 invert opacity-90"
+              className="h-8 opacity-90"
             />
           </Link>
 
