@@ -22,7 +22,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6 }}
           className="text-gold font-body text-sm md:text-base tracking-[0.3em] uppercase mb-6"
         >
-          Próximamente en La Nucía
+          Próximamente — La Nucía One
         </motion.p>
 
         <motion.h1

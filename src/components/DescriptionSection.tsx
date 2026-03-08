@@ -30,7 +30,7 @@ const DescriptionSection = () => {
               centros deportivos, colegios y hospitales.
             </p>
             <p className="font-body text-muted-foreground leading-relaxed">
-              <strong className="text-foreground">Residencial La Nucía</strong> te ofrece un estilo de vida mediterráneo.
+              <strong className="text-foreground">La Nucía One</strong> te ofrece un estilo de vida mediterráneo.
               Espaciosas viviendas de 2, 3 y 4 dormitorios con grandes ventanales y cuidada distribución.
               Un diseño singular, creado para la vida del residencial, con un completo equipamiento
               comunitario pensado para disfrutar: piscina infinity, coworking, gimnasio, zonas
