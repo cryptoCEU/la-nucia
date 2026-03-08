@@ -6,6 +6,16 @@ import FooterSection from "@/components/FooterSection";
 import buildingImage from "@/assets/building-render.jpg";
 
 const Contacto = () => {
+  const handleJuliaClick = () => {
+    const widget = document.querySelector('elevenlabs-convai');
+    if (widget?.shadowRoot) {
+      const button = widget.shadowRoot.querySelector('button');
+      button?.click();
+    } else if (widget) {
+      (widget as HTMLElement).click();
+    }
+  };
+
   return (
     <>
       <Navbar />
