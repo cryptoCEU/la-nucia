@@ -3,10 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-nucia.jpg";
 
-const stats = [
-  { number: "107", label: "Viviendas de 2, 3 y 4 dormitorios. Espacio, luz y cuidada distribución." },
-  { number: "9", label: "Disfruta de las zonas comunes: piscina, coworking, gimnasio y mucho más." },
-];
 
 const HeroHome = () => {
   return (
@@ -70,35 +66,6 @@ const HeroHome = () => {
         </div>
       </div>
 
-      {/* Stats bar at bottom */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        className="relative z-10"
-      >
-        <div className="container max-w-7xl mx-auto px-6 pb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
-            {stats.map((stat, i) => (
-              <div
-                key={i}
-                className={`flex items-start gap-5 p-6 ${
-                  i === 0
-                    ? "bg-gold/90 text-foreground"
-                    : "bg-primary/80 text-primary-foreground"
-                }`}
-              >
-                <span className="font-display text-4xl md:text-5xl font-semibold leading-none">
-                  {stat.number}
-                </span>
-                <p className="font-body text-sm leading-relaxed opacity-90 pt-1">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 };
