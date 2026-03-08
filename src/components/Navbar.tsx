@@ -41,8 +41,8 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <img
-              src={logoActivum}
-              alt="Residencial La Nucía"
+              src={logoNuciaOne}
+              alt="La Nucía One"
               className="h-10 brightness-0 invert opacity-90"
             />
           </Link>
