@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoActivum from "@/assets/logo-activum.png";
+import logoNuciaOne from "@/assets/logo-nucia-one.png";
 
 const navLinks = [
   { label: "Inicio", href: "/" },
