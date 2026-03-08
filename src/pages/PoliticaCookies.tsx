@@ -112,6 +112,7 @@ const PoliticaCookies = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
