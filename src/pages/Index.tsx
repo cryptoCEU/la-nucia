@@ -15,6 +15,7 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroHome />
+        <StatsSection />
         <DescriptionSection />
         <FeaturesSection />
         <GallerySection />
