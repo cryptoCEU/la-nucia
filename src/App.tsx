@@ -11,6 +11,8 @@ import Galeria from "./pages/Galeria";
 import Ubicacion from "./pages/Ubicacion";
 import Contacto from "./pages/Contacto";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import AvisoLegal from "./pages/AvisoLegal";
+import PoliticaCookies from "./pages/PoliticaCookies";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/CustomCursor";
 
@@ -32,6 +34,8 @@ const App = () => (
           <Route path="/ubicacion" element={<Ubicacion />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
+          <Route path="/aviso-legal" element={<AvisoLegal />} />
+          <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -63,10 +63,22 @@ const FooterSection = () => {
           </p>
           <div className="flex items-center gap-6">
             <Link
+              to="/aviso-legal"
+              className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors"
+            >
+              Aviso Legal
+            </Link>
+            <Link
               to="/politica-de-privacidad"
               className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors"
             >
               Política de Privacidad
+            </Link>
+            <Link
+              to="/politica-de-cookies"
+              className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors"
+            >
+              Política de Cookies
             </Link>
           </div>
         </div>
