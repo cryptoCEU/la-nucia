@@ -86,7 +86,7 @@ const Navbar = () => {
                 <img
                   src={logoNuciaOne}
                   alt="La Nucía One"
-                  className="h-8 opacity-90"
+                  className="h-16 opacity-90"
                 />
               </Link>
               <button
