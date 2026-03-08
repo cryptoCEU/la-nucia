@@ -12,6 +12,7 @@ import Ubicacion from "./pages/Ubicacion";
 import Contacto from "./pages/Contacto";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import NotFound from "./pages/NotFound";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
