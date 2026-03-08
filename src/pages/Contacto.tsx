@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, FileText } from "lucide-react";
+import { Phone, Mail, MapPin, FileText, Bot } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
 import FooterSection from "@/components/FooterSection";
@@ -81,7 +81,7 @@ const Contacto = () => {
               </motion.div>
 
               {/* Right - Info cards */}
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -139,6 +139,22 @@ const Contacto = () => {
                   <h3 className="font-display text-xl text-foreground">Formulario</h3>
                   <p className="font-body text-sm text-muted-foreground">
                     Nos pondremos en contacto lo antes posible
+                  </p>
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="space-y-4"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Bot className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="font-display text-xl text-foreground">Julia, Asistente IA</h3>
+                  <p className="font-body text-sm text-muted-foreground">
+                    Habla con Julia, nuestra asistente virtual, en la esquina inferior derecha
                   </p>
                 </motion.div>
               </div>
