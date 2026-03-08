@@ -11,6 +11,8 @@ import Galeria from "./pages/Galeria";
 import Ubicacion from "./pages/Ubicacion";
 import Contacto from "./pages/Contacto";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import AvisoLegal from "./pages/AvisoLegal";
+import PoliticaCookies from "./pages/PoliticaCookies";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/CustomCursor";
 
