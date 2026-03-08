@@ -24,9 +24,7 @@ const HeroHome = () => {
       {/* Main content */}
       <div className="relative z-10 flex-1 flex flex-col justify-center pt-24 pb-8">
         <div className="container max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left - Title & CTAs */}
-            <div>
+          <div>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -69,17 +67,6 @@ const HeroHome = () => {
                 </Link>
               </motion.div>
             </div>
-
-            {/* Right - Contact form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="hidden lg:block"
-            >
-              <ContactFormEmbed />
-            </motion.div>
-          </div>
         </div>
       </div>
 
