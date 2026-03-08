@@ -1,42 +1,81 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useCallback } from "react";
 
 const CustomCursor = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const ringRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
+  const hovering = useRef(false);
+  const visible = useRef(false);
+  const pos = useRef({ x: 0, y: 0 });
+  const ringPos = useRef({ x: 0, y: 0 });
+  const rafId = useRef<number>(0);
+
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+  const animate = useCallback(() => {
+    // Smooth follow for ring
+    ringPos.current.x = lerp(ringPos.current.x, pos.current.x, 0.15);
+    ringPos.current.y = lerp(ringPos.current.y, pos.current.y, 0.15);
+
+    const ringSize = hovering.current ? 48 : 32;
+    const ringOffset = ringSize / 2;
+
+    if (ringRef.current) {
+      ringRef.current.style.transform = `translate3d(${ringPos.current.x - ringOffset}px, ${ringPos.current.y - ringOffset}px, 0)`;
+      ringRef.current.style.width = `${ringSize}px`;
+      ringRef.current.style.height = `${ringSize}px`;
+      ringRef.current.style.opacity = visible.current ? "1" : "0";
+    }
+
+    if (dotRef.current) {
+      dotRef.current.style.transform = `translate3d(${pos.current.x - 3}px, ${pos.current.y - 3}px, 0)`;
+      dotRef.current.style.opacity = visible.current && !hovering.current ? "1" : "0";
+    }
+
+    rafId.current = requestAnimationFrame(animate);
+  }, []);
 
   useEffect(() => {
-    // Only show on non-touch devices
     const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
+    // Add cursor:none style
+    const style = document.createElement("style");
+    style.textContent = "*, *::before, *::after { cursor: none !important; }";
+    document.head.appendChild(style);
+
     const onMouseMove = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY });
-      if (!isVisible) setIsVisible(true);
+      pos.current = { x: e.clientX, y: e.clientY };
+      if (!visible.current) {
+        visible.current = true;
+        // Snap ring to position on first move
+        ringPos.current = { x: e.clientX, y: e.clientY };
+      }
     };
 
     const onMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const isInteractive = target.closest("a, button, input, textarea, select, [role='button']");
-      setIsHovering(!!isInteractive);
+      hovering.current = !!target.closest("a, button, input, textarea, select, [role='button']");
     };
 
-    const onMouseLeave = () => setIsVisible(false);
-    const onMouseEnter = () => setIsVisible(true);
+    const onMouseLeave = () => { visible.current = false; };
+    const onMouseEnter = () => { visible.current = true; };
 
-    window.addEventListener("mousemove", onMouseMove);
-    window.addEventListener("mouseover", onMouseOver);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+    window.addEventListener("mouseover", onMouseOver, { passive: true });
     document.documentElement.addEventListener("mouseleave", onMouseLeave);
     document.documentElement.addEventListener("mouseenter", onMouseEnter);
+
+    rafId.current = requestAnimationFrame(animate);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseover", onMouseOver);
       document.documentElement.removeEventListener("mouseleave", onMouseLeave);
       document.documentElement.removeEventListener("mouseenter", onMouseEnter);
+      cancelAnimationFrame(rafId.current);
+      document.head.removeChild(style);
     };
-  }, [isVisible]);
+  }, [animate]);
 
   // Don't render on touch devices
   if (typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0)) {
@@ -45,51 +84,23 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Hide default cursor globally */}
-      <style>{`
-        *, *::before, *::after {
-          cursor: none !important;
-        }
-      `}</style>
-
-      {/* Outer ring */}
-      <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference"
-        animate={{
-          x: position.x - (isHovering ? 24 : 16),
-          y: position.y - (isHovering ? 24 : 16),
-          width: isHovering ? 48 : 32,
-          height: isHovering ? 48 : 32,
-          opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 250,
-          damping: 20,
-          mass: 0.5,
-        }}
+      {/* Outer ring - mix-blend-difference ensures contrast on any background */}
+      <div
+        ref={ringRef}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference will-change-transform"
+        style={{ opacity: 0, transition: "width 0.3s ease, height 0.3s ease, opacity 0.2s ease" }}
       >
-        <div className="w-full h-full rounded-full border border-primary-foreground/80" />
-      </motion.div>
+        <div className="w-full h-full rounded-full border-2 border-white" />
+      </div>
 
-      {/* Inner dot */}
-      <motion.div
-        className="fixed top-0 left-0 z-[9999] pointer-events-none"
-        animate={{
-          x: position.x - 3,
-          y: position.y - 3,
-          opacity: isVisible ? 1 : 0,
-          scale: isHovering ? 0 : 1,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 25,
-          mass: 0.3,
-        }}
+      {/* Inner dot - also mix-blend-difference */}
+      <div
+        ref={dotRef}
+        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference will-change-transform"
+        style={{ opacity: 0, transition: "opacity 0.15s ease" }}
       >
-        <div className="w-1.5 h-1.5 rounded-full bg-primary-foreground" />
-      </motion.div>
+        <div className="w-1.5 h-1.5 rounded-full bg-white" />
+      </div>
     </>
   );
 };
