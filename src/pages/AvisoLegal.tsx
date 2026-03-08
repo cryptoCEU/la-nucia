@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import Navbar from "@/components/Navbar";
 
 const AvisoLegal = () => {
   return (
-    <div className="min-h-screen bg-background py-16 md:py-24">
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">
         <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
           <ArrowLeft className="w-4 h-4" />
