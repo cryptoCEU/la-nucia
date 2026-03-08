@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, FileText } from "lucide-react";
+import { Phone, Mail, MapPin, FileText, Bot } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import ContactSection from "@/components/ContactSection";
 import FooterSection from "@/components/FooterSection";
