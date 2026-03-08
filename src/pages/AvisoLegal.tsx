@@ -12,10 +12,10 @@ const AvisoLegal = () => {
       <div className="container max-w-3xl mx-auto px-6">
         <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
           <ArrowLeft className="w-4 h-4" />
-          Volver al inicio
+          {t("legalPages.backHome")}
         </Link>
 
-        <h1 className="font-display text-3xl md:text-5xl text-foreground mb-10">Aviso legal</h1>
+        <h1 className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("avisoLegal.title")}</h1>
 
         <div className="prose prose-sm md:prose-base max-w-none font-body text-muted-foreground space-y-6 [&_strong]:text-foreground [&_a]:text-primary [&_a:hover]:text-ocean-light">
           <p>
