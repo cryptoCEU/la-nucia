@@ -1,0 +1,260 @@
+{
+  "nav": {
+    "home": "Home",
+    "homes": "Homes",
+    "features": "Features",
+    "gallery": "Gallery",
+    "location": "Location",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close",
+    "contactLabel": "Contact",
+    "salesOffice": "Sales office",
+    "byAppointment": "(by appointment)"
+  },
+  "hero": {
+    "subtitle": "La Nucía One",
+    "title1": "Designed for",
+    "title2": "Mediterranean",
+    "title3": "Living",
+    "discoverMore": "Discover more",
+    "contact": "Contact"
+  },
+  "stats": {
+    "number1": "107",
+    "label1": "Homes with 2, 3 and 4 bedrooms",
+    "desc1": "Space, light and a carefully designed layout.",
+    "number2": "9",
+    "label2": "Exclusive communal areas",
+    "desc2": "Enjoy the pool, coworking, gym and much more."
+  },
+  "description": {
+    "tag": "Location",
+    "title1": "We invite you to discover",
+    "title2": "a new residential complex",
+    "locationText": "In La Nucía, close to everything.",
+    "paragraph1": "Located in one of the municipalities with the highest quality of life on the Costa Blanca, this residential complex allows you to enjoy tranquility with nearby green spaces, while all the services you need are within reach: beaches, supermarkets, sports centres, schools and hospitals.",
+    "paragraph2": "<strong>La Nucía One</strong> offers you a Mediterranean lifestyle. Spacious homes with 2, 3 and 4 bedrooms, large windows and a carefully designed layout. A unique design, created for residential living, with comprehensive communal facilities designed for enjoyment: infinity pool, coworking, gym, landscaped gardens, children's area and much more.",
+    "sunDays": "300+",
+    "sunLabel": "Sunny days per year",
+    "buildingAlt": "New construction building in La Nucía"
+  },
+  "features": {
+    "tag": "Features",
+    "title": "Your home on the <i>Costa Blanca</i>",
+    "items": [
+      { "title": "2, 3 and 4 bedrooms", "description": "Spacious homes designed for family comfort with top-quality finishes." },
+      { "title": "Community pool", "description": "Enjoy a large pool area with solarium and relaxation areas." },
+      { "title": "Landscaped gardens", "description": "Extensive green spaces with Mediterranean vegetation for your peace of mind." },
+      { "title": "Spacious terraces", "description": "Generous terraces to enjoy the Mediterranean climate all year round." },
+      { "title": "Parking space", "description": "Private parking spaces and storage rooms included in the development." },
+      { "title": "Energy efficiency", "description": "Latest generation materials and high-level energy certification." }
+    ]
+  },
+  "gallery": {
+    "images": [
+      { "alt": "Exterior facade of La Nucía One", "label": "Facade" },
+      { "alt": "Modern interior with sea views", "label": "Living room" },
+      { "alt": "Aerial view of La Nucía", "label": "Surroundings" },
+      { "alt": "Community pool and common areas", "label": "Pool" },
+      { "alt": "Modern open-plan kitchen", "label": "Kitchen" },
+      { "alt": "Panoramic views from the terrace", "label": "Terrace" }
+    ]
+  },
+  "calidades": {
+    "tag": "Qualities",
+    "title": "Distinction and <i>innovation</i>",
+    "items": [
+      { "title": "Structure", "description": "Foundation and structure calculated according to current regulations, with solid slab floors and reinforced concrete columns, providing greater solidity and acoustic insulation." },
+      { "title": "Facade", "description": "Facade composed of ceramic enclosure with ETICS external thermal insulation, improving thermal comfort by eliminating thermal bridges and reducing consumption." },
+      { "title": "Climate control", "description": "Highly energy-efficient aerothermal system for climate control and hot water. Air distribution through ducts integrated into the false ceiling." },
+      { "title": "Kitchens", "description": "Furnished kitchen equipped with top-brand appliances. Compact quartz countertop and modern high-capacity design." },
+      { "title": "Carpentry", "description": "Exterior PVC carpentry with Climalit-type glass. White lacquered interior doors with steel hardware. Modular built-in wardrobes." },
+      { "title": "Energy Efficiency", "description": "High energy rating thanks to quality materials and aerothermal systems that contribute to lower consumption and environmental care." }
+    ]
+  },
+  "location": {
+    "tag": "Privileged location",
+    "title1": "La Nucía,",
+    "title2": "Alicante",
+    "description": "La Nucía is one of the municipalities with the highest quality of life on the Costa Blanca. With an exceptional climate of over 300 sunny days a year, excellent sports and cultural infrastructure, and a strategic location between the mountains and the sea.",
+    "highlights": [
+      "10 min from Benidorm",
+      "45 min from Alicante airport",
+      "Sierra de Aitana as a backdrop",
+      "Beaches less than 8 km away"
+    ]
+  },
+  "contactSection": {
+    "tag": "La Nucía awaits you",
+    "title": "Discover all the <i>details</i>",
+    "subtitle": "Tell us about your ideal home and we'll contact you with no obligation.",
+    "form": {
+      "name": "Full name *",
+      "namePlaceholder": "Your full name",
+      "phone": "Phone *",
+      "phonePlaceholder": "+34 600 000 000",
+      "email": "Email *",
+      "emailPlaceholder": "you@email.com",
+      "housingPurpose": "Housing purpose",
+      "selectPlaceholder": "Select...",
+      "firstHome": "Primary home",
+      "secondHome": "Second home",
+      "investment": "Investment",
+      "replacement": "Replacement",
+      "postalCode": "Postal code",
+      "age": "Age",
+      "contactLanguage": "Preferred language",
+      "bedrooms": "Number of bedrooms",
+      "bed2": "2 Bedrooms",
+      "bed3": "3 Bedrooms",
+      "bed4": "4 Bedrooms",
+      "budget": "Estimated budget",
+      "commonAreas": "Your dream communal areas",
+      "infinityPool": "Infinity Pool",
+      "coworking": "Coworking",
+      "gym": "Gym",
+      "multipurpose": "Multipurpose rooms",
+      "gardens": "Landscaped gardens",
+      "kids": "Children's area",
+      "bbq": "Barbecue",
+      "petCare": "Pet Care",
+      "solarium": "Solarium",
+      "privacy": "I accept the",
+      "privacyLink": "privacy policy",
+      "submit": "Submit",
+      "submitting": "Sending...",
+      "successTitle": "Request sent!",
+      "successDesc": "We will contact you as soon as possible.",
+      "errorTitle": "Error",
+      "errorPrivacy": "You must accept the privacy policy.",
+      "errorSubmit": "Could not send the form. Please try again."
+    }
+  },
+  "footer": {
+    "contact": "Contact",
+    "salesOffice": "Sales Office",
+    "location": "La Nucía, Alicante",
+    "byAppointment": "(by appointment)",
+    "managedBy": "Managed and marketed by",
+    "rights": "© {{year}} Activum Real Estate. All rights reserved.",
+    "legalNotice": "Legal Notice",
+    "privacyPolicy": "Privacy Policy",
+    "cookiePolicy": "Cookie Policy"
+  },
+  "caracteristicasPage": {
+    "tag": "La Nucía One",
+    "title": "Features and <i>qualities</i>"
+  },
+  "contactoPage": {
+    "tag": "New Build Development",
+    "locationTag": "La Nucía, Alicante",
+    "heroTitle": "107 homes designed for the <i>Mediterranean</i>",
+    "heroSubtitle": "Contact us for more information about the La Nucía One development.",
+    "infoTag": "La Nucía One",
+    "infoTitle": "Want more <i>information?</i>",
+    "infoSubtitle": "Call us, send us an email, fill in the form, or arrange a visit.",
+    "contactTitle": "Contact",
+    "phone": "Phone: +34 865 662 845",
+    "mail": "Email: obranueva@activum.es",
+    "officeTitle": "Sales Office",
+    "officeLocation": "La Nucía, Alicante",
+    "officeAppointment": "By appointment",
+    "formTitle": "Form",
+    "formDesc": "We will contact you as soon as possible",
+    "juliaTitle": "Julia, AI Assistant",
+    "juliaDesc": "Talk to Julia, our virtual assistant, in the bottom right corner"
+  },
+  "galeriaPage": {
+    "tag": "La Nucía One",
+    "title1": "Image",
+    "title2": "Gallery",
+    "decorative": "gallery"
+  },
+  "ubicacionPage": {
+    "tag": "Costa Blanca, Alicante",
+    "title": "Privileged <i>location</i>"
+  },
+  "viviendasPage": {
+    "tag": "La Nucía One",
+    "heroTitle1": "Homes with",
+    "heroTitle2": "2, 3 and 4 bedrooms",
+    "heroSubtitle": "Your home in La Nucía, with <strong>everything you need always nearby.</strong>",
+    "requestInfo": "Request information",
+    "qualityReport": "Quality specifications",
+    "typologiesTag": "Typologies",
+    "typologiesTitle": "Choose your <i>ideal home</i>",
+    "types": [
+      { "title": "2 Bedrooms", "description": "Optimised layout with spacious terraces and south-facing orientation.", "priceFrom": "189,000€", "areaFrom": "65", "bathrooms": "2" },
+      { "title": "3 Bedrooms", "description": "The perfect balance between space and functionality for the whole family.", "priceFrom": "229,000€", "areaFrom": "85", "bathrooms": "2" },
+      { "title": "4 Bedrooms", "description": "Maximum space and comfort with the best views and premium finishes.", "priceFrom": "289,000€", "areaFrom": "110", "bathrooms": "3" }
+    ],
+    "bedrooms": "bedrooms",
+    "bathrooms": "bathrooms",
+    "fromArea": "From {{area}} m² usable",
+    "from": "From",
+    "garageIncluded": "Garage and storage included",
+    "availabilityTag": "Availability",
+    "availabilityTitle": "Available <i>homes</i>",
+    "floor": "Floor",
+    "usableArea": "Usable area",
+    "price": "Price",
+    "detail": "Detail",
+    "plan": "Floor plan",
+    "download": "Download",
+    "downloadPlan": "Download plan",
+    "terrace": "terrace",
+    "disclaimer": "Images and plans are non-contractual and merely illustrative, subject to modifications of a technical, legal or commercial nature by the project management or competent authority. Infographics of facades, common elements and other spaces are indicative. Interior furnishings are not included and the equipment of the homes will be as indicated in the corresponding quality specifications. Prices exclude VAT.",
+    "ctaTag": "Interested?",
+    "ctaTitle": "Find your <i>ideal home</i>",
+    "ctaSubtitle": "Contact us to receive all the information, detailed plans and purchase conditions."
+  },
+  "contactFormEmbed": {
+    "title": "Contact form",
+    "name": "Full name *",
+    "namePlaceholder": "Your full name",
+    "phone": "Phone *",
+    "phonePlaceholder": "+34 600 000 000",
+    "email": "Email *",
+    "emailPlaceholder": "you@email.com",
+    "typology": "Home typology *",
+    "selectPlaceholder": "Select...",
+    "bed2": "2 Bedrooms",
+    "bed3": "3 Bedrooms",
+    "bed4": "4 Bedrooms",
+    "privacy": "I accept the",
+    "privacyLink": "privacy policy",
+    "submit": "Submit",
+    "submitting": "Sending...",
+    "successTitle": "Request sent!",
+    "successDesc": "We will contact you.",
+    "errorTitle": "Error",
+    "errorPrivacy": "You must accept the privacy policy.",
+    "errorSubmit": "Could not send. Please try again."
+  },
+  "heroSection": {
+    "tag": "Coming soon — La Nucía One",
+    "title1": "Designed for",
+    "title2": "Mediterranean Living",
+    "subtitle": "Apartments with 2, 3 and 4 bedrooms with spacious terraces, communal areas and Mediterranean views in one of the best locations on the Costa Blanca.",
+    "cta": "I want to know more!"
+  },
+  "legalPages": {
+    "backHome": "Back to home"
+  },
+  "avisoLegal": {
+    "title": "Legal notice"
+  },
+  "politicaCookies": {
+    "title": "Cookie policy"
+  },
+  "politicaPrivacidad": {
+    "title": "Privacy policy"
+  },
+  "viviendas2dorm": "2 BEDROOMS",
+  "viviendas3dorm": "3 BEDROOMS",
+  "viviendas4dorm": "4 BEDROOMS",
+  "viviendasSubtitle2": "From 189,000€ with garage and storage included",
+  "viviendasSubtitle3": "From 229,000€ with garage and storage included",
+  "viviendasSubtitle4": "From 289,000€ with garage and storage included"
+}
