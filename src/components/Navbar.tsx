@@ -2,22 +2,25 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import logoNuciaOne from "@/assets/logo-nucia-one-horizontal.svg";
-
-const navLinks = [
-  { label: "Inicio", href: "/" },
-  { label: "Viviendas", href: "/viviendas" },
-  { label: "Características", href: "/caracteristicas" },
-  { label: "Galería", href: "/galeria" },
-  { label: "Ubicación", href: "/ubicacion" },
-  { label: "Contacto", href: "/contacto" },
-];
+import LanguageSelector from "./LanguageSelector";
 
 const Navbar = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/" || location.pathname === "/landing";
+
+  const navLinks = [
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.homes"), href: "/viviendas" },
+    { label: t("nav.features"), href: "/caracteristicas" },
+    { label: t("nav.gallery"), href: "/galeria" },
+    { label: t("nav.location"), href: "/ubicacion" },
+    { label: t("nav.contact"), href: "/contacto" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -39,18 +42,12 @@ const Navbar = () => {
         }`}
       >
         <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <img
-              src={logoNuciaOne}
-              alt="La Nucía One"
-              className="h-16 opacity-90"
-            />
+            <img src={logoNuciaOne} alt="La Nucía One" className="h-16 opacity-90" />
           </Link>
 
-          {/* Right side */}
           <div className="flex items-center gap-6">
-            {/* Phone - desktop */}
+            <LanguageSelector className="hidden md:flex" />
             <a
               href="tel:+34865662845"
               className="hidden md:flex items-center gap-2 text-primary-foreground/80 hover:text-gold transition-colors font-body text-sm"
@@ -58,20 +55,17 @@ const Navbar = () => {
               <Phone className="w-4 h-4" />
               865 662 845
             </a>
-
-            {/* Menu button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="flex items-center gap-3 px-5 py-2.5 border border-primary-foreground/20 rounded-full text-primary-foreground hover:border-gold hover:text-gold transition-colors"
             >
-              <span className="font-body text-sm tracking-wider uppercase">Menu</span>
+              <span className="font-body text-sm tracking-wider uppercase">{t("nav.menu")}</span>
               <Menu className="w-5 h-5" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Full-screen menu overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -81,27 +75,23 @@ const Navbar = () => {
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-[100] bg-primary flex flex-col"
           >
-            {/* Close header */}
             <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
               <Link to="/" className="flex items-center gap-3">
-                <img
-                  src={logoNuciaOne}
-                  alt="La Nucía One"
-                  className="h-16 opacity-90"
-                />
+                <img src={logoNuciaOne} alt="La Nucía One" className="h-16 opacity-90" />
               </Link>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 px-5 py-2.5 border border-primary-foreground/20 rounded-full text-primary-foreground hover:border-gold hover:text-gold transition-colors"
-              >
-                <span className="font-body text-sm tracking-wider uppercase">Cerrar</span>
-                <X className="w-5 h-5" />
-              </button>
+              <div className="flex items-center gap-6">
+                <LanguageSelector />
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-3 px-5 py-2.5 border border-primary-foreground/20 rounded-full text-primary-foreground hover:border-gold hover:text-gold transition-colors"
+                >
+                  <span className="font-body text-sm tracking-wider uppercase">{t("nav.close")}</span>
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
             </div>
 
-            {/* Menu content */}
             <div className="flex-1 flex flex-col md:flex-row">
-              {/* Navigation links */}
               <div className="flex-1 flex flex-col justify-center px-12 md:px-24">
                 <nav className="space-y-2">
                   {navLinks.map((link, i) => (
@@ -126,7 +116,6 @@ const Navbar = () => {
                 </nav>
               </div>
 
-              {/* Contact info */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -136,29 +125,21 @@ const Navbar = () => {
                 <div className="space-y-6">
                   <div>
                     <p className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-2">
-                      Contacto
+                      {t("nav.contactLabel")}
                     </p>
-                    <a
-                      href="mailto:obranueva@activum.es"
-                      className="font-body text-primary-foreground/80 hover:text-gold transition-colors block"
-                    >
+                    <a href="mailto:obranueva@activum.es" className="font-body text-primary-foreground/80 hover:text-gold transition-colors block">
                       obranueva@activum.es
                     </a>
-                    <a
-                      href="tel:+34865662845"
-                      className="font-body text-primary-foreground/80 hover:text-gold transition-colors block mt-1"
-                    >
+                    <a href="tel:+34865662845" className="font-body text-primary-foreground/80 hover:text-gold transition-colors block mt-1">
                       +34 865 662 845
                     </a>
                   </div>
                   <div>
                     <p className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-2">
-                      Oficina de ventas
+                      {t("nav.salesOffice")}
                     </p>
                     <p className="font-body text-sm text-primary-foreground/60">
-                      La Nucía, Alicante
-                      <br />
-                      (con cita previa)
+                      La Nucía, Alicante<br />{t("nav.byAppointment")}
                     </p>
                   </div>
                 </div>

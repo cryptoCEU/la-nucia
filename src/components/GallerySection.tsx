@@ -1,27 +1,22 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import heroImg from "@/assets/hero-nucia.jpg";
 
-const images = [
-  { src: buildingImg, alt: "Fachada exterior de La Nucía One", label: "Fachada" },
-  { src: interiorImg, alt: "Interior moderno con vistas al mar", label: "Salón" },
-  { src: heroImg, alt: "Vista aérea de La Nucía", label: "Entorno" },
-  { src: buildingImg, alt: "Piscina comunitaria y zonas comunes", label: "Piscina" },
-  { src: interiorImg, alt: "Cocina moderna abierta al salón", label: "Cocina" },
-  { src: heroImg, alt: "Vistas panorámicas desde la terraza", label: "Terraza" },
-];
+const srcs = [buildingImg, interiorImg, heroImg, buildingImg, interiorImg, heroImg];
 
 const GallerySection = () => {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<number | null>(null);
+  const images = t("gallery.images", { returnObjects: true }) as { alt: string; label: string }[];
 
   return (
     <>
       <section className="py-20 md:py-28 bg-sand">
         <div className="container max-w-7xl mx-auto px-6">
-          {/* 2-column masonry-style grid */}
           <div className="columns-1 md:columns-2 gap-5 space-y-5">
             {images.map((img, i) => (
               <motion.div
@@ -34,7 +29,7 @@ const GallerySection = () => {
                 onClick={() => setSelected(i)}
               >
                 <img
-                  src={img.src}
+                  src={srcs[i]}
                   alt={img.alt}
                   className={`w-full object-cover transition-transform duration-700 group-hover:scale-105 ${
                     i % 3 === 0 ? "aspect-[4/5]" : i % 3 === 1 ? "aspect-[3/2]" : "aspect-square"
@@ -51,7 +46,6 @@ const GallerySection = () => {
         </div>
       </section>
 
-      {/* Lightbox */}
       <AnimatePresence>
         {selected !== null && (
           <motion.div
@@ -61,10 +55,7 @@ const GallerySection = () => {
             className="fixed inset-0 z-[100] bg-foreground/90 flex items-center justify-center p-6 cursor-pointer"
             onClick={() => setSelected(null)}
           >
-            <button
-              onClick={() => setSelected(null)}
-              className="absolute top-6 right-6 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-            >
+            <button onClick={() => setSelected(null)} className="absolute top-6 right-6 text-primary-foreground/80 hover:text-primary-foreground transition-colors">
               <X className="w-8 h-8" />
             </button>
             <motion.img
@@ -73,7 +64,7 @@ const GallerySection = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.92 }}
               transition={{ duration: 0.3 }}
-              src={images[selected].src}
+              src={srcs[selected]}
               alt={images[selected].alt}
               className="max-w-full max-h-[85vh] object-contain rounded-sm"
               onClick={(e) => e.stopPropagation()}

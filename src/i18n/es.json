@@ -1,0 +1,261 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "homes": "Viviendas",
+    "features": "Características",
+    "gallery": "Galería",
+    "location": "Ubicación",
+    "contact": "Contacto",
+    "menu": "Menu",
+    "close": "Cerrar",
+    "contactLabel": "Contacto",
+    "salesOffice": "Oficina de ventas",
+    "byAppointment": "(con cita previa)"
+  },
+  "hero": {
+    "subtitle": "La Nucía One",
+    "title1": "Designed for",
+    "title2": "Mediterranean",
+    "title3": "Living",
+    "discoverMore": "Descubre más",
+    "contact": "Contacto"
+  },
+  "stats": {
+    "number1": "107",
+    "label1": "Viviendas de 2, 3 y 4 dormitorios",
+    "desc1": "Espacio, luz y cuidada distribución.",
+    "number2": "9",
+    "label2": "Zonas comunes exclusivas",
+    "desc2": "Disfruta de piscina, coworking, gimnasio y mucho más."
+  },
+  "description": {
+    "tag": "Ubicación",
+    "title1": "Te invitamos a descubrir",
+    "title2": "un nuevo residencial",
+    "locationText": "En La Nucía, a un paso de todo.",
+    "paragraph1": "Situado en uno de los municipios con mayor calidad de vida de la Costa Blanca, este residencial te permite disfrutar de la tranquilidad con espacios verdes cercanos, mientras todos los servicios que necesitas están a tu alcance: playas, supermercados, centros deportivos, colegios y hospitales.",
+    "paragraph2": "<strong>La Nucía One</strong> te ofrece un estilo de vida mediterráneo. Espaciosas viviendas de 2, 3 y 4 dormitorios con grandes ventanales y cuidada distribución. Un diseño singular, creado para la vida del residencial, con un completo equipamiento comunitario pensado para disfrutar: piscina infinity, coworking, gimnasio, zonas ajardinadas, zona infantil y mucho más.",
+    "sunDays": "300+",
+    "sunLabel": "Días de sol al año",
+    "buildingAlt": "Edificio de obra nueva en La Nucía"
+  },
+  "features": {
+    "tag": "Características",
+    "title": "Tu hogar en la <i>Costa Blanca</i>",
+    "items": [
+      { "title": "2, 3 y 4 dormitorios", "description": "Amplias viviendas diseñadas para el confort familiar con acabados de primera calidad." },
+      { "title": "Piscina comunitaria", "description": "Disfruta de una gran zona de piscina con solárium y áreas de descanso." },
+      { "title": "Zonas ajardinadas", "description": "Amplios espacios verdes con vegetación mediterránea para tu tranquilidad." },
+      { "title": "Amplias terrazas", "description": "Terrazas generosas para disfrutar del clima mediterráneo durante todo el año." },
+      { "title": "Plaza de garaje", "description": "Plazas de aparcamiento privado y trasteros incluidos en la promoción." },
+      { "title": "Eficiencia energética", "description": "Materiales de última generación y calificación energética de alto nivel." }
+    ]
+  },
+  "gallery": {
+    "images": [
+      { "alt": "Fachada exterior de La Nucía One", "label": "Fachada" },
+      { "alt": "Interior moderno con vistas al mar", "label": "Salón" },
+      { "alt": "Vista aérea de La Nucía", "label": "Entorno" },
+      { "alt": "Piscina comunitaria y zonas comunes", "label": "Piscina" },
+      { "alt": "Cocina moderna abierta al salón", "label": "Cocina" },
+      { "alt": "Vistas panorámicas desde la terraza", "label": "Terraza" }
+    ]
+  },
+  "calidades": {
+    "tag": "Calidades",
+    "title": "Distinción e <i>innovación</i>",
+    "items": [
+      { "title": "Estructura", "description": "Cimentación y estructura calculada según normativa vigente, con forjados de losa maciza y pilares de hormigón armado, dotando de mayor solidez y aislamiento acústico." },
+      { "title": "Fachada", "description": "Fachada compuesta por cerramiento cerámico con aislamiento térmico exterior SATE, mejorando el confort térmico eliminando puentes térmicos y reduciendo el consumo." },
+      { "title": "Climatización", "description": "Sistema de aerotermia de gran eficiencia energética para climatización y ACS. Distribución de aire por conductos integrados en falso techo." },
+      { "title": "Cocinas", "description": "Cocina amueblada y equipada con electrodomésticos de primera marca. Encimera de cuarzo compacto y diseño actual de gran capacidad." },
+      { "title": "Carpintería", "description": "Carpintería exterior de PVC con vidrios tipo Climalit. Puertas interiores lacadas en blanco con herrajes de acero. Armarios empotrados modulares." },
+      { "title": "Eficiencia Energética", "description": "Alta calificación energética gracias a materiales de calidad y sistemas de aerotermia que contribuyen a un menor consumo y al cuidado del medio ambiente." }
+    ]
+  },
+  "location": {
+    "tag": "Ubicación privilegiada",
+    "title1": "La Nucía,",
+    "title2": "Alicante",
+    "description": "La Nucía es uno de los municipios con mayor calidad de vida de la Costa Blanca. Con un clima excepcional de más de 300 días de sol al año, excelentes infraestructuras deportivas y culturales, y una ubicación estratégica entre la montaña y el mar.",
+    "highlights": [
+      "A 10 min de Benidorm",
+      "A 45 min del aeropuerto de Alicante",
+      "Sierra de Aitana como telón de fondo",
+      "Playas a menos de 8 km"
+    ]
+  },
+  "contactSection": {
+    "tag": "La Nucía te espera",
+    "title": "Conoce todos los <i>detalles</i>",
+    "subtitle": "Cuéntanos cómo sería tu casa ideal y te contactaremos sin compromiso.",
+    "form": {
+      "name": "Nombre y Apellidos *",
+      "namePlaceholder": "Tu nombre completo",
+      "phone": "Teléfono *",
+      "phonePlaceholder": "+34 600 000 000",
+      "email": "Correo electrónico *",
+      "emailPlaceholder": "tu@email.com",
+      "housingPurpose": "Destino de Vivienda",
+      "selectPlaceholder": "Selecciona...",
+      "firstHome": "Primera vivienda",
+      "secondHome": "Segunda vivienda",
+      "investment": "Inversión",
+      "replacement": "Reposición",
+      "postalCode": "Código Postal",
+      "age": "Edad",
+      "contactLanguage": "Idioma de Contacto",
+      "bedrooms": "Nº de Dormitorios",
+      "bed2": "2 Dormitorios",
+      "bed3": "3 Dormitorios",
+      "bed4": "4 Dormitorios",
+      "budget": "Presupuesto estimado",
+      "commonAreas": "Tus zonas comunes soñadas",
+      "infinityPool": "Piscina Infinity",
+      "coworking": "Coworking",
+      "gym": "Gimnasio",
+      "multipurpose": "Salas polivalentes",
+      "gardens": "Zonas ajardinadas",
+      "kids": "Zona Infantil",
+      "bbq": "Barbacoa",
+      "petCare": "Pet Care",
+      "solarium": "Solárium",
+      "privacy": "Acepto la",
+      "privacyLink": "política de privacidad",
+      "submit": "Enviar",
+      "submitting": "Enviando...",
+      "successTitle": "¡Solicitud enviada!",
+      "successDesc": "Nos pondremos en contacto contigo lo antes posible.",
+      "errorTitle": "Error",
+      "errorPrivacy": "Debes aceptar la política de privacidad.",
+      "errorSubmit": "No se pudo enviar el formulario. Inténtalo de nuevo."
+    }
+  },
+  "footer": {
+    "contact": "Contacto",
+    "salesOffice": "Oficina Comercial",
+    "location": "La Nucía, Alicante",
+    "byAppointment": "(con cita previa)",
+    "managedBy": "Gestiona y Comercializa",
+    "rights": "© {{year}} Activum Real Estate. Todos los derechos reservados.",
+    "legalNotice": "Aviso Legal",
+    "privacyPolicy": "Política de Privacidad",
+    "cookiePolicy": "Política de Cookies"
+  },
+  "caracteristicasPage": {
+    "tag": "La Nucía One",
+    "title": "Características y <i>calidades</i>"
+  },
+  "contactoPage": {
+    "tag": "Promoción Obra Nueva",
+    "locationTag": "La Nucía, Alicante",
+    "heroTitle": "107 viviendas diseñadas para el <i>Mediterráneo</i>",
+    "heroSubtitle": "Contacta con nosotros para obtener más información sobre la promoción La Nucía One.",
+    "infoTag": "La Nucía One",
+    "infoTitle": "¿Quieres más <i>información?</i>",
+    "infoSubtitle": "Llámenos, envíenos un mail, complete el formulario, o concierte una visita.",
+    "contactTitle": "Contacto",
+    "phone": "Teléfono: +34 865 662 845",
+    "mail": "Mail: obranueva@activum.es",
+    "officeTitle": "Oficina Comercial",
+    "officeLocation": "La Nucía, Alicante",
+    "officeAppointment": "Con cita previa",
+    "formTitle": "Formulario",
+    "formDesc": "Nos pondremos en contacto lo antes posible",
+    "juliaTitle": "Julia, Asistente IA",
+    "juliaDesc": "Habla con Julia, nuestra asistente virtual, en la esquina inferior derecha"
+  },
+  "galeriaPage": {
+    "tag": "La Nucía One",
+    "title1": "Galería",
+    "title2": "de imágenes",
+    "decorative": "galería"
+  },
+  "ubicacionPage": {
+    "tag": "Costa Blanca, Alicante",
+    "title": "Ubicación <i>privilegiada</i>"
+  },
+  "viviendasPage": {
+    "tag": "La Nucía One",
+    "heroTitle1": "Viviendas de",
+    "heroTitle2": "2, 3 y 4 dormitorios",
+    "heroSubtitle": "Tu hogar en La Nucía, con <strong>todo lo que necesitas siempre cerca.</strong>",
+    "requestInfo": "Solicitar información",
+    "qualityReport": "Memoria de calidades",
+    "typologiesTag": "Tipologías",
+    "typologiesTitle": "Elige tu <i>vivienda ideal</i>",
+    "types": [
+      { "title": "2 Dormitorios", "description": "Distribución optimizada con amplias terrazas y orientación sur.", "priceFrom": "189.000€", "areaFrom": "65", "bathrooms": "2" },
+      { "title": "3 Dormitorios", "description": "El equilibrio perfecto entre espacio y funcionalidad para toda la familia.", "priceFrom": "229.000€", "areaFrom": "85", "bathrooms": "2" },
+      { "title": "4 Dormitorios", "description": "Máximo espacio y confort con las mejores vistas y acabados premium.", "priceFrom": "289.000€", "areaFrom": "110", "bathrooms": "3" }
+    ],
+    "bedrooms": "dormitorios",
+    "bathrooms": "baños",
+    "fromArea": "Desde {{area}} m² útiles",
+    "from": "Desde",
+    "garageIncluded": "Garaje y trastero incluidos",
+    "availabilityTag": "Disponibilidad",
+    "availabilityTitle": "Viviendas <i>disponibles</i>",
+    "floor": "Planta",
+    "usableArea": "Superficie útil",
+    "price": "Precio",
+    "detail": "Detalle",
+    "plan": "Plano",
+    "download": "Descargar",
+    "downloadPlan": "Descargar plano",
+    "terrace": "terraza",
+    "disclaimer": "Imágenes y planos no contractuales y meramente ilustrativos, sujetos a modificaciones de orden técnico, jurídico o comercial de la dirección facultativa o autoridad competente. Las infografías de las fachadas, elementos comunes y restantes espacios son orientativos. El mobiliario de los interiores no está incluido y el equipamiento de las viviendas será el indicado en la correspondiente memoria de calidades. Precios sin IVA.",
+    "ctaTag": "¿Te interesa?",
+    "ctaTitle": "Encuentra tu <i>vivienda ideal</i>",
+    "ctaSubtitle": "Contacta con nosotros para recibir toda la información, planos detallados y condiciones de compra."
+  },
+  "contactFormEmbed": {
+    "title": "Formulario de contacto",
+    "name": "Nombre y apellidos *",
+    "namePlaceholder": "Tu nombre completo",
+    "phone": "Teléfono *",
+    "phonePlaceholder": "+34 600 000 000",
+    "email": "E-mail *",
+    "emailPlaceholder": "tu@email.com",
+    "typology": "Tipología vivienda *",
+    "selectPlaceholder": "Selecciona...",
+    "bed2": "2 Dormitorios",
+    "bed3": "3 Dormitorios",
+    "bed4": "4 Dormitorios",
+    "privacy": "Acepto la",
+    "privacyLink": "política de privacidad",
+    "submit": "Enviar",
+    "submitting": "Enviando...",
+    "successTitle": "¡Solicitud enviada!",
+    "successDesc": "Nos pondremos en contacto contigo.",
+    "errorTitle": "Error",
+    "errorPrivacy": "Debes aceptar la política de privacidad.",
+    "errorSubmit": "No se pudo enviar. Inténtalo de nuevo."
+  },
+  "heroSection": {
+    "tag": "Próximamente — La Nucía One",
+    "title1": "Designed for",
+    "title2": "Mediterranean Living",
+    "subtitle": "Pisos de 2, 3 y 4 dormitorios con amplias terrazas, zonas comunes y vistas al Mediterráneo en una de las mejores ubicaciones de la Costa Blanca.",
+    "cta": "¡Quiero conocer más detalles!"
+  },
+  "legalPages": {
+    "backHome": "Volver al inicio"
+  },
+  "avisoLegal": {
+    "title": "Aviso legal",
+    "content": "legalNoticeContent"
+  },
+  "politicaCookies": {
+    "title": "Política de cookies"
+  },
+  "politicaPrivacidad": {
+    "title": "Política de privacidad"
+  },
+  "viviendas2dorm": "2 DORMITORIOS",
+  "viviendas3dorm": "3 DORMITORIOS",
+  "viviendas4dorm": "4 DORMITORIOS",
+  "viviendasSubtitle2": "Desde 189.000€ con garaje y trastero incluidos",
+  "viviendasSubtitle3": "Desde 229.000€ con garaje y trastero incluidos",
+  "viviendasSubtitle4": "Desde 289.000€ con garaje y trastero incluidos"
+}

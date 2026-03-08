@@ -1,23 +1,21 @@
+import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import FeaturesSection from "@/components/FeaturesSection";
 import CalidadesSection from "@/components/CalidadesSection";
 import FooterSection from "@/components/FooterSection";
 
 const Caracteristicas = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <Navbar />
       <main>
-        {/* Spacer for fixed navbar */}
         <div className="h-20" />
         <section className="py-16 md:py-24 bg-primary">
           <div className="container max-w-6xl mx-auto px-6 text-center">
-            <p className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">
-              La Nucía One
-            </p>
-            <h1 className="font-display text-4xl md:text-6xl text-primary-foreground leading-tight">
-              Características y <span className="italic">calidades</span>
-            </h1>
+            <p className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("caracteristicasPage.tag")}</p>
+            <h1 className="font-display text-4xl md:text-6xl text-primary-foreground leading-tight" dangerouslySetInnerHTML={{ __html: t("caracteristicasPage.title") }} />
           </div>
         </section>
         <FeaturesSection />
