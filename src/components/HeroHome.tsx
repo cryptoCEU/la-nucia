@@ -3,10 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-nucia.jpg";
 
-const stats = [
-  { number: "107", label: "Viviendas de 2, 3 y 4 dormitorios. Espacio, luz y cuidada distribución." },
-  { number: "9", label: "Disfruta de las zonas comunes: piscina, coworking, gimnasio y mucho más." },
-];
 
 const HeroHome = () => {
   return (
