@@ -1,23 +1,19 @@
 import Navbar from "@/components/Navbar";
-import HeroHome from "@/components/HeroHome";
-import DescriptionSection from "@/components/DescriptionSection";
+import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import GallerySection from "@/components/GallerySection";
-import CalidadesSection from "@/components/CalidadesSection";
 import LocationSection from "@/components/LocationSection";
 import ContactSection from "@/components/ContactSection";
 import FooterSection from "@/components/FooterSection";
 
-const Index = () => {
+const Landing = () => {
   return (
     <>
       <Navbar />
       <main>
-        <HeroHome />
-        <DescriptionSection />
+        <HeroSection />
         <FeaturesSection />
         <GallerySection />
-        <CalidadesSection />
         <LocationSection />
         <ContactSection />
       </main>
@@ -26,4 +22,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Landing;
