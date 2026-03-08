@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
-import logoNuciaOne from "@/assets/logo-nucia-one.png";
+import logoNuciaOne from "@/assets/logo-nucia-one-horizontal.svg";
 
 const navLinks = [
   { label: "Inicio", href: "/" },
@@ -43,7 +43,7 @@ const Navbar = () => {
             <img
               src={logoNuciaOne}
               alt="La Nucía One"
-              className="h-10 brightness-0 invert opacity-90"
+              className="h-8 opacity-90"
             />
           </Link>
 
@@ -86,7 +86,7 @@ const Navbar = () => {
                 <img
                   src={logoNuciaOne}
                   alt="La Nucía One"
-                  className="h-10 brightness-0 invert opacity-90"
+                  className="h-8 opacity-90"
                 />
               </Link>
               <button
