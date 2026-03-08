@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-nucia.jpg";
-import ContactFormEmbed from "./ContactFormEmbed";
 
 const stats = [
   { number: "107", label: "Viviendas de 2, 3 y 4 dormitorios. Espacio, luz y cuidada distribución." },
