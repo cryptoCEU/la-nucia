@@ -87,19 +87,19 @@ const CustomCursor = () => {
       {/* Outer ring - mix-blend-difference ensures contrast on any background */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference will-change-transform"
+        className="fixed top-0 left-0 z-[99999] pointer-events-none will-change-transform"
         style={{ opacity: 0, transition: "width 0.3s ease, height 0.3s ease, opacity 0.2s ease" }}
       >
-        <div className="w-full h-full rounded-full border-2 border-white" />
+        <div className="w-full h-full rounded-full border-2 border-primary/70" />
       </div>
 
-      {/* Inner dot - also mix-blend-difference */}
+      {/* Inner dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 z-[9999] pointer-events-none mix-blend-difference will-change-transform"
+        className="fixed top-0 left-0 z-[99999] pointer-events-none will-change-transform"
         style={{ opacity: 0, transition: "opacity 0.15s ease" }}
       >
-        <div className="w-1.5 h-1.5 rounded-full bg-white" />
+        <div className="w-1.5 h-1.5 rounded-full bg-primary/70" />
       </div>
     </>
   );
