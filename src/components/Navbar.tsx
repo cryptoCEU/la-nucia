@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import logoNuciaOne from "@/assets/logo-nucia-one-horizontal.svg";
+import logoNuciaOne from "@/assets/logo-header.png";
 import LanguageSelector from "./LanguageSelector";
 
 const Navbar = () => {
