@@ -9,6 +9,11 @@ import FooterSection from "@/components/FooterSection";
 const Landing = () => {
   return (
     <>
+      <SEO
+        title="Descubre La Nucía One"
+        description="Viviendas de obra nueva en La Nucía con 2, 3 y 4 dormitorios. Piscina, zonas comunes y vistas al Mediterráneo en la Costa Blanca."
+        path="/landing"
+      />
       <main>
         <HeroSection />
         <FeaturesSection />

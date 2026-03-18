@@ -10,6 +10,11 @@ const Caracteristicas = () => {
 
   return (
     <>
+      <SEO
+        title="Características y Calidades"
+        description="Descubre las características y calidades de La Nucía One: estructura, fachada, climatización, cocinas, carpintería y eficiencia energética."
+        path="/caracteristicas"
+      />
       <Navbar />
       <main>
         <div className="h-20" />

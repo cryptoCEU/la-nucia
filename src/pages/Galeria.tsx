@@ -11,6 +11,11 @@ const Galeria = () => {
 
   return (
     <>
+      <SEO
+        title="Galería de Imágenes"
+        description="Galería de imágenes de La Nucía One. Fachadas, interiores, zonas comunes y vistas de la promoción de obra nueva en La Nucía, Alicante."
+        path="/galeria"
+      />
       <Navbar />
       <main>
         <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">

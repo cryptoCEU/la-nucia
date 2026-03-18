@@ -9,6 +9,11 @@ const Ubicacion = () => {
 
   return (
     <>
+      <SEO
+        title="Ubicación Privilegiada"
+        description="La Nucía One se encuentra en una ubicación privilegiada en la Costa Blanca. A 10 min de Benidorm, 45 min del aeropuerto de Alicante y cerca de las playas."
+        path="/ubicacion"
+      />
       <Navbar />
       <main>
         <div className="h-20" />
