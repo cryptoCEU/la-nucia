@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import HeroHome from "@/components/HeroHome";
 import StatsSection from "@/components/StatsSection";
 import DescriptionSection from "@/components/DescriptionSection";
