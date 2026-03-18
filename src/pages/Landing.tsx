@@ -1,3 +1,4 @@
+import SEO from "@/components/SEO";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import GallerySection from "@/components/GallerySection";
