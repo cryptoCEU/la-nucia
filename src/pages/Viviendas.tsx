@@ -50,6 +50,11 @@ const Viviendas = () => {
 
   return (
     <>
+      <SEO
+        title="Viviendas"
+        description="Descubre las viviendas de 2, 3 y 4 dormitorios en La Nucía One. Precios desde 189.000€ con garaje y trastero incluido."
+        path="/viviendas"
+      />
       <Navbar />
       <main>
         {/* Hero */}

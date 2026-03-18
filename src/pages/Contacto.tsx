@@ -22,6 +22,11 @@ const Contacto = () => {
 
   return (
     <>
+      <SEO
+        title="Contacto"
+        description="Contacta con nosotros para más información sobre La Nucía One. Llámanos, envíanos un email o rellena el formulario."
+        path="/contacto"
+      />
       <Navbar />
       <main>
         <section className="relative h-[60vh] min-h-[400px] flex items-end">

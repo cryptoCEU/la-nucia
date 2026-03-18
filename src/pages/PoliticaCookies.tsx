@@ -8,6 +8,12 @@ const PoliticaCookies = () => {
   const { t } = useTranslation();
   return (
     <>
+      <SEO
+        title="Política de Cookies"
+        description="Política de cookies de La Nucía One. Información sobre el uso de cookies en el sitio web."
+        path="/politica-de-cookies"
+        noindex
+      />
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">

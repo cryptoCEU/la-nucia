@@ -8,6 +8,12 @@ const AvisoLegal = () => {
   const { t } = useTranslation();
   return (
     <>
+      <SEO
+        title="Aviso Legal"
+        description="Aviso legal de La Nucía One. Información legal y condiciones de uso del sitio web."
+        path="/aviso-legal"
+        noindex
+      />
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">
