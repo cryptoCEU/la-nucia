@@ -2,11 +2,18 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 
 const PrivacyPolicy = () => {
   const { t } = useTranslation();
   return (
     <>
+      <SEO
+        title="Política de Privacidad"
+        description="Política de privacidad de La Nucía One. Información sobre el tratamiento de datos personales."
+        path="/politica-de-privacidad"
+        noindex
+      />
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">

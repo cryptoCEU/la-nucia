@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import FeaturesSection from "@/components/FeaturesSection";
 import CalidadesSection from "@/components/CalidadesSection";
 import FooterSection from "@/components/FooterSection";
@@ -9,6 +10,11 @@ const Caracteristicas = () => {
 
   return (
     <>
+      <SEO
+        title="Características y Calidades"
+        description="Descubre las características y calidades de La Nucía One: estructura, fachada, climatización, cocinas, carpintería y eficiencia energética."
+        path="/caracteristicas"
+      />
       <Navbar />
       <main>
         <div className="h-20" />

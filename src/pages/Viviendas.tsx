@@ -3,6 +3,7 @@ import { ArrowRight, Download, Home, BedDouble, Bath, Maximize } from "lucide-re
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
 import buildingImage from "@/assets/building-render.jpg";
 
@@ -49,6 +50,11 @@ const Viviendas = () => {
 
   return (
     <>
+      <SEO
+        title="Viviendas"
+        description="Descubre las viviendas de 2, 3 y 4 dormitorios en La Nucía One. Precios desde 189.000€ con garaje y trastero incluido."
+        path="/viviendas"
+      />
       <Navbar />
       <main>
         {/* Hero */}

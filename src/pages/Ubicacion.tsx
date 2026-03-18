@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import LocationSection from "@/components/LocationSection";
 import FooterSection from "@/components/FooterSection";
 
@@ -8,6 +9,11 @@ const Ubicacion = () => {
 
   return (
     <>
+      <SEO
+        title="Ubicación Privilegiada"
+        description="La Nucía One se encuentra en una ubicación privilegiada en la Costa Blanca. A 10 min de Benidorm, 45 min del aeropuerto de Alicante y cerca de las playas."
+        path="/ubicacion"
+      />
       <Navbar />
       <main>
         <div className="h-20" />
