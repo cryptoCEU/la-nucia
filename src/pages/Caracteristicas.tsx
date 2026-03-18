@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
+import SEO from "@/components/SEO";
 import FeaturesSection from "@/components/FeaturesSection";
 import CalidadesSection from "@/components/CalidadesSection";
 import FooterSection from "@/components/FooterSection";
