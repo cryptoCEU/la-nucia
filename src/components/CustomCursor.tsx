@@ -12,7 +12,6 @@ const CustomCursor = () => {
   const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
   const animate = useCallback(() => {
-    // Smooth follow for ring
     ringPos.current.x = lerp(ringPos.current.x, pos.current.x, 0.15);
     ringPos.current.y = lerp(ringPos.current.y, pos.current.y, 0.15);
 
@@ -38,7 +37,6 @@ const CustomCursor = () => {
     const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
-    // Add cursor:none style
     const style = document.createElement("style");
     style.textContent = "*, *::before, *::after { cursor: none !important; }";
     document.head.appendChild(style);
@@ -47,7 +45,6 @@ const CustomCursor = () => {
       pos.current = { x: e.clientX, y: e.clientY };
       if (!visible.current) {
         visible.current = true;
-        // Snap ring to position on first move
         ringPos.current = { x: e.clientX, y: e.clientY };
       }
     };
@@ -77,29 +74,28 @@ const CustomCursor = () => {
     };
   }, [animate]);
 
-  // Don't render on touch devices
   if (typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0)) {
     return null;
   }
 
   return (
     <>
-      {/* Outer ring - mix-blend-difference ensures contrast on any background */}
+      {/* Outer ring - mix-blend-difference for contrast on any background */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 z-[99999] pointer-events-none will-change-transform"
+        className="fixed top-0 left-0 z-[99999] pointer-events-none will-change-transform mix-blend-difference"
         style={{ opacity: 0, transition: "width 0.3s ease, height 0.3s ease, opacity 0.2s ease" }}
       >
-        <div className="w-full h-full rounded-full border-2 border-primary/70" />
+        <div className="w-full h-full rounded-full border-2 border-white" />
       </div>
 
       {/* Inner dot */}
       <div
         ref={dotRef}
-        className="fixed top-0 left-0 z-[99999] pointer-events-none will-change-transform"
+        className="fixed top-0 left-0 z-[99999] pointer-events-none will-change-transform mix-blend-difference"
         style={{ opacity: 0, transition: "opacity 0.15s ease" }}
       >
-        <div className="w-1.5 h-1.5 rounded-full bg-primary/70" />
+        <div className="w-1.5 h-1.5 rounded-full bg-white" />
       </div>
     </>
   );
