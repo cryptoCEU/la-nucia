@@ -19,6 +19,10 @@
     "heroSubtitle": "107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, piscina y vistas al Mediterráneo.",
     "discoverHomes": "Descubre las viviendas",
     "contactUs": "Contacto",
+    "stat1Label": "Viviendas",
+    "stat2Label": "Zonas comunes",
+    "stat3Label": "Días de sol",
+    "stat4Label": "Min a Benidorm",
     "aboutTag": "El proyecto",
     "aboutTitle1": "Un residencial",
     "aboutTitle2": "único en su entorno",
@@ -31,7 +35,7 @@
     "locationText": "La Nucía es uno de los municipios con mayor calidad de vida de la Costa Blanca. Con un clima excepcional, excelentes infraestructuras y una ubicación estratégica entre la montaña y el mar.",
     "locationCta": "Descubrir ubicación",
     "locationHighlights": ["Minutos a Benidorm", "Min al aeropuerto", "Playas cercanas", "Días de sol al año"],
-    "locationNumbers": ["10", "45", "8 km", "300+"],
+    "locationNumbers": ["10", "45", "8", "300+"],
     "homesTag": "Viviendas",
     "homesTitle1": "Elige tu",
     "homesTitle2": "hogar ideal",
@@ -107,19 +111,19 @@
     "tag": "Calidades",
     "title": "Distinción e <i>innovación</i>",
     "items": [
-      { "title": "Estructura", "description": "Cimentación y estructura calculada según normativa vigente, con forjados de losa maciza y pilares de hormigón armado, dotando de mayor solidez y aislamiento acústico." },
-      { "title": "Fachada", "description": "Fachada compuesta por cerramiento cerámico con aislamiento térmico exterior SATE, mejorando el confort térmico eliminando puentes térmicos y reduciendo el consumo." },
-      { "title": "Climatización", "description": "Sistema de aerotermia de gran eficiencia energética para climatización y ACS. Distribución de aire por conductos integrados en falso techo." },
-      { "title": "Cocinas", "description": "Cocina amueblada y equipada con electrodomésticos de primera marca. Encimera de cuarzo compacto y diseño actual de gran capacidad." },
-      { "title": "Carpintería", "description": "Carpintería exterior de PVC con vidrios tipo Climalit. Puertas interiores lacadas en blanco con herrajes de acero. Armarios empotrados modulares." },
-      { "title": "Eficiencia Energética", "description": "Alta calificación energética gracias a materiales de calidad y sistemas de aerotermia que contribuyen a un menor consumo y al cuidado del medio ambiente." }
+      { "title": "Estructura", "description": "Cimentación y estructura calculada según normativa vigente, con forjados de losa maciza y pilares de hormigón armado." },
+      { "title": "Fachada", "description": "Fachada compuesta por cerramiento cerámico con aislamiento térmico exterior SATE." },
+      { "title": "Climatización", "description": "Sistema de aerotermia de gran eficiencia energética para climatización y ACS." },
+      { "title": "Cocinas", "description": "Cocina amueblada y equipada con electrodomésticos de primera marca." },
+      { "title": "Carpintería", "description": "Carpintería exterior de PVC con vidrios tipo Climalit. Puertas interiores lacadas en blanco." },
+      { "title": "Eficiencia Energética", "description": "Alta calificación energética gracias a materiales de calidad y sistemas de aerotermia." }
     ]
   },
   "location": {
     "tag": "Ubicación privilegiada",
     "title1": "La Nucía,",
     "title2": "Alicante",
-    "description": "La Nucía es uno de los municipios con mayor calidad de vida de la Costa Blanca. Con un clima excepcional de más de 300 días de sol al año, excelentes infraestructuras deportivas y culturales, y una ubicación estratégica entre la montaña y el mar.",
+    "description": "La Nucía es uno de los municipios con mayor calidad de vida de la Costa Blanca.",
     "highlights": [
       "A 10 min de Benidorm",
       "A 45 min del aeropuerto de Alicante",
@@ -215,7 +219,29 @@
   },
   "ubicacionPage": {
     "tag": "Costa Blanca, Alicante",
-    "title": "Ubicación <i>privilegiada</i>"
+    "title": "Ubicación <i>privilegiada</i>",
+    "statBenidorm": "Min a Benidorm",
+    "statAirport": "Min al aeropuerto",
+    "statBeach": "Km a la playa",
+    "statSun": "Días de sol",
+    "aboutTag": "La zona",
+    "aboutTitle": "Un entorno <i>privilegiado</i>",
+    "aboutText1": "La Nucía es uno de los municipios con mayor calidad de vida de la Costa Blanca. Rodeada por la Sierra de Aitana y a pocos kilómetros del mar, combina la tranquilidad del interior con la proximidad a todos los servicios de la costa.",
+    "aboutText2": "Sus excelentes infraestructuras deportivas y culturales, incluyendo la Ciudad Deportiva Camilo Cano, la convierten en un destino único para familias, deportistas y quienes buscan un estilo de vida mediterráneo activo.",
+    "advantages": [
+      { "title": "Clima ideal", "description": "Más de 300 días de sol al año con temperaturas suaves todo el año." },
+      { "title": "Sierra y mar", "description": "Entre la Sierra de Aitana y las playas de la Costa Blanca." },
+      { "title": "Servicios completos", "description": "Supermercados, restaurantes, comercios y todos los servicios a tu alcance." },
+      { "title": "Playas cercanas", "description": "Playas de Altea, Albir y Benidorm a menos de 10 minutos." },
+      { "title": "Naturaleza", "description": "Rutas de senderismo, parques naturales y espacios verdes." },
+      { "title": "Salud y bienestar", "description": "Centros de salud, hospitales y polideportivos de primer nivel." }
+    ],
+    "mapTag": "Mapa interactivo",
+    "mapTitle": "Explora el entorno",
+    "catHealth": "Salud",
+    "catEducation": "Educación",
+    "catParks": "Parques",
+    "catShopping": "Comercios"
   },
   "viviendasPage": {
     "tag": "La Nucía One",
@@ -223,7 +249,13 @@
     "heroTitle2": "2, 3 y 4 dormitorios",
     "heroSubtitle": "Tu hogar en La Nucía, con <strong>todo lo que necesitas siempre cerca.</strong>",
     "requestInfo": "Solicitar información",
+    "downloadDossier": "Descargar dossier",
     "qualityReport": "Memoria de calidades",
+    "viewPlan": "Ver plano",
+    "conceptTag": "El concepto",
+    "conceptTitle": "Diseñado para <i>vivir</i>",
+    "conceptText1": "La Nucía One nace de la idea de crear un residencial que combine arquitectura contemporánea con el estilo de vida mediterráneo. Cada vivienda ha sido diseñada para maximizar la luz natural, las vistas y la funcionalidad.",
+    "conceptText2": "Amplios ventanales, terrazas generosas y una distribución inteligente que convierte cada espacio en un lugar para disfrutar. Un proyecto pensado para quienes buscan calidad de vida sin renunciar al diseño.",
     "typologiesTag": "Tipologías",
     "typologiesTitle": "Elige tu <i>vivienda ideal</i>",
     "types": [

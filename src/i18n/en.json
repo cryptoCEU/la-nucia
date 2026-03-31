@@ -19,6 +19,10 @@
     "heroSubtitle": "107 homes with 2, 3 and 4 bedrooms featuring spacious terraces, a pool and Mediterranean views.",
     "discoverHomes": "Discover the homes",
     "contactUs": "Contact",
+    "stat1Label": "Homes",
+    "stat2Label": "Communal areas",
+    "stat3Label": "Sunny days",
+    "stat4Label": "Min to Benidorm",
     "aboutTag": "The project",
     "aboutTitle1": "A residential",
     "aboutTitle2": "unique in its setting",
@@ -31,7 +35,7 @@
     "locationText": "La Nucía is one of the municipalities with the highest quality of life on the Costa Blanca. With an exceptional climate, excellent infrastructure and a strategic location between the mountains and the sea.",
     "locationCta": "Discover location",
     "locationHighlights": ["Minutes to Benidorm", "Min to airport", "Nearby beaches", "Sunny days per year"],
-    "locationNumbers": ["10", "45", "8 km", "300+"],
+    "locationNumbers": ["10", "45", "8", "300+"],
     "homesTag": "Homes",
     "homesTitle1": "Choose your",
     "homesTitle2": "ideal home",
@@ -75,8 +79,8 @@
     "title1": "We invite you to discover",
     "title2": "a new residential complex",
     "locationText": "In La Nucía, close to everything.",
-    "paragraph1": "Located in one of the municipalities with the highest quality of life on the Costa Blanca, this residential complex allows you to enjoy tranquility with nearby green spaces, while all the services you need are within reach: beaches, supermarkets, sports centres, schools and hospitals.",
-    "paragraph2": "<strong>La Nucía One</strong> offers you a Mediterranean lifestyle. Spacious homes with 2, 3 and 4 bedrooms, large windows and a carefully designed layout. A unique design, created for residential living, with comprehensive communal facilities designed for enjoyment: infinity pool, coworking, gym, landscaped gardens, children's area and much more.",
+    "paragraph1": "Located in one of the municipalities with the highest quality of life on the Costa Blanca, this residential complex allows you to enjoy tranquility with nearby green spaces.",
+    "paragraph2": "<strong>La Nucía One</strong> offers you a Mediterranean lifestyle. Spacious homes with 2, 3 and 4 bedrooms, large windows and a carefully designed layout.",
     "sunDays": "300+",
     "sunLabel": "Sunny days per year",
     "buildingAlt": "New construction building in La Nucía"
@@ -87,9 +91,9 @@
     "items": [
       { "title": "2, 3 and 4 bedrooms", "description": "Spacious homes designed for family comfort with top-quality finishes." },
       { "title": "Community pool", "description": "Enjoy a large pool area with solarium and relaxation areas." },
-      { "title": "Landscaped gardens", "description": "Extensive green spaces with Mediterranean vegetation for your peace of mind." },
-      { "title": "Spacious terraces", "description": "Generous terraces to enjoy the Mediterranean climate all year round." },
-      { "title": "Parking space", "description": "Private parking spaces and storage rooms included in the development." },
+      { "title": "Landscaped gardens", "description": "Extensive green spaces with Mediterranean vegetation." },
+      { "title": "Spacious terraces", "description": "Generous terraces to enjoy the Mediterranean climate." },
+      { "title": "Parking space", "description": "Private parking spaces and storage rooms included." },
       { "title": "Energy efficiency", "description": "Latest generation materials and high-level energy certification." }
     ]
   },
@@ -107,19 +111,19 @@
     "tag": "Qualities",
     "title": "Distinction and <i>innovation</i>",
     "items": [
-      { "title": "Structure", "description": "Foundation and structure calculated according to current regulations, with solid slab floors and reinforced concrete columns." },
+      { "title": "Structure", "description": "Foundation and structure calculated according to current regulations." },
       { "title": "Facade", "description": "Facade composed of ceramic enclosure with ETICS external thermal insulation." },
-      { "title": "Climate control", "description": "Highly energy-efficient aerothermal system for climate control and hot water." },
+      { "title": "Climate control", "description": "Highly energy-efficient aerothermal system." },
       { "title": "Kitchens", "description": "Furnished kitchen equipped with top-brand appliances." },
       { "title": "Carpentry", "description": "Exterior PVC carpentry with Climalit-type glass." },
-      { "title": "Energy Efficiency", "description": "High energy rating thanks to quality materials and aerothermal systems." }
+      { "title": "Energy Efficiency", "description": "High energy rating thanks to quality materials." }
     ]
   },
   "location": {
     "tag": "Privileged location",
     "title1": "La Nucía,",
     "title2": "Alicante",
-    "description": "La Nucía is one of the municipalities with the highest quality of life on the Costa Blanca. With an exceptional climate of over 300 sunny days a year, excellent sports and cultural infrastructure, and a strategic location between the mountains and the sea.",
+    "description": "La Nucía is one of the municipalities with the highest quality of life on the Costa Blanca.",
     "highlights": [
       "10 min from Benidorm",
       "45 min from Alicante airport",
@@ -215,7 +219,29 @@
   },
   "ubicacionPage": {
     "tag": "Costa Blanca, Alicante",
-    "title": "Privileged <i>location</i>"
+    "title": "Privileged <i>location</i>",
+    "statBenidorm": "Min to Benidorm",
+    "statAirport": "Min to airport",
+    "statBeach": "Km to beach",
+    "statSun": "Sunny days",
+    "aboutTag": "The area",
+    "aboutTitle": "A privileged <i>setting</i>",
+    "aboutText1": "La Nucía is one of the municipalities with the highest quality of life on the Costa Blanca. Surrounded by the Sierra de Aitana and just a few kilometres from the sea, it combines the tranquility of the interior with proximity to all coastal services.",
+    "aboutText2": "Its excellent sports and cultural infrastructure, including the Ciudad Deportiva Camilo Cano, make it a unique destination for families, athletes and those seeking an active Mediterranean lifestyle.",
+    "advantages": [
+      { "title": "Ideal climate", "description": "Over 300 sunny days a year with mild temperatures year-round." },
+      { "title": "Mountains and sea", "description": "Between the Sierra de Aitana and the Costa Blanca beaches." },
+      { "title": "Full services", "description": "Supermarkets, restaurants, shops and all services within reach." },
+      { "title": "Nearby beaches", "description": "Altea, Albir and Benidorm beaches less than 10 minutes away." },
+      { "title": "Nature", "description": "Hiking trails, natural parks and green spaces." },
+      { "title": "Health & wellness", "description": "Health centres, hospitals and top-tier sports facilities." }
+    ],
+    "mapTag": "Interactive map",
+    "mapTitle": "Explore the surroundings",
+    "catHealth": "Health",
+    "catEducation": "Education",
+    "catParks": "Parks",
+    "catShopping": "Shopping"
   },
   "viviendasPage": {
     "tag": "La Nucía One",
@@ -223,7 +249,13 @@
     "heroTitle2": "2, 3 and 4 bedrooms",
     "heroSubtitle": "Your home in La Nucía, with <strong>everything you need always nearby.</strong>",
     "requestInfo": "Request information",
+    "downloadDossier": "Download brochure",
     "qualityReport": "Quality specifications",
+    "viewPlan": "View floor plan",
+    "conceptTag": "The concept",
+    "conceptTitle": "Designed for <i>living</i>",
+    "conceptText1": "La Nucía One is born from the idea of creating a residential complex that combines contemporary architecture with the Mediterranean lifestyle. Each home has been designed to maximise natural light, views and functionality.",
+    "conceptText2": "Large windows, generous terraces and an intelligent layout that turns every space into a place to enjoy. A project designed for those seeking quality of life without compromising on design.",
     "typologiesTag": "Typologies",
     "typologiesTitle": "Choose your <i>ideal home</i>",
     "types": [
@@ -278,7 +310,7 @@
     "tag": "Coming soon — La Nucía One",
     "title1": "Designed for",
     "title2": "Mediterranean Living",
-    "subtitle": "Apartments with 2, 3 and 4 bedrooms with spacious terraces, communal areas and Mediterranean views in one of the best locations on the Costa Blanca.",
+    "subtitle": "Apartments with 2, 3 and 4 bedrooms with spacious terraces, communal areas and Mediterranean views.",
     "cta": "I want to know more!"
   },
   "legalPages": {
