@@ -15,10 +15,9 @@ const Navbar = () => {
 
   const navLinks = [
     { label: t("nav.home"), href: "/" },
-    { label: t("nav.homes"), href: "/viviendas" },
-    { label: t("nav.features"), href: "/caracteristicas" },
-    { label: t("nav.gallery"), href: "/galeria" },
     { label: t("nav.location"), href: "/ubicacion" },
+    { label: t("nav.homes"), href: "/viviendas" },
+    { label: t("nav.gallery"), href: "/galeria" },
     { label: t("nav.contact"), href: "/contacto" },
   ];
 
