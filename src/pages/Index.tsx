@@ -45,11 +45,9 @@ const Index = () => {
               <p className="font-body text-xs tracking-[0.3em] uppercase text-gold mb-4">
                 {t("home.heroTag")}
               </p>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[1.05] mb-4">
-                {t("home.heroTitle1")}
-              </h1>
-              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[1.05] italic mb-6">
-                {t("home.heroTitle2")}
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary-foreground leading-[1.1] mb-6">
+                {t("home.heroTitle1")}{" "}
+                <span className="italic">{t("home.heroTitle2")}</span>
               </h1>
               <p className="font-body text-primary-foreground/60 text-base md:text-lg max-w-xl mb-8">
                 {t("home.heroSubtitle")}
