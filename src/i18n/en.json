@@ -12,6 +12,48 @@
     "salesOffice": "Sales office",
     "byAppointment": "(by appointment)"
   },
+  "home": {
+    "heroTag": "La Nucía, Costa Blanca",
+    "heroTitle1": "Designed for",
+    "heroTitle2": "Mediterranean Living",
+    "heroSubtitle": "107 homes with 2, 3 and 4 bedrooms featuring spacious terraces, a pool and Mediterranean views.",
+    "discoverHomes": "Discover the homes",
+    "contactUs": "Contact",
+    "aboutTag": "The project",
+    "aboutTitle1": "A residential",
+    "aboutTitle2": "unique in its setting",
+    "aboutText1": "Located in one of the municipalities with the highest quality of life on the Costa Blanca, La Nucía One offers you a Mediterranean lifestyle with spacious homes, large windows and a carefully designed layout.",
+    "aboutText2": "A complete communal equipment designed for enjoyment: infinity pool, coworking, gym, landscaped gardens, children's area and much more.",
+    "aboutStat": "Homes designed for the Mediterranean",
+    "locationTag": "Privileged location",
+    "locationTitle1": "La Nucía,",
+    "locationTitle2": "Alicante",
+    "locationText": "La Nucía is one of the municipalities with the highest quality of life on the Costa Blanca. With an exceptional climate, excellent infrastructure and a strategic location between the mountains and the sea.",
+    "locationCta": "Discover location",
+    "locationHighlights": ["Minutes to Benidorm", "Min to airport", "Nearby beaches", "Sunny days per year"],
+    "locationNumbers": ["10", "45", "8 km", "300+"],
+    "homesTag": "Homes",
+    "homesTitle1": "Choose your",
+    "homesTitle2": "ideal home",
+    "homesText": "Spacious homes with 2, 3 and 4 bedrooms featuring top-quality finishes, generous terraces and south-facing orientation.",
+    "type2bed": "2 Bedrooms",
+    "type2desc": "Optimised layout with spacious terraces",
+    "type3bed": "3 Bedrooms",
+    "type3desc": "Perfect balance between space and functionality",
+    "type4bed": "4 Bedrooms",
+    "type4desc": "Maximum space with premium finishes",
+    "homesCta": "View all homes",
+    "galleryTag": "Gallery",
+    "galleryTitle1": "Discover every",
+    "galleryTitle2": "corner",
+    "galleryText": "Explore the images of La Nucía One: facades, interiors, communal areas and the privileged surroundings.",
+    "galleryCta": "View full gallery",
+    "contactTag": "Interested?",
+    "contactTitle1": "Let's talk about your",
+    "contactTitle2": "new home",
+    "contactText": "Contact us for more information, detailed plans and conditions. No obligation.",
+    "contactCta": "Contact now"
+  },
   "hero": {
     "subtitle": "La Nucía One",
     "title1": "Designed for",
@@ -65,12 +107,12 @@
     "tag": "Qualities",
     "title": "Distinction and <i>innovation</i>",
     "items": [
-      { "title": "Structure", "description": "Foundation and structure calculated according to current regulations, with solid slab floors and reinforced concrete columns, providing greater solidity and acoustic insulation." },
-      { "title": "Facade", "description": "Facade composed of ceramic enclosure with ETICS external thermal insulation, improving thermal comfort by eliminating thermal bridges and reducing consumption." },
-      { "title": "Climate control", "description": "Highly energy-efficient aerothermal system for climate control and hot water. Air distribution through ducts integrated into the false ceiling." },
-      { "title": "Kitchens", "description": "Furnished kitchen equipped with top-brand appliances. Compact quartz countertop and modern high-capacity design." },
-      { "title": "Carpentry", "description": "Exterior PVC carpentry with Climalit-type glass. White lacquered interior doors with steel hardware. Modular built-in wardrobes." },
-      { "title": "Energy Efficiency", "description": "High energy rating thanks to quality materials and aerothermal systems that contribute to lower consumption and environmental care." }
+      { "title": "Structure", "description": "Foundation and structure calculated according to current regulations, with solid slab floors and reinforced concrete columns." },
+      { "title": "Facade", "description": "Facade composed of ceramic enclosure with ETICS external thermal insulation." },
+      { "title": "Climate control", "description": "Highly energy-efficient aerothermal system for climate control and hot water." },
+      { "title": "Kitchens", "description": "Furnished kitchen equipped with top-brand appliances." },
+      { "title": "Carpentry", "description": "Exterior PVC carpentry with Climalit-type glass." },
+      { "title": "Energy Efficiency", "description": "High energy rating thanks to quality materials and aerothermal systems." }
     ]
   },
   "location": {
@@ -185,29 +227,29 @@
     "typologiesTag": "Typologies",
     "typologiesTitle": "Choose your <i>ideal home</i>",
     "types": [
-      { "title": "2 Bedrooms", "description": "Optimised layout with spacious terraces and south-facing orientation.", "priceFrom": "189,000€", "areaFrom": "65", "bathrooms": "2" },
-      { "title": "3 Bedrooms", "description": "The perfect balance between space and functionality for the whole family.", "priceFrom": "229,000€", "areaFrom": "85", "bathrooms": "2" },
-      { "title": "4 Bedrooms", "description": "Maximum space and comfort with the best views and premium finishes.", "priceFrom": "289,000€", "areaFrom": "110", "bathrooms": "3" }
+      { "title": "2 Bedrooms", "description": "Optimised layout with spacious terraces and south-facing orientation. Ideal for couples or as an investment.", "areaFrom": "65", "bathrooms": "2" },
+      { "title": "3 Bedrooms", "description": "The perfect balance between space and functionality for the whole family.", "areaFrom": "85", "bathrooms": "2" },
+      { "title": "4 Bedrooms", "description": "Maximum space and comfort with the best views and premium finishes.", "areaFrom": "110", "bathrooms": "3" }
     ],
     "bedrooms": "bedrooms",
     "bathrooms": "bathrooms",
     "fromArea": "From {{area}} m² usable",
     "from": "From",
     "garageIncluded": "Garage and storage included",
-    "availabilityTag": "Availability",
-    "availabilityTitle": "Available <i>homes</i>",
-    "floor": "Floor",
-    "usableArea": "Usable area",
-    "price": "Price",
-    "detail": "Detail",
-    "plan": "Floor plan",
-    "download": "Download",
-    "downloadPlan": "Download plan",
-    "terrace": "terrace",
-    "disclaimer": "Images and plans are non-contractual and merely illustrative, subject to modifications of a technical, legal or commercial nature by the project management or competent authority. Infographics of facades, common elements and other spaces are indicative. Interior furnishings are not included and the equipment of the homes will be as indicated in the corresponding quality specifications. Prices exclude VAT.",
+    "featuresTag": "Features",
+    "featuresTitle": "Qualities and <i>finishes</i>",
+    "featuresList": [
+      { "title": "Aerothermal", "description": "High energy-efficiency climate control system" },
+      { "title": "PVC carpentry", "description": "Climalit-type glass windows for maximum insulation" },
+      { "title": "Equipped kitchen", "description": "Top-brand appliances and quartz countertop" },
+      { "title": "Built-in wardrobes", "description": "Modular wardrobes in all bedrooms" },
+      { "title": "Home automation", "description": "Pre-installation of home automation systems" },
+      { "title": "A rating", "description": "High-level energy certification" }
+    ],
     "ctaTag": "Interested?",
     "ctaTitle": "Find your <i>ideal home</i>",
-    "ctaSubtitle": "Contact us to receive all the information, detailed plans and purchase conditions."
+    "ctaSubtitle": "Contact us to receive all the information, detailed plans and purchase conditions.",
+    "disclaimer": "Images and plans are non-contractual and merely illustrative, subject to modifications of a technical, legal or commercial nature."
   },
   "contactFormEmbed": {
     "title": "Contact form",
@@ -250,11 +292,5 @@
   },
   "politicaPrivacidad": {
     "title": "Privacy policy"
-  },
-  "viviendas2dorm": "2 BEDROOMS",
-  "viviendas3dorm": "3 BEDROOMS",
-  "viviendas4dorm": "4 BEDROOMS",
-  "viviendasSubtitle2": "From 189,000€ with garage and storage included",
-  "viviendasSubtitle3": "From 229,000€ with garage and storage included",
-  "viviendasSubtitle4": "From 289,000€ with garage and storage included"
+  }
 }
