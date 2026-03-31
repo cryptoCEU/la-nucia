@@ -5,12 +5,20 @@ import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
+import AnimatedCounter from "@/components/AnimatedCounter";
 import heroImage from "@/assets/hero-nucia.jpg";
 import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 
 const Index = () => {
   const { t } = useTranslation();
+
+  const stats = [
+    { number: "107", label: t("home.stat1Label") },
+    { number: "9", label: t("home.stat2Label") },
+    { number: "300+", label: t("home.stat3Label") },
+    { number: "10", label: t("home.stat4Label") },
+  ];
 
   return (
     <>
@@ -25,22 +33,25 @@ const Index = () => {
         <section className="relative h-screen flex flex-col justify-end">
           <div className="absolute inset-0">
             <img src={heroImage} alt="Promoción de obra nueva en La Nucía" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/20" />
           </div>
-          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 md:pb-28">
+          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-24 md:pb-32">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
+              className="max-w-3xl"
             >
-              <p className="font-body text-xs tracking-[0.3em] uppercase text-gold mb-6">
+              <p className="font-body text-xs tracking-[0.3em] uppercase text-gold mb-4">
                 {t("home.heroTag")}
               </p>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[1] mb-6 max-w-4xl">
-                {t("home.heroTitle1")}<br />
-                <span className="italic">{t("home.heroTitle2")}</span>
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[1.05] mb-4">
+                {t("home.heroTitle1")}
               </h1>
-              <p className="font-body text-primary-foreground/60 text-lg md:text-xl max-w-xl mb-10">
+              <h1 className="font-display text-4xl sm:text-5xl md:text-7xl lg:text-8xl text-primary-foreground leading-[1.05] italic mb-6">
+                {t("home.heroTitle2")}
+              </h1>
+              <p className="font-body text-primary-foreground/60 text-base md:text-lg max-w-xl mb-8">
                 {t("home.heroSubtitle")}
               </p>
               <div className="flex flex-wrap gap-4">
@@ -73,6 +84,25 @@ const Index = () => {
               className="w-px h-8 bg-gradient-to-b from-primary-foreground/40 to-transparent"
             />
           </motion.div>
+        </section>
+
+        {/* ═══ STATS BAR WITH ANIMATED COUNTERS ═══ */}
+        <section className="bg-primary border-t border-primary-foreground/10">
+          <div className="container max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10">
+              {stats.map((stat, i) => (
+                <div key={i} className="py-12 md:py-16 px-6 text-center">
+                  <AnimatedCounter
+                    value={stat.number}
+                    className="font-display text-4xl md:text-5xl text-gold block mb-2"
+                  />
+                  <p className="font-body text-xs md:text-sm text-primary-foreground/50 tracking-wide uppercase">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* ═══ INTRO / ABOUT ═══ */}
@@ -111,12 +141,6 @@ const Index = () => {
                   alt="Residencial La Nucía One"
                   className="w-full aspect-[3/4] object-cover"
                 />
-                <div className="absolute -bottom-8 -left-8 bg-primary p-8 hidden md:block">
-                  <p className="font-display text-4xl text-gold">107</p>
-                  <p className="font-body text-sm text-primary-foreground/70 mt-1">
-                    {t("home.aboutStat")}
-                  </p>
-                </div>
               </motion.div>
             </div>
           </div>
@@ -163,9 +187,10 @@ const Index = () => {
               >
                 {(t("home.locationHighlights", { returnObjects: true }) as string[]).map((item, i) => (
                   <div key={i} className="border border-primary-foreground/10 p-6 backdrop-blur-sm">
-                    <p className="font-display text-2xl text-gold mb-2">
-                      {(t("home.locationNumbers", { returnObjects: true }) as string[])[i]}
-                    </p>
+                    <AnimatedCounter
+                      value={(t("home.locationNumbers", { returnObjects: true }) as string[])[i]}
+                      className="font-display text-2xl text-gold block mb-2"
+                    />
                     <p className="font-body text-sm text-primary-foreground/60">{item}</p>
                   </div>
                 ))}
