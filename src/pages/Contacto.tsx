@@ -89,7 +89,7 @@ const Contacto = () => {
                 {t("contactoPage.heroSubtitle")}
               </motion.p>
             </motion.div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="bg-sand py-20 md:py-28">
