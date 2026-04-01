@@ -70,7 +70,7 @@ const Viviendas = () => {
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed mb-4">{t(`${v}.conceptText1`)}</motion.p>
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed">{t(`${v}.conceptText2`)}</motion.p>
               </motion.div>
-              <motion.div variants={scaleIn(0.3)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="overflow-hidden">
+              <motion.div variants={clipReveal(0.3)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="overflow-hidden">
                 <img src={interiorImg} alt="Interior La Nucía One" className="w-full aspect-[4/3] object-cover" />
               </motion.div>
             </div>
