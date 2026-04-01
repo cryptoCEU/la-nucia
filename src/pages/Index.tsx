@@ -158,7 +158,9 @@ const Index = () => {
         {/* ═══ PREVIEW: UBICACIÓN ═══ */}
         <section className="relative py-32 md:py-44 bg-primary overflow-hidden">
           <motion.div
+            ref={locationParallax.ref}
             className="absolute inset-0 opacity-20"
+            style={{ y: locationParallax.y }}
             initial={{ scale: 1.05 }}
             whileInView={{ scale: 1 }}
             viewport={viewportOnce}
