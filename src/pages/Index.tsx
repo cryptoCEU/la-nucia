@@ -11,11 +11,14 @@ import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import {
   fadeUp, fadeIn, scaleIn, slideRight, staggerContainer, staggerItem,
-  heroText, viewportOnce, viewportOnceNear, slowTransition
+  heroText, viewportOnce, viewportOnceNear, slowTransition, clipReveal
 } from "@/lib/animations";
+import { useHeroParallax, useParallax } from "@/hooks/use-parallax";
 
 const Index = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
+  const locationParallax = useParallax({ speed: 0.25 });
 
   const stats = [
     { number: "107", label: t("home.stat1Label") },
@@ -34,8 +37,8 @@ const Index = () => {
       <Navbar />
       <main>
         {/* ═══ HERO FULLSCREEN ═══ */}
-        <section className="relative h-screen flex flex-col justify-end overflow-hidden">
-          <div className="absolute inset-0">
+        <section ref={hero.ref} className="relative h-screen flex flex-col justify-end overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
             <motion.img
               src={heroImage}
               alt="Promoción de obra nueva en La Nucía"
@@ -45,8 +48,8 @@ const Index = () => {
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/20" />
-          </div>
-          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-24 md:pb-32">
+          </motion.div>
+          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-24 md:pb-32" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div
               variants={staggerContainer(0.15, 0.4)}
               initial="hidden"
@@ -78,7 +81,7 @@ const Index = () => {
                 </Link>
               </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
           {/* Scroll indicator */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -140,7 +143,7 @@ const Index = () => {
                 </motion.p>
               </motion.div>
               <motion.div
-                variants={scaleIn(0.2)}
+                variants={clipReveal(0.2)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportOnce}
@@ -155,7 +158,9 @@ const Index = () => {
         {/* ═══ PREVIEW: UBICACIÓN ═══ */}
         <section className="relative py-32 md:py-44 bg-primary overflow-hidden">
           <motion.div
+            ref={locationParallax.ref}
             className="absolute inset-0 opacity-20"
+            style={{ y: locationParallax.y }}
             initial={{ scale: 1.05 }}
             whileInView={{ scale: 1 }}
             viewport={viewportOnce}

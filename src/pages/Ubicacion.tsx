@@ -11,9 +11,11 @@ import MapboxMapInteractive from "@/components/MapboxMapInteractive";
 import {
   staggerContainer, staggerItem, heroText, viewportOnce
 } from "@/lib/animations";
+import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Ubicacion = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
   const [activeCategories, setActiveCategories] = useState<string[]>(["health", "education", "parks", "shopping"]);
 
   const toggleCategory = (cat: string) => {
@@ -45,8 +47,8 @@ const Ubicacion = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
-          <div className="absolute inset-0">
+        <section ref={hero.ref} className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
             <motion.img
               src={heroImage}
               alt="La Nucía, Costa Blanca"
@@ -56,15 +58,15 @@ const Ubicacion = () => {
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent" />
-          </div>
-          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20">
+          </motion.div>
+          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.13, 0.3)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">
                 {t("ubicacionPage.tag")}
               </motion.p>
               <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.05]" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.title") }} />
             </motion.div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Stats bar */}
@@ -107,7 +109,7 @@ const Ubicacion = () => {
                 {advantages.map((adv, i) => {
                   const Icon = advantageIcons[i] || MapPin;
                   return (
-                    <motion.div key={i} variants={staggerItem} className="border border-border p-6 hover:border-gold/30 transition-all duration-700">
+                    <motion.div key={i} variants={staggerItem} className="border border-border p-6 hover:border-gold/30 card-hover transition-all duration-700">
                       <Icon className="w-5 h-5 text-gold mb-3" />
                       <h3 className="font-display text-lg text-foreground mb-2">{adv.title}</h3>
                       <p className="font-body text-xs text-muted-foreground leading-relaxed">{adv.description}</p>

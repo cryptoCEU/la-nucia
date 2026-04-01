@@ -9,15 +9,17 @@ import buildingImage from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import heroImg from "@/assets/hero-nucia.jpg";
 import {
-  staggerContainer, staggerItem, heroText, scaleIn, fadeUp,
+  staggerContainer, staggerItem, heroText, scaleIn, fadeUp, clipReveal,
   viewportOnce
 } from "@/lib/animations";
+import { useHeroParallax } from "@/hooks/use-parallax";
 
 const typeImages = [buildingImage, interiorImg, heroImg];
 const featureIcons = [Thermometer, DoorOpen, ChefHat, Shield, Cpu, Leaf];
 
 const Viviendas = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
   const types = t("viviendasPage.types", { returnObjects: true }) as { title: string; description: string; areaFrom: string; bathrooms: string }[];
   const features = t("viviendasPage.featuresList", { returnObjects: true }) as { title: string; description: string }[];
   const v = "viviendasPage";
@@ -28,8 +30,8 @@ const Viviendas = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative h-[80vh] min-h-[600px] flex items-end overflow-hidden">
-          <div className="absolute inset-0">
+        <section ref={hero.ref} className="relative h-[80vh] min-h-[600px] flex items-end overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
             <motion.img
               src={buildingImage}
               alt="Viviendas La Nucía One"
@@ -39,8 +41,8 @@ const Viviendas = () => {
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
-          </div>
-          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20">
+          </motion.div>
+          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.13, 0.3)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">
                 {t(`${v}.tag`)}
@@ -55,7 +57,7 @@ const Viviendas = () => {
                 </Link>
               </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Concept */}
@@ -68,7 +70,7 @@ const Viviendas = () => {
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed mb-4">{t(`${v}.conceptText1`)}</motion.p>
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed">{t(`${v}.conceptText2`)}</motion.p>
               </motion.div>
-              <motion.div variants={scaleIn(0.3)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="overflow-hidden">
+              <motion.div variants={clipReveal(0.3)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="overflow-hidden">
                 <img src={interiorImg} alt="Interior La Nucía One" className="w-full aspect-[4/3] object-cover" />
               </motion.div>
             </div>
@@ -104,7 +106,7 @@ const Viviendas = () => {
                   <motion.div
                     key={i}
                     variants={staggerItem}
-                    className="border border-primary-foreground/10 p-8 hover:border-gold/30 transition-all duration-700"
+                    className="border border-primary-foreground/10 p-8 hover:border-gold/30 card-hover transition-all duration-700"
                   >
                     <Icon className="w-6 h-6 text-gold mb-4" />
                     <h3 className="font-display text-xl text-primary-foreground mb-3">{feat.title}</h3>
@@ -132,7 +134,7 @@ const Viviendas = () => {
               className="grid md:grid-cols-3 gap-8"
             >
               {types.map((type, i) => (
-                <motion.div key={i} variants={staggerItem} className="group border border-border hover:border-gold/30 transition-all duration-700">
+                <motion.div key={i} variants={staggerItem} className="group border border-border hover:border-gold/30 card-hover transition-all duration-700">
                   <div className="aspect-[4/3] overflow-hidden">
                     <img src={typeImages[i]} alt={type.title} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                   </div>

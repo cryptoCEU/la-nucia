@@ -9,9 +9,11 @@ import buildingImage from "@/assets/building-render.jpg";
 import {
   staggerContainer, staggerItem, heroText, viewportOnce
 } from "@/lib/animations";
+import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Contacto = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
 
   const handleJuliaClick = () => {
     const widget = document.querySelector('elevenlabs-convai');
@@ -62,8 +64,8 @@ const Contacto = () => {
       <SEO title="Contacto" description="Contacta con nosotros para más información sobre La Nucía One." path="/contacto" />
       <Navbar />
       <main>
-        <section className="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden">
-          <div className="absolute inset-0">
+        <section ref={hero.ref} className="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
             <motion.img
               src={buildingImage}
               alt="La Nucía One - Contacto"
@@ -73,8 +75,8 @@ const Contacto = () => {
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ocean-dark/95 via-ocean-dark/70 to-ocean-dark/40" />
-          </div>
-          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-16 pt-20">
+          </motion.div>
+          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-16 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.12, 0.3)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="font-body text-xs tracking-[0.2em] uppercase text-gold mb-2">
                 {t("contactoPage.tag")}
@@ -87,7 +89,7 @@ const Contacto = () => {
                 {t("contactoPage.heroSubtitle")}
               </motion.p>
             </motion.div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="bg-sand py-20 md:py-28">
