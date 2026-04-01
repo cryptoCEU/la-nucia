@@ -37,8 +37,8 @@ const Index = () => {
       <Navbar />
       <main>
         {/* ═══ HERO FULLSCREEN ═══ */}
-        <section className="relative h-screen flex flex-col justify-end overflow-hidden">
-          <div className="absolute inset-0">
+        <section ref={hero.ref} className="relative h-screen flex flex-col justify-end overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
             <motion.img
               src={heroImage}
               alt="Promoción de obra nueva en La Nucía"
@@ -48,8 +48,8 @@ const Index = () => {
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/20" />
-          </div>
-          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-24 md:pb-32">
+          </motion.div>
+          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-24 md:pb-32" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div
               variants={staggerContainer(0.15, 0.4)}
               initial="hidden"
