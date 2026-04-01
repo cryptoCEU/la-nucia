@@ -47,8 +47,8 @@ const Ubicacion = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
-          <div className="absolute inset-0">
+        <section ref={hero.ref} className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
+          <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
             <motion.img
               src={heroImage}
               alt="La Nucía, Costa Blanca"
@@ -58,8 +58,8 @@ const Ubicacion = () => {
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent" />
-          </div>
-          <div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20">
+          </motion.div>
+          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.13, 0.3)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">
                 {t("ubicacionPage.tag")}
