@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Sun, Mountain, Palmtree, GraduationCap, HeartPulse, TreePine, ShoppingBag, Waves } from "lucide-react";
+import { MapPin, Sun, Mountain, Palmtree, GraduationCap, HeartPulse, TreePine, ShoppingBag, Waves, UtensilsCrossed, Fuel, Home } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
@@ -13,10 +13,12 @@ import {
 } from "@/lib/animations";
 import { useHeroParallax } from "@/hooks/use-parallax";
 
+const ALL_CATEGORIES = ["health", "education", "parks", "shopping", "restaurants", "gas"] as const;
+
 const Ubicacion = () => {
   const { t } = useTranslation();
   const hero = useHeroParallax();
-  const [activeCategories, setActiveCategories] = useState<string[]>(["health", "education", "parks", "shopping"]);
+  const [activeCategories, setActiveCategories] = useState<string[]>([...ALL_CATEGORIES]);
 
   const toggleCategory = (cat: string) => {
     setActiveCategories(prev =>
@@ -28,10 +30,13 @@ const Ubicacion = () => {
   const advantageIcons = [Sun, Mountain, ShoppingBag, Waves, Palmtree, HeartPulse];
 
   const categories = [
-    { id: "health", label: t("ubicacionPage.catHealth"), icon: HeartPulse, color: "#ef4444" },
-    { id: "education", label: t("ubicacionPage.catEducation"), icon: GraduationCap, color: "#3b82f6" },
-    { id: "parks", label: t("ubicacionPage.catParks"), icon: TreePine, color: "#22c55e" },
-    { id: "shopping", label: t("ubicacionPage.catShopping"), icon: ShoppingBag, color: "#f59e0b" },
+    { id: "residential", label: t("ubicacionPage.catResidential", "Residencial"), icon: Home, color: "hsl(151, 23%, 50%)", alwaysOn: true },
+    { id: "health", label: t("ubicacionPage.catHealth"), icon: HeartPulse, color: "#E54D4D" },
+    { id: "education", label: t("ubicacionPage.catEducation"), icon: GraduationCap, color: "#4A90D9" },
+    { id: "shopping", label: t("ubicacionPage.catShopping"), icon: ShoppingBag, color: "#F5A623" },
+    { id: "parks", label: t("ubicacionPage.catParks"), icon: TreePine, color: "#4CAF50" },
+    { id: "restaurants", label: t("ubicacionPage.catRestaurants", "Restaurantes"), icon: UtensilsCrossed, color: "#9B59B6" },
+    { id: "gas", label: t("ubicacionPage.catGas", "Gasolineras"), icon: Fuel, color: "#E67E22" },
   ];
 
   const stats = [
@@ -122,48 +127,64 @@ const Ubicacion = () => {
         </section>
 
         {/* Interactive Map */}
-        <section className="bg-primary">
-          <div className="container max-w-7xl mx-auto px-6 py-12">
+        <section className="bg-background">
+          <div className="container max-w-7xl mx-auto px-6 pt-16 pb-8">
             <motion.div
               variants={staggerContainer(0.1)}
               initial="hidden"
               whileInView="visible"
               viewport={viewportOnce}
-              className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8"
+              className="mb-10"
             >
-              <motion.div variants={staggerItem}>
-                <p className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-2">{t("ubicacionPage.mapTag")}</p>
-                <h2 className="font-display text-2xl md:text-4xl text-primary-foreground">{t("ubicacionPage.mapTitle")}</h2>
-              </motion.div>
-              <motion.div variants={staggerItem} className="flex flex-wrap gap-3">
+              <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-3">
+                {t("ubicacionPage.mapTag")}
+              </motion.p>
+              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground mb-8">
+                {t("ubicacionPage.mapTitle")}
+              </motion.h2>
+
+              {/* Filter pills */}
+              <motion.div variants={staggerItem} className="flex flex-wrap gap-2.5">
                 {categories.map(cat => {
-                  const active = activeCategories.includes(cat.id);
+                  const isResidential = cat.id === "residential";
+                  const active = isResidential || activeCategories.includes(cat.id);
                   return (
                     <button
                       key={cat.id}
-                      onClick={() => toggleCategory(cat.id)}
-                      className={`flex items-center gap-2 px-4 py-2 font-body text-xs tracking-wider uppercase border transition-all duration-500 ${
-                        active
-                          ? "border-gold bg-gold/20 text-gold"
-                          : "border-primary-foreground/20 text-primary-foreground/50 hover:border-primary-foreground/40"
-                      }`}
+                      onClick={() => !isResidential && toggleCategory(cat.id)}
+                      disabled={isResidential}
+                      className={`
+                        group flex items-center gap-2 px-4 py-2.5 rounded-full font-body text-xs tracking-wider uppercase
+                        border transition-all duration-400 select-none
+                        ${isResidential
+                          ? "border-accent bg-accent/15 text-accent cursor-default"
+                          : active
+                            ? "border-foreground/20 bg-foreground/5 text-foreground hover:bg-foreground/10 hover:shadow-sm"
+                            : "border-border text-muted-foreground/50 hover:border-foreground/20 hover:text-muted-foreground"
+                        }
+                      `}
+                      style={active && !isResidential ? { borderColor: `${cat.color}40`, backgroundColor: `${cat.color}10` } : undefined}
                     >
-                      <cat.icon className="w-3.5 h-3.5" />
-                      {cat.label}
+                      <cat.icon className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-110" style={active ? { color: cat.color } : undefined} />
+                      <span>{cat.label}</span>
                     </button>
                   );
                 })}
               </motion.div>
             </motion.div>
           </div>
+
+          {/* Map container */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={viewportOnce}
-            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full h-[70vh] min-h-[500px]"
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="mx-auto max-w-7xl px-6 pb-20"
           >
-            <MapboxMapInteractive activeCategories={activeCategories} />
+            <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-border h-[520px] md:h-[520px] sm:h-[380px]">
+              <MapboxMapInteractive activeCategories={activeCategories} />
+            </div>
           </motion.div>
         </section>
       </main>
