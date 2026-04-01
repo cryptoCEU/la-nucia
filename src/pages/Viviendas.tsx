@@ -134,7 +134,7 @@ const Viviendas = () => {
               className="grid md:grid-cols-3 gap-8"
             >
               {types.map((type, i) => (
-                <motion.div key={i} variants={staggerItem} className="group border border-border hover:border-gold/30 transition-all duration-700">
+                <motion.div key={i} variants={staggerItem} className="group border border-border hover:border-gold/30 card-hover transition-all duration-700">
                   <div className="aspect-[4/3] overflow-hidden">
                     <img src={typeImages[i]} alt={type.title} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
                   </div>
