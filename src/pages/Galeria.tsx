@@ -8,6 +8,7 @@ import buildingImage from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import heroImg from "@/assets/hero-nucia.jpg";
 import { staggerContainer, heroText } from "@/lib/animations";
+import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Galeria = () => {
   const { t } = useTranslation();
