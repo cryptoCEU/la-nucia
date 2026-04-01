@@ -43,7 +43,7 @@ const Galeria = () => {
                 {t("galeriaPage.title1")}<br /><span className="italic">{t("galeriaPage.title2")}</span>
               </motion.h1>
             </motion.div>
-          </div>
+          </motion.div>
         </section>
         <GallerySection />
       </main>
