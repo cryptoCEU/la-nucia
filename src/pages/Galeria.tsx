@@ -19,8 +19,8 @@ const Galeria = () => {
       <SEO title="Galería de Imágenes" description="Galería de imágenes de La Nucía One." path="/galeria" />
       <Navbar />
       <main>
-        <section className="relative min-h-[60vh] flex items-end overflow-hidden">
-          <div className="absolute inset-0 grid grid-cols-3">
+        <section ref={hero.ref} className="relative min-h-[60vh] flex items-end overflow-hidden">
+          <motion.div className="absolute inset-0 grid grid-cols-3" style={{ y: hero.bgY }}>
             {[buildingImage, interiorImg, heroImg].map((src, i) => (
               <motion.div
                 key={i}
