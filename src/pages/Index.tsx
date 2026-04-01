@@ -17,6 +17,8 @@ import { useHeroParallax, useParallax } from "@/hooks/use-parallax";
 
 const Index = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
+  const locationParallax = useParallax({ speed: 0.25 });
 
   const stats = [
     { number: "107", label: t("home.stat1Label") },
