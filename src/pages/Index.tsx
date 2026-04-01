@@ -143,7 +143,7 @@ const Index = () => {
                 </motion.p>
               </motion.div>
               <motion.div
-                variants={scaleIn(0.2)}
+                variants={clipReveal(0.2)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportOnce}
