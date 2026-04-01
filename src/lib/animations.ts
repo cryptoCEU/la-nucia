@@ -97,3 +97,34 @@ export const heroText = (delay = 0): Variants => ({
 
 export const viewportOnce = { once: true, margin: "-80px" as const };
 export const viewportOnceNear = { once: true, margin: "-40px" as const };
+
+// ─── Clip-path image reveal ───
+export const clipReveal = (delay = 0): Variants => ({
+  hidden: { clipPath: "inset(0 100% 0 0)" },
+  visible: {
+    clipPath: "inset(0 0% 0 0)",
+    transition: { duration: 1.2, ease: easeOut, delay },
+  },
+});
+
+export const clipRevealUp = (delay = 0): Variants => ({
+  hidden: { clipPath: "inset(100% 0 0 0)" },
+  visible: {
+    clipPath: "inset(0% 0 0 0)",
+    transition: { duration: 1, ease: easeOut, delay },
+  },
+});
+
+// ─── Soft float for decorative layers ───
+export const softFloat: Variants = {
+  hidden: { opacity: 0, y: 10 },
+  visible: {
+    opacity: 1,
+    y: [0, -6, 0],
+    transition: {
+      opacity: { duration: 0.8, ease: easeOut },
+      y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+    },
+  },
+};
+

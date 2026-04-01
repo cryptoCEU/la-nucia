@@ -84,3 +84,31 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* ─── Reduced motion: disable all transforms/animations, keep opacity fades ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.15s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Premium hover card lift ─── */
+@layer utilities {
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -15px hsl(var(--foreground) / 0.12);
+  }
+  .btn-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+  .btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px -8px hsl(var(--foreground) / 0.15);
+  }
+}
