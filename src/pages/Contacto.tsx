@@ -9,6 +9,7 @@ import buildingImage from "@/assets/building-render.jpg";
 import {
   staggerContainer, staggerItem, heroText, viewportOnce
 } from "@/lib/animations";
+import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Contacto = () => {
   const { t } = useTranslation();
