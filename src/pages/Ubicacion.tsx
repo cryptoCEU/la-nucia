@@ -66,7 +66,7 @@ const Ubicacion = () => {
               </motion.p>
               <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.05]" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.title") }} />
             </motion.div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Stats bar */}
