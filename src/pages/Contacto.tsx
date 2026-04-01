@@ -13,6 +13,7 @@ import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Contacto = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
 
   const handleJuliaClick = () => {
     const widget = document.querySelector('elevenlabs-convai');
