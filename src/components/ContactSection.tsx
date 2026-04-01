@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
+import { staggerContainer, staggerItem, fadeUp, viewportOnce } from "@/lib/animations";
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -59,13 +60,20 @@ const ContactSection = () => {
   return (
     <section id="contacto" className="py-24 md:py-32 bg-background">
       <div className="container max-w-3xl mx-auto px-6">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center mb-12">
-          <p className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("contactSection.tag")}</p>
-          <h2 className="font-display text-3xl md:text-5xl text-foreground mb-4" dangerouslySetInnerHTML={{ __html: t("contactSection.title") }} />
-          <p className="font-body text-muted-foreground max-w-xl mx-auto">{t("contactSection.subtitle")}</p>
+        <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center mb-12">
+          <motion.p variants={staggerItem} className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("contactSection.tag")}</motion.p>
+          <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground mb-4" dangerouslySetInnerHTML={{ __html: t("contactSection.title") }} />
+          <motion.p variants={staggerItem} className="font-body text-muted-foreground max-w-xl mx-auto">{t("contactSection.subtitle")}</motion.p>
         </motion.div>
 
-        <motion.form initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }} onSubmit={handleSubmit} className="bg-card border border-border rounded-lg p-8 md:p-12 shadow-sm space-y-6">
+        <motion.form
+          variants={fadeUp(0.3)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          onSubmit={handleSubmit}
+          className="bg-card border border-border rounded-lg p-8 md:p-12 shadow-sm space-y-6"
+        >
           <div>
             <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.name`)}</label>
             <Input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} placeholder={t(`${f}.namePlaceholder`)} className="bg-background border-border font-body" />
@@ -127,7 +135,7 @@ const ContactSection = () => {
             <div className="flex flex-wrap gap-3">
               {dormitoriosOptions.map((opt) => (
                 <button key={opt} type="button" onClick={() => toggleMultiSelect("dormitorios", opt)}
-                  className={`px-4 py-2 rounded-md border text-sm font-body transition-colors duration-200 ${formData.dormitorios.includes(opt) ? "bg-primary text-primary-foreground border-primary" : "bg-background text-foreground border-border hover:border-primary/50"}`}>
+                  className={`px-4 py-2 rounded-md border text-sm font-body transition-all duration-500 ${formData.dormitorios.includes(opt) ? "bg-primary text-primary-foreground border-primary" : "bg-background text-foreground border-border hover:border-primary/50"}`}>
                   {opt}
                 </button>
               ))}
@@ -149,7 +157,7 @@ const ContactSection = () => {
             <div className="flex flex-wrap gap-3">
               {zonasOptions.map((opt) => (
                 <button key={opt} type="button" onClick={() => toggleMultiSelect("zonasComunes", opt)}
-                  className={`px-4 py-2 rounded-md border text-sm font-body transition-colors duration-200 ${formData.zonasComunes.includes(opt) ? "bg-primary text-primary-foreground border-primary" : "bg-background text-foreground border-border hover:border-primary/50"}`}>
+                  className={`px-4 py-2 rounded-md border text-sm font-body transition-all duration-500 ${formData.zonasComunes.includes(opt) ? "bg-primary text-primary-foreground border-primary" : "bg-background text-foreground border-border hover:border-primary/50"}`}>
                   {opt}
                 </button>
               ))}
@@ -160,11 +168,11 @@ const ContactSection = () => {
             <Checkbox id="privacidad" checked={formData.privacidad} onCheckedChange={(checked) => setFormData({ ...formData, privacidad: checked === true })} className="mt-0.5" />
             <label htmlFor="privacidad" className="font-body text-sm text-muted-foreground leading-relaxed cursor-pointer">
               {t(`${f}.privacy`)}{" "}
-              <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-ocean-light">{t(`${f}.privacyLink`)}</a>
+              <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-ocean-light transition-colors duration-500">{t(`${f}.privacyLink`)}</a>
             </label>
           </div>
 
-          <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-ocean-light font-body text-sm tracking-widest uppercase py-6 transition-colors duration-300">
+          <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-ocean-light font-body text-sm tracking-widest uppercase py-6 transition-all duration-700">
             {isSubmitting ? t(`${f}.submitting`) : t(`${f}.submit`)}
           </Button>
         </motion.form>
