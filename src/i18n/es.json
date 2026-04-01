@@ -241,7 +241,10 @@
     "catHealth": "Salud",
     "catEducation": "Educación",
     "catParks": "Parques",
-    "catShopping": "Comercios"
+    "catShopping": "Comercios",
+    "catRestaurants": "Restaurantes",
+    "catGas": "Gasolineras",
+    "catResidential": "Residencial"
   },
   "viviendasPage": {
     "tag": "La Nucía One",
