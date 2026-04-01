@@ -57,7 +57,7 @@ const Viviendas = () => {
                 </Link>
               </motion.div>
             </motion.div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Concept */}
