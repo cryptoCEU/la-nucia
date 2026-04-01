@@ -11,6 +11,7 @@ import MapboxMapInteractive from "@/components/MapboxMapInteractive";
 import {
   staggerContainer, staggerItem, heroText, viewportOnce
 } from "@/lib/animations";
+import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Ubicacion = () => {
   const { t } = useTranslation();
