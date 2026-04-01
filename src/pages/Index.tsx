@@ -11,8 +11,9 @@ import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import {
   fadeUp, fadeIn, scaleIn, slideRight, staggerContainer, staggerItem,
-  heroText, viewportOnce, viewportOnceNear, slowTransition
+  heroText, viewportOnce, viewportOnceNear, slowTransition, clipReveal
 } from "@/lib/animations";
+import { useHeroParallax, useParallax } from "@/hooks/use-parallax";
 
 const Index = () => {
   const { t } = useTranslation();
