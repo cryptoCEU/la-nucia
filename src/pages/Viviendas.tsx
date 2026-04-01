@@ -9,9 +9,10 @@ import buildingImage from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import heroImg from "@/assets/hero-nucia.jpg";
 import {
-  staggerContainer, staggerItem, heroText, scaleIn, fadeUp,
+  staggerContainer, staggerItem, heroText, scaleIn, fadeUp, clipReveal,
   viewportOnce
 } from "@/lib/animations";
+import { useHeroParallax } from "@/hooks/use-parallax";
 
 const typeImages = [buildingImage, interiorImg, heroImg];
 const featureIcons = [Thermometer, DoorOpen, ChefHat, Shield, Cpu, Leaf];
