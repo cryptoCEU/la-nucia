@@ -15,6 +15,7 @@ import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Ubicacion = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
   const [activeCategories, setActiveCategories] = useState<string[]>(["health", "education", "parks", "shopping"]);
 
   const toggleCategory = (cat: string) => {
