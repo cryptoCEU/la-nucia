@@ -106,7 +106,7 @@ const Viviendas = () => {
                   <motion.div
                     key={i}
                     variants={staggerItem}
-                    className="border border-primary-foreground/10 p-8 hover:border-gold/30 transition-all duration-700"
+                    className="border border-primary-foreground/10 p-8 hover:border-gold/30 card-hover transition-all duration-700"
                   >
                     <Icon className="w-6 h-6 text-gold mb-4" />
                     <h3 className="font-display text-xl text-primary-foreground mb-3">{feat.title}</h3>
