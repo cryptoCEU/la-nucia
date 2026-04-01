@@ -19,6 +19,7 @@ const featureIcons = [Thermometer, DoorOpen, ChefHat, Shield, Cpu, Leaf];
 
 const Viviendas = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
   const types = t("viviendasPage.types", { returnObjects: true }) as { title: string; description: string; areaFrom: string; bathrooms: string }[];
   const features = t("viviendasPage.featuresList", { returnObjects: true }) as { title: string; description: string }[];
   const v = "viviendasPage";
