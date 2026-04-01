@@ -56,7 +56,7 @@ const Navbar = () => {
             </a>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="flex items-center gap-3 px-5 py-2.5 border border-primary-foreground/20 rounded-full text-primary-foreground hover:border-gold hover:text-gold transition-colors"
+              className="flex items-center gap-3 px-5 py-2.5 border border-primary-foreground/20 rounded-full text-primary-foreground hover:border-gold hover:text-gold btn-hover transition-colors"
             >
               <span className="font-body text-sm tracking-wider uppercase">{t("nav.menu")}</span>
               <Menu className="w-5 h-5" />
