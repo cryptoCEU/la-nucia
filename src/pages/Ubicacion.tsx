@@ -109,7 +109,7 @@ const Ubicacion = () => {
                 {advantages.map((adv, i) => {
                   const Icon = advantageIcons[i] || MapPin;
                   return (
-                    <motion.div key={i} variants={staggerItem} className="border border-border p-6 hover:border-gold/30 transition-all duration-700">
+                    <motion.div key={i} variants={staggerItem} className="border border-border p-6 hover:border-gold/30 card-hover transition-all duration-700">
                       <Icon className="w-5 h-5 text-gold mb-3" />
                       <h3 className="font-display text-lg text-foreground mb-2">{adv.title}</h3>
                       <p className="font-body text-xs text-muted-foreground leading-relaxed">{adv.description}</p>
