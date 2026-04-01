@@ -12,6 +12,7 @@ import { useHeroParallax } from "@/hooks/use-parallax";
 
 const Galeria = () => {
   const { t } = useTranslation();
+  const hero = useHeroParallax();
 
   return (
     <>
