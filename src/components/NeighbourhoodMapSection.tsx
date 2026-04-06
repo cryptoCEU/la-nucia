@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
-import { staggerContainer, staggerItem, viewportOnce } from "@/lib/animations";
+import { staggerContainer, staggerItem, viewportOnce, fadeUp, slideLeft, slideRight, scaleIn } from "@/lib/animations";
 
 /* ═══════════════════ STREET VIEW HELPER ═══════════════════ */
 // Replace YOUR_GOOGLE_API_KEY with your key from console.cloud.google.com
@@ -528,11 +528,17 @@ const NeighbourhoodMapSection = () => {
           >
             {/* Category grid — click to select / deselect (toggle list) */}
             <div className="grid grid-cols-4 gap-2 mb-6">
-              {CATEGORIES.map((cat) => {
+              {CATEGORIES.map((cat, catIdx) => {
                 const selected = selectedCategory === cat.id;
                 return (
-                  <button
+                  <motion.button
                     key={cat.id}
+                    variants={scaleIn(0.05 * catIdx)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                    whileHover={{ scale: 1.05, y: -2 }}
+                    whileTap={{ scale: 0.97 }}
                     onClick={() => setSelectedCategory((prev) => (prev === cat.id ? null : cat.id))}
                     className={`
                       flex flex-col items-center gap-1.5 p-3 rounded-xl text-center
@@ -556,7 +562,7 @@ const NeighbourhoodMapSection = () => {
                     >
                       {cat.label}
                     </span>
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>
@@ -573,8 +579,11 @@ const NeighbourhoodMapSection = () => {
                   className="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden shadow-sm"
                 >
                   {placeList.map((poi, idx) => (
-                    <button
+                    <motion.button
                       key={poi.id}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.35, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
                       onClick={() => flyToPoi(poi)}
                       onMouseEnter={() => highlightMarker(poi.id)}
                       onMouseLeave={() => highlightMarker(null)}
@@ -607,7 +616,7 @@ const NeighbourhoodMapSection = () => {
                       >
                         <path d="M9 18l6-6-6-6" />
                       </svg>
-                    </button>
+                    </motion.button>
                   ))}
                 </motion.div>
               )}

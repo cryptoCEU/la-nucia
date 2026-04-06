@@ -8,7 +8,8 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import heroImage from "@/assets/hero-nucia.jpg";
 import NeighbourhoodMapSection from "@/components/NeighbourhoodMapSection";
 import {
-  staggerContainer, staggerItem, heroText, viewportOnce
+  staggerContainer, staggerItem, heroText, viewportOnce,
+  fadeUp, slideLeft, slideRight, scaleIn
 } from "@/lib/animations";
 import { useHeroParallax } from "@/hooks/use-parallax";
 
@@ -57,20 +58,29 @@ const Ubicacion = () => {
         {/* Stats bar */}
         <section className="bg-primary border-t border-primary-foreground/10">
           <div className="container max-w-7xl mx-auto px-6">
-            <motion.div
-              variants={staggerContainer(0.1)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10"
-            >
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10">
               {stats.map((stat, i) => (
-                <motion.div key={i} variants={staggerItem} className="py-10 px-6 text-center">
+                <motion.div
+                  key={i}
+                  variants={fadeUp(i * 0.12)}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={viewportOnce}
+                  className="py-10 px-6 text-center"
+                >
                   <AnimatedCounter value={stat.number} className="font-display text-3xl md:text-4xl text-gold block mb-1" />
-                  <p className="font-body text-xs text-primary-foreground/50 tracking-wide uppercase">{stat.label}</p>
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={viewportOnce}
+                    transition={{ duration: 0.6, delay: 0.4 + i * 0.12 }}
+                    className="font-body text-xs text-primary-foreground/50 tracking-wide uppercase"
+                  >
+                    {stat.label}
+                  </motion.p>
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -78,30 +88,43 @@ const Ubicacion = () => {
         <section className="py-24 md:py-32 bg-background">
           <div className="container max-w-6xl mx-auto px-6">
             <div className="grid lg:grid-cols-2 gap-20 items-start">
-              <motion.div variants={staggerContainer(0.12)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
-                <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">{t("ubicacionPage.aboutTag")}</motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-tight mb-8" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.aboutTitle") }} />
-                <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed mb-4">{t("ubicacionPage.aboutText1")}</motion.p>
-                <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed">{t("ubicacionPage.aboutText2")}</motion.p>
-              </motion.div>
               <motion.div
-                variants={staggerContainer(0.08)}
+                variants={slideLeft()}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportOnce}
-                className="grid grid-cols-2 gap-6"
               >
+                <motion.p variants={fadeUp(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">{t("ubicacionPage.aboutTag")}</motion.p>
+                <motion.h2 variants={fadeUp(0.2)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="font-display text-3xl md:text-5xl text-foreground leading-tight mb-8" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.aboutTitle") }} />
+                <motion.p variants={fadeUp(0.35)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="font-body text-muted-foreground leading-relaxed mb-4">{t("ubicacionPage.aboutText1")}</motion.p>
+                <motion.p variants={fadeUp(0.45)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="font-body text-muted-foreground leading-relaxed">{t("ubicacionPage.aboutText2")}</motion.p>
+              </motion.div>
+              <div className="grid grid-cols-2 gap-6">
                 {advantages.map((adv, i) => {
                   const Icon = advantageIcons[i] || MapPin;
                   return (
-                    <motion.div key={i} variants={staggerItem} className="border border-border p-6 hover:border-gold/30 card-hover transition-all duration-700">
-                      <Icon className="w-5 h-5 text-gold mb-3" />
+                    <motion.div
+                      key={i}
+                      variants={scaleIn(0.1 + i * 0.1)}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={viewportOnce}
+                      className="border border-border p-6 hover:border-gold/30 card-hover transition-all duration-700"
+                    >
+                      <motion.div
+                        initial={{ opacity: 0, rotate: -10 }}
+                        whileInView={{ opacity: 1, rotate: 0 }}
+                        viewport={viewportOnce}
+                        transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
+                      >
+                        <Icon className="w-5 h-5 text-gold mb-3" />
+                      </motion.div>
                       <h3 className="font-display text-lg text-foreground mb-2">{adv.title}</h3>
                       <p className="font-body text-xs text-muted-foreground leading-relaxed">{adv.description}</p>
                     </motion.div>
                   );
                 })}
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
