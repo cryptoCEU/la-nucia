@@ -3,6 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
 import { staggerContainer, staggerItem, viewportOnce } from "@/lib/animations";
 
+/* ═══════════════════ STREET VIEW HELPER ═══════════════════ */
+// Replace YOUR_GOOGLE_API_KEY with your actual key from console.cloud.google.com
+// Enable "Street View Static API" (free tier: 25,000 requests/month)
+const GOOGLE_API_KEY = "YOUR_GOOGLE_API_KEY";
+
+function streetViewUrl(lat: number, lng: number, w = 200, h = 120) {
+  return `https://maps.googleapis.com/maps/api/streetview?size=${w}x${h}&location=${lat},${lng}&fov=90&pitch=0&key=${GOOGLE_API_KEY}`;
+}
+
 /* ═══════════════════ DATA ═══════════════════ */
 
 interface POI {
@@ -19,8 +28,7 @@ interface CategoryDef {
   id: string;
   label: string;
   color: string;
-  iconSvg: string;      // 24×24 SVG path
-  hoverImg: string;
+  iconSvg: string;
   alwaysOn?: boolean;
 }
 
@@ -29,64 +37,70 @@ const CATEGORIES: CategoryDef[] = [
     id: "residential",
     label: "Residencial",
     color: "#1B3A2D",
-    iconSvg: '<rect x="7" y="10" width="10" height="10" rx="1" fill="currentColor"/><path d="M12 3L3 10h3v9h4v-5h4v5h4v-9h3L12 3z" fill="currentColor"/>',
-    hoverImg: "",
+    iconSvg: '<path d="M12 3L3 10h3v9h4v-5h4v5h4v-9h3L12 3z" fill="currentColor"/>',
     alwaysOn: true,
   },
   {
     id: "health",
     label: "Salud",
     color: "#DC2626",
-    iconSvg: '<path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-1 10h-4v4h-4v-4H6v-2h4V7h4v4h4v2z" fill="currentColor"/>',
-    hoverImg: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=200&h=120&fit=crop",
+    iconSvg:
+      '<path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-1 10h-4v4h-4v-4H6v-2h4V7h4v4h4v2z" fill="currentColor"/>',
   },
   {
     id: "education",
     label: "Educación",
     color: "#2563EB",
-    iconSvg: '<path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm0 14.5L5 14v-2.5l7 3.5 7-3.5V14l-7 3.5z" fill="currentColor"/>',
-    hoverImg: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=200&h=120&fit=crop",
+    iconSvg:
+      '<path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm0 14.5L5 14v-2.5l7 3.5 7-3.5V14l-7 3.5z" fill="currentColor"/>',
   },
   {
     id: "shopping",
     label: "Comercios",
     color: "#D97706",
-    iconSvg: '<path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 14H6V8h2v2h2V8h4v2h2V8h2v10z" fill="currentColor"/>',
-    hoverImg: "https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=200&h=120&fit=crop",
+    iconSvg:
+      '<path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 14H6V8h2v2h2V8h4v2h2V8h2v10z" fill="currentColor"/>',
   },
   {
     id: "nature",
     label: "Naturaleza",
     color: "#16A34A",
-    iconSvg: '<path d="M17 12c0-2.76-2.24-5-5-5s-5 2.24-5 5c0 2.28 1.53 4.19 3.62 4.78C10.24 17.6 10 18.27 10 19v2h4v-2c0-.73-.24-1.4-.62-2.22C15.47 16.19 17 14.28 17 12z" fill="currentColor"/><rect x="11" y="19" width="2" height="3" fill="currentColor"/>',
-    hoverImg: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=200&h=120&fit=crop",
+    iconSvg:
+      '<path d="M17 12c0-2.76-2.24-5-5-5s-5 2.24-5 5c0 2.28 1.53 4.19 3.62 4.78C10.24 17.6 10 18.27 10 19v2h4v-2c0-.73-.24-1.4-.62-2.22C15.47 16.19 17 14.28 17 12z" fill="currentColor"/><rect x="11" y="19" width="2" height="3" fill="currentColor"/>',
   },
   {
     id: "restaurants",
     label: "Restaurantes",
     color: "#E11D48",
-    iconSvg: '<path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" fill="currentColor"/>',
-    hoverImg: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=200&h=120&fit=crop",
+    iconSvg:
+      '<path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z" fill="currentColor"/>',
   },
   {
     id: "gas",
     label: "Gasolineras",
     color: "#475569",
-    iconSvg: '<path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33a2.5 2.5 0 002.5 2.5c.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14a2 2 0 00-2-2h-1V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16h10v-7.5h1.5v5a2.5 2.5 0 005 0V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5z" fill="currentColor"/>',
-    hoverImg: "https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=200&h=120&fit=crop",
+    iconSvg:
+      '<path d="M19.77 7.23l.01-.01-3.72-3.72L15 4.56l2.11 2.11c-.94.36-1.61 1.26-1.61 2.33a2.5 2.5 0 002.5 2.5c.36 0 .69-.08 1-.21v7.21c0 .55-.45 1-1 1s-1-.45-1-1V14a2 2 0 00-2-2h-1V5a2 2 0 00-2-2H6a2 2 0 00-2 2v16h10v-7.5h1.5v5a2.5 2.5 0 005 0V9c0-.69-.28-1.32-.73-1.77zM12 10H6V5h6v5z" fill="currentColor"/>',
   },
   {
     id: "transport",
     label: "Transporte",
     color: "#4F46E5",
-    iconSvg: '<path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm9 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM18 8H6V5h12v3z" fill="currentColor"/>',
-    hoverImg: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=200&h=120&fit=crop",
+    iconSvg:
+      '<path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1a1.5 1.5 0 110-3 1.5 1.5 0 010 3zm9 0a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM18 8H6V5h12v3z" fill="currentColor"/>',
   },
 ];
 
 const POIS: POI[] = [
   // Residential
-  { id: "res-1", name: "LaNucía ONE", lng: -0.1180, lat: 38.6317, category: "residential", description: "Residencial · La Nucía, Alicante" },
+  {
+    id: "res-1",
+    name: "LaNucía ONE",
+    lng: -0.118,
+    lat: 38.6317,
+    category: "residential",
+    description: "Residencial · La Nucía, Alicante",
+  },
   // Health
   { id: "h-1", name: "Centro de Salud La Nucía", lng: -0.1165, lat: 38.6298, category: "health", walkMin: 5 },
   { id: "h-2", name: "Farmacia Central", lng: -0.1195, lat: 38.6325, category: "health", walkMin: 3 },
@@ -94,24 +108,24 @@ const POIS: POI[] = [
   // Education
   { id: "e-1", name: "CEIP La Nucía", lng: -0.1148, lat: 38.6342, category: "education", walkMin: 6 },
   { id: "e-2", name: "IES La Nucía", lng: -0.1202, lat: 38.6289, category: "education", walkMin: 8 },
-  { id: "e-3", name: "Colegio Internacional", lng: -0.1050, lat: 38.6100, category: "education", walkMin: 20 },
+  { id: "e-3", name: "Colegio Internacional", lng: -0.105, lat: 38.61, category: "education", walkMin: 20 },
   // Shopping
-  { id: "s-1", name: "Mercadona La Nucía", lng: -0.1220, lat: 38.6305, category: "shopping", walkMin: 7 },
+  { id: "s-1", name: "Mercadona La Nucía", lng: -0.122, lat: 38.6305, category: "shopping", walkMin: 7 },
   { id: "s-2", name: "Centro Comercial Marina", lng: -0.0453, lat: 38.5412, category: "shopping", walkMin: 45 },
   { id: "s-3", name: "Consum Alfaz del Pi", lng: -0.0905, lat: 38.5897, category: "shopping", walkMin: 30 },
   // Nature
-  { id: "n-1", name: "Parque Municipal La Nucía", lng: -0.1175, lat: 38.6350, category: "nature", walkMin: 4 },
-  { id: "n-2", name: "Serra Gelada Natural Park", lng: -0.0610, lat: 38.5600, category: "nature", walkMin: 50 },
-  { id: "n-3", name: "Jardines de El Albir", lng: -0.0811, lat: 38.5740, category: "nature", walkMin: 30 },
+  { id: "n-1", name: "Parque Municipal La Nucía", lng: -0.1175, lat: 38.635, category: "nature", walkMin: 4 },
+  { id: "n-2", name: "Serra Gelada Natural Park", lng: -0.061, lat: 38.56, category: "nature", walkMin: 50 },
+  { id: "n-3", name: "Jardines de El Albir", lng: -0.0811, lat: 38.574, category: "nature", walkMin: 30 },
   // Restaurants
-  { id: "r-1", name: "La Sequieta", lng: -0.1155, lat: 38.6330, category: "restaurants", walkMin: 5 },
-  { id: "r-2", name: "Restaurante El Altet", lng: -0.1210, lat: 38.6315, category: "restaurants", walkMin: 8 },
-  { id: "r-3", name: "La Bodega de l'Albir", lng: -0.0820, lat: 38.5770, category: "restaurants", walkMin: 25 },
+  { id: "r-1", name: "La Sequieta", lng: -0.1155, lat: 38.633, category: "restaurants", walkMin: 5 },
+  { id: "r-2", name: "Restaurante El Altet", lng: -0.121, lat: 38.6315, category: "restaurants", walkMin: 8 },
+  { id: "r-3", name: "La Bodega de l'Albir", lng: -0.082, lat: 38.577, category: "restaurants", walkMin: 25 },
   // Gas
-  { id: "g-1", name: "BP La Nucía", lng: -0.1240, lat: 38.6285, category: "gas", walkMin: 10 },
-  { id: "g-2", name: "Repsol Altea", lng: -0.0720, lat: 38.5990, category: "gas", walkMin: 20 },
+  { id: "g-1", name: "BP La Nucía", lng: -0.124, lat: 38.6285, category: "gas", walkMin: 10 },
+  { id: "g-2", name: "Repsol Altea", lng: -0.072, lat: 38.599, category: "gas", walkMin: 20 },
   // Transport
-  { id: "t-1", name: "Parada Bus La Nucía", lng: -0.1188, lat: 38.6310, category: "transport", walkMin: 4 },
+  { id: "t-1", name: "Parada Bus La Nucía", lng: -0.1188, lat: 38.631, category: "transport", walkMin: 4 },
   { id: "t-2", name: "Estación TRAM Altea", lng: -0.0612, lat: 38.5981, category: "transport", walkMin: 35 },
 ];
 
@@ -123,30 +137,112 @@ function injectMapStyles() {
   const s = document.createElement("style");
   s.id = STYLES_ID;
   s.textContent = `
-    @keyframes nbSonar{0%{box-shadow:0 0 0 0 rgba(27,58,45,0.45)}70%{box-shadow:0 0 0 18px rgba(27,58,45,0)}100%{box-shadow:0 0 0 0 rgba(27,58,45,0)}}
-    .nb-main-marker{width:52px;height:52px;border-radius:50%;background:#1B3A2D;display:flex;align-items:center;justify-content:center;animation:nbSonar 2.2s infinite;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),filter .3s ease;filter:drop-shadow(0 4px 14px rgba(0,0,0,.18));border:2px solid #C9A96E;position:relative;z-index:10}
-    .nb-main-marker:hover{transform:scale(1.2) translateY(-3px);filter:drop-shadow(0 6px 20px rgba(0,0,0,.25))}
-    .nb-main-marker span{color:#C9A96E;font-weight:700;font-size:15px;font-family:'TAN - PEARL',serif;letter-spacing:.05em}
-    .nb-poi{width:40px;height:40px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s ease,filter .25s ease;filter:drop-shadow(0 3px 10px rgba(0,0,0,.12))}
-    .nb-poi:hover{transform:scale(1.25) translateY(-2px)}
-    .nb-poi.pulse{animation:nbPoiPulse .6s ease-in-out 3}
-    @keyframes nbPoiPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
-    .nb-hover-card{position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) scale(.92);opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:50;width:210px;background:#fff;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,.14);overflow:hidden}
-    .nb-hover-card.visible{opacity:1;transform:translateX(-50%) scale(1);pointer-events:auto}
-    .nb-hover-card::after{content:'';position:absolute;bottom:-6px;left:50%;transform:translateX(-50%);width:12px;height:12px;background:#fff;rotate:45deg;box-shadow:2px 2px 4px rgba(0,0,0,.06)}
-    .nb-hover-card img{width:100%;height:100px;object-fit:cover}
-    .nb-hover-card-body{padding:10px 12px}
-    .nb-hover-card-body h4{font-size:13px;font-weight:600;color:#1A1A1A;margin:0 0 2px}
-    .nb-hover-card-body .cat{font-size:10px;color:#C9A96E;text-transform:uppercase;letter-spacing:.08em}
-    .nb-hover-card-body .walk{font-size:11px;color:#6B6B6B;margin-top:4px}
-    .maplibregl-popup-content{background:#fff!important;border-radius:12px!important;padding:14px 16px!important;box-shadow:0 8px 30px rgba(0,0,0,.12)!important;font-family:'Montserrat',sans-serif!important}
-    .maplibregl-popup-tip{border-top-color:#fff!important}
-    .maplibregl-popup-close-button{font-size:18px!important;color:#6B6B6B!important;padding:4px 8px!important}
-    .maplibregl-ctrl-group{border-radius:10px!important;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)!important}
-    .maplibregl-marker{overflow:visible!important}
-    .maplibregl-canvas-container{overflow:visible!important}
-    .maplibregl-map{overflow:visible!important}
-    .nb-main-marker img{width:30px;height:30px;object-fit:contain;border-radius:50%;display:block}
+    /* ── Main residential marker ── */
+    @keyframes nbSonar {
+      0%   { box-shadow: 0 0 0 0   rgba(201,169,110,0.55); }
+      70%  { box-shadow: 0 0 0 20px rgba(201,169,110,0);   }
+      100% { box-shadow: 0 0 0 0   rgba(201,169,110,0);    }
+    }
+    .nb-main-marker {
+      width:52px; height:52px; border-radius:50%;
+      background:#1B3A2D; border:2.5px solid #C9A96E;
+      display:flex; align-items:center; justify-content:center;
+      animation:nbSonar 2.2s infinite;
+      cursor:pointer;
+      transition:transform .3s cubic-bezier(.34,1.56,.64,1), filter .3s ease;
+      filter:drop-shadow(0 4px 14px rgba(0,0,0,.22));
+      position:relative; z-index:10;
+    }
+    .nb-main-marker:hover { transform:scale(1.2) translateY(-3px); }
+    .nb-main-marker img  { width:30px; height:30px; object-fit:contain; border-radius:50%; display:block; }
+    .nb-main-marker span { color:#C9A96E; font-weight:700; font-size:15px; letter-spacing:.05em; }
+
+    /* ── POI wrapper — must NOT clip children ── */
+    .nb-poi-wrapper {
+      position:relative;
+      /* No width/height — let the badge define it */
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      overflow:visible;       /* critical: don't clip the hover card */
+    }
+
+    /* ── POI badge ── */
+    .nb-poi {
+      width:40px; height:40px; border-radius:50%;
+      background:#fff;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease;
+      filter:drop-shadow(0 3px 10px rgba(0,0,0,.13));
+      position:relative; z-index:2;
+    }
+    .nb-poi:hover { transform:scale(1.25) translateY(-2px); }
+    .nb-poi.pulse { animation:nbPoiPulse .6s ease-in-out 3; }
+    @keyframes nbPoiPulse {
+      0%,100% { transform:scale(1); }
+      50%      { transform:scale(1.3); }
+    }
+
+    /* ── Hover card — anchored to the RIGHT of the badge ── */
+    .nb-hover-card {
+      position:absolute;
+      /* Sit to the right, vertically centred on the badge */
+      left: calc(100% + 14px);
+      top: 50%;
+      transform: translateY(-50%) scale(.9);
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .2s ease, transform .2s ease;
+      z-index:100;
+      width:210px;
+      background:#fff;
+      border-radius:12px;
+      box-shadow:0 8px 30px rgba(0,0,0,.16);
+      overflow:hidden;
+      /* Left-pointing arrow */
+    }
+    .nb-hover-card::before {
+      content:'';
+      position:absolute;
+      left:-6px; top:50%;
+      transform:translateY(-50%) rotate(45deg);
+      width:12px; height:12px;
+      background:#fff;
+      box-shadow:-2px 2px 4px rgba(0,0,0,.06);
+      z-index:-1;
+    }
+    .nb-hover-card.visible {
+      opacity:1;
+      transform:translateY(-50%) scale(1);
+      pointer-events:auto;
+    }
+    .nb-hover-card img        { width:100%; height:100px; object-fit:cover; display:block; }
+    .nb-hover-card-body       { padding:10px 12px; }
+    .nb-hover-card-body h4    { font-size:13px; font-weight:600; color:#1A1A1A; margin:0 0 2px; }
+    .nb-hover-card-body .cat  { font-size:10px; color:#C9A96E; text-transform:uppercase; letter-spacing:.08em; }
+    .nb-hover-card-body .walk { font-size:11px; color:#6B6B6B; margin-top:4px; }
+
+    /* ── MapLibre overrides — allow overflow so cards aren't clipped ── */
+    .maplibregl-marker              { overflow:visible !important; }
+    .maplibregl-canvas-container    { overflow:visible !important; }
+    .maplibregl-map                 { overflow:visible !important; }
+
+    /* ── Popup ── */
+    .maplibregl-popup-content {
+      background:#fff !important; border-radius:12px !important;
+      padding:14px 16px !important;
+      box-shadow:0 8px 30px rgba(0,0,0,.12) !important;
+      font-family:'Montserrat',sans-serif !important;
+    }
+    .maplibregl-popup-tip          { border-top-color:#fff !important; }
+    .maplibregl-popup-close-button { font-size:18px !important; color:#6B6B6B !important; padding:4px 8px !important; }
+
+    /* ── Nav controls ── */
+    .maplibregl-ctrl-group {
+      border-radius:10px !important; overflow:hidden;
+      box-shadow:0 2px 8px rgba(0,0,0,.08) !important;
+    }
   `;
   document.head.appendChild(s);
 }
@@ -158,31 +254,40 @@ const NeighbourhoodMapSection = () => {
   const mapRef = useRef<any>(null);
   const markersRef = useRef<Map<string, any>>(new Map());
   const hoverCardRefs = useRef<Map<string, HTMLDivElement>>(new Map());
+
   const [mapReady, setMapReady] = useState(false);
   const [inView, setInView] = useState(false);
   const [mapLibreLoaded, setMapLibreLoaded] = useState(false);
-  const [activeCategories, setActiveCategories] = useState<string[]>(CATEGORIES.map(c => c.id));
+  const [activeCategories, setActiveCategories] = useState<string[]>(CATEGORIES.map((c) => c.id));
   const [selectedCategory, setSelectedCategory] = useState<string | null>("health");
   const [hoveredPoi, setHoveredPoi] = useState<string | null>(null);
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-  // Lazy viewport detection
+  /* ── Lazy viewport detection ── */
   useEffect(() => {
     if (!sectionRef.current) return;
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setInView(true); obs.disconnect(); } },
-      { rootMargin: "200px" }
+      ([e]) => {
+        if (e.isIntersecting) {
+          setInView(true);
+          obs.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
     );
     obs.observe(sectionRef.current);
     return () => obs.disconnect();
   }, []);
 
-  // Load MapLibre from CDN
+  /* ── Load MapLibre from CDN ── */
   useEffect(() => {
     if (!inView) return;
-    if ((window as any).maplibregl) { setMapLibreLoaded(true); return; }
+    if ((window as any).maplibregl) {
+      setMapLibreLoaded(true);
+      return;
+    }
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -195,7 +300,7 @@ const NeighbourhoodMapSection = () => {
     document.head.appendChild(script);
   }, [inView]);
 
-  // Initialize map
+  /* ── Initialize map ── */
   useEffect(() => {
     if (!mapLibreLoaded || !mapContainer.current || mapRef.current) return;
     injectMapStyles();
@@ -204,7 +309,7 @@ const NeighbourhoodMapSection = () => {
     const map = new ml.Map({
       container: mapContainer.current,
       style: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
-      center: [-0.1180, 38.6317],
+      center: [-0.118, 38.6317],
       zoom: 14,
       pitch: isMobile ? 0 : 45,
       bearing: -25,
@@ -216,7 +321,7 @@ const NeighbourhoodMapSection = () => {
     map.addControl(new ml.NavigationControl({ showCompass: false }), "bottom-right");
 
     map.on("load", () => {
-      // 3D buildings
+      /* 3D buildings */
       const layers = map.getStyle().layers || [];
       let labelLayerId: string | undefined;
       for (const layer of layers) {
@@ -239,71 +344,93 @@ const NeighbourhoodMapSection = () => {
             "fill-extrusion-opacity": 0.5,
           },
         },
-        labelLayerId
+        labelLayerId,
       );
 
-      // Ambient rotation on load
+      /* Ambient rotation on load */
       if (!isMobile) {
         map.easeTo({ bearing: -15, duration: 3000, easing: (t: number) => t * (2 - t) });
       }
 
-      // Add main residential marker
+      /* Main residential marker with favicon */
       const mainEl = document.createElement("div");
       mainEl.className = "nb-main-marker";
-      mainEl.innerHTML = `<img src="/favicon.ico" alt="LaNuciaOne" style="width:30px;height:30px;object-fit:contain;border-radius:50%;display:block;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'color:#C9A96E;font-weight:700;font-size:14px;font-family:serif;letter-spacing:.05em\\'>N1</span>'" />`;
-      new ml.Marker({ element: mainEl, anchor: "center" })
-        .setLngLat([-0.1180, 38.6317])
-        .addTo(map);
+      mainEl.innerHTML = `
+        <img
+          src="/favicon.ico"
+          alt="LaNuciaOne"
+          style="width:30px;height:30px;object-fit:contain;border-radius:50%;display:block;"
+          onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span style=\\'color:#C9A96E;font-weight:700;font-size:14px;letter-spacing:.05em\\'>N1</span>')"
+        />
+      `;
+
+      new ml.Marker({ element: mainEl, anchor: "center" }).setLngLat([-0.118, 38.6317]).addTo(map);
 
       mainEl.addEventListener("click", () => {
-        map.flyTo({ center: [-0.1180, 38.6317], zoom: 16, pitch: isMobile ? 0 : 50, duration: 1200 });
+        map.flyTo({ center: [-0.118, 38.6317], zoom: 16, pitch: isMobile ? 0 : 50, duration: 1200 });
         new ml.Popup({ offset: 30, closeButton: true })
-          .setLngLat([-0.1180, 38.6317])
-          .setHTML(`<div><strong style="color:#1B3A2D;font-size:14px;">LA NUCÍA ONE</strong><br/><span style="font-size:12px;color:#6B6B6B">Residencial · La Nucía, Alicante</span></div>`)
+          .setLngLat([-0.118, 38.6317])
+          .setHTML(
+            `<div>
+            <strong style="color:#1B3A2D;font-size:14px;">LA NUCÍA ONE</strong><br/>
+            <span style="font-size:12px;color:#6B6B6B">Residencial · La Nucía, Alicante</span>
+          </div>`,
+          )
           .addTo(map);
       });
 
       setMapReady(true);
     });
 
-    return () => { map.remove(); mapRef.current = null; };
+    return () => {
+      map.remove();
+      mapRef.current = null;
+    };
   }, [mapLibreLoaded]);
 
-  // Sync markers
+  /* ── Sync POI markers ── */
   const syncMarkers = useCallback(() => {
     const map = mapRef.current;
     const ml = (window as any).maplibregl;
     if (!map || !ml) return;
 
-    // Remove old markers
-    markersRef.current.forEach(m => m.remove());
+    /* Remove old markers */
+    markersRef.current.forEach((m) => m.remove());
     markersRef.current.clear();
     hoverCardRefs.current.clear();
 
-    const filtered = POIS.filter(p => p.category !== "residential" && activeCategories.includes(p.category));
+    const filtered = POIS.filter((p) => p.category !== "residential" && activeCategories.includes(p.category));
 
     filtered.forEach((poi, idx) => {
-      const cat = CATEGORIES.find(c => c.id === poi.category);
+      const cat = CATEGORIES.find((c) => c.id === poi.category);
       if (!cat) return;
 
-      // Wrapper
+      /* ── Wrapper: purely a positioning parent, no clipping ── */
       const wrapper = document.createElement("div");
-      wrapper.style.position = "relative";
-      wrapper.style.overflow = "visible";
+      wrapper.className = "nb-poi-wrapper";
       wrapper.style.opacity = "0";
-      wrapper.style.transform = "scale(0.5) translateY(8px)";
+      wrapper.style.transform = "scale(0.5)";
 
-      // Badge
+      /* ── Badge (the visible pin) ── */
       const badge = document.createElement("div");
       badge.className = "nb-poi";
       badge.style.border = `2px solid ${cat.color}`;
       badge.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" style="color:${cat.color}">${cat.iconSvg}</svg>`;
 
-      // Hover card
+      /* ── Hover card (to the RIGHT of the badge) ── */
       const card = document.createElement("div");
       card.className = "nb-hover-card";
+
+      // Street View photo specific to the POI's exact coordinates
+      const photoUrl = streetViewUrl(poi.lat, poi.lng);
+
       card.innerHTML = `
-        <img src="${cat.hoverImg}" alt="${poi.name}" loading="lazy"/>
+        <img
+          src="${photoUrl}"
+          alt="${poi.name}"
+          loading="lazy"
+          onerror="this.style.display='none'"
+        />
         <div class="nb-hover-card-body">
           <h4>${poi.name}</h4>
           <div class="cat">${cat.label}</div>
@@ -311,54 +438,71 @@ const NeighbourhoodMapSection = () => {
         </div>
       `;
 
+      /* Assemble: card first (so it's behind badge in DOM but positioned absolutely) */
       wrapper.appendChild(card);
       wrapper.appendChild(badge);
       hoverCardRefs.current.set(poi.id, card);
 
-      // Hover events
-      const showCard = () => { card.classList.add("visible"); setHoveredPoi(poi.id); };
-      const hideCard = () => { card.classList.remove("visible"); setHoveredPoi(null); };
+      /* ── Hover events ── */
+      const showCard = () => {
+        card.classList.add("visible");
+        setHoveredPoi(poi.id);
+      };
+      const hideCard = () => {
+        card.classList.remove("visible");
+        setHoveredPoi(null);
+      };
 
       if (isMobile) {
         badge.addEventListener("click", (e) => {
           e.stopPropagation();
-          // Hide all others
           hoverCardRefs.current.forEach((c) => c.classList.remove("visible"));
           card.classList.toggle("visible");
         });
       } else {
         badge.addEventListener("mouseenter", showCard);
         badge.addEventListener("mouseleave", hideCard);
+        card.addEventListener("mouseenter", showCard);
+        card.addEventListener("mouseleave", hideCard);
       }
 
-      // Click → flyTo + popup
+      /* ── Click → flyTo + popup ── */
       badge.addEventListener("click", () => {
         map.flyTo({ center: [poi.lng, poi.lat], zoom: 16, pitch: isMobile ? 0 : 50, duration: 1200 });
         new ml.Popup({ offset: 24, closeButton: true })
           .setLngLat([poi.lng, poi.lat])
-          .setHTML(`<div>
+          .setHTML(
+            `<div>
             <strong style="color:#1B3A2D;font-size:13px">${poi.name}</strong><br/>
             <span style="font-size:10px;color:#C9A96E;text-transform:uppercase;letter-spacing:.08em">${cat.label}</span>
             ${poi.description ? `<br/><span style="font-size:11px;color:#6B6B6B">${poi.description}</span>` : ""}
-            <br/><a href="https://www.google.com/maps/search/?api=1&query=${poi.lat},${poi.lng}" target="_blank" rel="noopener" style="font-size:11px;color:#2563EB;text-decoration:underline;margin-top:4px;display:inline-block">Ver en Google Maps</a>
-          </div>`)
+            <br/><a href="https://www.google.com/maps/search/?api=1&query=${poi.lat},${poi.lng}"
+              target="_blank" rel="noopener"
+              style="font-size:11px;color:#2563EB;text-decoration:underline;margin-top:4px;display:inline-block">
+              Ver en Google Maps
+            </a>
+          </div>`,
+          )
           .addTo(map);
       });
 
-      // Staggered entrance
+      /* ── Staggered entrance (double rAF to guarantee repaint before transition) ── */
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          setTimeout(() => {
-            wrapper.style.transition = "opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.34,1.56,.64,1)";
-            wrapper.style.opacity = "1";
-            wrapper.style.transform = "scale(1) translateY(0)";
-          }, 30 + idx * 50);
+          setTimeout(
+            () => {
+              wrapper.style.transition =
+                "opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.34,1.56,.64,1)";
+              wrapper.style.opacity = "1";
+              wrapper.style.transform = "scale(1)";
+            },
+            30 + idx * 50,
+          );
         });
       });
 
-      const marker = new ml.Marker({ element: wrapper, anchor: "bottom" })
-        .setLngLat([poi.lng, poi.lat])
-        .addTo(map);
+      /* anchor: "center" so the badge circle sits exactly on the coordinate */
+      const marker = new ml.Marker({ element: wrapper, anchor: "center" }).setLngLat([poi.lng, poi.lat]).addTo(map);
       markersRef.current.set(poi.id, marker);
     });
   }, [activeCategories]);
@@ -367,47 +511,53 @@ const NeighbourhoodMapSection = () => {
     if (mapReady) syncMarkers();
   }, [mapReady, syncMarkers]);
 
-  // Category toggle
+  /* ── Category toggle ── */
   const toggleCategory = (id: string) => {
-    setActiveCategories(prev =>
-      prev.includes(id) ? prev.filter(c => c !== id) : [...prev, id]
-    );
+    setActiveCategories((prev) => (prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id]));
     setSelectedCategory(id);
   };
 
-  // Place list for selected category
+  /* ── Place list ── */
   const placeList = useMemo(() => {
     if (!selectedCategory || selectedCategory === "residential") return [];
     if (!activeCategories.includes(selectedCategory)) return [];
-    return POIS.filter(p => p.category === selectedCategory);
+    return POIS.filter((p) => p.category === selectedCategory);
   }, [selectedCategory, activeCategories]);
 
-  // Fly to POI from list
+  /* ── Fly to POI from list ── */
   const flyToPoi = (poi: POI) => {
     const map = mapRef.current;
     const ml = (window as any).maplibregl;
     if (!map || !ml) return;
+    const cat = CATEGORIES.find((c) => c.id === poi.category);
     map.flyTo({ center: [poi.lng, poi.lat], zoom: 16, pitch: isMobile ? 0 : 50, duration: 1200 });
-    const cat = CATEGORIES.find(c => c.id === poi.category);
     new ml.Popup({ offset: 24, closeButton: true })
       .setLngLat([poi.lng, poi.lat])
-      .setHTML(`<div>
+      .setHTML(
+        `<div>
         <strong style="color:#1B3A2D;font-size:13px">${poi.name}</strong><br/>
         <span style="font-size:10px;color:#C9A96E;text-transform:uppercase;letter-spacing:.08em">${cat?.label || ""}</span>
-        <br/><a href="https://www.google.com/maps/search/?api=1&query=${poi.lat},${poi.lng}" target="_blank" rel="noopener" style="font-size:11px;color:#2563EB;text-decoration:underline;margin-top:4px;display:inline-block">Ver en Google Maps</a>
-      </div>`)
+        <br/><a href="https://www.google.com/maps/search/?api=1&query=${poi.lat},${poi.lng}"
+          target="_blank" rel="noopener"
+          style="font-size:11px;color:#2563EB;text-decoration:underline;margin-top:4px;display:inline-block">
+          Ver en Google Maps
+        </a>
+      </div>`,
+      )
       .addTo(map);
   };
 
-  // Highlight marker on list hover
+  /* ── Highlight marker on list hover ── */
   const highlightMarker = (poiId: string | null) => {
     setHoveredPoi(poiId);
     markersRef.current.forEach((m, id) => {
       const el = m.getElement()?.querySelector(".nb-poi") as HTMLElement | null;
       if (!el) return;
+      const poiCat = POIS.find((p) => p.id === id)?.category;
+      const color = CATEGORIES.find((c) => c.id === poiCat)?.color || "#000";
       if (id === poiId) {
         el.classList.add("pulse");
-        el.style.boxShadow = `0 0 0 6px ${CATEGORIES.find(c => c.id === POIS.find(p => p.id === id)?.category)?.color || "#000"}40`;
+        el.style.boxShadow = `0 0 0 6px ${color}40`;
       } else {
         el.classList.remove("pulse");
         el.style.boxShadow = "";
@@ -415,6 +565,7 @@ const NeighbourhoodMapSection = () => {
     });
   };
 
+  /* ══════════════════════ RENDER ══════════════════════ */
   return (
     <section ref={sectionRef} className="py-20 md:py-28 bg-[#F9F6F1]">
       <div className="container max-w-7xl mx-auto px-6">
@@ -429,7 +580,10 @@ const NeighbourhoodMapSection = () => {
           <motion.p variants={staggerItem} className="text-[#C9A96E] font-body text-xs tracking-[0.3em] uppercase mb-3">
             Entorno Privilegiado
           </motion.p>
-          <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4">
+          <motion.h2
+            variants={staggerItem}
+            className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4"
+          >
             Todo lo que necesitas, a tu alcance
           </motion.h2>
           <motion.p variants={staggerItem} className="font-body text-[#6B6B6B] max-w-2xl leading-relaxed">
@@ -447,8 +601,8 @@ const NeighbourhoodMapSection = () => {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Category grid */}
-            <div className="grid grid-cols-4 md:grid-cols-4 gap-2 mb-6">
-              {CATEGORIES.map(cat => {
+            <div className="grid grid-cols-4 gap-2 mb-6">
+              {CATEGORIES.map((cat) => {
                 const active = activeCategories.includes(cat.id);
                 const selected = selectedCategory === cat.id;
                 const isRes = cat.id === "residential";
@@ -460,21 +614,30 @@ const NeighbourhoodMapSection = () => {
                       setSelectedCategory(cat.id);
                     }}
                     className={`
-                      flex flex-col items-center gap-1.5 p-3 rounded-xl text-center transition-all duration-300 border
-                      ${selected
-                        ? "bg-[#1B3A2D] border-[#1B3A2D] shadow-md"
-                        : active
-                          ? "bg-white border-[#E5E5E5] hover:border-[#C9A96E]/40 hover:shadow-sm"
-                          : "bg-[#F5F5F5] border-[#E5E5E5] opacity-50 hover:opacity-70"
+                      flex flex-col items-center gap-1.5 p-3 rounded-xl text-center
+                      transition-all duration-300 border
+                      ${
+                        selected
+                          ? "bg-[#1B3A2D] border-[#1B3A2D] shadow-md"
+                          : active
+                            ? "bg-white border-[#E5E5E5] hover:border-[#C9A96E]/40 hover:shadow-sm"
+                            : "bg-[#F5F5F5] border-[#E5E5E5] opacity-50 hover:opacity-70"
                       }
                     `}
                   >
                     <svg
-                      width="20" height="20" viewBox="0 0 24 24"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
                       style={{ color: selected ? "#C9A96E" : active ? cat.color : "#999" }}
                       dangerouslySetInnerHTML={{ __html: cat.iconSvg }}
                     />
-                    <span className={`text-[10px] font-body font-medium tracking-wide uppercase leading-tight ${selected ? "text-white" : active ? "text-[#1A1A1A]" : "text-[#999]"}`}>
+                    <span
+                      className={`
+                      text-[10px] font-body font-medium tracking-wide uppercase leading-tight
+                      ${selected ? "text-white" : active ? "text-[#1A1A1A]" : "text-[#999]"}
+                    `}
+                    >
                       {cat.label}
                     </span>
                   </button>
@@ -503,8 +666,8 @@ const NeighbourhoodMapSection = () => {
                         onMouseEnter={() => highlightMarker(poi.id)}
                         onMouseLeave={() => highlightMarker(null)}
                         className={`
-                          w-full text-left flex items-center gap-3 px-4 py-3.5 transition-all duration-200
-                          hover:bg-[#F9F6F1] group
+                          w-full text-left flex items-center gap-3 px-4 py-3.5
+                          transition-all duration-200 hover:bg-[#F9F6F1] group
                           ${idx < placeList.length - 1 ? "border-b border-[#F0EBE1]" : ""}
                           ${hoveredPoi === poi.id ? "bg-[#F9F6F1]" : ""}
                         `}
@@ -520,8 +683,16 @@ const NeighbourhoodMapSection = () => {
                             <p className="text-[11px] font-body text-[#6B6B6B]">~{poi.walkMin} min a pie</p>
                           )}
                         </div>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C9A96E" strokeWidth="2" className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0">
-                          <path d="M9 18l6-6-6-6"/>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#C9A96E"
+                          strokeWidth="2"
+                          className="opacity-0 group-hover:opacity-100 transition-opacity flex-shrink-0"
+                        >
+                          <path d="M9 18l6-6-6-6" />
                         </svg>
                       </button>
                     ))
@@ -537,19 +708,30 @@ const NeighbourhoodMapSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportOnce}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-[#E5E5E5] h-[380px] md:h-[520px] relative"
+            className="rounded-2xl overflow-visible shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-[#E5E5E5] h-[380px] md:h-[520px] relative"
           >
+            {/* Inner clip wrapper — clip the map canvas but NOT the marker layer */}
+            <div className="absolute inset-0 rounded-2xl overflow-hidden">
+              <div ref={mapContainer} className="w-full h-full" />
+            </div>
+
+            {/* Skeleton shown while map loads */}
             {!mapReady && (
-              <div className="absolute inset-0 z-10">
-                <Skeleton className="w-full h-full rounded-none" style={{ background: "linear-gradient(110deg, #F0EBE1 30%, #F9F6F1 50%, #F0EBE1 70%)", backgroundSize: "200% 100%", animation: "shimmer 1.5s infinite" }} />
+              <div className="absolute inset-0 z-10 rounded-2xl overflow-hidden">
+                <Skeleton
+                  className="w-full h-full rounded-none"
+                  style={{
+                    background: "linear-gradient(110deg, #F0EBE1 30%, #F9F6F1 50%, #F0EBE1 70%)",
+                    backgroundSize: "200% 100%",
+                    animation: "shimmer 1.5s infinite",
+                  }}
+                />
               </div>
             )}
-            <div ref={mapContainer} className="w-full h-full" />
           </motion.div>
         </div>
       </div>
 
-      {/* Shimmer keyframe */}
       <style>{`@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}`}</style>
     </section>
   );
