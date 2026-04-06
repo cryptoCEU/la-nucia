@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
-import { fadeUp } from "@/lib/animations";
 
 const AvisoLegal = () => {
   const { t } = useTranslation();
@@ -19,16 +17,14 @@ const AvisoLegal = () => {
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">
-        <motion.div variants={fadeUp(0.2)} initial="hidden" animate="visible">
-          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
-            <ArrowLeft className="w-4 h-4" />
-            {t("legalPages.backHome")}
-          </Link>
-        </motion.div>
+        <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
+          <ArrowLeft className="w-4 h-4" />
+          {t("legalPages.backHome")}
+        </Link>
 
-        <motion.h1 variants={fadeUp(0.35)} initial="hidden" animate="visible" className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("avisoLegal.title")}</motion.h1>
+        <h1 className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("avisoLegal.title")}</h1>
 
-        <motion.div variants={fadeUp(0.5)} initial="hidden" animate="visible" className="prose prose-sm md:prose-base max-w-none font-body text-muted-foreground space-y-6 [&_strong]:text-foreground [&_a]:text-primary [&_a:hover]:text-ocean-light">
+        <div className="prose prose-sm md:prose-base max-w-none font-body text-muted-foreground space-y-6 [&_strong]:text-foreground [&_a]:text-primary [&_a:hover]:text-ocean-light">
           <p>
             De conformidad con lo establecido en la Ley 34/2002, de 11 de julio, de servicios de la sociedad de la información y de comercio electrónico, se facilita la siguiente información:
           </p>
@@ -149,7 +145,7 @@ const AvisoLegal = () => {
           </p>
 
           <p className="text-xs text-muted-foreground/60 mt-8">Última revisión: 11 de Noviembre de 2021</p>
-        </motion.div>
+        </div>
       </div>
     </div>
     </>

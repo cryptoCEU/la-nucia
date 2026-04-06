@@ -1,11 +1,9 @@
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import FeaturesSection from "@/components/FeaturesSection";
 import CalidadesSection from "@/components/CalidadesSection";
 import FooterSection from "@/components/FooterSection";
-import { staggerContainer, staggerItem, fadeUp, viewportOnce } from "@/lib/animations";
 
 const Caracteristicas = () => {
   const { t } = useTranslation();
@@ -22,20 +20,8 @@ const Caracteristicas = () => {
         <div className="h-20" />
         <section className="py-16 md:py-24 bg-primary">
           <div className="container max-w-6xl mx-auto px-6 text-center">
-            <motion.div
-              variants={staggerContainer(0.15, 0.3)}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.p variants={staggerItem} className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">
-                {t("caracteristicasPage.tag")}
-              </motion.p>
-              <motion.h1
-                variants={staggerItem}
-                className="font-display text-4xl md:text-6xl text-primary-foreground leading-tight"
-                dangerouslySetInnerHTML={{ __html: t("caracteristicasPage.title") }}
-              />
-            </motion.div>
+            <p className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("caracteristicasPage.tag")}</p>
+            <h1 className="font-display text-4xl md:text-6xl text-primary-foreground leading-tight" dangerouslySetInnerHTML={{ __html: t("caracteristicasPage.title") }} />
           </div>
         </section>
         <FeaturesSection />
