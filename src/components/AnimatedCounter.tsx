@@ -1,5 +1,56 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useInView } from "framer-motion";
+
+const DIGITS = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const DIGIT_HEIGHT = 1.2; // em
+
+const SlotDigit = ({ digit, delay }: { digit: string; delay: number }) => {
+  const [active, setActive] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setActive(true), delay);
+    return () => clearTimeout(t);
+  }, [delay]);
+
+  const isNum = /^\d$/.test(digit);
+  if (!isNum) return <span>{digit}</span>;
+
+  const idx = Number(digit);
+
+  return (
+    <span
+      style={{
+        display: "inline-block",
+        overflow: "hidden",
+        height: `${DIGIT_HEIGHT}em`,
+        verticalAlign: "bottom",
+      }}
+    >
+      <span
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          transform: active ? `translateY(-${idx * DIGIT_HEIGHT}em)` : "translateY(0)",
+          transition: active ? "transform 0.8s cubic-bezier(0.16,1,0.3,1)" : "none",
+        }}
+      >
+        {DIGITS.map((d) => (
+          <span
+            key={d}
+            style={{
+              height: `${DIGIT_HEIGHT}em`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {d}
+          </span>
+        ))}
+      </span>
+    </span>
+  );
+};
 
 interface AnimatedCounterProps {
   value: string;
@@ -8,46 +59,19 @@ interface AnimatedCounterProps {
 
 const AnimatedCounter = ({ value, className = "" }: AnimatedCounterProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [display, setDisplay] = useState("0");
-
-  // Extract numeric part and suffix (e.g. "300+" => 300, "+")
-  const match = value.match(/^(\d+)(.*)/);
-  const target = match ? parseInt(match[1], 10) : 0;
-  const suffix = match ? match[2] : value;
-
-  useEffect(() => {
-    if (!isInView) return;
-
-    const duration = 2000;
-    const startTime = performance.now();
-
-    const tick = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(eased * target);
-      setDisplay(String(current));
-
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      }
-    };
-
-    requestAnimationFrame(tick);
-  }, [isInView, target]);
+  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const chars = value.split("");
 
   return (
-    <motion.span
+    <span
       ref={ref}
       className={className}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5 }}
+      style={{ display: "inline-flex", alignItems: "baseline" }}
     >
-      {isInView ? `${display}${suffix}` : "0"}
-    </motion.span>
+      {chars.map((ch, i) => (
+        <SlotDigit key={i} digit={ch} delay={isInView ? i * 80 : 99999} />
+      ))}
+    </span>
   );
 };
 

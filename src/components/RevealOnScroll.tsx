@@ -8,17 +8,13 @@ interface Props {
 }
 
 const RevealOnScroll = ({ children, delay = 0, direction = "up", className }: Props) => {
-  const initial: Record<string, unknown> = { opacity: 0 };
-  const animate: Record<string, unknown> = { opacity: 1 };
-
-  if (direction === "up") { initial.y = 40; animate.y = 0; }
-  if (direction === "left") { initial.x = -40; animate.x = 0; }
-  if (direction === "right") { initial.x = 40; animate.x = 0; }
+  const y = direction === "up" ? 40 : 0;
+  const x = direction === "left" ? -40 : direction === "right" ? 40 : 0;
 
   return (
     <motion.div
-      initial={initial}
-      whileInView={animate}
+      initial={{ opacity: 0, y, x }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
