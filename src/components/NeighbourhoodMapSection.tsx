@@ -331,7 +331,7 @@ const NeighbourhoodMapSection = () => {
       const mainEl = document.createElement("div");
       mainEl.className = "nb-main-marker";
       mainEl.innerHTML = `
-        <img src="/favicon.ico" alt="LaNuciaOne"
+        <img src="/favicon.png" alt="LaNuciaOne"
           style="width:30px;height:30px;object-fit:contain;border-radius:50%;display:block;"
           onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span style=\\'color:#C9A96E;font-weight:700;font-size:14px;letter-spacing:.05em\\'>N1</span>')"
         />`;
