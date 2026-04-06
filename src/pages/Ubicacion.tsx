@@ -1,43 +1,23 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Sun, Mountain, Palmtree, GraduationCap, HeartPulse, TreePine, ShoppingBag, Waves, UtensilsCrossed, Fuel, Home } from "lucide-react";
+import { MapPin, Sun, Mountain, Palmtree, HeartPulse, ShoppingBag, Waves } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import heroImage from "@/assets/hero-nucia.jpg";
-import MapboxMapInteractive from "@/components/MapboxMapInteractive";
+import NeighbourhoodMapSection from "@/components/NeighbourhoodMapSection";
 import {
   staggerContainer, staggerItem, heroText, viewportOnce
 } from "@/lib/animations";
 import { useHeroParallax } from "@/hooks/use-parallax";
 
-const ALL_CATEGORIES = ["health", "education", "parks", "shopping", "restaurants", "gas"] as const;
-
 const Ubicacion = () => {
   const { t } = useTranslation();
   const hero = useHeroParallax();
-  const [activeCategories, setActiveCategories] = useState<string[]>([...ALL_CATEGORIES]);
-
-  const toggleCategory = (cat: string) => {
-    setActiveCategories(prev =>
-      prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
-    );
-  };
 
   const advantages = t("ubicacionPage.advantages", { returnObjects: true }) as { title: string; description: string }[];
   const advantageIcons = [Sun, Mountain, ShoppingBag, Waves, Palmtree, HeartPulse];
-
-  const categories = [
-    { id: "residential", label: t("ubicacionPage.catResidential", "Residencial"), icon: Home, color: "hsl(151, 23%, 50%)", alwaysOn: true },
-    { id: "health", label: t("ubicacionPage.catHealth"), icon: HeartPulse, color: "#E54D4D" },
-    { id: "education", label: t("ubicacionPage.catEducation"), icon: GraduationCap, color: "#4A90D9" },
-    { id: "shopping", label: t("ubicacionPage.catShopping"), icon: ShoppingBag, color: "#F5A623" },
-    { id: "parks", label: t("ubicacionPage.catParks"), icon: TreePine, color: "#4CAF50" },
-    { id: "restaurants", label: t("ubicacionPage.catRestaurants", "Restaurantes"), icon: UtensilsCrossed, color: "#9B59B6" },
-    { id: "gas", label: t("ubicacionPage.catGas", "Gasolineras"), icon: Fuel, color: "#E67E22" },
-  ];
 
   const stats = [
     { number: "10", label: t("ubicacionPage.statBenidorm") },
@@ -126,67 +106,8 @@ const Ubicacion = () => {
           </div>
         </section>
 
-        {/* Interactive Map */}
-        <section className="bg-background">
-          <div className="container max-w-7xl mx-auto px-6 pt-16 pb-8">
-            <motion.div
-              variants={staggerContainer(0.1)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              className="mb-10"
-            >
-              <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-3">
-                {t("ubicacionPage.mapTag")}
-              </motion.p>
-              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground mb-8">
-                {t("ubicacionPage.mapTitle")}
-              </motion.h2>
-
-              {/* Filter pills */}
-              <motion.div variants={staggerItem} className="flex flex-wrap gap-2.5">
-                {categories.map(cat => {
-                  const isResidential = cat.id === "residential";
-                  const active = isResidential || activeCategories.includes(cat.id);
-                  return (
-                    <button
-                      key={cat.id}
-                      onClick={() => !isResidential && toggleCategory(cat.id)}
-                      disabled={isResidential}
-                      className={`
-                        group flex items-center gap-2 px-4 py-2.5 rounded-full font-body text-xs tracking-wider uppercase
-                        border transition-all duration-400 select-none
-                        ${isResidential
-                          ? "border-accent bg-accent/15 text-accent cursor-default"
-                          : active
-                            ? "border-foreground/20 bg-foreground/5 text-foreground hover:bg-foreground/10 hover:shadow-sm"
-                            : "border-border text-muted-foreground/50 hover:border-foreground/20 hover:text-muted-foreground"
-                        }
-                      `}
-                      style={active && !isResidential ? { borderColor: `${cat.color}40`, backgroundColor: `${cat.color}10` } : undefined}
-                    >
-                      <cat.icon className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-110" style={active ? { color: cat.color } : undefined} />
-                      <span>{cat.label}</span>
-                    </button>
-                  );
-                })}
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Map container */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportOnce}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto max-w-7xl px-6 pb-20"
-          >
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-border h-[520px] md:h-[520px] sm:h-[380px]">
-              <MapboxMapInteractive activeCategories={activeCategories} />
-            </div>
-          </motion.div>
-        </section>
+        {/* Interactive Neighbourhood Map */}
+        <NeighbourhoodMapSection />
       </main>
       <FooterSection />
     </>
