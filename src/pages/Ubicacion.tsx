@@ -15,26 +15,9 @@ import { useHeroParallax } from "@/hooks/use-parallax";
 const Ubicacion = () => {
   const { t } = useTranslation();
   const hero = useHeroParallax();
-  const [activeCategories, setActiveCategories] = useState<string[]>([...ALL_CATEGORIES]);
-
-  const toggleCategory = (cat: string) => {
-    setActiveCategories(prev =>
-      prev.includes(cat) ? prev.filter(c => c !== cat) : [...prev, cat]
-    );
-  };
 
   const advantages = t("ubicacionPage.advantages", { returnObjects: true }) as { title: string; description: string }[];
   const advantageIcons = [Sun, Mountain, ShoppingBag, Waves, Palmtree, HeartPulse];
-
-  const categories = [
-    { id: "residential", label: t("ubicacionPage.catResidential", "Residencial"), icon: Home, color: "hsl(151, 23%, 50%)", alwaysOn: true },
-    { id: "health", label: t("ubicacionPage.catHealth"), icon: HeartPulse, color: "#E54D4D" },
-    { id: "education", label: t("ubicacionPage.catEducation"), icon: GraduationCap, color: "#4A90D9" },
-    { id: "shopping", label: t("ubicacionPage.catShopping"), icon: ShoppingBag, color: "#F5A623" },
-    { id: "parks", label: t("ubicacionPage.catParks"), icon: TreePine, color: "#4CAF50" },
-    { id: "restaurants", label: t("ubicacionPage.catRestaurants", "Restaurantes"), icon: UtensilsCrossed, color: "#9B59B6" },
-    { id: "gas", label: t("ubicacionPage.catGas", "Gasolineras"), icon: Fuel, color: "#E67E22" },
-  ];
 
   const stats = [
     { number: "10", label: t("ubicacionPage.statBenidorm") },
