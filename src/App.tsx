@@ -17,8 +17,35 @@ import PoliticaCookies from "./pages/PoliticaCookies";
 import NotFound from "./pages/NotFound";
 import CustomCursor from "./components/CustomCursor";
 import ScrollToTop from "./components/ScrollToTop";
+import LoadingScreen from "./components/LoadingScreen";
+import PageTransition from "./components/PageTransition";
+import { useLenisScroll } from "./hooks/use-lenis";
 
 const queryClient = new QueryClient();
+
+const AppInner = () => {
+  useLenisScroll();
+  return (
+    <>
+      <ScrollToTop />
+      <PageTransition>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/landing" element={<Landing />} />
+          <Route path="/caracteristicas" element={<Caracteristicas />} />
+          <Route path="/viviendas" element={<Viviendas />} />
+          <Route path="/galeria" element={<Galeria />} />
+          <Route path="/ubicacion" element={<Ubicacion />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
+          <Route path="/aviso-legal" element={<AvisoLegal />} />
+          <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </PageTransition>
+    </>
+  );
+};
 
 const App = () => (
   <HelmetProvider>
@@ -26,22 +53,10 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
+        <LoadingScreen />
         <CustomCursor />
         <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/landing" element={<Landing />} />
-            <Route path="/caracteristicas" element={<Caracteristicas />} />
-            <Route path="/viviendas" element={<Viviendas />} />
-            <Route path="/galeria" element={<Galeria />} />
-            <Route path="/ubicacion" element={<Ubicacion />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
-            <Route path="/aviso-legal" element={<AvisoLegal />} />
-            <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <AppInner />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
