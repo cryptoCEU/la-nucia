@@ -106,67 +106,8 @@ const Ubicacion = () => {
           </div>
         </section>
 
-        {/* Interactive Map */}
-        <section className="bg-background">
-          <div className="container max-w-7xl mx-auto px-6 pt-16 pb-8">
-            <motion.div
-              variants={staggerContainer(0.1)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              className="mb-10"
-            >
-              <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-3">
-                {t("ubicacionPage.mapTag")}
-              </motion.p>
-              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground mb-8">
-                {t("ubicacionPage.mapTitle")}
-              </motion.h2>
-
-              {/* Filter pills */}
-              <motion.div variants={staggerItem} className="flex flex-wrap gap-2.5">
-                {categories.map(cat => {
-                  const isResidential = cat.id === "residential";
-                  const active = isResidential || activeCategories.includes(cat.id);
-                  return (
-                    <button
-                      key={cat.id}
-                      onClick={() => !isResidential && toggleCategory(cat.id)}
-                      disabled={isResidential}
-                      className={`
-                        group flex items-center gap-2 px-4 py-2.5 rounded-full font-body text-xs tracking-wider uppercase
-                        border transition-all duration-400 select-none
-                        ${isResidential
-                          ? "border-accent bg-accent/15 text-accent cursor-default"
-                          : active
-                            ? "border-foreground/20 bg-foreground/5 text-foreground hover:bg-foreground/10 hover:shadow-sm"
-                            : "border-border text-muted-foreground/50 hover:border-foreground/20 hover:text-muted-foreground"
-                        }
-                      `}
-                      style={active && !isResidential ? { borderColor: `${cat.color}40`, backgroundColor: `${cat.color}10` } : undefined}
-                    >
-                      <cat.icon className="w-3.5 h-3.5 transition-transform duration-300 group-hover:scale-110" style={active ? { color: cat.color } : undefined} />
-                      <span>{cat.label}</span>
-                    </button>
-                  );
-                })}
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Map container */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={viewportOnce}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="mx-auto max-w-7xl px-6 pb-20"
-          >
-            <div className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)] border border-border h-[520px] md:h-[520px] sm:h-[380px]">
-              <MapboxMapInteractive activeCategories={activeCategories} />
-            </div>
-          </motion.div>
-        </section>
+        {/* Interactive Neighbourhood Map */}
+        <NeighbourhoodMapSection />
       </main>
       <FooterSection />
     </>
