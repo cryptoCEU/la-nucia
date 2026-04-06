@@ -42,7 +42,7 @@ const Navbar = () => {
       >
         <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logoNuciaOne} alt="La Nucía One" className="h-16 opacity-90" />
+            <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
           </Link>
 
           <div className="flex items-center gap-6">
@@ -102,7 +102,7 @@ const Navbar = () => {
                     >
                       <Link
                         to={link.href}
-                        className={`block font-display text-4xl md:text-6xl py-2 transition-colors duration-300 ${
+                        className={`block font-display text-4xl md:text-6xl py-2 transition-colors duration-300 nav-link ${
                           location.pathname === link.href
                             ? "text-gold"
                             : "text-primary-foreground/60 hover:text-primary-foreground"
