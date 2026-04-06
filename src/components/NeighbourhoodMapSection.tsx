@@ -579,8 +579,11 @@ const NeighbourhoodMapSection = () => {
                   className="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden shadow-sm"
                 >
                   {placeList.map((poi, idx) => (
-                    <button
+                    <motion.button
                       key={poi.id}
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.35, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
                       onClick={() => flyToPoi(poi)}
                       onMouseEnter={() => highlightMarker(poi.id)}
                       onMouseLeave={() => highlightMarker(null)}
@@ -613,7 +616,7 @@ const NeighbourhoodMapSection = () => {
                       >
                         <path d="M9 18l6-6-6-6" />
                       </svg>
-                    </button>
+                    </motion.button>
                   ))}
                 </motion.div>
               )}
