@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
+import { fadeUp } from "@/lib/animations";
 
 const PrivacyPolicy = () => {
   const { t } = useTranslation();
@@ -17,14 +19,16 @@ const PrivacyPolicy = () => {
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">
-        <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
-          <ArrowLeft className="w-4 h-4" />
-          {t("legalPages.backHome")}
-        </Link>
+        <motion.div variants={fadeUp(0.2)} initial="hidden" animate="visible">
+          <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
+            <ArrowLeft className="w-4 h-4" />
+            {t("legalPages.backHome")}
+          </Link>
+        </motion.div>
 
-        <h1 className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("politicaPrivacidad.title")}</h1>
+        <motion.h1 variants={fadeUp(0.35)} initial="hidden" animate="visible" className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("politicaPrivacidad.title")}</motion.h1>
 
-        <div className="prose prose-sm md:prose-base max-w-none font-body text-muted-foreground space-y-6 [&_strong]:text-foreground [&_a]:text-primary [&_a:hover]:text-ocean-light">
+        <motion.div variants={fadeUp(0.5)} initial="hidden" animate="visible" className="prose prose-sm md:prose-base max-w-none font-body text-muted-foreground space-y-6 [&_strong]:text-foreground [&_a]:text-primary [&_a:hover]:text-ocean-light">
           <p>
             El objetivo de esta política es informar a los interesados acerca de los distintos tratamientos realizados por esta organización mediante la página web y que afecten a sus datos personales de conformidad con lo establecido en la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales y el Reglamento (UE) 2016/679 del Parlamento Europeo y del Consejo de 27 de abril de 2016.
           </p>
