@@ -1,19 +1,16 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Sun, Mountain, Palmtree, GraduationCap, HeartPulse, TreePine, ShoppingBag, Waves, UtensilsCrossed, Fuel, Home } from "lucide-react";
+import { MapPin, Sun, Mountain, Palmtree, HeartPulse, ShoppingBag, Waves } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import heroImage from "@/assets/hero-nucia.jpg";
-import MapboxMapInteractive from "@/components/MapboxMapInteractive";
+import NeighbourhoodMapSection from "@/components/NeighbourhoodMapSection";
 import {
   staggerContainer, staggerItem, heroText, viewportOnce
 } from "@/lib/animations";
 import { useHeroParallax } from "@/hooks/use-parallax";
-
-const ALL_CATEGORIES = ["health", "education", "parks", "shopping", "restaurants", "gas"] as const;
 
 const Ubicacion = () => {
   const { t } = useTranslation();
