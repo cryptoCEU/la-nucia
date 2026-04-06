@@ -143,6 +143,10 @@ function injectMapStyles() {
     .maplibregl-popup-tip{border-top-color:#fff!important}
     .maplibregl-popup-close-button{font-size:18px!important;color:#6B6B6B!important;padding:4px 8px!important}
     .maplibregl-ctrl-group{border-radius:10px!important;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.08)!important}
+    .maplibregl-marker{overflow:visible!important}
+    .maplibregl-canvas-container{overflow:visible!important}
+    .maplibregl-map{overflow:visible!important}
+    .nb-main-marker img{width:30px;height:30px;object-fit:contain;border-radius:50%;display:block}
   `;
   document.head.appendChild(s);
 }
@@ -246,7 +250,7 @@ const NeighbourhoodMapSection = () => {
       // Add main residential marker
       const mainEl = document.createElement("div");
       mainEl.className = "nb-main-marker";
-      mainEl.innerHTML = "<span>N1</span>";
+      mainEl.innerHTML = `<img src="/favicon.ico" alt="LaNuciaOne" style="width:30px;height:30px;object-fit:contain;border-radius:50%;display:block;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\\'color:#C9A96E;font-weight:700;font-size:14px;font-family:serif;letter-spacing:.05em\\'>N1</span>'" />`;
       new ml.Marker({ element: mainEl, anchor: "center" })
         .setLngLat([-0.1180, 38.6317])
         .addTo(map);
@@ -285,6 +289,7 @@ const NeighbourhoodMapSection = () => {
       // Wrapper
       const wrapper = document.createElement("div");
       wrapper.style.position = "relative";
+      wrapper.style.overflow = "visible";
       wrapper.style.opacity = "0";
       wrapper.style.transform = "scale(0.5) translateY(8px)";
 
@@ -342,11 +347,13 @@ const NeighbourhoodMapSection = () => {
 
       // Staggered entrance
       requestAnimationFrame(() => {
-        setTimeout(() => {
-          wrapper.style.transition = "opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.34,1.56,.64,1)";
-          wrapper.style.opacity = "1";
-          wrapper.style.transform = "scale(1) translateY(0)";
-        }, 30 + idx * 50);
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            wrapper.style.transition = "opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.34,1.56,.64,1)";
+            wrapper.style.opacity = "1";
+            wrapper.style.transform = "scale(1) translateY(0)";
+          }, 30 + idx * 50);
+        });
       });
 
       const marker = new ml.Marker({ element: wrapper, anchor: "bottom" })
@@ -371,8 +378,9 @@ const NeighbourhoodMapSection = () => {
   // Place list for selected category
   const placeList = useMemo(() => {
     if (!selectedCategory || selectedCategory === "residential") return [];
+    if (!activeCategories.includes(selectedCategory)) return [];
     return POIS.filter(p => p.category === selectedCategory);
-  }, [selectedCategory]);
+  }, [selectedCategory, activeCategories]);
 
   // Fly to POI from list
   const flyToPoi = (poi: POI) => {
