@@ -126,7 +126,7 @@ const PrivacyPolicy = () => {
             <a href="mailto:protecciondedatos@activum.es">protecciondedatos@activum.es</a>
           </p>
           <p className="text-xs text-muted-foreground/60 mt-8">Última revisión: 11 de Noviembre de 2021</p>
-        </div>
+        </motion.div>
       </div>
     </div>
     </>
