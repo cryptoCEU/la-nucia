@@ -69,7 +69,7 @@ const Index = () => {
               <motion.div variants={heroText(0)} className="flex flex-wrap gap-4">
                 <Link
                   to="/viviendas"
-                  className="btn-primary inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
+                  className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
                 >
                   {t("home.discoverHomes")} <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
                 </Link>
@@ -280,7 +280,7 @@ const Index = () => {
             >
               <Link
                 to="/viviendas"
-                className="btn-primary inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700 group"
+                className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700 group"
               >
                 {t("home.homesCta")}
                 <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
@@ -312,7 +312,7 @@ const Index = () => {
                 <motion.div variants={staggerItem}>
                   <Link
                     to="/galeria"
-                    className="btn-primary inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700 group"
+                    className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700 group"
                   >
                     {t("home.galleryCta")}
                     <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />

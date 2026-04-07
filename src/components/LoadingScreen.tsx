@@ -1,30 +1,31 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const LoadingScreen = () => {
-  const [visible, setVisible] = useState(() => {
-    try {
-      return !sessionStorage.getItem("ln_loaded");
-    } catch {
-      return false;
-    }
-  });
+  const location = useLocation();
+  const [visible, setVisible] = useState(true);
+  const [key, setKey] = useState(location.pathname);
 
   useEffect(() => {
-    if (!visible) return;
+    setVisible(true);
+    setKey(location.pathname);
     document.body.style.overflow = "hidden";
     const timer = setTimeout(() => {
       setVisible(false);
-      try { sessionStorage.setItem("ln_loaded", "1"); } catch {}
       document.body.style.overflow = "";
-    }, 2000);
-    return () => { clearTimeout(timer); document.body.style.overflow = ""; };
-  }, [visible]);
+    }, 1400);
+    return () => {
+      clearTimeout(timer);
+      document.body.style.overflow = "";
+    };
+  }, [location.pathname]);
 
   return (
     <AnimatePresence>
       {visible && (
         <motion.div
+          key={key}
           className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
           style={{ backgroundColor: "hsl(var(--primary))" }}
           exit={{ y: "-100%" }}
@@ -43,7 +44,7 @@ const LoadingScreen = () => {
               style={{ backgroundColor: "hsl(var(--accent))" }}
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
-              transition={{ duration: 1.8, ease: "easeInOut" }}
+              transition={{ duration: 1.2, ease: "easeInOut" }}
             />
           </div>
         </motion.div>

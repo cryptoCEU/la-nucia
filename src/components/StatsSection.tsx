@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { staggerContainer, staggerItem, viewportOnce } from "@/lib/animations";
 
 const StatsSection = () => {
   const { t } = useTranslation();
@@ -12,22 +14,25 @@ const StatsSection = () => {
   return (
     <section className="bg-primary py-20 md:py-28">
       <div className="container max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+        <motion.div
+          variants={staggerContainer(0.15)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16"
+        >
           {stats.map((stat, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.2 }}
+              variants={staggerItem}
               className="flex flex-col gap-4"
             >
-              <span className="font-display text-7xl md:text-8xl font-semibold text-gold leading-none">{stat.number}</span>
+              <AnimatedCounter value={stat.number} className="font-display text-7xl md:text-8xl text-gold block leading-none" />
               <h3 className="font-display text-xl md:text-2xl text-primary-foreground font-medium">{stat.label}</h3>
               <p className="font-body text-sm text-primary-foreground/70 leading-relaxed max-w-md">{stat.description}</p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
