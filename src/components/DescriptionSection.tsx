@@ -9,7 +9,7 @@ const DescriptionSection = () => {
     <section className="py-24 md:py-32 bg-background">
       <div className="container max-w-6xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
+          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <p className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("description.tag")}</p>
             <h2 className="font-display text-3xl md:text-5xl text-foreground leading-tight mb-6">
               {t("description.title1")}<br /><span className="italic">{t("description.title2")}</span>
@@ -19,7 +19,13 @@ const DescriptionSection = () => {
             <p className="font-body text-muted-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: t("description.paragraph2") }} />
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.2 }} className="relative">
+          <motion.div
+            initial={{ clipPath: "inset(0 100% 0 0)" }}
+            whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
+            className="relative"
+          >
             <div className="overflow-hidden rounded-lg">
               <img src={buildingImg} alt={t("description.buildingAlt")} className="w-full h-[500px] object-cover" />
             </div>
