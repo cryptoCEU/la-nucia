@@ -28,6 +28,8 @@ const AppInner = () => {
   return (
     <>
       <ScrollToTop />
+      <LoadingScreen />
+      <CustomCursor />
       <PageTransition>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -53,8 +55,6 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <LoadingScreen />
-        <CustomCursor />
         <BrowserRouter>
           <AppInner />
         </BrowserRouter>
