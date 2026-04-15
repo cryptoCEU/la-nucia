@@ -55,11 +55,13 @@ const SlotDigit = ({ digit, delay }: { digit: string; delay: number }) => {
 interface AnimatedCounterProps {
   value: string;
   className?: string;
+  /** Extra ms before the first digit starts rolling (use to sync with parent stagger) */
+  baseDelay?: number;
 }
 
-const AnimatedCounter = ({ value, className = "" }: AnimatedCounterProps) => {
+const AnimatedCounter = ({ value, className = "", baseDelay = 600 }: AnimatedCounterProps) => {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
   const chars = value.split("");
 
   return (
@@ -69,7 +71,7 @@ const AnimatedCounter = ({ value, className = "" }: AnimatedCounterProps) => {
       style={{ display: "inline-flex", alignItems: "baseline" }}
     >
       {chars.map((ch, i) => (
-        <SlotDigit key={i} digit={ch} delay={isInView ? i * 80 : 99999} />
+        <SlotDigit key={i} digit={ch} delay={isInView ? baseDelay + i * 80 : 99999} />
       ))}
     </span>
   );
