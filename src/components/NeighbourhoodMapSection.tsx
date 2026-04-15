@@ -307,6 +307,8 @@ const NeighbourhoodMapSection = () => {
       style: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
       center: [-0.12765, 38.60001],
       zoom: 14,
+      minZoom: 11,
+      maxZoom: 18,
       pitch: isMobile ? 0 : 45,
       bearing: -25,
       antialias: true,
