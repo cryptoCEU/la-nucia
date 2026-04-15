@@ -90,33 +90,52 @@ const CATEGORIES: CategoryDef[] = [
 ];
 
 const POIS: POI[] = [
+  /* ── Residencial ── */
   {
     id: "res-1",
-    name: "LaNucía ONE",
+    name: "La Nucía ONE",
     lng: -0.12765,
     lat: 38.60001,
     category: "residential",
     description: "Residencial · La Nucía, Alicante",
   },
-  { id: "h-1", name: "Centro de Salud La Nucía", lng: -0.1165, lat: 38.6298, category: "health", walkMin: 5 },
-  { id: "h-2", name: "Farmacia Central", lng: -0.1195, lat: 38.6325, category: "health", walkMin: 3 },
-  { id: "h-3", name: "Clínica Dental Albir", lng: -0.0823, lat: 38.5763, category: "health", walkMin: 25 },
-  { id: "e-1", name: "CEIP La Nucía", lng: -0.1148, lat: 38.6342, category: "education", walkMin: 6 },
-  { id: "e-2", name: "IES La Nucía", lng: -0.1202, lat: 38.6289, category: "education", walkMin: 8 },
-  { id: "e-3", name: "Colegio Internacional", lng: -0.105, lat: 38.61, category: "education", walkMin: 20 },
-  { id: "s-1", name: "Mercadona La Nucía", lng: -0.122, lat: 38.6305, category: "shopping", walkMin: 7 },
-  { id: "s-2", name: "Centro Comercial Marina", lng: -0.0453, lat: 38.5412, category: "shopping", walkMin: 45 },
-  { id: "s-3", name: "Consum Alfaz del Pi", lng: -0.0905, lat: 38.5897, category: "shopping", walkMin: 30 },
-  { id: "n-1", name: "Parque Municipal La Nucía", lng: -0.1175, lat: 38.635, category: "nature", walkMin: 4 },
-  { id: "n-2", name: "Serra Gelada Natural Park", lng: -0.061, lat: 38.56, category: "nature", walkMin: 50 },
-  { id: "n-3", name: "Jardines de El Albir", lng: -0.0811, lat: 38.574, category: "nature", walkMin: 30 },
-  { id: "r-1", name: "La Sequieta", lng: -0.1155, lat: 38.633, category: "restaurants", walkMin: 5 },
-  { id: "r-2", name: "Restaurante El Altet", lng: -0.121, lat: 38.6315, category: "restaurants", walkMin: 8 },
-  { id: "r-3", name: "La Bodega de l'Albir", lng: -0.082, lat: 38.577, category: "restaurants", walkMin: 25 },
-  { id: "g-1", name: "BP La Nucía", lng: -0.124, lat: 38.6285, category: "gas", walkMin: 10 },
-  { id: "g-2", name: "Repsol Altea", lng: -0.072, lat: 38.599, category: "gas", walkMin: 20 },
-  { id: "t-1", name: "Parada Bus La Nucía", lng: -0.127658, lat: 38.631, category: "transport", walkMin: 4 },
-  { id: "t-2", name: "Estación TRAM Altea", lng: -0.0612, lat: 38.5981, category: "transport", walkMin: 35 },
+  /* ── Salud ── */
+  // Av. Porvilla 32, La Nucía
+  { id: "h-1", name: "Centro de Salud La Nucía", lng: -0.1115, lat: 38.6078, category: "health", walkMin: 20 },
+  // Casco urbano La Nucía
+  { id: "h-2", name: "Farmacia La Nucía", lng: -0.1178, lat: 38.6095, category: "health", walkMin: 22 },
+  // Av. Alcalde en Jaume Botella Mayor 7, Villajoyosa (en coche ~15 min)
+  { id: "h-3", name: "Hospital Marina Baixa", lng: -0.1958, lat: 38.5341, category: "health", walkMin: 90 },
+  /* ── Educación ── */
+  // Partida El Tossal, La Nucía
+  { id: "e-1", name: "CEIP Sant Rafel", lng: -0.1222, lat: 38.6120, category: "education", walkMin: 18 },
+  // Av. de la Marina Baixa, La Nucía
+  { id: "e-2", name: "IES La Nucía", lng: -0.1110, lat: 38.6048, category: "education", walkMin: 15 },
+  /* ── Comercios ── */
+  // Av. de la Marina Baixa 94, La Nucía
+  { id: "s-1", name: "Mercadona La Nucía", lng: -0.1093, lat: 38.6035, category: "shopping", walkMin: 25 },
+  // Av. de la Marina Baixa, La Nucía
+  { id: "s-2", name: "Lidl La Nucía", lng: -0.1068, lat: 38.6015, category: "shopping", walkMin: 28 },
+  /* ── Naturaleza / Deporte ── */
+  // Partida Muixara s/n, La Nucía
+  { id: "n-1", name: "Ciudad Deportiva Camilo Cano", lng: -0.1262, lat: 38.6138, category: "nature", walkMin: 20 },
+  // Sierra Helada, Alfàs del Pi / Benidorm
+  { id: "n-2", name: "Parc Natural Serra Gelada", lng: -0.0640, lat: 38.5390, category: "nature", walkMin: 90 },
+  /* ── Restaurantes ── */
+  // Avda. Iglesia 3, La Nucía (restaurante con estrella Michelin)
+  { id: "r-1", name: "Restaurante El Xato", lng: -0.1273, lat: 38.6123, category: "restaurants", walkMin: 16 },
+  // Casco antiguo La Nucía
+  { id: "r-2", name: "La Fábrica Gastrobar", lng: -0.1185, lat: 38.6098, category: "restaurants", walkMin: 20 },
+  /* ── Gasolineras ── */
+  // Av. Marina Baixa 80, La Nucía
+  { id: "g-1", name: "Repsol La Nucía", lng: -0.1080, lat: 38.6020, category: "gas", walkMin: 25 },
+  // CV-70, Partida Foia, La Nucía
+  { id: "g-2", name: "BP La Nucía", lng: -0.1320, lat: 38.6050, category: "gas", walkMin: 10 },
+  /* ── Transporte ── */
+  // Parada urbana cerca del centro
+  { id: "t-1", name: "Parada Bus La Nucía", lng: -0.1175, lat: 38.6090, category: "transport", walkMin: 18 },
+  // Estación TRAM en l'Alfàs del Pi
+  { id: "t-2", name: "Estación TRAM l'Alfàs", lng: -0.0855, lat: 38.5880, category: "transport", walkMin: 60 },
 ];
 
 /* ═══════════════════ MAP STYLES ═══════════════════ */
