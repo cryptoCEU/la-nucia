@@ -14,29 +14,32 @@ interface POI {
 }
 
 const pois: POI[] = [
-  // Health
-  { name: "Centro de Salud La Nucía", lng: -0.1268, lat: 38.6115, category: "health" },
-  { name: "Hospital Marina Baixa", lng: -0.0750, lat: 38.5690, category: "health" },
-  { name: "Farmacia Central La Nucía", lng: -0.1295, lat: 38.6095, category: "health" },
-  // Education
-  { name: "CEIP Sant Rafel", lng: -0.1310, lat: 38.6080, category: "education" },
-  { name: "IES La Nucía", lng: -0.1240, lat: 38.6130, category: "education" },
-  { name: "Escuela Infantil Municipal", lng: -0.1285, lat: 38.6102, category: "education" },
-  // Parks
-  { name: "Parc Natural Serra Gelada", lng: -0.0820, lat: 38.5460, category: "parks" },
-  { name: "Ciudad Deportiva Camilo Cano", lng: -0.1230, lat: 38.6060, category: "parks" },
-  { name: "Parque de La Nucía", lng: -0.1280, lat: 38.6090, category: "parks" },
-  // Shopping
-  { name: "Mercadona La Nucía", lng: -0.1260, lat: 38.6070, category: "shopping" },
-  { name: "Centro Comercial La Marina", lng: -0.1070, lat: 38.5530, category: "shopping" },
-  { name: "Lidl La Nucía", lng: -0.1220, lat: 38.6050, category: "shopping" },
-  // Restaurants
-  { name: "Restaurante El Xato", lng: -0.1305, lat: 38.6088, category: "restaurants" },
-  { name: "Restaurante Casa Pepe", lng: -0.1275, lat: 38.6110, category: "restaurants" },
-  { name: "Pizzería La Piazza", lng: -0.1250, lat: 38.6098, category: "restaurants" },
-  // Gas
-  { name: "Repsol La Nucía", lng: -0.1190, lat: 38.6045, category: "gas" },
-  { name: "Cepsa Av. Marina Baixa", lng: -0.1150, lat: 38.6020, category: "gas" },
+  // Health — Av. Porvilla 32
+  { name: "Centro de Salud La Nucía", lng: -0.1115, lat: 38.6078, category: "health" },
+  // Villajoyosa
+  { name: "Hospital Marina Baixa", lng: -0.1958, lat: 38.5341, category: "health" },
+  // Casco urbano
+  { name: "Farmacia La Nucía", lng: -0.1178, lat: 38.6095, category: "health" },
+  // Education — Partida El Tossal
+  { name: "CEIP Sant Rafel", lng: -0.1222, lat: 38.6120, category: "education" },
+  // Av. Marina Baixa
+  { name: "IES La Nucía", lng: -0.1110, lat: 38.6048, category: "education" },
+  // Parks — Partida Muixara s/n
+  { name: "Ciudad Deportiva Camilo Cano", lng: -0.1262, lat: 38.6138, category: "parks" },
+  // Serra Gelada
+  { name: "Parc Natural Serra Gelada", lng: -0.0640, lat: 38.5390, category: "parks" },
+  // Shopping — Av. Marina Baixa 94
+  { name: "Mercadona La Nucía", lng: -0.1093, lat: 38.6035, category: "shopping" },
+  // Av. Marina Baixa
+  { name: "Lidl La Nucía", lng: -0.1068, lat: 38.6015, category: "shopping" },
+  // Restaurants — Avda. Iglesia 3 (estrella Michelin)
+  { name: "Restaurante El Xato", lng: -0.1273, lat: 38.6123, category: "restaurants" },
+  // Casco antiguo
+  { name: "La Fábrica Gastrobar", lng: -0.1185, lat: 38.6098, category: "restaurants" },
+  // Gas — Av. Marina Baixa 80
+  { name: "Repsol La Nucía", lng: -0.1080, lat: 38.6020, category: "gas" },
+  // CV-70, Partida Foia
+  { name: "BP La Nucía", lng: -0.1320, lat: 38.6050, category: "gas" },
 ];
 
 /* ── Category visual config ── */
