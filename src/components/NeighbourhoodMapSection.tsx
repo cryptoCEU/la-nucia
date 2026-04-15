@@ -151,7 +151,17 @@ function injectMapStyles() {
       70%  { box-shadow: 0 0 0 20px rgba(201,169,110,0);    }
       100% { box-shadow: 0 0 0 0    rgba(201,169,110,0);    }
     }
+    .nb-main-marker-anchor {
+      position:relative;
+      width:0;
+      height:0;
+      overflow:visible;
+    }
     .nb-main-marker {
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
       width:52px; height:52px; border-radius:50%;
       background:#1B3A2D; border:2.5px solid #C9A96E;
       display:flex; align-items:center; justify-content:center;
@@ -159,23 +169,27 @@ function injectMapStyles() {
       cursor:pointer;
       transition:transform .3s cubic-bezier(.34,1.56,.64,1), filter .3s ease;
       filter:drop-shadow(0 4px 14px rgba(0,0,0,.22));
-      position:relative; z-index:10;
+      z-index:10;
     }
-    .nb-main-marker:hover { transform:scale(1.2) translateY(-3px); }
+    .nb-main-marker:hover { transform:translate(-50%, -50%) translateY(-3px) scale(1.2); }
     .nb-main-marker img   { width:30px; height:30px; object-fit:contain; border-radius:50%; display:block; }
     .nb-main-marker span  { color:#C9A96E; font-weight:700; font-size:15px; letter-spacing:.05em; }
 
     .nb-poi-wrapper {
-      position:relative;
+      position:absolute;
+      left:50%;
+      top:50%;
       display:inline-flex; align-items:center; justify-content:center;
       overflow:visible;
+      transform:translate(-50%, -50%);
+      transform-origin:center;
     }
     .nb-poi {
       width:40px; height:40px; border-radius:50%;
       background:#fff;
       display:flex; align-items:center; justify-content:center;
       cursor:pointer;
-      transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease;
+      transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s ease, opacity .35s ease;
       filter:drop-shadow(0 3px 10px rgba(0,0,0,.13));
       position:relative; z-index:2;
     }
@@ -349,14 +363,17 @@ const NeighbourhoodMapSection = () => {
       }
 
       /* ── Residential main marker ── */
+      const mainAnchor = document.createElement("div");
+      mainAnchor.className = "nb-main-marker-anchor";
       const mainEl = document.createElement("div");
       mainEl.className = "nb-main-marker";
       mainEl.innerHTML = `
         <img src="/favicon.png" alt="LaNuciaOne"
           style="width:30px;height:30px;object-fit:contain;border-radius:50%;display:block;"
-          onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span style=\\'color:#C9A96E;font-weight:700;font-size:14px;letter-spacing:.05em\\'>N1</span>')"
+          onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span style=\'color:#C9A96E;font-weight:700;font-size:14px;letter-spacing:.05em\'>N1</span>')"
         />`;
-      new ml.Marker({ element: mainEl, anchor: "center" }).setLngLat([-0.12765, 38.60001]).addTo(map);
+      mainAnchor.appendChild(mainEl);
+      new ml.Marker({ element: mainAnchor, anchor: "center" }).setLngLat([-0.12765, 38.60001]).addTo(map);
       mainEl.addEventListener("click", () => {
         map.flyTo({ center: [-0.12765, 38.60001], zoom: 16, pitch: isMobile ? 0 : 50, duration: 1200 });
         new ml.Popup({ offset: 30, closeButton: true })
@@ -373,11 +390,17 @@ const NeighbourhoodMapSection = () => {
         const cat = CATEGORIES.find((c) => c.id === poi.category);
         if (!cat) return;
 
+        const anchor = document.createElement("div");
+        anchor.style.position = "relative";
+        anchor.style.width = "0";
+        anchor.style.height = "0";
+        anchor.style.overflow = "visible";
+
         const wrapper = document.createElement("div");
         wrapper.className = "nb-poi-wrapper";
         wrapper.style.overflow = "visible";
         wrapper.style.opacity = "0";
-        wrapper.style.transform = "scale(0.5)";
+        wrapper.style.transform = "translate(-50%, -50%) scale(0.5)";
 
         const badge = document.createElement("div");
         badge.className = "nb-poi";
@@ -397,9 +420,10 @@ const NeighbourhoodMapSection = () => {
 
         wrapper.appendChild(card);
         wrapper.appendChild(badge);
+        anchor.appendChild(wrapper);
         hoverCardRefs.current.set(poi.id, card);
 
-        const markerParent = () => wrapper.closest('.maplibregl-marker') as HTMLElement | null;
+        const markerParent = () => anchor.closest('.maplibregl-marker') as HTMLElement | null;
 
         const showCard = () => {
           card.classList.add("visible");
@@ -457,14 +481,14 @@ const NeighbourhoodMapSection = () => {
                 wrapper.style.transition =
                   "opacity .5s cubic-bezier(.16,1,.3,1), transform .5s cubic-bezier(.34,1.56,.64,1)";
                 wrapper.style.opacity = "1";
-                wrapper.style.transform = "scale(1)";
+                wrapper.style.transform = "translate(-50%, -50%) scale(1)";
               },
               30 + idx * 50,
             );
           });
         });
 
-        const marker = new ml.Marker({ element: wrapper, anchor: "center" }).setLngLat([poi.lng, poi.lat]).addTo(map);
+        const marker = new ml.Marker({ element: anchor, anchor: "center" }).setLngLat([poi.lng, poi.lat]).addTo(map);
         markersRef.current.set(poi.id, marker);
       });
 
