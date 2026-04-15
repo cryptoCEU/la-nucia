@@ -378,20 +378,32 @@ const NeighbourhoodMapSection = () => {
         wrapper.appendChild(badge);
         hoverCardRefs.current.set(poi.id, card);
 
+        const markerParent = () => wrapper.closest('.maplibregl-marker') as HTMLElement | null;
+
         const showCard = () => {
           card.classList.add("visible");
+          const mp = markerParent();
+          if (mp) mp.style.zIndex = "9999";
           setHoveredPoi(poi.id);
         };
         const hideCard = () => {
           card.classList.remove("visible");
+          const mp = markerParent();
+          if (mp) mp.style.zIndex = "";
           setHoveredPoi(null);
         };
 
         if (isMobile) {
           badge.addEventListener("click", (e) => {
             e.stopPropagation();
-            hoverCardRefs.current.forEach((c) => c.classList.remove("visible"));
-            card.classList.toggle("visible");
+            hoverCardRefs.current.forEach((c) => {
+              c.classList.remove("visible");
+              const mp = c.closest('.maplibregl-marker') as HTMLElement | null;
+              if (mp) mp.style.zIndex = "";
+            });
+            const isNowVisible = card.classList.toggle("visible");
+            const mp = markerParent();
+            if (mp) mp.style.zIndex = isNowVisible ? "9999" : "";
           });
         } else {
           badge.addEventListener("mouseenter", showCard);
