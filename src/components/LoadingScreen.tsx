@@ -35,18 +35,10 @@ const LoadingScreen = () => {
             src="/favicon.png"
             alt=""
             className="w-16 h-16 object-contain"
-            animate={{ scale: [1, 1.08, 1] }}
-            transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 0.7, filter: "blur(8px)" }}
+            animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           />
-          <div className="mt-6 w-48 h-0.5 rounded-full overflow-hidden" style={{ backgroundColor: "hsl(var(--accent) / 0.2)" }}>
-            <motion.div
-              className="h-full rounded-full"
-              style={{ backgroundColor: "hsl(var(--accent))" }}
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 1.2, ease: "easeInOut" }}
-            />
-          </div>
         </motion.div>
       )}
     </AnimatePresence>
