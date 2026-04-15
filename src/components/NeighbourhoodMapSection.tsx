@@ -93,8 +93,8 @@ const POIS: POI[] = [
   {
     id: "res-1",
     name: "LaNucía ONE",
-    lng: -0.118,
-    lat: 38.6317,
+    lng: -0.12765,
+    lat: 38.60001,
     category: "residential",
     description: "Residencial · La Nucía, Alicante",
   },
@@ -115,7 +115,7 @@ const POIS: POI[] = [
   { id: "r-3", name: "La Bodega de l'Albir", lng: -0.082, lat: 38.577, category: "restaurants", walkMin: 25 },
   { id: "g-1", name: "BP La Nucía", lng: -0.124, lat: 38.6285, category: "gas", walkMin: 10 },
   { id: "g-2", name: "Repsol Altea", lng: -0.072, lat: 38.599, category: "gas", walkMin: 20 },
-  { id: "t-1", name: "Parada Bus La Nucía", lng: -0.1188, lat: 38.631, category: "transport", walkMin: 4 },
+  { id: "t-1", name: "Parada Bus La Nucía", lng: -0.127658, lat: 38.631, category: "transport", walkMin: 4 },
   { id: "t-2", name: "Estación TRAM Altea", lng: -0.0612, lat: 38.5981, category: "transport", walkMin: 35 },
 ];
 
@@ -286,7 +286,7 @@ const NeighbourhoodMapSection = () => {
     const map = new ml.Map({
       container: mapContainer.current,
       style: "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json",
-      center: [-0.118, 38.6317],
+      center: [-0.12765, 38.60001],
       zoom: 14,
       pitch: isMobile ? 0 : 45,
       bearing: -25,
@@ -335,11 +335,11 @@ const NeighbourhoodMapSection = () => {
           style="width:30px;height:30px;object-fit:contain;border-radius:50%;display:block;"
           onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<span style=\\'color:#C9A96E;font-weight:700;font-size:14px;letter-spacing:.05em\\'>N1</span>')"
         />`;
-      new ml.Marker({ element: mainEl, anchor: "center" }).setLngLat([-0.118, 38.6317]).addTo(map);
+      new ml.Marker({ element: mainEl, anchor: "center" }).setLngLat([-0.12765, 38.60001]).addTo(map);
       mainEl.addEventListener("click", () => {
-        map.flyTo({ center: [-0.118, 38.6317], zoom: 16, pitch: isMobile ? 0 : 50, duration: 1200 });
+        map.flyTo({ center: [-0.12765, 38.60001], zoom: 16, pitch: isMobile ? 0 : 50, duration: 1200 });
         new ml.Popup({ offset: 30, closeButton: true })
-          .setLngLat([-0.118, 38.6317])
+          .setLngLat([-0.12765, 38.60001])
           .setHTML(
             `<div><strong style="color:#1B3A2D;font-size:14px;">LA NUCÍA ONE</strong><br/>
             <span style="font-size:12px;color:#6B6B6B">Residencial · La Nucía, Alicante</span></div>`,

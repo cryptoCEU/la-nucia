@@ -176,7 +176,7 @@ const MapboxMapInteractive = ({ activeCategories }: Props) => {
     const map = new mapboxgl.Map({
       container: containerRef.current,
       style: "mapbox://styles/mapbox/light-v11",
-      center: [-0.1270, 38.6100],
+      center: [-0.12765, 38.60001],
       zoom: 14,
       pitch: 45,
       bearing: -20,
@@ -245,7 +245,7 @@ const MapboxMapInteractive = ({ activeCategories }: Props) => {
       `;
 
       new mapboxgl.Marker({ element: mainEl, anchor: "center" })
-        .setLngLat([-0.1270, 38.6100])
+        .setLngLat([-0.12765, 38.60001])
         .setPopup(
           new mapboxgl.Popup({ offset: 30, closeButton: true }).setHTML(
             `<div>
