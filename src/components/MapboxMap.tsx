@@ -14,7 +14,7 @@ const MapComponent = () => {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: "mapbox://styles/mapbox/dark-v11",
-      center: [-0.13, 38.61],
+      center: [-0.12765, 38.60001],
       zoom: 13,
       attributionControl: false,
     });
@@ -64,7 +64,7 @@ const MapComponent = () => {
     markerEl.style.cursor = "pointer";
 
     new mapboxgl.Marker({ element: markerEl, anchor: "bottom" })
-      .setLngLat([-0.13, 38.61])
+      .setLngLat([-0.12765, 38.60001])
       .setPopup(
         new mapboxgl.Popup({ offset: 25, className: "activum-popup" }).setHTML(
           `<div style="font-family: 'DM Sans', sans-serif; padding: 4px;">
