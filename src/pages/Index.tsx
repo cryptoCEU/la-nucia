@@ -163,6 +163,9 @@ const Index = () => {
           </div>
         </section>
 
+        {/* ═══ FIXED IMAGE WINDOW (scroll-reveal band) ═══ */}
+        <FixedImageWindow phrase="Donde el Mediterráneo define el estilo de vida" />
+
         {/* ═══ PREVIEW: UBICACIÓN ═══ */}
         <section className="relative py-32 md:py-44 bg-primary overflow-hidden">
           <motion.div
