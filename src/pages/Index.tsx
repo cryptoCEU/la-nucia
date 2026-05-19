@@ -45,7 +45,13 @@ const Index = () => {
         path="/"
       />
       <Navbar />
-      <main>
+      <main className="home-main">
+        <style>{`
+          /* Every direct section masks the fixed image behind FixedImageWindow.
+             The band itself opts out via .fiw-band. */
+          .home-main > section { position: relative; z-index: 10; }
+          .home-main > .fiw-band { z-index: 5; }
+        `}</style>
         {/* ═══ HERO FULLSCREEN — sticky 300vh with two phases ═══ */}
         <section ref={heroRef} className="relative h-[300vh]">
           <div className="sticky top-0 h-screen w-full overflow-hidden">
