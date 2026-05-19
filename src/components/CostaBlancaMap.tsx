@@ -252,12 +252,14 @@ const CostaBlancaMap = () => {
           border: 1px solid rgba(13,58,42,0.18);
         }
 
-        /* Dotted black route */
-        .cb-route-path {
-          stroke: #0d0d0d; stroke-width: 2.5; fill: none;
-          stroke-dasharray: 1.5 6; stroke-linecap: round;
-          opacity: 0.85;
+        /* Progressive dotted route */
+        .cb-route-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
+        .cb-route-dot {
+          display: block; width: 5px; height: 5px; border-radius: 50%;
+          background: #0d3a2a; box-shadow: 0 0 0 2px rgba(249,246,241,0.85);
+          animation: cb-route-dot-in .22s ease both;
         }
+        @keyframes cb-route-dot-in { from { opacity: 0; transform: scale(0.35); } to { opacity: 1; transform: scale(1); } }
 
         .cb-cards-wrap { width: 100%; margin-top: 24px; }
         .cb-cards-scroller {
@@ -311,13 +313,15 @@ const CostaBlancaMap = () => {
         <ZoomControl position="bottomright" />
         <ScrollEnabler />
 
-        {/* Animated dotted black route progressively drawn from La Nucía */}
-        {routePositions && (
-          <Polyline
-            positions={routePositions}
-            pathOptions={{ className: "cb-route-path" }}
+        {/* Animated dotted route progressively drawn from La Nucía */}
+        {routeDotPositions.map((position, index) => (
+          <Marker
+            key={`route-${hovered}-${index}`}
+            position={position}
+            icon={routeDotIcon(index)}
+            interactive={false}
           />
-        )}
+        ))}
 
         {/* La Nucía isotipo */}
         <Marker position={LA_NUCIA} icon={nuciaIcon(isMobile)} interactive={false} />
