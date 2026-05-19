@@ -129,8 +129,23 @@ const Ubicacion = () => {
           </div>
         </section>
 
-        {/* Interactive Neighbourhood Map */}
-        <NeighbourhoodMapSection />
+        {/* Entorno Privilegiado — Costa Blanca Map */}
+        <section className="py-20 md:py-28 bg-[#F9F6F1]">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
+            <div className="mb-12">
+              <p className="text-[#C9A96E] font-body text-xs tracking-[0.3em] uppercase mb-3">
+                Entorno Privilegiado
+              </p>
+              <h2 className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4">
+                Todo lo que necesitas, a tu alcance
+              </h2>
+              <p className="font-body text-[#6B6B6B] max-w-2xl leading-relaxed">
+                La Nucía ofrece una calidad de vida excepcional, rodeada de servicios, naturaleza y conectividad.
+              </p>
+            </div>
+            <CostaBlancaMap />
+          </div>
+        </section>
       </main>
       <FooterSection />
     </>
