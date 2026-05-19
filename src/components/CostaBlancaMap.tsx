@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { MapContainer, TileLayer, Marker, Polyline, useMap, ZoomControl } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMap, ZoomControl } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import logoIsotipo from "@/assets/logo-nucia-one.png";
@@ -95,10 +95,18 @@ const nuciaIcon = (isMobile: boolean) => {
         <span class="cb-nucia-label">La Nucía One</span>
       </div>
     `,
-    iconSize: [size, size + 20],
-    iconAnchor: [size / 2, size / 2],
+    iconSize: [120, size + 28],
+    iconAnchor: [60, size / 2],
   });
 };
+
+const routeDotIcon = (index: number) =>
+  L.divIcon({
+    className: "cb-route-dot-marker",
+    html: `<span class="cb-route-dot" style="animation-delay:${index * 14}ms"></span>`,
+    iconSize: [8, 8],
+    iconAnchor: [4, 4],
+  });
 
 const ScrollEnabler = () => {
   const map = useMap();
@@ -163,11 +171,15 @@ const CostaBlancaMap = () => {
     };
   }, [activePin]);
 
-  const routePositions = useMemo<[number, number][] | null>(() => {
-    if (!activePin) return null;
-    const lat = LA_NUCIA[0] + (activePin.lat - LA_NUCIA[0]) * routeT;
-    const lng = LA_NUCIA[1] + (activePin.lng - LA_NUCIA[1]) * routeT;
-    return [LA_NUCIA, [lat, lng]];
+  const routeDotPositions = useMemo<[number, number][]>(() => {
+    if (!activePin) return [];
+    const visibleSteps = Math.max(0, Math.floor(32 * routeT));
+    return Array.from({ length: visibleSteps }, (_, index) => {
+      const t = (index + 1) / 32;
+      const lat = LA_NUCIA[0] + (activePin.lat - LA_NUCIA[0]) * t;
+      const lng = LA_NUCIA[1] + (activePin.lng - LA_NUCIA[1]) * t;
+      return [lat, lng] as [number, number];
+    });
   }, [activePin, routeT]);
 
   return (
@@ -206,7 +218,7 @@ const CostaBlancaMap = () => {
         .cb-poi-marker { background: transparent !important; border: none !important; }
         .cb-poi {
           position: relative; display: flex; flex-direction: column; align-items: center;
-          transform: translate(-50%, -100%); cursor: pointer;
+          cursor: pointer;
           transition: transform .25s ease;
         }
         .cb-poi svg {
@@ -226,7 +238,7 @@ const CostaBlancaMap = () => {
 
         /* La Nucía isotipo (round + small) */
         .cb-nucia-marker { background: transparent !important; border: none !important; }
-        .cb-nucia-wrap { display: flex; flex-direction: column; align-items: center; pointer-events: none; transform: translate(-50%, -50%); }
+        .cb-nucia-wrap { width: 120px; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
         .cb-nucia-ring {
           display: flex; align-items: center; justify-content: center;
           border-radius: 50%; background: #0d3a2a;
@@ -240,12 +252,14 @@ const CostaBlancaMap = () => {
           border: 1px solid rgba(13,58,42,0.18);
         }
 
-        /* Dotted black route */
-        .cb-route-path {
-          stroke: #0d0d0d; stroke-width: 2.5; fill: none;
-          stroke-dasharray: 1.5 6; stroke-linecap: round;
-          opacity: 0.85;
+        /* Progressive dotted route */
+        .cb-route-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
+        .cb-route-dot {
+          display: block; width: 5px; height: 5px; border-radius: 50%;
+          background: #0d0d0d; box-shadow: 0 0 0 2px rgba(249,246,241,0.85);
+          animation: cb-route-dot-in .22s ease both;
         }
+        @keyframes cb-route-dot-in { from { opacity: 0; transform: scale(0.35); } to { opacity: 1; transform: scale(1); } }
 
         .cb-cards-wrap { width: 100%; margin-top: 24px; }
         .cb-cards-scroller {
@@ -299,13 +313,16 @@ const CostaBlancaMap = () => {
         <ZoomControl position="bottomright" />
         <ScrollEnabler />
 
-        {/* Animated dotted black route progressively drawn from La Nucía */}
-        {routePositions && (
-          <Polyline
-            positions={routePositions}
-            pathOptions={{ className: "cb-route-path" }}
+        {/* Animated dotted route progressively drawn from La Nucía */}
+        {routeDotPositions.map((position, index) => (
+          <Marker
+            key={`route-${hovered}-${index}`}
+            position={position}
+            icon={routeDotIcon(index)}
+            interactive={false}
+            zIndexOffset={400}
           />
-        )}
+        ))}
 
         {/* La Nucía isotipo */}
         <Marker position={LA_NUCIA} icon={nuciaIcon(isMobile)} interactive={false} />
