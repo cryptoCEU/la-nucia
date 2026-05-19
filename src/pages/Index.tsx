@@ -45,67 +45,59 @@ const Index = () => {
       />
       <Navbar />
       <main>
-        {/* ═══ HERO FULLSCREEN ═══ */}
-        <section ref={hero.ref} className="relative h-screen flex flex-col justify-end overflow-hidden">
-          <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
-            <motion.img
-              src={heroImage}
-              alt="Promoción de obra nueva en La Nucía"
-              className="w-full h-full object-cover"
-              initial={{ scale: 1.12 }}
-              animate={{ scale: 1 }}
-              transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/20" />
-          </motion.div>
-          <motion.div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-24 md:pb-32" style={{ y: hero.textY, opacity: hero.opacity }}>
-            <motion.div
-              variants={staggerContainer(0.15, 0.4)}
-              initial="hidden"
-              animate="visible"
-              className="max-w-3xl"
-            >
-              <motion.p variants={heroText(0)} className="font-body text-xs tracking-[0.3em] uppercase text-gold mb-4">
-                {t("home.heroTag")}
-              </motion.p>
-              <motion.h1 variants={heroText(0)} className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary-foreground leading-[1.1] mb-6">
-                {t("home.heroTitle1")}{" "}
-                <span className="italic">{t("home.heroTitle2")}</span>
-              </motion.h1>
-              <motion.p variants={heroText(0)} className="font-body text-primary-foreground/60 text-base md:text-lg max-w-xl mb-8">
-                {t("home.heroSubtitle")}
-              </motion.p>
-              <motion.div variants={heroText(0)} className="flex flex-wrap gap-4">
-                <Link
-                  to="/viviendas"
-                  className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
-                >
-                  {t("home.discoverHomes")} <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-                </Link>
-                <Link
-                  to="/contacto"
-                  className="inline-flex items-center gap-3 border border-primary-foreground/20 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-700"
-                >
-                  {t("home.contactUs")}
-                </Link>
-              </motion.div>
+        {/* ═══ HERO FULLSCREEN — sticky 300vh with two phases ═══ */}
+        <section ref={heroRef} className="relative h-[300vh]">
+          <div className="sticky top-0 h-screen w-full overflow-hidden">
+            {/* Layer 1: image (static during phase 1, Ken Burns during phase 2) */}
+            <motion.div className="absolute inset-0 z-0" style={{ scale: heroImgScale }}>
+              <motion.img
+                src={heroImage}
+                alt="Promoción de obra nueva en La Nucía"
+                className="w-full h-full object-cover"
+                initial={{ scale: 1.08 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+              />
             </motion.div>
-          </motion.div>
-          {/* Scroll indicator */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 hidden md:flex flex-col items-center gap-2"
-          >
-            <span className="font-body text-[10px] tracking-[0.3em] uppercase text-primary-foreground/40">Scroll</span>
+            {/* Layer 2: overlay gradient */}
+            <div className="absolute inset-0 z-10 bg-gradient-to-t from-primary via-primary/50 to-primary/10 pointer-events-none" />
+            {/* Layer 3: text — fixed in place, fades in only during phase 2 */}
             <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-px h-8 bg-gradient-to-b from-primary-foreground/40 to-transparent"
-            />
-          </motion.div>
+              className="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32"
+              style={{ opacity: heroTextOpacity }}
+            >
+              <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
+                <div className="max-w-3xl">
+                  <p className="font-body text-xs tracking-[0.3em] uppercase text-gold mb-4">
+                    {t("home.heroTag")}
+                  </p>
+                  <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary-foreground leading-[1.1] mb-6">
+                    {t("home.heroTitle1")}{" "}
+                    <span className="italic">{t("home.heroTitle2")}</span>
+                  </h1>
+                  <p className="font-body text-primary-foreground/60 text-base md:text-lg max-w-xl mb-8">
+                    {t("home.heroSubtitle")}
+                  </p>
+                  <div className="flex flex-wrap gap-4">
+                    <Link
+                      to="/viviendas"
+                      className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
+                    >
+                      {t("home.discoverHomes")} <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+                    </Link>
+                    <Link
+                      to="/contacto"
+                      className="inline-flex items-center gap-3 border border-primary-foreground/20 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-700"
+                    >
+                      {t("home.contactUs")}
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </section>
+
 
         {/* ═══ STATS BAR ═══ */}
         <section className="bg-primary border-t border-primary-foreground/10">
