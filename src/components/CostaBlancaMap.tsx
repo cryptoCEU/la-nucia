@@ -172,7 +172,7 @@ const CostaBlancaMap = () => {
   }, [activePin]);
 
   const routeDotPositions = useMemo<[number, number][]>(() => {
-    if (!activePin) return null;
+    if (!activePin) return [];
     const visibleSteps = Math.max(0, Math.floor(32 * routeT));
     return Array.from({ length: visibleSteps }, (_, index) => {
       const t = (index + 1) / 32;
