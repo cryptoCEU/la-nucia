@@ -53,7 +53,7 @@ const Navbar = () => {
   const smallLeft = 32;
   const largeLeft = vw / 2 - largeW / 2;
 
-  const animEnd = vh * 0.9;
+  const animEnd = isHome ? vh * 1.2 : vh * 0.5;
   const logoTop = useTransform(scrollY, [0, animEnd], [largeTop, smallTop], { clamp: true });
   const logoLeft = useTransform(scrollY, [0, animEnd], [largeLeft, smallLeft], { clamp: true });
   const logoHeight = useTransform(scrollY, [0, animEnd], [largeH, smallH], { clamp: true });
