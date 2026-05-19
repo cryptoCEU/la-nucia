@@ -318,7 +318,7 @@ const CostaBlancaMap = () => {
             icon={
               p.primary
                 ? primaryLabelIcon(p.name, isMobile, hovered === p.id)
-                : poiPinIcon(p.name, isMobile, hovered === p.id)
+                : poiPinIcon(hovered === p.id)
             }
             eventHandlers={{
               mouseover: () => setHovered(p.id),
