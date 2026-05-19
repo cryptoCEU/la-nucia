@@ -46,7 +46,7 @@ const Navbar = () => {
 
   const { scrollY } = useScroll();
   const smallH = 48;
-  const largeH = Math.min(240, vh * 0.28);
+  const largeH = Math.min(420, vh * 0.5);
   const largeW = largeH * aspect;
   const smallTop = 16;
   const largeTop = Math.max(40, vh * 0.06);
