@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -13,11 +14,19 @@ import {
   fadeUp, fadeIn, scaleIn, slideRight, staggerContainer, staggerItem,
   heroText, viewportOnce, viewportOnceNear, slowTransition, clipReveal
 } from "@/lib/animations";
-import { useHeroParallax, useParallax } from "@/hooks/use-parallax";
+import { useParallax } from "@/hooks/use-parallax";
 
 const Index = () => {
   const { t } = useTranslation();
-  const hero = useHeroParallax();
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: heroProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  // Phase 1 (0 → 0.4): logo animates (handled by Navbar). Image static.
+  // Phase 2 (0.4 → 1): image Ken Burns + text fades in and stays still.
+  const heroImgScale = useTransform(heroProgress, [0, 0.4, 1], [1, 1, 1.15]);
+  const heroTextOpacity = useTransform(heroProgress, [0.4, 0.5], [0, 1]);
   const locationParallax = useParallax({ speed: 0.25 });
 
   const stats = [
