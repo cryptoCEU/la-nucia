@@ -14,7 +14,7 @@ const HeroHome = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-ocean-dark/85 via-ocean-dark/60 to-ocean-dark/40" />
       </div>
 
-      <div className="relative z-10 flex-1 flex flex-col justify-center pt-24 pb-8">
+      <div className="relative z-10 flex-1 flex flex-col justify-end pt-24 pb-16 md:pb-24">
         <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
           <div>
             <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="font-body text-sm tracking-[0.2em] uppercase text-primary-foreground/60 mb-4">
