@@ -46,12 +46,11 @@ const Navbar = () => {
 
   const { scrollY } = useScroll();
   const smallH = 48;
-  const largeH = Math.min(280, vh * 0.32);
-  const smallW = smallH * aspect;
+  const largeH = Math.min(240, vh * 0.28);
   const largeW = largeH * aspect;
   const smallTop = 16;
-  const largeTop = vh * 0.18;
-  const smallLeft = Math.max(32, vw - 32 - smallW);
+  const largeTop = Math.max(40, vh * 0.06);
+  const smallLeft = 32;
   const largeLeft = vw / 2 - largeW / 2;
 
   const logoTop = useTransform(scrollY, [0, 500], [largeTop, smallTop], { clamp: true });
