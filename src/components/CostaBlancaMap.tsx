@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { MapContainer, TileLayer, Marker, Polyline, useMap, ZoomControl } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMap, ZoomControl } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import logoIsotipo from "@/assets/logo-nucia-one.png";
@@ -95,10 +95,18 @@ const nuciaIcon = (isMobile: boolean) => {
         <span class="cb-nucia-label">La Nucía One</span>
       </div>
     `,
-    iconSize: [size, size + 20],
-    iconAnchor: [size / 2, size / 2],
+    iconSize: [120, size + 28],
+    iconAnchor: [60, size / 2],
   });
 };
+
+const routeDotIcon = (index: number) =>
+  L.divIcon({
+    className: "cb-route-dot-marker",
+    html: `<span class="cb-route-dot" style="animation-delay:${index * 14}ms"></span>`,
+    iconSize: [8, 8],
+    iconAnchor: [4, 4],
+  });
 
 const ScrollEnabler = () => {
   const map = useMap();
