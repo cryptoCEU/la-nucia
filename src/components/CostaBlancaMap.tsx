@@ -54,12 +54,12 @@ const PINS: Pin[] = [
   { id: "islabenidorm", name: "Isla de Benidorm", lat: 38.506, lng: -0.107, category: "Naturaleza", description: "Reserva marina frente a la bahía.", driveMin: 15, driveKm: 12 },
 ];
 
-// Sophisticated small black map-pin SVG for POIs
+// Lollipop-style map pin (circle on stick with oval base) in La Nucía dark green
 const POI_PIN_SVG = `
-  <svg viewBox="0 0 24 32" xmlns="http://www.w3.org/2000/svg" width="16" height="22" aria-hidden="true">
-    <path d="M12 0.8C5.9 0.8 1 5.7 1 11.8c0 8 11 19.4 11 19.4S23 19.8 23 11.8C23 5.7 18.1 0.8 12 0.8z"
-      fill="#0d0d0d" stroke="#fff" stroke-width="1.2"/>
-    <circle cx="12" cy="11.6" r="3.2" fill="#fff"/>
+  <svg viewBox="0 0 24 34" xmlns="http://www.w3.org/2000/svg" width="18" height="26" aria-hidden="true">
+    <ellipse cx="12" cy="31" rx="7" ry="2.2" fill="none" stroke="#0d3a2a" stroke-width="1.8"/>
+    <rect x="11.1" y="13" width="1.8" height="16" fill="#0d3a2a"/>
+    <circle cx="12" cy="9" r="8" fill="#0d3a2a"/>
   </svg>
 `;
 
@@ -71,17 +71,16 @@ const primaryLabelIcon = (label: string, isMobile: boolean, active: boolean) =>
     iconAnchor: [0, 0],
   });
 
-const poiPinIcon = (label: string, isMobile: boolean, active: boolean) =>
+const poiPinIcon = (active: boolean) =>
   L.divIcon({
     className: "cb-poi-marker",
     html: `
       <div class="cb-poi ${active ? "cb-poi-active" : ""}">
         ${POI_PIN_SVG}
-        <span class="cb-poi-label" style="font-size:${isMobile ? 9 : 10.5}px">${label}</span>
       </div>
     `,
-    iconSize: [16, 22],
-    iconAnchor: [8, 22],
+    iconSize: [18, 26],
+    iconAnchor: [9, 26],
   });
 
 const nuciaIcon = (isMobile: boolean) => {
@@ -319,7 +318,7 @@ const CostaBlancaMap = () => {
             icon={
               p.primary
                 ? primaryLabelIcon(p.name, isMobile, hovered === p.id)
-                : poiPinIcon(p.name, isMobile, hovered === p.id)
+                : poiPinIcon(hovered === p.id)
             }
             eventHandlers={{
               mouseover: () => setHovered(p.id),
