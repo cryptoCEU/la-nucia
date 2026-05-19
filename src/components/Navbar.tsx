@@ -53,9 +53,10 @@ const Navbar = () => {
   const smallLeft = 32;
   const largeLeft = vw / 2 - largeW / 2;
 
-  const logoTop = useTransform(scrollY, [0, 500], [largeTop, smallTop], { clamp: true });
-  const logoLeft = useTransform(scrollY, [0, 500], [largeLeft, smallLeft], { clamp: true });
-  const logoHeight = useTransform(scrollY, [0, 500], [largeH, smallH], { clamp: true });
+  const animEnd = vh * 0.9;
+  const logoTop = useTransform(scrollY, [0, animEnd], [largeTop, smallTop], { clamp: true });
+  const logoLeft = useTransform(scrollY, [0, animEnd], [largeLeft, smallLeft], { clamp: true });
+  const logoHeight = useTransform(scrollY, [0, animEnd], [largeH, smallH], { clamp: true });
 
   return (
     <>
