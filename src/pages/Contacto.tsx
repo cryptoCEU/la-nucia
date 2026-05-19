@@ -76,7 +76,7 @@ const Contacto = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ocean-dark/95 via-ocean-dark/70 to-ocean-dark/40" />
           </motion.div>
-          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-16 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
+          <motion.div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-16 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.12, 0.3)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="font-body text-xs tracking-[0.2em] uppercase text-gold mb-2">
                 {t("contactoPage.tag")}
@@ -93,7 +93,7 @@ const Contacto = () => {
         </section>
 
         <section className="bg-sand py-20 md:py-28">
-          <div className="container max-w-7xl mx-auto px-6">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="grid lg:grid-cols-[1fr_2fr] gap-16">
               <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
                 <motion.p variants={staggerItem} className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">{t("contactoPage.infoTag")}</motion.p>

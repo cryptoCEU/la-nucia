@@ -41,7 +41,7 @@ const GallerySection = () => {
   return (
     <>
       <section className="py-16 md:py-24 bg-sand">
-        <div className="container max-w-7xl mx-auto px-6">
+        <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
           <motion.div
             variants={staggerContainer(0.1, 0.1)}
             initial="hidden"

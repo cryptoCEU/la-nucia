@@ -45,7 +45,7 @@ const Ubicacion = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent" />
           </motion.div>
-          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
+          <motion.div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-20 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.13, 0.3)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">
                 {t("ubicacionPage.tag")}
@@ -57,7 +57,7 @@ const Ubicacion = () => {
 
         {/* Stats bar */}
         <section className="bg-primary border-t border-primary-foreground/10">
-          <div className="container max-w-7xl mx-auto px-6">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10">
               {stats.map((stat, i) => (
                 <motion.div

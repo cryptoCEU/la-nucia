@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Phone, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -31,8 +31,24 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
+  const { scrollY } = useScroll();
+  const range = [0, 500];
+  const logoTop = useTransform(scrollY, range, ["18vh", "16px"], { clamp: true });
+  const logoLeft = useTransform(scrollY, range, ["50%", "32px"], { clamp: true });
+  const logoX = useTransform(scrollY, range, ["-50%", "0%"], { clamp: true });
+  const logoHeight = useTransform(scrollY, range, [260, 48], { clamp: true });
+  const logoOpacity = useTransform(scrollY, [0, 50], [1, 1]);
+
   return (
     <>
+      {isHome && (
+        <motion.img
+          src={logoNuciaOne}
+          alt="La Nucía One"
+          style={{ top: logoTop, left: logoLeft, x: logoX, height: logoHeight, opacity: logoOpacity }}
+          className="fixed z-[60] opacity-90 pointer-events-none will-change-transform"
+        />
+      )}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || !isHome
@@ -40,10 +56,14 @@ const Navbar = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
-          </Link>
+        <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
+          {!isHome ? (
+            <Link to="/" className="flex items-center gap-3">
+              <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
+            </Link>
+          ) : (
+            <Link to="/" aria-label="La Nucía One" className="block w-12 h-12" />
+          )}
 
           <div className="flex items-center gap-6">
             <LanguageSelector className="hidden md:flex" />
@@ -74,7 +94,7 @@ const Navbar = () => {
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-[100] bg-primary flex flex-col"
           >
-            <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+            <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
               <Link to="/" className="flex items-center gap-3">
                 <img src={logoNuciaOne} alt="La Nucía One" className="h-16 opacity-90" />
               </Link>
