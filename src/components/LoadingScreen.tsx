@@ -34,7 +34,7 @@ const LoadingScreen = () => {
           <motion.img
             src="/favicon.png"
             alt=""
-            className="w-16 h-16 object-contain"
+            className="w-32 h-32 md:w-40 md:h-40 object-contain"
             initial={{ opacity: 0, scale: 0.7, filter: "blur(8px)" }}
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
