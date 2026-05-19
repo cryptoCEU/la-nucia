@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import FixedImageWindow from "@/components/FixedImageWindow";
 import heroImage from "@/assets/hero-nucia.jpg";
 import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
@@ -44,7 +45,13 @@ const Index = () => {
         path="/"
       />
       <Navbar />
-      <main>
+      <main className="home-main">
+        <style>{`
+          /* Every direct section masks the fixed image behind FixedImageWindow.
+             The band itself opts out via .fiw-band. */
+          .home-main > section { position: relative; z-index: 10; }
+          .home-main > .fiw-band { z-index: 5; }
+        `}</style>
         {/* ═══ HERO FULLSCREEN — sticky 300vh with two phases ═══ */}
         <section ref={heroRef} className="relative h-[300vh]">
           <div className="sticky top-0 h-screen w-full overflow-hidden">
@@ -155,6 +162,9 @@ const Index = () => {
             </div>
           </div>
         </section>
+
+        {/* ═══ FIXED IMAGE WINDOW (scroll-reveal band) ═══ */}
+        <FixedImageWindow phrase="Donde el Mediterráneo define el estilo de vida" />
 
         {/* ═══ PREVIEW: UBICACIÓN ═══ */}
         <section className="relative py-32 md:py-44 bg-primary overflow-hidden">
