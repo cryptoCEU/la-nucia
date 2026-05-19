@@ -148,7 +148,7 @@ const CostaBlancaMap = () => {
     scroller.scrollTo({ left, behavior: "smooth" });
   }, [hovered]);
 
-  const activePin = useMemo(() => PINS.find((p) => p.id === hovered) || null, [hovered]);
+  const activePin = useMemo(() => PINS.find((p) => p.id === hovered && !p.primary) || null, [hovered]);
 
   // Animate route drawing from La Nucía to active pin
   useEffect(() => {
@@ -171,11 +171,15 @@ const CostaBlancaMap = () => {
     };
   }, [activePin]);
 
-  const routePositions = useMemo<[number, number][] | null>(() => {
+  const routeDotPositions = useMemo<[number, number][]>(() => {
     if (!activePin) return null;
-    const lat = LA_NUCIA[0] + (activePin.lat - LA_NUCIA[0]) * routeT;
-    const lng = LA_NUCIA[1] + (activePin.lng - LA_NUCIA[1]) * routeT;
-    return [LA_NUCIA, [lat, lng]];
+    const visibleSteps = Math.max(0, Math.floor(32 * routeT));
+    return Array.from({ length: visibleSteps }, (_, index) => {
+      const t = (index + 1) / 32;
+      const lat = LA_NUCIA[0] + (activePin.lat - LA_NUCIA[0]) * t;
+      const lng = LA_NUCIA[1] + (activePin.lng - LA_NUCIA[1]) * t;
+      return [lat, lng] as [number, number];
+    });
   }, [activePin, routeT]);
 
   return (
