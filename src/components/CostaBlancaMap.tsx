@@ -218,7 +218,7 @@ const CostaBlancaMap = () => {
         .cb-poi-marker { background: transparent !important; border: none !important; }
         .cb-poi {
           position: relative; display: flex; flex-direction: column; align-items: center;
-          transform: translate(-50%, -100%); cursor: pointer;
+          cursor: pointer;
           transition: transform .25s ease;
         }
         .cb-poi svg {
@@ -238,7 +238,7 @@ const CostaBlancaMap = () => {
 
         /* La Nucía isotipo (round + small) */
         .cb-nucia-marker { background: transparent !important; border: none !important; }
-        .cb-nucia-wrap { display: flex; flex-direction: column; align-items: center; pointer-events: none; transform: translate(-50%, -50%); }
+        .cb-nucia-wrap { width: 120px; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
         .cb-nucia-ring {
           display: flex; align-items: center; justify-content: center;
           border-radius: 50%; background: #0d3a2a;
