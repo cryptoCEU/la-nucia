@@ -256,7 +256,7 @@ const CostaBlancaMap = () => {
         .cb-route-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
         .cb-route-dot {
           display: block; width: 5px; height: 5px; border-radius: 50%;
-          background: #0d3a2a; box-shadow: 0 0 0 2px rgba(249,246,241,0.85);
+          background: #0d0d0d; box-shadow: 0 0 0 2px rgba(249,246,241,0.85);
           animation: cb-route-dot-in .22s ease both;
         }
         @keyframes cb-route-dot-in { from { opacity: 0; transform: scale(0.35); } to { opacity: 1; transform: scale(1); } }
@@ -320,6 +320,7 @@ const CostaBlancaMap = () => {
             position={position}
             icon={routeDotIcon(index)}
             interactive={false}
+            zIndexOffset={400}
           />
         ))}
 
