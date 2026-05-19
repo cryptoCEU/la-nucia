@@ -551,7 +551,7 @@ const NeighbourhoodMapSection = () => {
   /* ══════════════════════ RENDER ══════════════════════ */
   return (
     <section ref={sectionRef} className="py-20 md:py-28 bg-[#F9F6F1]">
-      <div className="container max-w-7xl mx-auto px-6">
+      <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
         {/* Header */}
         <motion.div
           variants={staggerContainer(0.12)}

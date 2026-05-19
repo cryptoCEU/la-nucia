@@ -34,7 +34,7 @@ const Galeria = () => {
             ))}
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/80 to-primary/60" />
-          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-32" style={{ y: hero.textY, opacity: hero.opacity }}>
+          <motion.div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-20 pt-32" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.13, 0.4)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="font-body text-xs tracking-[0.2em] uppercase text-gold mb-3">
                 {t("galeriaPage.tag")}

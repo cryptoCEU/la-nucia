@@ -42,7 +42,7 @@ const Viviendas = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-transparent" />
           </motion.div>
-          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-20 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
+          <motion.div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-20 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.13, 0.3)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">
                 {t(`${v}.tag`)}
@@ -120,7 +120,7 @@ const Viviendas = () => {
 
         {/* Typology cards */}
         <section className="bg-background py-24 md:py-32">
-          <div className="container max-w-7xl mx-auto px-6">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center mb-16">
               <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">{t(`${v}.typologiesTag`)}</motion.p>
               <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground" dangerouslySetInnerHTML={{ __html: t(`${v}.typologiesTitle`) }} />

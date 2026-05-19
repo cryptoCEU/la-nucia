@@ -49,7 +49,7 @@ const Index = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/50 to-primary/20" />
           </motion.div>
-          <motion.div className="relative z-10 container max-w-7xl mx-auto px-6 pb-24 md:pb-32" style={{ y: hero.textY, opacity: hero.opacity }}>
+          <motion.div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-24 md:pb-32" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div
               variants={staggerContainer(0.15, 0.4)}
               initial="hidden"
@@ -100,7 +100,7 @@ const Index = () => {
 
         {/* ═══ STATS BAR ═══ */}
         <section className="bg-primary border-t border-primary-foreground/10">
-          <div className="container max-w-7xl mx-auto px-6">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <motion.div
               variants={staggerContainer(0.1, 0)}
               initial="hidden"
@@ -220,7 +220,7 @@ const Index = () => {
 
         {/* ═══ PREVIEW: VIVIENDAS ═══ */}
         <section className="py-28 md:py-40 bg-background">
-          <div className="container max-w-7xl mx-auto px-6">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <motion.div
               variants={staggerContainer(0.1)}
               initial="hidden"
@@ -291,7 +291,7 @@ const Index = () => {
 
         {/* ═══ PREVIEW: GALERÍA ═══ */}
         <section className="py-28 md:py-40 bg-sand">
-          <div className="container max-w-7xl mx-auto px-6">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 items-center">
               <motion.div
                 variants={staggerContainer(0.12)}

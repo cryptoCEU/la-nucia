@@ -40,7 +40,7 @@ const Navbar = () => {
             : "bg-transparent"
         }`}
       >
-        <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+        <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
           <Link to="/" className="flex items-center gap-3">
             <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
           </Link>
@@ -74,7 +74,7 @@ const Navbar = () => {
             transition={{ duration: 0.4 }}
             className="fixed inset-0 z-[100] bg-primary flex flex-col"
           >
-            <div className="container max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+            <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
               <Link to="/" className="flex items-center gap-3">
                 <img src={logoNuciaOne} alt="La Nucía One" className="h-16 opacity-90" />
               </Link>
