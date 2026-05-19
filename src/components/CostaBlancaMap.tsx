@@ -148,7 +148,7 @@ const CostaBlancaMap = () => {
     scroller.scrollTo({ left, behavior: "smooth" });
   }, [hovered]);
 
-  const activePin = useMemo(() => PINS.find((p) => p.id === hovered && !p.primary) || null, [hovered]);
+  const activePin = useMemo(() => PINS.find((p) => p.id === hovered) || null, [hovered]);
 
   // Animate route drawing from La Nucía to active pin
   useEffect(() => {
