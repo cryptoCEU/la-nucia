@@ -6,7 +6,7 @@ import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import heroImage from "@/assets/hero-nucia.jpg";
-import NeighbourhoodMapSection from "@/components/NeighbourhoodMapSection";
+import CostaBlancaMap from "@/components/CostaBlancaMap";
 import {
   staggerContainer, staggerItem, heroText, viewportOnce,
   fadeUp, slideLeft, slideRight, scaleIn
