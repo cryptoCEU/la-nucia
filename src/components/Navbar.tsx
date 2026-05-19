@@ -31,13 +31,32 @@ const Navbar = () => {
     setIsOpen(false);
   }, [location]);
 
+  const [vw, setVw] = useState(typeof window !== "undefined" ? window.innerWidth : 1440);
+  const [vh, setVh] = useState(typeof window !== "undefined" ? window.innerHeight : 900);
+  const [aspect, setAspect] = useState(4);
+
+  useEffect(() => {
+    const onResize = () => {
+      setVw(window.innerWidth);
+      setVh(window.innerHeight);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+
   const { scrollY } = useScroll();
-  const range = [0, 500];
-  const logoTop = useTransform(scrollY, range, ["18vh", "16px"], { clamp: true });
-  const logoLeft = useTransform(scrollY, range, ["50%", "32px"], { clamp: true });
-  const logoX = useTransform(scrollY, range, ["-50%", "0%"], { clamp: true });
-  const logoHeight = useTransform(scrollY, range, [260, 48], { clamp: true });
-  const logoOpacity = useTransform(scrollY, [0, 50], [1, 1]);
+  const smallH = 48;
+  const largeH = Math.min(280, vh * 0.32);
+  const smallW = smallH * aspect;
+  const largeW = largeH * aspect;
+  const smallTop = 16;
+  const largeTop = vh * 0.18;
+  const smallLeft = Math.max(32, vw - 32 - smallW);
+  const largeLeft = vw / 2 - largeW / 2;
+
+  const logoTop = useTransform(scrollY, [0, 500], [largeTop, smallTop], { clamp: true });
+  const logoLeft = useTransform(scrollY, [0, 500], [largeLeft, smallLeft], { clamp: true });
+  const logoHeight = useTransform(scrollY, [0, 500], [largeH, smallH], { clamp: true });
 
   return (
     <>
@@ -45,7 +64,11 @@ const Navbar = () => {
         <motion.img
           src={logoNuciaOne}
           alt="La Nucía One"
-          style={{ top: logoTop, left: logoLeft, x: logoX, height: logoHeight, opacity: logoOpacity }}
+          onLoad={(e) => {
+            const img = e.currentTarget as HTMLImageElement;
+            if (img.naturalHeight) setAspect(img.naturalWidth / img.naturalHeight);
+          }}
+          style={{ top: logoTop, left: logoLeft, height: logoHeight }}
           className="fixed z-[60] opacity-90 pointer-events-none will-change-transform"
         />
       )}
