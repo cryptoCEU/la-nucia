@@ -26,7 +26,11 @@ const Index = () => {
   });
   // Phase 1 (0 → 0.4): logo animates (handled by Navbar). Image static.
   // Phase 2 (0.4 → 1): image Ken Burns + text fades in and stays still.
-  const heroImgScale = useTransform(heroProgress, [0, 0.4, 1], [1, 1, 1.15]);
+  // Drone-orbit effect: scale + subtle rotation + pan across the building
+  const heroImgScale = useTransform(heroProgress, [0, 0.4, 0.7, 1], [1.15, 1.2, 1.3, 1.4]);
+  const heroImgRotate = useTransform(heroProgress, [0, 0.4, 0.7, 1], [-3, 0, 2, 4]);
+  const heroImgX = useTransform(heroProgress, [0, 0.4, 0.7, 1], ["-4%", "0%", "4%", "-2%"]);
+  const heroImgY = useTransform(heroProgress, [0, 0.4, 0.7, 1], ["3%", "0%", "-3%", "-5%"]);
   const heroTextOpacity = useTransform(heroProgress, [0.4, 0.5], [0, 1]);
   const locationParallax = useParallax({ speed: 0.25 });
 
@@ -56,14 +60,14 @@ const Index = () => {
         <section ref={heroRef} className="relative h-[300vh]">
           <div className="sticky top-0 h-screen w-full overflow-hidden">
             {/* Layer 1: image (static during phase 1, Ken Burns during phase 2) */}
-            <motion.div className="absolute inset-0 z-0" style={{ scale: heroImgScale }}>
-              <motion.img
+            <motion.div
+              className="absolute inset-0 z-0 will-change-transform"
+              style={{ scale: heroImgScale, rotate: heroImgRotate, x: heroImgX, y: heroImgY }}
+            >
+              <img
                 src={heroImage}
                 alt="Promoción de obra nueva en La Nucía"
                 className="w-full h-full object-cover"
-                initial={{ scale: 1.08 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
               />
             </motion.div>
             {/* Layer 2: overlay gradient */}
