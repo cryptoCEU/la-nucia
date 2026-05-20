@@ -17,7 +17,7 @@ const cards: Card[] = [
 ];
 
 const STYLES = `
-.amen-section{background:#EBE3DB;padding:80px 0 96px;position:relative;font-family:'Montserrat',sans-serif;}
+.amen-section{background:#f4faf0;padding:80px 0 96px;position:relative;font-family:'Montserrat',sans-serif;}
 .amen-header{padding:0 60px;margin-bottom:48px;}
 .amen-eyebrow{font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8F8D8C;margin:0 0 12px;}
 .amen-title{font-family:'TAN - PEARL','TAN Pearl',serif;font-weight:normal;font-size:clamp(32px,4vw,52px);color:#1F1D1A;letter-spacing:.02em;margin:0;line-height:1.1;}
