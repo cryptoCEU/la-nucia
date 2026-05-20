@@ -23,6 +23,9 @@ const Viviendas = () => {
   const dossierUrl = i18n.language === "en"
     ? "/dossier/Dossier_La_Nucia_One_EN.pdf"
     : "/dossier/Dossier_La_Nucia_One_ES.pdf";
+  const memoriaUrl = i18n.language === "en"
+    ? "/dossier/Memoria_Calidades_La_Nucia_One_EN.pdf"
+    : "/dossier/Memoria_Calidades_La_Nucia_One_ES.pdf";
   const hero = useHeroParallax();
   const types = t("viviendasPage.types", { returnObjects: true }) as { title: string; description: string; areaFrom: string; bathrooms: string }[];
   const features = t("viviendasPage.featuresList", { returnObjects: true }) as { title: string; description: string }[];
@@ -91,9 +94,9 @@ const Viviendas = () => {
                 <a href={dossierUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-gold/40 bg-gold/10 px-6 py-3 text-gold font-body text-xs tracking-[0.15em] uppercase hover:bg-gold/20 transition-all duration-500">
                   <Download className="w-4 h-4" /> {t(`${v}.downloadDossier`)}
                 </a>
-                <button className="inline-flex items-center gap-2 border border-primary-foreground/20 px-6 py-3 text-primary-foreground/70 font-body text-xs tracking-[0.15em] uppercase hover:border-primary-foreground/40 transition-all duration-500">
+                <a href={memoriaUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 border border-primary-foreground/20 px-6 py-3 text-primary-foreground/70 font-body text-xs tracking-[0.15em] uppercase hover:border-primary-foreground/40 transition-all duration-500">
                   <FileText className="w-4 h-4" /> {t(`${v}.qualityReport`)}
-                </button>
+                </a>
               </motion.div>
             </motion.div>
 
