@@ -60,6 +60,38 @@ const STYLES = `
     opacity: 0;
     transition: opacity 0.25s ease;
   }
+  .lng-grid-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 25;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .lng-grid-lines::before,
+  .lng-grid-lines::after {
+    content: "";
+    position: absolute;
+    background: #F5F3F2;
+  }
+  /* horizontal line between the two rows */
+  .lng-grid-lines::before {
+    left: 0;
+    right: 0;
+    top: calc(50% - 1px);
+    height: 2px;
+  }
+  /* vertical lines via box-shadow trick using a child span */
+  .lng-grid-lines > .v1,
+  .lng-grid-lines > .v2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #F5F3F2;
+  }
+  .lng-grid-lines > .v1 { left: calc(33.3333% - 1px); }
+  .lng-grid-lines > .v2 { left: calc(66.6666% - 1px); }
   .lng-expanded-img {
     position: absolute;
     inset: 0;
@@ -124,7 +156,8 @@ const STYLES = `
 
   /* Desktop: hover takeover */
   @media (min-width: 768px) {
-    .lng-gallery:hover .lng-expanded {
+    .lng-gallery:hover .lng-expanded,
+    .lng-gallery:hover .lng-grid-lines {
       opacity: 1;
     }
     .lng-gallery:hover .lng-cell {
@@ -203,6 +236,12 @@ const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => {
               draggable={false}
             />
           ))}
+        </div>
+
+        {/* Grid separator lines (only visible on hover) */}
+        <div className="lng-grid-lines" aria-hidden="true">
+          <span className="v1" />
+          <span className="v2" />
         </div>
 
         {/* Overlay text for the currently hovered cell */}
