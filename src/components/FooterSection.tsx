@@ -29,7 +29,11 @@ const FooterSection = () => {
           </div>
           <div className="flex flex-col items-start md:items-end gap-3">
             <span className="font-body text-[10px] tracking-[0.25em] uppercase text-primary-foreground/40">{t("footer.managedBy")}</span>
-            <img src={logoActivum} alt="Activum - Residential Management" className="h-12 opacity-70" />
+            <div className="flex items-center gap-4">
+              <span className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/70">Residential Management</span>
+              <span className="h-8 w-px bg-primary-foreground/20" />
+              <img src={logoActivum} alt="Activum" className="h-10 opacity-80" />
+            </div>
           </div>
         </div>
 
