@@ -1,23 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-// Replace these with real assets when available
-// import card1 from '../assets/carousel/clubhouse.jpg';
-// import card2 from '../assets/carousel/pool.jpg';
-// import card3 from '../assets/carousel/gym.jpg';
-// import card4 from '../assets/carousel/terrace.jpg';
-// import card5 from '../assets/carousel/garden.jpg';
-// import card6 from '../assets/carousel/spa.jpg';
+import salonImg from "@/assets/carousel/salon.webp";
+import cocinaImg from "@/assets/carousel/cocina.webp";
 
 type Card = { title: string; src: string };
 
 const cards: Card[] = [
-  { title: "Clubhouse", src: "https://picsum.photos/seed/club/840/1040" },
-  { title: "Piscina comunitaria", src: "https://picsum.photos/seed/pool/840/1040" },
-  { title: "Outdoor Gym", src: "https://picsum.photos/seed/gym/840/1040" },
-  { title: "Terraza privada", src: "https://picsum.photos/seed/terrace/840/1040" },
-  { title: "Jardines y vistas", src: "https://picsum.photos/seed/garden/840/1040" },
-  { title: "Spa & Wellness", src: "https://picsum.photos/seed/spa/840/1040" },
+  { title: "Salón", src: salonImg },
+  { title: "Cocina", src: cocinaImg },
+  { title: "Habitación", src: "https://picsum.photos/seed/habitacion/840/1040" },
+  { title: "Terraza", src: "https://picsum.photos/seed/terraza/840/1040" },
+  { title: "Baño", src: "https://picsum.photos/seed/bano/840/1040" },
 ];
 
 const STYLES = `
