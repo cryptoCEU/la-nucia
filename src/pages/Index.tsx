@@ -61,7 +61,7 @@ const Index = () => {
           <div className="sticky top-0 h-screen w-full overflow-hidden">
             {/* Layer 1: image (static during phase 1, Ken Burns during phase 2) */}
             <motion.div
-              className="absolute inset-0 z-0 will-change-transform"
+              className="absolute -inset-[10%] z-0 will-change-transform"
               style={{ scale: heroImgScale, rotate: heroImgRotate, x: heroImgX, y: heroImgY }}
             >
               <img
