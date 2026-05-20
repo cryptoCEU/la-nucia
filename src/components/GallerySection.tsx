@@ -38,6 +38,13 @@ const STYLES = `
     gap: 2px;
     width: 100%;
   }
+  .lng-gallery.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, clamp(260px, 32vw, 420px));
+  }
+  .lng-gallery.cols-2 .lng-grid-lines > .v1 { left: calc(50% - 1px); }
+  .lng-gallery.cols-2 .lng-grid-lines > .v2 { display: none; }
+
   .lng-cell {
     position: relative;
     overflow: hidden;
