@@ -67,16 +67,31 @@ const STYLES = `
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.25s ease;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 2px;
+  }
+  .lng-grid-lines::before,
+  .lng-grid-lines::after {
+    content: "";
+    position: absolute;
     background: #F5F3F2;
   }
-  .lng-grid-lines > span {
-    background: #1F1D1A;
-    /* item itself transparent to image; we use dark fill but rely on mix? */
+  /* horizontal line between the two rows */
+  .lng-grid-lines::before {
+    left: 0;
+    right: 0;
+    top: calc(50% - 1px);
+    height: 2px;
   }
+  /* vertical lines via box-shadow trick using a child span */
+  .lng-grid-lines > .v1,
+  .lng-grid-lines > .v2 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #F5F3F2;
+  }
+  .lng-grid-lines > .v1 { left: calc(33.3333% - 1px); }
+  .lng-grid-lines > .v2 { left: calc(66.6666% - 1px); }
   .lng-expanded-img {
     position: absolute;
     inset: 0;
