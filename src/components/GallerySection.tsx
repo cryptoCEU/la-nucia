@@ -60,6 +60,22 @@ const STYLES = `
     opacity: 0;
     transition: opacity 0.25s ease;
   }
+  .lng-grid-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 28;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2px;
+  }
+  .lng-grid-lines > span {
+    background: transparent;
+    border: 0 solid #F5F3F2;
+  }
   .lng-expanded-img {
     position: absolute;
     inset: 0;
