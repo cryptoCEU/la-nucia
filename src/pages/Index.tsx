@@ -27,10 +27,10 @@ const Index = () => {
   // Phase 1 (0 → 0.4): logo animates (handled by Navbar). Image static.
   // Phase 2 (0.4 → 1): image Ken Burns + text fades in and stays still.
   // Drone-orbit effect: scale + subtle rotation + pan across the building
-  const heroImgScale = useTransform(heroProgress, [0, 0.4, 0.7, 1], [1.15, 1.2, 1.3, 1.4]);
-  const heroImgRotate = useTransform(heroProgress, [0, 0.4, 0.7, 1], [-3, 0, 2, 4]);
-  const heroImgX = useTransform(heroProgress, [0, 0.4, 0.7, 1], ["-4%", "0%", "4%", "-2%"]);
-  const heroImgY = useTransform(heroProgress, [0, 0.4, 0.7, 1], ["3%", "0%", "-3%", "-5%"]);
+  const heroImgScale = useTransform(heroProgress, [0, 0.4, 0.7, 1], [1, 1.05, 1.12, 1.18]);
+  const heroImgRotate = useTransform(heroProgress, [0, 0.4, 0.7, 1], [-2, 0, 1.5, 3]);
+  const heroImgX = useTransform(heroProgress, [0, 0.4, 0.7, 1], ["-2%", "0%", "2%", "-1%"]);
+  const heroImgY = useTransform(heroProgress, [0, 0.4, 0.7, 1], ["2%", "0%", "-2%", "-3%"]);
   const heroTextOpacity = useTransform(heroProgress, [0.4, 0.5], [0, 1]);
   const locationParallax = useParallax({ speed: 0.25 });
 
