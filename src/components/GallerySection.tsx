@@ -22,13 +22,10 @@ const exterioresImages: GalleryImage[] = [
 ];
 
 const zonasImages: GalleryImage[] = [
-  { src: "https://picsum.photos/seed/zc1/1600/1100", alt: "Piscina comunitaria", eyebrow: "ZONAS COMUNES", title: "Piscina comunitaria", description: "Lámina de agua de 18 metros con zona de bañadores y solárium perimetral en tarima de composite." },
-  { src: "https://picsum.photos/seed/zc2/1600/1100", alt: "Zona de descanso", eyebrow: "ZONAS COMUNES", title: "Zona de descanso", description: "Pérgolas con estructura de acero corten y vegetación trepadora que crean espacios de sombra natural durante todo el día." },
-  { src: "https://picsum.photos/seed/zc3/1600/1100", alt: "Gimnasio equipado", eyebrow: "ZONAS COMUNES", title: "Gimnasio equipado", description: "Sala fitness con maquinaria cardiovascular y de fuerza de alta gama. Iluminación natural y ventilación cruzada." },
-  { src: "https://picsum.photos/seed/zc4/1600/1100", alt: "Sala social", eyebrow: "ZONAS COMUNES", title: "Sala social", description: "Espacio polivalente para reuniones y eventos privados, con office completo y mobiliario diseñado a medida." },
-  { src: "https://picsum.photos/seed/zc5/1600/1100", alt: "Spa interior", eyebrow: "ZONAS COMUNES", title: "Spa interior", description: "Zona de aguas con piscina climatizada, jacuzzi, sauna y baño turco. Acabados en piedra natural y madera tratada." },
-  { src: "https://picsum.photos/seed/zc6/1600/1100", alt: "Coworking", eyebrow: "ZONAS COMUNES", title: "Coworking", description: "Espacio de trabajo compartido con cabinas insonorizadas para videollamadas, conexión de fibra dedicada y mobiliario ergonómico." },
+  { src: "/src/assets/gallery/zc-fitness.webp", alt: "Sala fitness", eyebrow: "ZONAS COMUNES", title: "Sala fitness", description: "Gimnasio acristalado con maquinaria cardiovascular, peso libre y rocódromo. Iluminación natural y vistas a los jardines." },
+  { src: "/src/assets/gallery/zc-comun.webp", alt: "Sala común", eyebrow: "ZONAS COMUNES", title: "Sala común", description: "Espacio polivalente con cocina, comedor y zona de estar, abierto a la terraza ajardinada mediante grandes cristaleras." },
 ];
+
 
 
 const STYLES = `
