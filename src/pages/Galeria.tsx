@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import GallerySection from "@/components/GallerySection";
+import AmenitiesCarousel from "@/components/AmenitiesCarousel";
 import FooterSection from "@/components/FooterSection";
 import buildingImage from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
