@@ -92,7 +92,7 @@ const Contacto = () => {
           </motion.div>
         </section>
 
-        <section className="bg-sand py-20 md:py-28">
+        <section className="bg-[#f4faf0] py-20 md:py-28">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="grid lg:grid-cols-[1fr_2fr] gap-16">
               <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce}>

@@ -10,7 +10,7 @@ const CalidadesSection = () => {
   const items = t("calidades.items", { returnObjects: true }) as { title: string; description: string }[];
 
   return (
-    <section className="py-24 md:py-32 bg-sand">
+    <section className="py-24 md:py-32 bg-[#f4faf0]">
       <div className="container max-w-6xl mx-auto px-6">
         <motion.div
           variants={staggerContainer(0.1)}
