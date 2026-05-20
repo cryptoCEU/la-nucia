@@ -156,7 +156,8 @@ const STYLES = `
 
   /* Desktop: hover takeover */
   @media (min-width: 768px) {
-    .lng-gallery:hover .lng-expanded {
+    .lng-gallery:hover .lng-expanded,
+    .lng-gallery:hover .lng-grid-lines {
       opacity: 1;
     }
     .lng-gallery:hover .lng-cell {
