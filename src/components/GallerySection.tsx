@@ -325,7 +325,7 @@ const GallerySection = () => {
   return (
     <div style={{ background: "#F5F3F2" }} className="w-full py-16 md:py-24">
       <style>{STYLES}</style>
-      <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} />
+      <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} cols={2} />
       <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
       <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} />
 
