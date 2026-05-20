@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import extAerea from "@/assets/gallery/ext-aerea.webp";
+import extFrontal from "@/assets/gallery/ext-frontal.webp";
 
 type GalleryImage = {
   src: string;
@@ -11,12 +13,10 @@ type GalleryImage = {
 };
 
 const exterioresImages: GalleryImage[] = [
-  { src: "https://picsum.photos/seed/ext1/1600/1100", alt: "Fachada principal", eyebrow: "EXTERIORES", title: "Fachada principal", description: "Acabados en piedra natural y carpintería de aluminio lacado en blanco roto. La orientación sur garantiza luz directa durante todo el día." },
-  { src: "https://picsum.photos/seed/ext2/1600/1100", alt: "Acceso privado", eyebrow: "EXTERIORES", title: "Acceso privado", description: "Entrada rodada con pavimento de hormigón lavado y ajardinamiento de bajo mantenimiento a ambos lados del vial." },
-  { src: "https://picsum.photos/seed/ext3/1600/1100", alt: "Jardines privados", eyebrow: "EXTERIORES", title: "Jardines privados", description: "Especies autóctonas mediterráneas seleccionadas para mínimo consumo hídrico. Riego por goteo automatizado en toda la parcela." },
-  { src: "https://picsum.photos/seed/ext4/1600/1100", alt: "Terraza superior", eyebrow: "EXTERIORES", title: "Terraza superior", description: "Solárium privado con vistas abiertas al mar y a la sierra. Pavimento de gres porcelánico antideslizante apto para uso exterior." },
-  { src: "https://picsum.photos/seed/ext5/1600/1100", alt: "Iluminación nocturna", eyebrow: "EXTERIORES", title: "Iluminación nocturna", description: "Esquema de iluminación arquitectónica con luminarias empotradas de bajo consumo que realzan los volúmenes del edificio al anochecer." },
-  { src: "https://picsum.photos/seed/ext6/1600/1100", alt: "Volumetría sur", eyebrow: "EXTERIORES", title: "Volumetría sur", description: "Composición de volúmenes en cascada que adapta el edificio a la pendiente natural del terreno y maximiza las vistas." },
+  { src: extAerea, alt: "Vista aérea", eyebrow: "EXTERIORES", title: "Vista aérea", description: "Volumetría curva del edificio integrada en la ladera, con vistas abiertas al mar y a la sierra de La Nucía." },
+  { src: extFrontal, alt: "Fachada y piscina", eyebrow: "EXTERIORES", title: "Fachada y piscina", description: "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal." },
+  { src: "https://picsum.photos/seed/ext3/1600/1100", alt: "Próximamente", eyebrow: "EXTERIORES", title: "Próximamente", description: "Nueva imagen disponible en breve." },
+  { src: "https://picsum.photos/seed/ext4/1600/1100", alt: "Próximamente", eyebrow: "EXTERIORES", title: "Próximamente", description: "Nueva imagen disponible en breve." },
 ];
 
 const zonasImages: GalleryImage[] = [
@@ -28,6 +28,7 @@ const zonasImages: GalleryImage[] = [
   { src: "https://picsum.photos/seed/zc6/1600/1100", alt: "Coworking", eyebrow: "ZONAS COMUNES", title: "Coworking", description: "Espacio de trabajo compartido con cabinas insonorizadas para videollamadas, conexión de fibra dedicada y mobiliario ergonómico." },
 ];
 
+
 const STYLES = `
   .lng-gallery {
     position: relative;
@@ -37,6 +38,13 @@ const STYLES = `
     gap: 2px;
     width: 100%;
   }
+  .lng-gallery.cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, clamp(260px, 32vw, 420px));
+  }
+  .lng-gallery.cols-2 .lng-grid-lines > .v1 { left: calc(50% - 1px); }
+  .lng-gallery.cols-2 .lng-grid-lines > .v2 { display: none; }
+
   .lng-cell {
     position: relative;
     overflow: hidden;
@@ -185,9 +193,11 @@ interface GalleryGridProps {
   title: string;
   images: GalleryImage[];
   onOpen: (images: GalleryImage[], idx: number) => void;
+  cols?: 2 | 3;
 }
 
-const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => {
+const GalleryGrid = ({ title, images, onOpen, cols = 3 }: GalleryGridProps) => {
+
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [tappedIdx, setTappedIdx] = useState<number | null>(null);
   const isMobile = useIsMobile();
@@ -221,7 +231,7 @@ const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => {
         {title}
       </h2>
       <div
-        className="lng-gallery"
+        className={`lng-gallery ${cols === 2 ? "cols-2" : ""}`}
         onMouseLeave={() => setHoverIdx(null)}
       >
         {/* Expanded preview layer (under the cells) */}
@@ -315,7 +325,7 @@ const GallerySection = () => {
   return (
     <div style={{ background: "#F5F3F2" }} className="w-full py-16 md:py-24">
       <style>{STYLES}</style>
-      <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} />
+      <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} cols={2} />
       <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
       <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} />
 
