@@ -188,6 +188,15 @@ const STYLES = `
       grid-template-columns: 1fr;
       grid-template-rows: repeat(6, 70vw);
     }
+    .lng-overlay { padding: 12px; align-items: flex-end; }
+    .lng-overlay-box {
+      padding: 14px 16px;
+      max-width: 100%;
+      max-height: calc(100% - 24px);
+      overflow-y: auto;
+    }
+    .lng-overlay-title { font-size: 20px; margin-top: 4px; }
+    .lng-overlay-desc { font-size: 13px; line-height: 1.55; margin-top: 8px; }
     .lng-expanded { display: none; }
     .lng-cell.lng-tapped .lng-overlay {
       opacity: 1;

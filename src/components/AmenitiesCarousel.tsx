@@ -45,8 +45,8 @@ const STYLES = `
 @media (max-width:1024px){.amen-card{width:320px;height:420px;}}
 @media (max-width:768px){
   .amen-section{padding:60px 0 72px;}
-  .amen-header{padding:0 20px;margin-bottom:32px;}
-  .amen-track{padding:8px 20px;}
+  .amen-header{padding:0 32px;margin-bottom:32px;}
+  .amen-track{padding:8px 32px;}
   .amen-card{width:300px;height:380px;}
   .amen-arrow{display:none;}
 }
