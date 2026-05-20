@@ -200,9 +200,10 @@ interface GalleryGridProps {
   images: GalleryImage[];
   onOpen: (images: GalleryImage[], idx: number) => void;
   cols?: 2 | 3;
+  rows?: 1 | 2;
 }
 
-const GalleryGrid = ({ title, images, onOpen, cols = 3 }: GalleryGridProps) => {
+const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
 
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [tappedIdx, setTappedIdx] = useState<number | null>(null);
