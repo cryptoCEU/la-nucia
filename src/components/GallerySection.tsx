@@ -3,6 +3,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import extAerea from "@/assets/gallery/ext-aerea.webp";
 import extFrontal from "@/assets/gallery/ext-frontal.webp";
+import extAtardecer from "@/assets/gallery/ext-atardecer.webp";
 
 type GalleryImage = {
   src: string;
