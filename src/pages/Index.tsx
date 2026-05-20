@@ -301,7 +301,7 @@ const Index = () => {
         </section>
 
         {/* ═══ PREVIEW: GALERÍA ═══ */}
-        <section className="py-28 md:py-40 bg-sand">
+        <section className="py-28 md:py-40 bg-[#f4faf0]">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="grid lg:grid-cols-[1fr_1.5fr] gap-16 items-center">
               <motion.div
