@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import extAerea from "@/assets/gallery/ext-aerea.webp";
+import extFrontal from "@/assets/gallery/ext-frontal.webp";
 
 type GalleryImage = {
   src: string;
@@ -11,12 +13,10 @@ type GalleryImage = {
 };
 
 const exterioresImages: GalleryImage[] = [
-  { src: "https://picsum.photos/seed/ext1/1600/1100", alt: "Fachada principal", eyebrow: "EXTERIORES", title: "Fachada principal", description: "Acabados en piedra natural y carpintería de aluminio lacado en blanco roto. La orientación sur garantiza luz directa durante todo el día." },
-  { src: "https://picsum.photos/seed/ext2/1600/1100", alt: "Acceso privado", eyebrow: "EXTERIORES", title: "Acceso privado", description: "Entrada rodada con pavimento de hormigón lavado y ajardinamiento de bajo mantenimiento a ambos lados del vial." },
-  { src: "https://picsum.photos/seed/ext3/1600/1100", alt: "Jardines privados", eyebrow: "EXTERIORES", title: "Jardines privados", description: "Especies autóctonas mediterráneas seleccionadas para mínimo consumo hídrico. Riego por goteo automatizado en toda la parcela." },
-  { src: "https://picsum.photos/seed/ext4/1600/1100", alt: "Terraza superior", eyebrow: "EXTERIORES", title: "Terraza superior", description: "Solárium privado con vistas abiertas al mar y a la sierra. Pavimento de gres porcelánico antideslizante apto para uso exterior." },
-  { src: "https://picsum.photos/seed/ext5/1600/1100", alt: "Iluminación nocturna", eyebrow: "EXTERIORES", title: "Iluminación nocturna", description: "Esquema de iluminación arquitectónica con luminarias empotradas de bajo consumo que realzan los volúmenes del edificio al anochecer." },
-  { src: "https://picsum.photos/seed/ext6/1600/1100", alt: "Volumetría sur", eyebrow: "EXTERIORES", title: "Volumetría sur", description: "Composición de volúmenes en cascada que adapta el edificio a la pendiente natural del terreno y maximiza las vistas." },
+  { src: extAerea, alt: "Vista aérea", eyebrow: "EXTERIORES", title: "Vista aérea", description: "Volumetría curva del edificio integrada en la ladera, con vistas abiertas al mar y a la sierra de La Nucía." },
+  { src: extFrontal, alt: "Fachada y piscina", eyebrow: "EXTERIORES", title: "Fachada y piscina", description: "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal." },
+  { src: "https://picsum.photos/seed/ext3/1600/1100", alt: "Próximamente", eyebrow: "EXTERIORES", title: "Próximamente", description: "Nueva imagen disponible en breve." },
+  { src: "https://picsum.photos/seed/ext4/1600/1100", alt: "Próximamente", eyebrow: "EXTERIORES", title: "Próximamente", description: "Nueva imagen disponible en breve." },
 ];
 
 const zonasImages: GalleryImage[] = [
@@ -27,6 +27,7 @@ const zonasImages: GalleryImage[] = [
   { src: "https://picsum.photos/seed/zc5/1600/1100", alt: "Spa interior", eyebrow: "ZONAS COMUNES", title: "Spa interior", description: "Zona de aguas con piscina climatizada, jacuzzi, sauna y baño turco. Acabados en piedra natural y madera tratada." },
   { src: "https://picsum.photos/seed/zc6/1600/1100", alt: "Coworking", eyebrow: "ZONAS COMUNES", title: "Coworking", description: "Espacio de trabajo compartido con cabinas insonorizadas para videollamadas, conexión de fibra dedicada y mobiliario ergonómico." },
 ];
+
 
 const STYLES = `
   .lng-gallery {
