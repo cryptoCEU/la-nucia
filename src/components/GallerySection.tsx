@@ -334,7 +334,7 @@ const GallerySection = () => {
       <style>{STYLES}</style>
       <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} cols={2} />
       <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
-      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} />
+      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} cols={2} rows={1} />
 
       {lightbox && (
         <div
