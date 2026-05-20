@@ -5,6 +5,8 @@ import extAerea from "@/assets/gallery/ext-aerea.webp";
 import extFrontal from "@/assets/gallery/ext-frontal.webp";
 import extAtardecer from "@/assets/gallery/ext-atardecer.webp";
 import extPiscina from "@/assets/gallery/ext-piscina.webp";
+import zcFitness from "@/assets/gallery/zc-fitness.webp";
+import zcComun from "@/assets/gallery/zc-comun.webp";
 
 type GalleryImage = {
   src: string;
