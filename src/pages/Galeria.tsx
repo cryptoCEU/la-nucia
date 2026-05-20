@@ -47,7 +47,7 @@ const Galeria = () => {
           </motion.div>
         </section>
         <GallerySection />
-        <AmenitiesCarousel />
+        
       </main>
       <FooterSection />
     </>
