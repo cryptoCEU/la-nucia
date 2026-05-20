@@ -226,13 +226,15 @@ const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => {
       >
         {title}
       </h2>
-      <div className={`lng-gallery ${activeIdx !== null ? "has-active" : ""}`}>
+      <div
+        className={`lng-gallery ${activeIdx !== null ? "has-active" : ""}`}
+        onMouseLeave={() => !isMobile && setActiveIdx(null)}
+      >
         {images.map((img, i) => (
           <div
             key={i}
             className={`lng-cell ${activeIdx === i ? "lng-active" : ""} ${tappedIdx === i ? "lng-tapped" : ""}`}
             onMouseEnter={() => !isMobile && setActiveIdx(i)}
-            onMouseLeave={() => !isMobile && setActiveIdx(null)}
             onClick={() => handleClick(i)}
             role="button"
             tabIndex={0}
