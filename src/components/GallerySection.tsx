@@ -63,7 +63,7 @@ const STYLES = `
   .lng-grid-lines {
     position: absolute;
     inset: 0;
-    z-index: 28;
+    z-index: 25;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -71,10 +71,11 @@ const STYLES = `
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 2px;
+    background: #F5F3F2;
   }
   .lng-grid-lines > span {
-    background: transparent;
-    border: 0 solid #F5F3F2;
+    background: #1F1D1A;
+    /* item itself transparent to image; we use dark fill but rely on mix? */
   }
   .lng-expanded-img {
     position: absolute;
