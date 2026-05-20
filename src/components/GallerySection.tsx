@@ -1,88 +1,213 @@
 import { useCallback, useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-type GalleryImage = { src: string; alt: string; area: string };
+type GalleryImage = {
+  src: string;
+  alt: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+};
 
 const exterioresImages: GalleryImage[] = [
-  { src: "https://picsum.photos/seed/ext1/1200/1400", alt: "Exteriores 01", area: "a" },
-  { src: "https://picsum.photos/seed/ext2/900/600", alt: "Exteriores 02", area: "b" },
-  { src: "https://picsum.photos/seed/ext3/900/600", alt: "Exteriores 03", area: "c" },
-  { src: "https://picsum.photos/seed/ext4/800/600", alt: "Exteriores 04", area: "d" },
-  { src: "https://picsum.photos/seed/ext5/800/600", alt: "Exteriores 05", area: "e" },
-  { src: "https://picsum.photos/seed/ext6/800/600", alt: "Exteriores 06", area: "f" },
-  { src: "https://picsum.photos/seed/ext7/900/600", alt: "Exteriores 07", area: "g" },
-  { src: "https://picsum.photos/seed/ext8/1400/600", alt: "Exteriores 08", area: "h" },
+  {
+    src: "https://picsum.photos/seed/ext1/1200/900",
+    alt: "Fachada principal",
+    eyebrow: "EXTERIORES",
+    title: "Fachada principal",
+    description:
+      "Acabados en piedra natural y carpintería de aluminio lacado en blanco roto. La orientación sur garantiza luz directa durante todo el día.",
+  },
+  {
+    src: "https://picsum.photos/seed/ext2/1200/900",
+    alt: "Acceso privado",
+    eyebrow: "EXTERIORES",
+    title: "Acceso privado",
+    description:
+      "Entrada rodada con pavimento de hormigón lavado y ajardinamiento de bajo mantenimiento a ambos lados del vial.",
+  },
+  {
+    src: "https://picsum.photos/seed/ext3/1200/900",
+    alt: "Jardines privados",
+    eyebrow: "EXTERIORES",
+    title: "Jardines privados",
+    description:
+      "Especies autóctonas mediterráneas seleccionadas para mínimo consumo hídrico. Riego por goteo automatizado en toda la parcela.",
+  },
+  {
+    src: "https://picsum.photos/seed/ext4/1200/900",
+    alt: "Terraza superior",
+    eyebrow: "EXTERIORES",
+    title: "Terraza superior",
+    description:
+      "Solárium privado con vistas abiertas al mar y a la sierra. Pavimento de gres porcelánico antideslizante apto para uso exterior.",
+  },
+  {
+    src: "https://picsum.photos/seed/ext5/1200/900",
+    alt: "Iluminación nocturna",
+    eyebrow: "EXTERIORES",
+    title: "Iluminación nocturna",
+    description:
+      "Esquema de iluminación arquitectónica con luminarias empotradas de bajo consumo que realzan los volúmenes del edificio al anochecer.",
+  },
+  {
+    src: "https://picsum.photos/seed/ext6/1200/900",
+    alt: "Volumetría sur",
+    eyebrow: "EXTERIORES",
+    title: "Volumetría sur",
+    description:
+      "Composición de volúmenes en cascada que adapta el edificio a la pendiente natural del terreno y maximiza las vistas.",
+  },
 ];
 
 const zonasImages: GalleryImage[] = [
-  { src: "https://picsum.photos/seed/zc1/1200/1400", alt: "Zonas Comunes 01", area: "a" },
-  { src: "https://picsum.photos/seed/zc2/900/600", alt: "Zonas Comunes 02", area: "b" },
-  { src: "https://picsum.photos/seed/zc3/900/600", alt: "Zonas Comunes 03", area: "c" },
-  { src: "https://picsum.photos/seed/zc4/800/600", alt: "Zonas Comunes 04", area: "d" },
-  { src: "https://picsum.photos/seed/zc5/800/600", alt: "Zonas Comunes 05", area: "e" },
-  { src: "https://picsum.photos/seed/zc6/800/600", alt: "Zonas Comunes 06", area: "f" },
-  { src: "https://picsum.photos/seed/zc7/900/600", alt: "Zonas Comunes 07", area: "g" },
-  { src: "https://picsum.photos/seed/zc8/1400/600", alt: "Zonas Comunes 08", area: "h" },
+  {
+    src: "https://picsum.photos/seed/zc1/1200/900",
+    alt: "Piscina comunitaria",
+    eyebrow: "ZONAS COMUNES",
+    title: "Piscina comunitaria",
+    description:
+      "Lámina de agua de 18 metros con zona de bañadores y solárium perimetral en tarima de composite.",
+  },
+  {
+    src: "https://picsum.photos/seed/zc2/1200/900",
+    alt: "Zona de descanso",
+    eyebrow: "ZONAS COMUNES",
+    title: "Zona de descanso",
+    description:
+      "Pérgolas con estructura de acero corten y vegetación trepadora que crean espacios de sombra natural durante todo el día.",
+  },
+  {
+    src: "https://picsum.photos/seed/zc3/1200/900",
+    alt: "Gimnasio equipado",
+    eyebrow: "ZONAS COMUNES",
+    title: "Gimnasio equipado",
+    description:
+      "Sala fitness con maquinaria cardiovascular y de fuerza de alta gama. Iluminación natural y ventilación cruzada.",
+  },
+  {
+    src: "https://picsum.photos/seed/zc4/1200/900",
+    alt: "Sala social",
+    eyebrow: "ZONAS COMUNES",
+    title: "Sala social",
+    description:
+      "Espacio polivalente para reuniones y eventos privados, con office completo y mobiliario diseñado a medida.",
+  },
+  {
+    src: "https://picsum.photos/seed/zc5/1200/900",
+    alt: "Spa interior",
+    eyebrow: "ZONAS COMUNES",
+    title: "Spa interior",
+    description:
+      "Zona de aguas con piscina climatizada, jacuzzi, sauna y baño turco. Acabados en piedra natural y madera tratada.",
+  },
+  {
+    src: "https://picsum.photos/seed/zc6/1200/900",
+    alt: "Coworking",
+    eyebrow: "ZONAS COMUNES",
+    title: "Coworking",
+    description:
+      "Espacio de trabajo compartido con cabinas insonorizadas para videollamadas, conexión de fibra dedicada y mobiliario ergonómico.",
+  },
 ];
 
-const GRID_STYLES = `
+const STYLES = `
   .lng-gallery {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, 18vw);
-    grid-template-areas:
-      "a a a b b"
-      "a a a c c"
-      "d d e e f"
-      "g g g h h";
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, clamp(220px, 26vw, 320px));
     gap: 2px;
     width: 100%;
   }
-  .lng-gallery > .cell { position: relative; overflow: hidden; cursor: pointer; }
-  .lng-gallery > .cell img {
+  .lng-cell {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #1F1D1A;
+    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .lng-cell img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transform: translateX(-8%) scale(1.08);
-    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    will-change: transform;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .lng-gallery > .cell:hover img,
-  .lng-gallery > .cell:focus-visible img {
-    transform: translateX(0%) scale(1);
+  .lng-cell .lng-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    padding: 24px;
   }
-  .lng-gallery > .cell.a { grid-area: a; }
-  .lng-gallery > .cell.b { grid-area: b; }
-  .lng-gallery > .cell.c { grid-area: c; }
-  .lng-gallery > .cell.d { grid-area: d; }
-  .lng-gallery > .cell.e { grid-area: e; }
-  .lng-gallery > .cell.f { grid-area: f; }
-  .lng-gallery > .cell.g { grid-area: g; }
-  .lng-gallery > .cell.h { grid-area: h; }
+  .lng-overlay-box {
+    background: rgba(31, 29, 26, 0.62);
+    border-radius: 4px;
+    padding: 24px 32px;
+    max-width: 480px;
+    text-align: left;
+    backdrop-filter: blur(2px);
+  }
+  .lng-overlay-eyebrow {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(245,243,242,0.6);
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .lng-overlay-title {
+    font-family: 'Roboto Serif', Georgia, serif;
+    font-weight: 300;
+    font-size: 28px;
+    color: #F5F3F2;
+    margin: 8px 0 0 0;
+    line-height: 1.2;
+  }
+  .lng-overlay-desc {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(245,243,242,0.82);
+    margin: 12px 0 0 0;
+  }
 
-  @media (max-width: 1024px) {
-    .lng-gallery {
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(4, 32vw);
-      grid-template-areas:
-        "a b"
-        "c d"
-        "e f"
-        "g h";
+  /* Desktop: full-section takeover */
+  @media (min-width: 768px) {
+    .lng-gallery.has-active .lng-cell:not(.lng-active) {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .lng-cell.lng-active {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 20;
+    }
+    .lng-cell.lng-active .lng-overlay {
+      opacity: 1;
+      transition: opacity 0.4s ease 0.2s;
     }
   }
-  @media (max-width: 768px) {
+
+  /* Mobile: no takeover, tap shows overlay */
+  @media (max-width: 767px) {
     .lng-gallery {
       grid-template-columns: 1fr;
-      grid-template-rows: repeat(8, 65vw);
-      grid-template-areas: "a" "b" "c" "d" "e" "f" "g" "h";
+      grid-template-rows: repeat(6, 70vw);
     }
-    .lng-gallery > .cell img {
-      transform: translateX(0) scale(1);
-    }
-    .lng-gallery > .cell:active img {
-      transform: scale(1.02);
+    .lng-cell.lng-tapped .lng-overlay {
+      opacity: 1;
     }
   }
 `;
@@ -93,41 +218,71 @@ interface GalleryGridProps {
   onOpen: (images: GalleryImage[], idx: number) => void;
 }
 
-const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => (
-  <section className="w-full">
-    <h2
-      className="px-6 md:px-12 mb-10 md:mb-14"
-      style={{
-        fontFamily: "'Roboto Serif', Georgia, serif",
-        fontWeight: 300,
-        fontSize: "clamp(36px, 5vw, 64px)",
-        lineHeight: 1.1,
-        color: "#1F1D1A",
-        letterSpacing: "-0.01em",
-      }}
-    >
-      {title}
-    </h2>
-    <div className="lng-gallery">
-      {images.map((img, i) => (
-        <button
-          key={i}
-          type="button"
-          className={`cell ${img.area}`}
-          onClick={() => onOpen(images, i)}
-          aria-label={`Abrir ${img.alt}`}
-        >
-          <img
-            src={img.src}
-            alt={img.alt}
-            loading={i < 3 ? "eager" : "lazy"}
-            draggable={false}
-          />
-        </button>
-      ))}
-    </div>
-  </section>
-);
+const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => {
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [tappedIdx, setTappedIdx] = useState<number | null>(null);
+  const isMobile = useIsMobile();
+
+  const handleClick = (i: number) => {
+    if (isMobile) {
+      if (tappedIdx === i) {
+        // second tap → open lightbox
+        onOpen(images, i);
+        setTappedIdx(null);
+      } else {
+        setTappedIdx(i);
+      }
+    } else {
+      onOpen(images, i);
+    }
+  };
+
+  return (
+    <section className="w-full">
+      <h2
+        className="px-6 md:px-12 mb-10 md:mb-14"
+        style={{
+          fontFamily: "'Roboto Serif', Georgia, serif",
+          fontWeight: 300,
+          fontSize: "clamp(36px, 5vw, 64px)",
+          lineHeight: 1.1,
+          color: "#1F1D1A",
+          letterSpacing: "-0.01em",
+        }}
+      >
+        {title}
+      </h2>
+      <div className={`lng-gallery ${activeIdx !== null ? "has-active" : ""}`}>
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className={`lng-cell ${activeIdx === i ? "lng-active" : ""} ${tappedIdx === i ? "lng-tapped" : ""}`}
+            onMouseEnter={() => !isMobile && setActiveIdx(i)}
+            onMouseLeave={() => !isMobile && setActiveIdx(null)}
+            onClick={() => handleClick(i)}
+            role="button"
+            tabIndex={0}
+            aria-label={`Abrir ${img.alt}`}
+          >
+            <img
+              src={img.src}
+              alt={img.alt}
+              loading={i < 3 ? "eager" : "lazy"}
+              draggable={false}
+            />
+            <div className="lng-overlay">
+              <div className="lng-overlay-box">
+                <p className="lng-overlay-eyebrow">{img.eyebrow}</p>
+                <h3 className="lng-overlay-title">{img.title}</h3>
+                <p className="lng-overlay-desc">{img.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+};
 
 const GallerySection = () => {
   const [lightbox, setLightbox] = useState<{ list: GalleryImage[]; idx: number } | null>(null);
@@ -136,14 +291,11 @@ const GallerySection = () => {
     setLightbox({ list, idx });
   }, []);
   const close = useCallback(() => setLightbox(null), []);
-  const nav = useCallback(
-    (dir: number) => {
-      setLightbox((lb) =>
-        lb ? { ...lb, idx: (lb.idx + dir + lb.list.length) % lb.list.length } : lb,
-      );
-    },
-    [],
-  );
+  const nav = useCallback((dir: number) => {
+    setLightbox((lb) =>
+      lb ? { ...lb, idx: (lb.idx + dir + lb.list.length) % lb.list.length } : lb,
+    );
+  }, []);
 
   useEffect(() => {
     if (!lightbox) return;
@@ -158,7 +310,7 @@ const GallerySection = () => {
 
   return (
     <div style={{ background: "#F5F3F2" }} className="w-full py-16 md:py-24">
-      <style>{GRID_STYLES}</style>
+      <style>{STYLES}</style>
       <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} />
       <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
       <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} />
