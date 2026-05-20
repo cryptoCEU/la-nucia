@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import heroImage from "@/assets/hero-aerea.webp";
+import heroImage from "@/assets/hero-nucia.jpg";
 
 const HeroHome = () => {
   const { t } = useTranslation();
@@ -14,21 +14,16 @@ const HeroHome = () => {
     offset: ["start start", "end start"],
   });
 
-  // Cinematic camera: zoom + horizontal pan + subtle 3D rotation as user scrolls
-  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.15, 1.25, 1.4]);
-  const imageX = useTransform(scrollYProgress, [0, 1], ["0%", "-8%"]);
-  const imageRotateY = useTransform(scrollYProgress, [0, 1], [0, -12]);
-  const imageRotateZ = useTransform(scrollYProgress, [0, 1], [0, -2]);
+  // Logo animation occupies first ~50% of the pinned scroll
+  // Image zoom progresses across the full pinned scroll
+  const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.08, 1.18]);
   const textOpacity = useTransform(scrollYProgress, [0.35, 0.55], [0, 1]);
   const textY = useTransform(scrollYProgress, [0.35, 0.55], [40, 0]);
 
   return (
     <section ref={wrapperRef} className="relative h-[200vh]">
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col" style={{ perspective: "1600px" }}>
-        <motion.div
-          className="absolute inset-0 will-change-transform"
-          style={{ scale: imageScale, x: imageX, rotateY: imageRotateY, rotateZ: imageRotateZ, transformStyle: "preserve-3d" }}
-        >
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
+        <motion.div className="absolute inset-0" style={{ scale: imageScale }}>
           <img src={heroImage} alt="Promoción de obra nueva en La Nucía, Alicante" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-ocean-dark/85 via-ocean-dark/60 to-ocean-dark/40" />
         </motion.div>
