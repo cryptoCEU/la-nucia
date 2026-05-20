@@ -164,6 +164,8 @@ const Viviendas = () => {
           </div>
         </section>
 
+        <AmenitiesCarousel />
+
         {/* CTA */}
         <section className="bg-primary py-24 md:py-32">
           <div className="container max-w-4xl mx-auto px-6 text-center">
