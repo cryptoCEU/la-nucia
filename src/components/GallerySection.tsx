@@ -126,14 +126,14 @@ const STYLES = `
     overflow: hidden;
     cursor: pointer;
     background: #1F1D1A;
-    transition: opacity 0.3s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.25s ease;
   }
   .lng-cell img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: opacity 0.25s ease;
   }
   .lng-cell .lng-overlay {
     position: absolute;
@@ -143,48 +143,21 @@ const STYLES = `
     justify-content: center;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.15s ease;
+    transition: opacity 0.1s ease;
     padding: 24px;
   }
-  .lng-overlay-box {
-    background: rgba(31, 29, 26, 0.62);
-    border-radius: 4px;
-    padding: 24px 32px;
-    max-width: 480px;
-    text-align: left;
-    backdrop-filter: blur(2px);
-  }
-  .lng-overlay-eyebrow {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    color: rgba(245,243,242,0.6);
-    text-transform: uppercase;
-    margin: 0;
-  }
-  .lng-overlay-title {
-    font-family: 'Roboto Serif', Georgia, serif;
-    font-weight: 300;
-    font-size: 28px;
-    color: #F5F3F2;
-    margin: 8px 0 0 0;
-    line-height: 1.2;
-  }
-  .lng-overlay-desc {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 300;
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(245,243,242,0.82);
-    margin: 12px 0 0 0;
-  }
-
-  /* Desktop: full-section takeover */
+...
+  /* Desktop: full-section takeover with invisible hotspot siblings */
   @media (min-width: 768px) {
     .lng-gallery.has-active .lng-cell:not(.lng-active) {
       opacity: 0;
-      pointer-events: none;
+      background: transparent;
+      z-index: 30;
+      pointer-events: auto;
+      cursor: pointer;
+    }
+    .lng-gallery.has-active .lng-cell:not(.lng-active) img {
+      opacity: 0;
     }
     .lng-cell.lng-active {
       position: absolute;
@@ -193,10 +166,11 @@ const STYLES = `
       width: 100%;
       height: 100%;
       z-index: 20;
+      transition: opacity 0.4s ease;
     }
     .lng-cell.lng-active .lng-overlay {
       opacity: 1;
-      transition: opacity 0.4s ease 0.2s;
+      transition: opacity 0.3s ease 0.2s;
     }
   }
 
