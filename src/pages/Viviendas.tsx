@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
+import AmenitiesCarousel from "@/components/AmenitiesCarousel";
 import buildingImage from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
 import heroImg from "@/assets/hero-nucia.jpg";
