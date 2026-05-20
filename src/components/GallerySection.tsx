@@ -193,9 +193,11 @@ interface GalleryGridProps {
   title: string;
   images: GalleryImage[];
   onOpen: (images: GalleryImage[], idx: number) => void;
+  cols?: 2 | 3;
 }
 
-const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => {
+const GalleryGrid = ({ title, images, onOpen, cols = 3 }: GalleryGridProps) => {
+
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
   const [tappedIdx, setTappedIdx] = useState<number | null>(null);
   const isMobile = useIsMobile();
