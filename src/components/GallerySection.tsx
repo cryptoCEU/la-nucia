@@ -147,19 +147,19 @@ const STYLES = `
     padding: 24px;
   }
 ...
-  /* Desktop: full-section takeover with invisible hotspot siblings */
+  /* Desktop: full-section takeover with invisible hotspot siblings (pure CSS via :has()) */
   @media (min-width: 768px) {
-    .lng-gallery.has-active .lng-cell:not(.lng-active) {
+    .lng-gallery:hover .lng-cell:not(:hover) {
       opacity: 0;
       background: transparent;
       z-index: 30;
       pointer-events: auto;
       cursor: pointer;
     }
-    .lng-gallery.has-active .lng-cell:not(.lng-active) img {
+    .lng-gallery:hover .lng-cell:not(:hover) img {
       opacity: 0;
     }
-    .lng-cell.lng-active {
+    .lng-cell:hover {
       position: absolute;
       top: 0;
       left: 0;
@@ -168,7 +168,7 @@ const STYLES = `
       z-index: 20;
       transition: opacity 0.4s ease;
     }
-    .lng-cell.lng-active .lng-overlay {
+    .lng-cell:hover .lng-overlay {
       opacity: 1;
       transition: opacity 0.3s ease 0.2s;
     }
