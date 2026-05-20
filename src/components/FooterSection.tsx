@@ -1,7 +1,7 @@
 import { Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import logoActivum from "@/assets/logo-activum.png";
+
 
 const FooterSection = () => {
   const { t } = useTranslation();
@@ -27,9 +27,9 @@ const FooterSection = () => {
               {t("footer.location")}<br />{t("footer.byAppointment")}
             </p>
           </div>
-          <div className="flex flex-col items-start md:items-end gap-3">
+          <div className="flex flex-col items-start md:items-end gap-2">
             <span className="font-body text-[10px] tracking-[0.25em] uppercase text-primary-foreground/40">{t("footer.managedBy")}</span>
-            <img src={logoActivum} alt="Activum - Residential Management" className="h-12 opacity-70" />
+            <span className="font-display text-xl text-primary-foreground/80">Activum</span>
           </div>
         </div>
 
