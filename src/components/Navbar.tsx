@@ -46,7 +46,10 @@ const Navbar = () => {
 
   const { scrollY } = useScroll();
   const smallH = 48;
-  const largeH = Math.min(420, vh * 0.5);
+  // Cap large width to 90% of viewport so the logo never overflows on tablet/mobile
+  const maxLargeW = vw * 0.9;
+  const heightCapByWidth = aspect > 0 ? maxLargeW / aspect : 420;
+  const largeH = Math.min(420, vh * 0.5, heightCapByWidth);
   const largeW = largeH * aspect;
   const smallTop = 16;
   const largeTop = Math.max(40, vh * 0.06);
