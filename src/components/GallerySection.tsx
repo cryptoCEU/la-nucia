@@ -16,7 +16,7 @@ type GalleryImage = {
 const exterioresImages: GalleryImage[] = [
   { src: extAerea, alt: "Vista aérea", eyebrow: "EXTERIORES", title: "Vista aérea", description: "Volumetría curva del edificio integrada en la ladera, con vistas abiertas al mar y a la sierra de La Nucía." },
   { src: extFrontal, alt: "Fachada y piscina", eyebrow: "EXTERIORES", title: "Fachada y piscina", description: "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal." },
-  { src: "https://picsum.photos/seed/ext3/1600/1100", alt: "Próximamente", eyebrow: "EXTERIORES", title: "Próximamente", description: "Nueva imagen disponible en breve." },
+  { src: extAtardecer, alt: "Atardecer en la piscina", eyebrow: "EXTERIORES", title: "Atardecer en la piscina", description: "Luz cálida del atardecer reflejada en la lámina de agua, con las palmeras y la fachada curva como telón de fondo." },
   { src: "https://picsum.photos/seed/ext4/1600/1100", alt: "Próximamente", eyebrow: "EXTERIORES", title: "Próximamente", description: "Nueva imagen disponible en breve." },
 ];
 
