@@ -238,6 +238,12 @@ const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => {
           ))}
         </div>
 
+        {/* Grid separator lines (only visible on hover) */}
+        <div className="lng-grid-lines" aria-hidden="true">
+          <span className="v1" />
+          <span className="v2" />
+        </div>
+
         {/* Overlay text for the currently hovered cell */}
         {hoverIdx !== null && (
           <div className={`lng-overlay is-visible`} aria-hidden="true">
