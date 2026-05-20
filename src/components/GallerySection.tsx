@@ -1,116 +1,217 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { useTranslation } from "react-i18next";
-import buildingImg from "@/assets/building-render.jpg";
-import interiorImg from "@/assets/interior.jpg";
-import heroImg from "@/assets/hero-nucia.jpg";
-import { staggerContainer, viewportOnce } from "@/lib/animations";
 
-const srcs = [buildingImg, interiorImg, heroImg, buildingImg, interiorImg, heroImg];
+type GalleryImage = { src: string; alt: string; area: string };
 
-const layoutClasses = [
-  "col-span-2 row-span-2",
-  "col-span-1 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
-  "col-span-1 row-span-1",
+const exterioresImages: GalleryImage[] = [
+  { src: "https://picsum.photos/seed/ext1/1200/1400", alt: "Exteriores 01", area: "a" },
+  { src: "https://picsum.photos/seed/ext2/900/600", alt: "Exteriores 02", area: "b" },
+  { src: "https://picsum.photos/seed/ext3/900/600", alt: "Exteriores 03", area: "c" },
+  { src: "https://picsum.photos/seed/ext4/800/600", alt: "Exteriores 04", area: "d" },
+  { src: "https://picsum.photos/seed/ext5/800/600", alt: "Exteriores 05", area: "e" },
+  { src: "https://picsum.photos/seed/ext6/800/600", alt: "Exteriores 06", area: "f" },
+  { src: "https://picsum.photos/seed/ext7/900/600", alt: "Exteriores 07", area: "g" },
+  { src: "https://picsum.photos/seed/ext8/1400/600", alt: "Exteriores 08", area: "h" },
 ];
 
-const galleryItem = {
-  hidden: { opacity: 0, scale: 0.96 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  },
-};
+const zonasImages: GalleryImage[] = [
+  { src: "https://picsum.photos/seed/zc1/1200/1400", alt: "Zonas Comunes 01", area: "a" },
+  { src: "https://picsum.photos/seed/zc2/900/600", alt: "Zonas Comunes 02", area: "b" },
+  { src: "https://picsum.photos/seed/zc3/900/600", alt: "Zonas Comunes 03", area: "c" },
+  { src: "https://picsum.photos/seed/zc4/800/600", alt: "Zonas Comunes 04", area: "d" },
+  { src: "https://picsum.photos/seed/zc5/800/600", alt: "Zonas Comunes 05", area: "e" },
+  { src: "https://picsum.photos/seed/zc6/800/600", alt: "Zonas Comunes 06", area: "f" },
+  { src: "https://picsum.photos/seed/zc7/900/600", alt: "Zonas Comunes 07", area: "g" },
+  { src: "https://picsum.photos/seed/zc8/1400/600", alt: "Zonas Comunes 08", area: "h" },
+];
+
+const GRID_STYLES = `
+  .lng-gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(4, 18vw);
+    grid-template-areas:
+      "a a a b b"
+      "a a a c c"
+      "d d e e f"
+      "g g g h h";
+    gap: 2px;
+    width: 100%;
+  }
+  .lng-gallery > .cell { position: relative; overflow: hidden; cursor: pointer; }
+  .lng-gallery > .cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: translateX(-8%) scale(1.08);
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .lng-gallery > .cell:hover img,
+  .lng-gallery > .cell:focus-visible img {
+    transform: translateX(0%) scale(1);
+  }
+  .lng-gallery > .cell.a { grid-area: a; }
+  .lng-gallery > .cell.b { grid-area: b; }
+  .lng-gallery > .cell.c { grid-area: c; }
+  .lng-gallery > .cell.d { grid-area: d; }
+  .lng-gallery > .cell.e { grid-area: e; }
+  .lng-gallery > .cell.f { grid-area: f; }
+  .lng-gallery > .cell.g { grid-area: g; }
+  .lng-gallery > .cell.h { grid-area: h; }
+
+  @media (max-width: 1024px) {
+    .lng-gallery {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 32vw);
+      grid-template-areas:
+        "a b"
+        "c d"
+        "e f"
+        "g h";
+    }
+  }
+  @media (max-width: 768px) {
+    .lng-gallery {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(8, 65vw);
+      grid-template-areas: "a" "b" "c" "d" "e" "f" "g" "h";
+    }
+    .lng-gallery > .cell img {
+      transform: translateX(0) scale(1);
+    }
+    .lng-gallery > .cell:active img {
+      transform: scale(1.02);
+    }
+  }
+`;
+
+interface GalleryGridProps {
+  title: string;
+  images: GalleryImage[];
+  onOpen: (images: GalleryImage[], idx: number) => void;
+}
+
+const GalleryGrid = ({ title, images, onOpen }: GalleryGridProps) => (
+  <section className="w-full">
+    <h2
+      className="px-6 md:px-12 mb-10 md:mb-14"
+      style={{
+        fontFamily: "'Roboto Serif', Georgia, serif",
+        fontWeight: 300,
+        fontSize: "clamp(36px, 5vw, 64px)",
+        lineHeight: 1.1,
+        color: "#1F1D1A",
+        letterSpacing: "-0.01em",
+      }}
+    >
+      {title}
+    </h2>
+    <div className="lng-gallery">
+      {images.map((img, i) => (
+        <button
+          key={i}
+          type="button"
+          className={`cell ${img.area}`}
+          onClick={() => onOpen(images, i)}
+          aria-label={`Abrir ${img.alt}`}
+        >
+          <img
+            src={img.src}
+            alt={img.alt}
+            loading={i < 3 ? "eager" : "lazy"}
+            draggable={false}
+          />
+        </button>
+      ))}
+    </div>
+  </section>
+);
 
 const GallerySection = () => {
-  const { t } = useTranslation();
-  const [selected, setSelected] = useState<number | null>(null);
-  const images = t("gallery.images", { returnObjects: true }) as { alt: string; label: string }[];
+  const [lightbox, setLightbox] = useState<{ list: GalleryImage[]; idx: number } | null>(null);
 
-  const navigate = (dir: number) => {
-    if (selected === null) return;
-    const next = (selected + dir + images.length) % images.length;
-    setSelected(next);
-  };
+  const open = useCallback((list: GalleryImage[], idx: number) => {
+    setLightbox({ list, idx });
+  }, []);
+  const close = useCallback(() => setLightbox(null), []);
+  const nav = useCallback(
+    (dir: number) => {
+      setLightbox((lb) =>
+        lb ? { ...lb, idx: (lb.idx + dir + lb.list.length) % lb.list.length } : lb,
+      );
+    },
+    [],
+  );
+
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowRight") nav(1);
+      if (e.key === "ArrowLeft") nav(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, close, nav]);
 
   return (
-    <>
-      <section className="py-16 md:py-24 bg-sand">
-        <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
-          <motion.div
-            variants={staggerContainer(0.1, 0.1)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="grid grid-cols-2 md:grid-cols-4 auto-rows-[200px] md:auto-rows-[250px] gap-3 md:gap-4"
-          >
-            {images.map((img, i) => (
-              <motion.div
-                key={i}
-                variants={galleryItem}
-                className={`${layoutClasses[i]} cursor-pointer group relative overflow-hidden`}
-                onClick={() => setSelected(i)}
-              >
-                <img
-                  src={srcs[i]}
-                  alt={img.alt}
-                  className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-700 translate-y-2 group-hover:translate-y-0">
-                  <p className="font-display text-lg md:text-xl text-primary-foreground">{img.label}</p>
-                  <p className="font-body text-xs text-primary-foreground/60 mt-1">{img.alt}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+    <div style={{ background: "#F5F3F2" }} className="w-full py-16 md:py-24">
+      <style>{GRID_STYLES}</style>
+      <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} />
+      <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
+      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} />
 
-      <AnimatePresence>
-        {selected !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[100] bg-foreground/95 flex items-center justify-center p-6"
-            onClick={() => setSelected(null)}
+      {lightbox && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          onClick={close}
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 100,
+            background: "rgba(31,29,26,0.96)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "2rem",
+          }}
+        >
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); close(); }}
+            aria-label="Cerrar"
+            style={{ position: "absolute", top: 24, right: 24, color: "#F5F3F2", background: "transparent", border: 0, cursor: "pointer" }}
           >
-            <button onClick={() => setSelected(null)} className="absolute top-6 right-6 text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-500 z-10">
-              <X className="w-8 h-8" />
-            </button>
-            <button onClick={(e) => { e.stopPropagation(); navigate(-1); }} className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-500 z-10">
-              <ChevronLeft className="w-10 h-10" />
-            </button>
-            <button onClick={(e) => { e.stopPropagation(); navigate(1); }} className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-500 z-10">
-              <ChevronRight className="w-10 h-10" />
-            </button>
-            <motion.div
-              key={selected}
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.94 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="relative max-w-5xl w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <img src={srcs[selected]} alt={images[selected].alt} className="w-full max-h-[80vh] object-contain" />
-              <div className="text-center mt-4">
-                <p className="font-display text-xl text-primary-foreground">{images[selected].label}</p>
-                <p className="font-body text-sm text-primary-foreground/50 mt-1">{selected + 1} / {images.length}</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            <X className="w-8 h-8" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); nav(-1); }}
+            aria-label="Anterior"
+            style={{ position: "absolute", left: 24, color: "#F5F3F2", background: "transparent", border: 0, cursor: "pointer" }}
+          >
+            <ChevronLeft className="w-10 h-10" />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => { e.stopPropagation(); nav(1); }}
+            aria-label="Siguiente"
+            style={{ position: "absolute", right: 24, color: "#F5F3F2", background: "transparent", border: 0, cursor: "pointer" }}
+          >
+            <ChevronRight className="w-10 h-10" />
+          </button>
+          <img
+            src={lightbox.list[lightbox.idx].src}
+            alt={lightbox.list[lightbox.idx].alt}
+            onClick={(e) => e.stopPropagation()}
+            style={{ maxWidth: "92vw", maxHeight: "88vh", objectFit: "contain" }}
+          />
+        </div>
+      )}
+    </div>
   );
 };
 
