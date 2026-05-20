@@ -45,6 +45,11 @@ const STYLES = `
   }
   .lng-gallery.cols-2 .lng-grid-lines > .v1 { left: calc(50% - 1px); }
   .lng-gallery.cols-2 .lng-grid-lines > .v2 { display: none; }
+  .lng-gallery.rows-1 {
+    grid-template-rows: clamp(320px, 38vw, 520px);
+  }
+  .lng-gallery.rows-1 .lng-grid-lines::before { display: none; }
+
 
   .lng-cell {
     position: relative;
