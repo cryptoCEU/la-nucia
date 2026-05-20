@@ -231,7 +231,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3 }: GalleryGridProps) => {
         {title}
       </h2>
       <div
-        className="lng-gallery"
+        className={`lng-gallery ${cols === 2 ? "cols-2" : ""}`}
         onMouseLeave={() => setHoverIdx(null)}
       >
         {/* Expanded preview layer (under the cells) */}
