@@ -7,7 +7,7 @@ import SEO from "@/components/SEO";
 import FooterSection from "@/components/FooterSection";
 import AmenitiesCarousel from "@/components/AmenitiesCarousel";
 import buildingImage from "@/assets/building-render.jpg";
-import interiorImg from "@/assets/interior.jpg";
+import interiorImg from "@/assets/sections/sofa-ordenador.webp";
 import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
 import cocinaPeopleImg from "@/assets/carousel/cocina-people.webp";
 import salonPeopleImg from "@/assets/carousel/salon-people.webp";

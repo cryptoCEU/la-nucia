@@ -9,8 +9,11 @@ import FooterSection from "@/components/FooterSection";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import FixedImageWindow from "@/components/FixedImageWindow";
 import heroImage from "@/assets/hero-nucia.jpg";
-import buildingImg from "@/assets/building-render.jpg";
-import interiorImg from "@/assets/interior.jpg";
+import buildingImg from "@/assets/sections/terraza-piscina.webp";
+import interiorImg from "@/assets/sections/sala-gente.webp";
+import aboutGallery1 from "@/assets/sections/amigos-terraza.webp";
+import aboutGallery2 from "@/assets/sections/gente-leyendo-terraza.webp";
+import aboutGallery3 from "@/assets/sections/chica-leyendo-cama.webp";
 import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
 import cocinaPeopleImg from "@/assets/carousel/cocina-people.webp";
 import salonPeopleImg from "@/assets/carousel/salon-people.webp";
@@ -346,10 +349,10 @@ const Index = () => {
               >
                 <div className="space-y-4">
                   <motion.div variants={scaleIn()} className="overflow-hidden">
-                    <img src={buildingImg} alt="" className="w-full aspect-[4/5] object-cover" />
+                    <img src={aboutGallery1} alt="" className="w-full aspect-[4/5] object-cover" />
                   </motion.div>
                   <motion.div variants={scaleIn()} className="overflow-hidden">
-                    <img src={heroImage} alt="" className="w-full aspect-square object-cover" />
+                    <img src={aboutGallery2} alt="" className="w-full aspect-square object-cover" />
                   </motion.div>
                 </div>
                 <div className="space-y-4 pt-8">
@@ -357,7 +360,7 @@ const Index = () => {
                     <img src={interiorImg} alt="" className="w-full aspect-square object-cover" />
                   </motion.div>
                   <motion.div variants={scaleIn()} className="overflow-hidden">
-                    <img src={buildingImg} alt="" className="w-full aspect-[4/5] object-cover" />
+                    <img src={aboutGallery3} alt="" className="w-full aspect-[4/5] object-cover" />
                   </motion.div>
                 </div>
               </motion.div>
