@@ -23,9 +23,12 @@ const FooterSection = () => {
           </div>
           <div>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-4">{t("footer.salesOffice")}</p>
-            <p className="font-body text-sm text-primary-foreground/60 leading-relaxed">
-              {t("footer.location")}<br />{t("footer.byAppointment")}
-            </p>
+            <ul className="font-body text-sm text-primary-foreground/60 leading-relaxed space-y-1">
+              <li>La Nucía <span className="text-primary-foreground/40">{t("footer.byAppointment")}</span></li>
+              <li>Alicante <span className="text-primary-foreground/40">{t("footer.byAppointment")}</span></li>
+              <li>Madrid <span className="text-primary-foreground/40">{t("footer.byAppointment")}</span></li>
+              <li>Online</li>
+            </ul>
           </div>
           <div className="flex flex-col items-start md:items-end gap-3">
             <div className="flex items-center gap-4">
