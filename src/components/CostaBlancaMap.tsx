@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, TileLayer, Marker, Polyline, useMap, ZoomControl } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import logoIsotipo from "@/assets/logo-nucia-one.png";
+const logoIsotipo = "/favicon.png";
 
 type Pin = {
   id: string;
