@@ -362,6 +362,44 @@ const Index = () => {
           </div>
         </section>
 
+        {/* ═══ PREVIEW: CONTACTO ═══ */}
+        <section className="py-28 md:py-40 bg-primary">
+          <div className="container max-w-4xl mx-auto px-6 text-center">
+            <motion.div
+              variants={staggerContainer(0.12)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+            >
+              <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
+                {t("home.contactTag")}
+              </motion.p>
+              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-tight mb-8">
+                {t("home.contactTitle1")}{" "}
+                <span className="italic">{t("home.contactTitle2")}</span>
+              </motion.h2>
+              <motion.p variants={staggerItem} className="font-body text-primary-foreground/60 leading-relaxed mb-10 max-w-xl mx-auto">
+                {t("home.contactText")}
+              </motion.p>
+              <motion.div variants={staggerItem} className="flex flex-wrap gap-4 justify-center">
+                <Link
+                  to="/contacto"
+                  className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
+                >
+                  {t("home.contactCta")}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href="tel:+34865662845"
+                  className="inline-flex items-center gap-3 border border-primary-foreground/20 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-700"
+                >
+                  865 662 845
+                </a>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
       </main>
       <FooterSection />
     </>
