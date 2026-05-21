@@ -21,8 +21,8 @@ const LA_NUCIA: [number, number] = [38.6133, -0.1267];
 const NUCIA_LOGO_POS: [number, number] = [38.655, -0.070];
 
 const BOUNDS: LatLngBoundsExpression = [
-  [38.330, -0.520], // SW (Alicante)
-  [38.620, -0.020], // NE (Altea)
+  [38.250, -0.600], // SW (Aeropuerto)
+  [38.680, -0.020], // NE (logo anchor)
 ];
 
 const PINS: Pin[] = [
