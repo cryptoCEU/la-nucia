@@ -132,9 +132,9 @@
     ]
   },
   "contactSection": {
-    "tag": "La Nucía awaits you",
+    "tag": "La Nucía ONE awaits you",
     "title": "Discover all the <i>details</i>",
-    "subtitle": "Tell us about your ideal home and we'll contact you with no obligation.",
+    "subtitle": "Leave your details and we'll call you.",
     "form": {
       "firstName": "First name *",
       "firstNamePlaceholder": "Your first name",
@@ -232,7 +232,7 @@
     "qualityReport": "Quality specifications",
     "viewPlan": "View floor plan",
     "conceptTag": "The concept",
-    "conceptTitle": "Design you live, <i>light you feel</i>",
+    "conceptTitle": "Design you live,<br/><i>light you feel</i>",
     "conceptText1": "La Nucía One is born from the idea of creating a residential complex that combines contemporary architecture with the Mediterranean lifestyle. Each home has been designed to maximise light, views and functionality.",
     "conceptText2": "The homes open to the outdoors through large windows and generous terraces, allowing natural light to flow through every room. By offering diverse typologies, the homes adapt to all kinds of needs and preferences.",
     "typologiesTag": "Typologies",
