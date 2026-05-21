@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import buildingImg from "@/assets/building-render.jpg";
+import buildingImg from "@/assets/sections/piscina-terrazas.webp";
 
 const DescriptionSection = () => {
   const { t } = useTranslation();
