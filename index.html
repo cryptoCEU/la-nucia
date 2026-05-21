@@ -38,5 +38,21 @@
     <script type="module" src="/src/main.tsx"></script>
     <elevenlabs-convai agent-id="agent_2301kk13h2xwf1w8n11hrz94xh5a"></elevenlabs-convai>
     <script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+    <script>
+      (function () {
+        var widget = document.querySelector('elevenlabs-convai');
+        if (!widget) return;
+        var mq = window.matchMedia('(max-width: 767px)');
+        var apply = function () {
+          if (mq.matches) {
+            widget.setAttribute('action-text', ' ');
+          } else {
+            widget.removeAttribute('action-text');
+          }
+        };
+        apply();
+        mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
+      })();
+    </script>
   </body>
 </html>
