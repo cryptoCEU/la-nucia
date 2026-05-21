@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Sun, Mountain, Palmtree, HeartPulse, ShoppingBag, Waves } from "lucide-react";
+import { MapPin, Sun, ShoppingBag, Waves, Mountain } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
@@ -18,13 +18,11 @@ const Ubicacion = () => {
   const hero = useHeroParallax();
 
   const advantages = t("ubicacionPage.advantages", { returnObjects: true }) as { title: string; description: string }[];
-  const advantageIcons = [Sun, Mountain, ShoppingBag, Waves, Palmtree, HeartPulse];
+  const advantageIcons = [Mountain, ShoppingBag, Waves];
 
   const stats = [
-    { number: "10", label: t("ubicacionPage.statBenidorm") },
-    { number: "45", label: t("ubicacionPage.statAirport") },
-    { number: "8", label: t("ubicacionPage.statBeach") },
     { number: "300+", label: t("ubicacionPage.statSun") },
+    { number: "5", label: t("ubicacionPage.statShopping") },
   ];
 
   return (
@@ -58,7 +56,7 @@ const Ubicacion = () => {
         {/* Stats bar */}
         <section className="bg-primary border-t border-primary-foreground/10">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10">
+            <div className="grid grid-cols-2 divide-x divide-primary-foreground/10">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
@@ -134,13 +132,13 @@ const Ubicacion = () => {
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="mb-12">
               <p className="text-[#C9A96E] font-body text-xs tracking-[0.3em] uppercase mb-3">
-                Entorno Privilegiado
+                {t("ubicacionPage.mapTag")}
               </p>
               <h2 className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4">
-                Todo lo que necesitas, a tu alcance
+                {t("ubicacionPage.mapTitle")}
               </h2>
               <p className="font-body text-[#6B6B6B] max-w-2xl leading-relaxed">
-                La Nucía ofrece una calidad de vida excepcional, rodeada de servicios, naturaleza y conectividad.
+                {t("ubicacionPage.mapSubtitle")}
               </p>
             </div>
             <CostaBlancaMap />
