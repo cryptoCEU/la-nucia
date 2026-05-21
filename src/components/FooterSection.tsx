@@ -13,8 +13,8 @@ const FooterSection = () => {
           <div>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-4">{t("footer.contact")}</p>
             <div className="space-y-3">
-              <a href="mailto:obranueva@activum.es" className="flex items-center gap-3 font-body text-primary-foreground/80 hover:text-gold transition-colors duration-500">
-                <Mail className="w-4 h-4 text-gold" /> obranueva@activum.es
+              <a href="mailto:info@lanuciaone.com" className="flex items-center gap-3 font-body text-primary-foreground/80 hover:text-gold transition-colors duration-500">
+                <Mail className="w-4 h-4 text-gold" /> info@lanuciaone.com
               </a>
               <a href="tel:+34865662845" className="flex items-center gap-3 font-body text-primary-foreground/80 hover:text-gold transition-colors duration-500">
                 <Phone className="w-4 h-4 text-gold" /> 865 662 845
