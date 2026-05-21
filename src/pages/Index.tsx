@@ -11,9 +11,9 @@ import FixedImageWindow from "@/components/FixedImageWindow";
 import heroImage from "@/assets/hero-nucia.jpg";
 import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
-import habitacionImg from "@/assets/carousel/habitacion.webp";
-import cocinaImg from "@/assets/carousel/cocina.webp";
 import salonImg from "@/assets/carousel/salon.webp";
+import cocinaImg from "@/assets/carousel/cocina.webp";
+import terrazaImg from "@/assets/carousel/terraza.webp";
 import {
   fadeUp, fadeIn, scaleIn, slideRight, staggerContainer, staggerItem,
   heroText, viewportOnce, viewportOnceNear, slowTransition, clipReveal
