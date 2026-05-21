@@ -264,6 +264,24 @@ const CostaBlancaMap = () => {
           border: 1px solid rgba(13,58,42,0.18);
         }
 
+        /* Small dot marking real La Nucía location */
+        .cb-nucia-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
+        .cb-nucia-dot {
+          display: block; width: 14px; height: 14px; border-radius: 50%;
+          background: #0d3a2a;
+          box-shadow: 0 0 0 3px rgba(249,246,241,0.95), 0 2px 6px rgba(13,58,42,0.45);
+          position: relative;
+        }
+        .cb-nucia-dot::after {
+          content: ""; position: absolute; inset: -6px; border-radius: 50%;
+          border: 2px solid rgba(13,58,42,0.35);
+          animation: cb-nucia-pulse 2s ease-out infinite;
+        }
+        @keyframes cb-nucia-pulse {
+          0% { transform: scale(0.6); opacity: 0.8; }
+          100% { transform: scale(1.6); opacity: 0; }
+        }
+
         /* Progressive dotted route */
         .cb-route-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
         .cb-route-dot {
