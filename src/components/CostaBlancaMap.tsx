@@ -270,22 +270,31 @@ const CostaBlancaMap = () => {
         }
 
         /* Distinct accent dot marking real La Nucía location */
-        .cb-nucia-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
+        .cb-nucia-dot-marker { background: transparent !important; border: none !important; cursor: pointer; }
         .cb-nucia-dot {
           display: block; width: 16px; height: 16px; border-radius: 50%;
           background: #c9a84c;
           box-shadow: 0 0 0 3px #F9F6F1, 0 0 0 5px #c9a84c, 0 2px 8px rgba(201,168,76,0.55);
           position: relative;
+          animation: cb-nucia-beat 1.4s ease-in-out infinite;
         }
         .cb-nucia-dot::after {
           content: ""; position: absolute; inset: -8px; border-radius: 50%;
           border: 2px solid rgba(201,168,76,0.55);
-          animation: cb-nucia-pulse 2s ease-out infinite;
+          animation: cb-nucia-pulse 1.8s ease-out infinite;
         }
         @keyframes cb-nucia-pulse {
           0% { transform: scale(0.5); opacity: 0.9; }
-          100% { transform: scale(1.8); opacity: 0; }
+          100% { transform: scale(1.9); opacity: 0; }
         }
+        @keyframes cb-nucia-beat {
+          0%, 100% { transform: scale(1); }
+          15% { transform: scale(1.35); }
+          30% { transform: scale(1); }
+          45% { transform: scale(1.2); }
+          60% { transform: scale(1); }
+        }
+
 
         /* Refined leader line from real location to logo */
         .cb-map-bleed .leaflet-overlay-pane svg path.cb-leader {
