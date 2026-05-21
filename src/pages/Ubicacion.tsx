@@ -38,7 +38,7 @@ const Ubicacion = () => {
             <motion.img
               src={heroImage}
               alt="La Nucía, Costa Blanca"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-top scale-125"
               initial={{ scale: 1.1 }}
               animate={{ scale: 1 }}
               transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
