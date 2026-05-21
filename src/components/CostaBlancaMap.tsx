@@ -370,7 +370,7 @@ const CostaBlancaMap = () => {
         {/* Leader line from real location to offset logo anchor */}
         <Polyline
           positions={[LA_NUCIA, NUCIA_LOGO_POS]}
-          pathOptions={{ color: "#0d3a2a", weight: 1.5, opacity: 0.85, dashArray: "4 4" }}
+          pathOptions={{ color: "#c9a84c", weight: 1.25, opacity: 0.9, dashArray: "2 5", lineCap: "round" }}
           interactive={false}
         />
 
