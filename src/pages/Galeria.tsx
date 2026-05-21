@@ -20,7 +20,17 @@ const Galeria = () => {
       <SEO title="Galería de Imágenes" description="Galería de imágenes de La Nucía One." path="/galeria" />
       <Navbar />
       <main>
-        <section className="relative min-h-[60vh] flex items-end overflow-hidden bg-primary">
+        <section className="relative min-h-[90vh] flex items-end overflow-hidden bg-primary">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          >
+            <source src="/lanuciaone.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-black/40 z-[1]" />
           <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-20 pt-32">
             <motion.div variants={staggerContainer(0.13, 0.2)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="font-body text-xs tracking-[0.2em] uppercase text-gold mb-3">
