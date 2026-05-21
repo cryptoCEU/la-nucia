@@ -169,7 +169,7 @@ const CostaBlancaMap = () => {
       setRouteT(0);
       return;
     }
-    const duration = 700;
+    const duration = 350;
     const start = performance.now();
     const tick = (now: number) => {
       const t = Math.min(1, (now - start) / duration);
