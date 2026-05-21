@@ -139,6 +139,7 @@ const ScrollEnabler = () => {
 const CostaBlancaMap = () => {
   const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 768);
   const [hovered, setHovered] = useState<string | null>(null);
+  const [nuciaHover, setNuciaHover] = useState(false);
   const [routeT, setRouteT] = useState(0); // 0..1 progressive draw
   const scrollerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
@@ -269,22 +270,31 @@ const CostaBlancaMap = () => {
         }
 
         /* Distinct accent dot marking real La Nucía location */
-        .cb-nucia-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
+        .cb-nucia-dot-marker { background: transparent !important; border: none !important; cursor: pointer; }
         .cb-nucia-dot {
           display: block; width: 16px; height: 16px; border-radius: 50%;
           background: #c9a84c;
           box-shadow: 0 0 0 3px #F9F6F1, 0 0 0 5px #c9a84c, 0 2px 8px rgba(201,168,76,0.55);
           position: relative;
+          animation: cb-nucia-beat 1.4s ease-in-out infinite;
         }
         .cb-nucia-dot::after {
           content: ""; position: absolute; inset: -8px; border-radius: 50%;
           border: 2px solid rgba(201,168,76,0.55);
-          animation: cb-nucia-pulse 2s ease-out infinite;
+          animation: cb-nucia-pulse 1.8s ease-out infinite;
         }
         @keyframes cb-nucia-pulse {
           0% { transform: scale(0.5); opacity: 0.9; }
-          100% { transform: scale(1.8); opacity: 0; }
+          100% { transform: scale(1.9); opacity: 0; }
         }
+        @keyframes cb-nucia-beat {
+          0%, 100% { transform: scale(1); }
+          15% { transform: scale(1.35); }
+          30% { transform: scale(1); }
+          45% { transform: scale(1.2); }
+          60% { transform: scale(1); }
+        }
+
 
         /* Refined leader line from real location to logo */
         .cb-map-bleed .leaflet-overlay-pane svg path.cb-leader {
@@ -337,8 +347,8 @@ const CostaBlancaMap = () => {
       `}</style>
 
       <MapContainer
-        bounds={BOUNDS}
-        boundsOptions={{ padding: [20, 20] }}
+        center={LA_NUCIA}
+        zoom={isMobile ? 11 : 12}
         minZoom={9}
         maxZoom={16}
         scrollWheelZoom={false}
@@ -364,18 +374,30 @@ const CostaBlancaMap = () => {
           />
         ))}
 
-        {/* Real La Nucía location dot */}
-        <Marker position={LA_NUCIA} icon={nuciaDotIcon()} interactive={false} zIndexOffset={900} />
-
-        {/* Leader line from real location to offset logo anchor */}
-        <Polyline
-          positions={[LA_NUCIA, NUCIA_LOGO_POS]}
-          pathOptions={{ color: "#c9a84c", weight: 1.25, opacity: 0.9, dashArray: "2 5", lineCap: "round" }}
-          interactive={false}
+        {/* Real La Nucía location dot — hover to reveal isotipo */}
+        <Marker
+          position={LA_NUCIA}
+          icon={nuciaDotIcon()}
+          zIndexOffset={900}
+          eventHandlers={{
+            mouseover: () => setNuciaHover(true),
+            mouseout: () => setNuciaHover(false),
+            click: () => setNuciaHover((v) => !v),
+          }}
         />
 
-        {/* La Nucía isotipo (placed at offset so it never covers POIs) */}
-        <Marker position={NUCIA_LOGO_POS} icon={nuciaIcon(isMobile)} interactive={false} zIndexOffset={1000} />
+        {/* Leader line from real location to offset logo anchor (only when hovered) */}
+        {nuciaHover && (
+          <>
+            <Polyline
+              positions={[LA_NUCIA, NUCIA_LOGO_POS]}
+              pathOptions={{ color: "#c9a84c", weight: 1.5, opacity: 0.95, lineCap: "round" }}
+              interactive={false}
+            />
+            <Marker position={NUCIA_LOGO_POS} icon={nuciaIcon(isMobile)} interactive={false} zIndexOffset={1000} />
+          </>
+        )}
+
 
         {/* Pins */}
         {PINS.map((p) => (
