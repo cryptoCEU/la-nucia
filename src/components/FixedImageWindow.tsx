@@ -114,13 +114,13 @@ const FixedImageWindow = ({
             margin: 0,
             padding: "0 1.5rem",
             textAlign: "center",
-            fontFamily: "'Roboto Serif', Georgia, serif",
-            fontWeight: 300,
-            fontSize: "clamp(28px, 4vw, 52px)",
+            fontFamily: "'TAN - PEARL', 'TAN Pearl', serif",
+            fontWeight: 400,
+            fontSize: "clamp(28px, 3.6vw, 48px)",
             lineHeight: 1.15,
             color: "#F5F3F2",
             textShadow: "0 2px 24px rgba(0,0,0,0.45)",
-            maxWidth: "20ch",
+            maxWidth: "18ch",
           }}
         >
           {phrase}
