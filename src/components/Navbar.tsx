@@ -165,7 +165,7 @@ const Navbar = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="px-12 md:px-24 pb-12 md:pb-0 md:flex md:flex-col md:justify-center md:border-l md:border-primary-foreground/10"
+                className="px-6 sm:px-12 md:px-24 pb-12 md:pb-0 md:flex md:flex-col md:justify-center md:border-l md:border-primary-foreground/10"
               >
                 <div className="space-y-6">
                   <div>
