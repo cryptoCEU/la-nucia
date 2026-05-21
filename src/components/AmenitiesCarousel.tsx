@@ -24,6 +24,7 @@ const STYLES = `
 .amen-wrap{position:relative;}
 .amen-track{display:flex;gap:24px;overflow-x:scroll;scroll-snap-type:x mandatory;padding:8px 60px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;scroll-behavior:smooth;}
 .amen-track::-webkit-scrollbar{display:none;}
+.amen-track::after{content:"";flex:0 0 1px;}
 .amen-track.dragging{cursor:grabbing;scroll-behavior:auto;}
 .amen-card{flex:0 0 auto;width:420px;height:520px;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(31,29,26,0.10);scroll-snap-align:start;background:#F5F3F2;display:flex;flex-direction:column;}
 .amen-img{flex:0 0 78%;width:100%;overflow:hidden;background:#1F1D1A;}
