@@ -17,6 +17,8 @@ type Pin = {
 };
 
 const LA_NUCIA: [number, number] = [38.6133, -0.1267];
+// Logo anchor placed in an empty NE area so it never covers POI pins
+const NUCIA_LOGO_POS: [number, number] = [38.655, -0.070];
 
 const BOUNDS: LatLngBoundsExpression = [
   [38.330, -0.520], // SW (Alicante)
