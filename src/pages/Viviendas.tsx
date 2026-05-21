@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BedDouble, Bath, Maximize, Shield, Thermometer, ChefHat, DoorOpen, Cpu, Leaf, Download, FileText, Eye } from "lucide-react";
+import { ArrowRight, BedDouble, Bath, Maximize, Shield, Thermometer, ChefHat, DoorOpen, Cpu, Leaf, Download, FileText, Eye, Trees } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
@@ -29,7 +29,7 @@ const Viviendas = () => {
     ? "/dossier/Memoria_Calidades_La_Nucia_One_EN.pdf"
     : "/dossier/Memoria_Calidades_La_Nucia_One_ES.pdf";
   const hero = useHeroParallax();
-  const types = t("viviendasPage.types", { returnObjects: true }) as { title: string; description: string; areaFrom: string; bathrooms: string }[];
+  const types = t("viviendasPage.types", { returnObjects: true }) as { title: string; description: string; areaFrom: string; bathrooms: string; terraceFrom: string }[];
   const features = t("viviendasPage.featuresList", { returnObjects: true }) as { title: string; description: string }[];
   const v = "viviendasPage";
 
@@ -160,11 +160,11 @@ const Viviendas = () => {
                       <div className="flex items-center gap-3 text-sm font-body">
                         <Maximize className="w-4 h-4 text-gold" /><span className="text-foreground">{t(`${v}.fromArea`, { area: type.areaFrom })}</span>
                       </div>
+                      <div className="flex items-center gap-3 text-sm font-body">
+                        <Trees className="w-4 h-4 text-gold" /><span className="text-foreground">{t(`${v}.fromTerrace`, { area: type.terraceFrom })}</span>
+                      </div>
                     </div>
-                    <p className="font-body text-xs text-muted-foreground mb-6">{t(`${v}.garageIncluded`)}</p>
-                    <button className="inline-flex items-center gap-2 border border-foreground/20 px-5 py-2.5 text-foreground font-body text-xs tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-500">
-                      <Eye className="w-3.5 h-3.5" /> {t(`${v}.viewPlan`)}
-                    </button>
+                    <p className="font-body text-xs text-muted-foreground">{t(`${v}.garageIncluded`)}</p>
                   </div>
                 </motion.div>
               ))}

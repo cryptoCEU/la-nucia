@@ -238,13 +238,14 @@
     "typologiesTag": "Tipologías",
     "typologiesTitle": "Elige tu <i>vivienda ideal</i>",
     "types": [
-      { "title": "2 Dormitorios", "description": "Distribución optimizada con amplias terrazas. Ideal para parejas o como inversión.", "areaFrom": "65", "bathrooms": "2" },
-      { "title": "3 Dormitorios", "description": "El equilibrio perfecto entre espacio y funcionalidad para toda la familia.", "areaFrom": "85", "bathrooms": "2" },
-      { "title": "4 Dormitorios", "description": "Máximo espacio y confort con acabados premium.", "areaFrom": "110", "bathrooms": "3" }
+      { "title": "2 Dormitorios", "description": "Distribución optimizada con amplias terrazas. Ideal para parejas o como inversión.", "areaFrom": "95", "bathrooms": "2", "terraceFrom": "17" },
+      { "title": "3 Dormitorios", "description": "El equilibrio perfecto entre espacio y funcionalidad para toda la familia.", "areaFrom": "109", "bathrooms": "2", "terraceFrom": "16" },
+      { "title": "4 Dormitorios", "description": "Máximo espacio y confort con acabados premium.", "areaFrom": "178", "bathrooms": "2", "terraceFrom": "60" }
     ],
     "bedrooms": "dormitorios",
     "bathrooms": "baños",
-    "fromArea": "Desde {{area}} m² útiles",
+    "fromArea": "Desde {{area}}m²",
+    "fromTerrace": "Terraza desde {{area}}m²",
     "from": "Desde",
     "garageIncluded": "Garaje y trastero incluidos",
     "featuresTag": "Características",
