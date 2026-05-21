@@ -28,12 +28,12 @@ const BOUNDS: LatLngBoundsExpression = [
 const PINS: Pin[] = [
   // Primary cities (label only)
   { id: "finestrat", name: "Finestrat", lat: 38.545, lng: -0.213, category: "Municipio", description: "Pueblo mediterráneo a los pies del Puig Campana.", driveMin: 15, driveKm: 12, primary: true },
-  { id: "polop", name: "Polop", lat: 38.622, lng: -0.155, category: "Municipio", description: "Pueblo histórico del interior de la Marina Baixa.", driveMin: 6, driveKm: 3, primary: true },
-  { id: "altea", name: "Altea", lat: 38.599, lng: -0.048, category: "Municipio", description: "Casco antiguo blanco y puerto deportivo.", driveMin: 14, driveKm: 11, primary: true },
-  { id: "benidorm", name: "Benidorm", lat: 38.541, lng: -0.132, category: "Municipio", description: "Capital turística de la Costa Blanca.", driveMin: 12, driveKm: 9, primary: true },
-  { id: "villajoyosa", name: "Villajoyosa", lat: 38.503, lng: -0.234, category: "Municipio", description: "Casas de colores y tradición chocolatera.", driveMin: 22, driveKm: 19, primary: true },
-  { id: "alicante", name: "Alicante", lat: 38.345, lng: -0.483, category: "Capital", description: "Capital mediterránea con puerto y casco antiguo.", driveMin: 45, driveKm: 55, primary: true },
-  { id: "aeropuerto", name: "Aeropuerto ALC", lat: 38.281, lng: -0.558, category: "Aeropuerto", description: "Conexión internacional Alicante-Elche.", driveMin: 50, driveKm: 65, primary: true },
+  { id: "polop", name: "Polop", lat: 38.636, lng: -0.172, category: "Municipio", description: "Pueblo histórico del interior de la Marina Baixa.", driveMin: 6, driveKm: 3, primary: true },
+  { id: "altea", name: "Altea", lat: 38.612, lng: -0.038, category: "Municipio", description: "Casco antiguo blanco y puerto deportivo.", driveMin: 14, driveKm: 11, primary: true },
+  { id: "benidorm", name: "Benidorm", lat: 38.520, lng: -0.155, category: "Municipio", description: "Capital turística de la Costa Blanca.", driveMin: 12, driveKm: 9, primary: true },
+  { id: "villajoyosa", name: "Villajoyosa", lat: 38.492, lng: -0.248, category: "Municipio", description: "Casas de colores y tradición chocolatera.", driveMin: 22, driveKm: 19, primary: true },
+  { id: "alicante", name: "Alicante", lat: 38.333, lng: -0.498, category: "Capital", description: "Capital mediterránea con puerto y casco antiguo.", driveMin: 45, driveKm: 55, primary: true },
+  { id: "aeropuerto", name: "Aeropuerto ALC", lat: 38.270, lng: -0.568, category: "Aeropuerto", description: "Conexión internacional Alicante-Elche.", driveMin: 50, driveKm: 65, primary: true },
 
   // POIs near La Nucía
   { id: "auditorio", name: "Auditorio La Nucía", lat: 38.6075, lng: -0.1185, category: "Cultural", description: "Auditorio de referencia en la Marina Baixa.", driveMin: 3, driveKm: 1.5 },
