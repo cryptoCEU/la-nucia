@@ -52,7 +52,7 @@ const ContactSection = () => {
       <div className="container max-w-3xl mx-auto px-6">
         <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-center mb-12">
           <motion.p variants={staggerItem} className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("contactSection.tag")}</motion.p>
-          <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.6] mb-4" dangerouslySetInnerHTML={{ __html: t("contactSection.title") }} />
+          <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.9] mb-4" dangerouslySetInnerHTML={{ __html: t("contactSection.title") }} />
           <motion.p variants={staggerItem} className="font-body text-muted-foreground max-w-xl mx-auto">{t("contactSection.subtitle")}</motion.p>
         </motion.div>
 
