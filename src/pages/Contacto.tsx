@@ -75,8 +75,7 @@ const Contacto = () => {
                   <motion.div
                     key={i}
                     variants={staggerItem}
-                    onClick={card.onClick}
-                    className={`space-y-4 ${card.onClick ? "cursor-pointer rounded-2xl p-4 -m-4 transition-colors duration-500 hover:bg-primary/5" : ""}`}
+                    className="space-y-4"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                       <card.icon className="w-5 h-5 text-primary" />
