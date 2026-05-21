@@ -56,7 +56,7 @@ const Viviendas = () => {
               <motion.p variants={heroText()} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">
                 {t(`${v}.tag`)}
               </motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.05] mb-6 max-w-3xl">
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.2] mb-6 max-w-3xl">
                 {t(`${v}.heroTitle1`)}<br /><span className="italic">{t(`${v}.heroTitle2`)}</span>
               </motion.h1>
               <motion.p variants={heroText()} className="font-body text-primary-foreground/60 text-lg max-w-xl mb-8" dangerouslySetInnerHTML={{ __html: t(`${v}.heroSubtitle`) }} />
@@ -75,7 +75,7 @@ const Viviendas = () => {
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <motion.div variants={staggerContainer(0.12)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
                 <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">{t(`${v}.conceptTag`)}</motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-tight mb-8" dangerouslySetInnerHTML={{ __html: t(`${v}.conceptTitle`) }} />
+                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.25] mb-8" dangerouslySetInnerHTML={{ __html: t(`${v}.conceptTitle`) }} />
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed mb-4">{t(`${v}.conceptText1`)}</motion.p>
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed">{t(`${v}.conceptText2`)}</motion.p>
               </motion.div>

@@ -24,7 +24,7 @@ const Caracteristicas = () => {
           <div className="container max-w-6xl mx-auto px-6 text-center">
             <motion.div variants={staggerContainer(0.12, 0.2)} initial="hidden" animate="visible">
               <motion.p variants={heroText()} className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("caracteristicasPage.tag")}</motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl text-primary-foreground leading-tight" dangerouslySetInnerHTML={{ __html: t("caracteristicasPage.title") }} />
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl text-primary-foreground leading-[1.25]" dangerouslySetInnerHTML={{ __html: t("caracteristicasPage.title") }} />
             </motion.div>
           </div>
         </section>

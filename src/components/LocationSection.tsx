@@ -21,7 +21,7 @@ const LocationSection = () => {
             viewport={viewportOnce}
           >
             <motion.p variants={staggerItem} className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("location.tag")}</motion.p>
-            <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl mb-6 leading-tight">
+            <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl mb-6 leading-[1.25]">
               {t("location.title1")}<br /><span className="italic">{t("location.title2")}</span>
             </motion.h2>
             <motion.p variants={staggerItem} className="font-body text-primary-foreground/70 leading-relaxed mb-10 max-w-lg">{t("location.description")}</motion.p>

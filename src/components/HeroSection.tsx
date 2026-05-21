@@ -16,7 +16,7 @@ const HeroSection = () => {
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-gold font-body text-sm md:text-base tracking-[0.3em] uppercase mb-6">
           {t("heroSection.tag")}
         </motion.p>
-        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-primary-foreground leading-tight mb-6">
+        <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} className="font-display text-4xl md:text-6xl lg:text-7xl font-medium text-primary-foreground leading-[1.25] mb-6">
           {t("heroSection.title1")}<br /><span className="italic">{t("heroSection.title2")}</span>
         </motion.h1>
         <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} className="font-body text-lg md:text-xl text-primary-foreground/80 mb-10 max-w-2xl mx-auto">
