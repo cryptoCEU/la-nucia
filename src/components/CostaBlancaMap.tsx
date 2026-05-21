@@ -347,8 +347,8 @@ const CostaBlancaMap = () => {
       `}</style>
 
       <MapContainer
-        bounds={BOUNDS}
-        boundsOptions={{ padding: [20, 20] }}
+        center={LA_NUCIA}
+        zoom={isMobile ? 11 : 12}
         minZoom={9}
         maxZoom={16}
         scrollWheelZoom={false}
@@ -374,18 +374,30 @@ const CostaBlancaMap = () => {
           />
         ))}
 
-        {/* Real La Nucía location dot */}
-        <Marker position={LA_NUCIA} icon={nuciaDotIcon()} interactive={false} zIndexOffset={900} />
-
-        {/* Leader line from real location to offset logo anchor */}
-        <Polyline
-          positions={[LA_NUCIA, NUCIA_LOGO_POS]}
-          pathOptions={{ color: "#c9a84c", weight: 1.25, opacity: 0.9, dashArray: "2 5", lineCap: "round" }}
-          interactive={false}
+        {/* Real La Nucía location dot — hover to reveal isotipo */}
+        <Marker
+          position={LA_NUCIA}
+          icon={nuciaDotIcon()}
+          zIndexOffset={900}
+          eventHandlers={{
+            mouseover: () => setNuciaHover(true),
+            mouseout: () => setNuciaHover(false),
+            click: () => setNuciaHover((v) => !v),
+          }}
         />
 
-        {/* La Nucía isotipo (placed at offset so it never covers POIs) */}
-        <Marker position={NUCIA_LOGO_POS} icon={nuciaIcon(isMobile)} interactive={false} zIndexOffset={1000} />
+        {/* Leader line from real location to offset logo anchor (only when hovered) */}
+        {nuciaHover && (
+          <>
+            <Polyline
+              positions={[LA_NUCIA, NUCIA_LOGO_POS]}
+              pathOptions={{ color: "#c9a84c", weight: 1.5, opacity: 0.95, lineCap: "round" }}
+              interactive={false}
+            />
+            <Marker position={NUCIA_LOGO_POS} icon={nuciaIcon(isMobile)} interactive={false} zIndexOffset={1000} />
+          </>
+        )}
+
 
         {/* Pins */}
         {PINS.map((p) => (
