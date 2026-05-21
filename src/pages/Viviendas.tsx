@@ -29,7 +29,7 @@ const Viviendas = () => {
     ? "/dossier/Memoria_Calidades_La_Nucia_One_EN.pdf"
     : "/dossier/Memoria_Calidades_La_Nucia_One_ES.pdf";
   const hero = useHeroParallax();
-  const types = t("viviendasPage.types", { returnObjects: true }) as { title: string; description: string; areaFrom: string; bathrooms: string }[];
+  const types = t("viviendasPage.types", { returnObjects: true }) as { title: string; description: string; areaFrom: string; bathrooms: string; terraceFrom: string }[];
   const features = t("viviendasPage.featuresList", { returnObjects: true }) as { title: string; description: string }[];
   const v = "viviendasPage";
 
