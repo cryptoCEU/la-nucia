@@ -149,7 +149,7 @@ const Index = () => {
                 <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
                   {t("home.aboutTag")}
                 </motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.35] mb-8">
+                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.55] mb-8">
                   {t("home.aboutTitle1")}<br />
                   <span className="italic">{t("home.aboutTitle2")}</span>
                 </motion.h2>
@@ -201,7 +201,7 @@ const Index = () => {
                 <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
                   {t("home.locationTag")}
                 </motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-[1.35] mb-8">
+                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-[1.55] mb-8">
                   {t("home.locationTitle1")}<br />
                   <span className="italic">{t("home.locationTitle2")}</span>
                 </motion.h2>
@@ -252,7 +252,7 @@ const Index = () => {
               <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
                 {t("home.homesTag")}
               </motion.p>
-              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.35] mb-6">
+              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.55] mb-6">
                 {t("home.homesTitle1")}<br />
                 <span className="italic">{t("home.homesTitle2")}</span>
               </motion.h2>
@@ -323,7 +323,7 @@ const Index = () => {
                 <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
                   {t("home.galleryTag")}
                 </motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.35] mb-8">
+                <motion.h2 variants={staggerItem} className="font-display text-2xl md:text-4xl text-foreground leading-[1.55] mb-8">
                   {t("home.galleryTitle1")}<br />
                   <span className="italic">{t("home.galleryTitle2")}</span>
                 </motion.h2>
@@ -380,7 +380,7 @@ const Index = () => {
               <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
                 {t("home.contactTag")}
               </motion.p>
-              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-[1.35] mb-8">
+              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-[1.55] mb-8">
                 {t("home.contactTitle1")}{" "}
                 <span className="italic">{t("home.contactTitle2")}</span>
               </motion.h2>

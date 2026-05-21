@@ -75,7 +75,7 @@ const Viviendas = () => {
             <div className="grid lg:grid-cols-2 gap-20 items-center">
               <motion.div variants={staggerContainer(0.12)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
                 <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">{t(`${v}.conceptTag`)}</motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.35] mb-8" dangerouslySetInnerHTML={{ __html: t(`${v}.conceptTitle`) }} />
+                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.55] mb-8" dangerouslySetInnerHTML={{ __html: t(`${v}.conceptTitle`) }} />
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed mb-4">{t(`${v}.conceptText1`)}</motion.p>
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed">{t(`${v}.conceptText2`)}</motion.p>
               </motion.div>
