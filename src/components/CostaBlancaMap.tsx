@@ -354,8 +354,18 @@ const CostaBlancaMap = () => {
           />
         ))}
 
-        {/* La Nucía isotipo */}
-        <Marker position={LA_NUCIA} icon={nuciaIcon(isMobile)} interactive={false} />
+        {/* Real La Nucía location dot */}
+        <Marker position={LA_NUCIA} icon={nuciaDotIcon()} interactive={false} zIndexOffset={900} />
+
+        {/* Leader line from real location to offset logo anchor */}
+        <Polyline
+          positions={[LA_NUCIA, NUCIA_LOGO_POS]}
+          pathOptions={{ color: "#0d3a2a", weight: 1.5, opacity: 0.85, dashArray: "4 4" }}
+          interactive={false}
+        />
+
+        {/* La Nucía isotipo (placed at offset so it never covers POIs) */}
+        <Marker position={NUCIA_LOGO_POS} icon={nuciaIcon(isMobile)} interactive={false} zIndexOffset={1000} />
 
         {/* Pins */}
         {PINS.map((p) => (
