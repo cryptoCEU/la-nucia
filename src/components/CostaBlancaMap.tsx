@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { MapContainer, TileLayer, Marker, useMap, ZoomControl } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Polyline, useMap, ZoomControl } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import logoIsotipo from "@/assets/logo-nucia-one.png";
@@ -17,21 +17,23 @@ type Pin = {
 };
 
 const LA_NUCIA: [number, number] = [38.6133, -0.1267];
+// Logo anchor placed in an empty NE area so it never covers POI pins
+const NUCIA_LOGO_POS: [number, number] = [38.655, -0.070];
 
 const BOUNDS: LatLngBoundsExpression = [
-  [38.330, -0.520], // SW (Alicante)
-  [38.620, -0.020], // NE (Altea)
+  [38.250, -0.600], // SW (Aeropuerto)
+  [38.680, -0.020], // NE (logo anchor)
 ];
 
 const PINS: Pin[] = [
   // Primary cities (label only)
   { id: "finestrat", name: "Finestrat", lat: 38.545, lng: -0.213, category: "Municipio", description: "Pueblo mediterráneo a los pies del Puig Campana.", driveMin: 15, driveKm: 12, primary: true },
-  { id: "polop", name: "Polop", lat: 38.622, lng: -0.155, category: "Municipio", description: "Pueblo histórico del interior de la Marina Baixa.", driveMin: 6, driveKm: 3, primary: true },
-  { id: "altea", name: "Altea", lat: 38.599, lng: -0.048, category: "Municipio", description: "Casco antiguo blanco y puerto deportivo.", driveMin: 14, driveKm: 11, primary: true },
-  { id: "benidorm", name: "Benidorm", lat: 38.541, lng: -0.132, category: "Municipio", description: "Capital turística de la Costa Blanca.", driveMin: 12, driveKm: 9, primary: true },
-  { id: "villajoyosa", name: "Villajoyosa", lat: 38.503, lng: -0.234, category: "Municipio", description: "Casas de colores y tradición chocolatera.", driveMin: 22, driveKm: 19, primary: true },
-  { id: "alicante", name: "Alicante", lat: 38.345, lng: -0.483, category: "Capital", description: "Capital mediterránea con puerto y casco antiguo.", driveMin: 45, driveKm: 55, primary: true },
-  { id: "aeropuerto", name: "Aeropuerto ALC", lat: 38.281, lng: -0.558, category: "Aeropuerto", description: "Conexión internacional Alicante-Elche.", driveMin: 50, driveKm: 65, primary: true },
+  { id: "polop", name: "Polop", lat: 38.636, lng: -0.172, category: "Municipio", description: "Pueblo histórico del interior de la Marina Baixa.", driveMin: 6, driveKm: 3, primary: true },
+  { id: "altea", name: "Altea", lat: 38.612, lng: -0.038, category: "Municipio", description: "Casco antiguo blanco y puerto deportivo.", driveMin: 14, driveKm: 11, primary: true },
+  { id: "benidorm", name: "Benidorm", lat: 38.520, lng: -0.155, category: "Municipio", description: "Capital turística de la Costa Blanca.", driveMin: 12, driveKm: 9, primary: true },
+  { id: "villajoyosa", name: "Villajoyosa", lat: 38.492, lng: -0.248, category: "Municipio", description: "Casas de colores y tradición chocolatera.", driveMin: 22, driveKm: 19, primary: true },
+  { id: "alicante", name: "Alicante", lat: 38.333, lng: -0.498, category: "Capital", description: "Capital mediterránea con puerto y casco antiguo.", driveMin: 45, driveKm: 55, primary: true },
+  { id: "aeropuerto", name: "Aeropuerto ALC", lat: 38.270, lng: -0.568, category: "Aeropuerto", description: "Conexión internacional Alicante-Elche.", driveMin: 50, driveKm: 65, primary: true },
 
   // POIs near La Nucía
   { id: "auditorio", name: "Auditorio La Nucía", lat: 38.6075, lng: -0.1185, category: "Cultural", description: "Auditorio de referencia en la Marina Baixa.", driveMin: 3, driveKm: 1.5 },
@@ -84,7 +86,7 @@ const poiPinIcon = (active: boolean) =>
   });
 
 const nuciaIcon = (isMobile: boolean) => {
-  const size = isMobile ? 30 : 36;
+  const size = isMobile ? 32 : 40;
   return L.divIcon({
     className: "cb-nucia-marker",
     html: `
@@ -95,10 +97,20 @@ const nuciaIcon = (isMobile: boolean) => {
         <span class="cb-nucia-label">La Nucía One</span>
       </div>
     `,
-    iconSize: [120, size + 28],
-    iconAnchor: [60, size / 2],
+    iconSize: [130, size + 28],
+    iconAnchor: [65, size / 2],
   });
 };
+
+// Small pulsing dot at the actual La Nucía location
+const nuciaDotIcon = () =>
+  L.divIcon({
+    className: "cb-nucia-dot-marker",
+    html: `<span class="cb-nucia-dot"></span>`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+
 
 const routeDotIcon = (index: number) =>
   L.divIcon({
@@ -252,6 +264,24 @@ const CostaBlancaMap = () => {
           border: 1px solid rgba(13,58,42,0.18);
         }
 
+        /* Small dot marking real La Nucía location */
+        .cb-nucia-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
+        .cb-nucia-dot {
+          display: block; width: 14px; height: 14px; border-radius: 50%;
+          background: #0d3a2a;
+          box-shadow: 0 0 0 3px rgba(249,246,241,0.95), 0 2px 6px rgba(13,58,42,0.45);
+          position: relative;
+        }
+        .cb-nucia-dot::after {
+          content: ""; position: absolute; inset: -6px; border-radius: 50%;
+          border: 2px solid rgba(13,58,42,0.35);
+          animation: cb-nucia-pulse 2s ease-out infinite;
+        }
+        @keyframes cb-nucia-pulse {
+          0% { transform: scale(0.6); opacity: 0.8; }
+          100% { transform: scale(1.6); opacity: 0; }
+        }
+
         /* Progressive dotted route */
         .cb-route-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
         .cb-route-dot {
@@ -324,8 +354,18 @@ const CostaBlancaMap = () => {
           />
         ))}
 
-        {/* La Nucía isotipo */}
-        <Marker position={LA_NUCIA} icon={nuciaIcon(isMobile)} interactive={false} />
+        {/* Real La Nucía location dot */}
+        <Marker position={LA_NUCIA} icon={nuciaDotIcon()} interactive={false} zIndexOffset={900} />
+
+        {/* Leader line from real location to offset logo anchor */}
+        <Polyline
+          positions={[LA_NUCIA, NUCIA_LOGO_POS]}
+          pathOptions={{ color: "#0d3a2a", weight: 1.5, opacity: 0.85, dashArray: "4 4" }}
+          interactive={false}
+        />
+
+        {/* La Nucía isotipo (placed at offset so it never covers POIs) */}
+        <Marker position={NUCIA_LOGO_POS} icon={nuciaIcon(isMobile)} interactive={false} zIndexOffset={1000} />
 
         {/* Pins */}
         {PINS.map((p) => (
