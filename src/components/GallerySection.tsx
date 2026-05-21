@@ -299,6 +299,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               src={img.src}
               alt={img.alt}
               className="lng-cell-img"
+              style={img.imgStyle}
               loading={i < 3 ? "eager" : "lazy"}
               draggable={false}
             />
@@ -346,7 +347,7 @@ const GallerySection = () => {
       <style>{STYLES}</style>
       <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} cols={2} />
       <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
-      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} cols={2} />
+      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} cols={3} rows={1} />
 
       {lightbox && (
         <div
