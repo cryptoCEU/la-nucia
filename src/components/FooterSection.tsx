@@ -33,7 +33,7 @@ const FooterSection = () => {
           <div className="flex flex-col items-start md:items-end gap-3">
             <div className="flex items-center gap-4">
               <span className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/70 whitespace-nowrap">Residential Management</span>
-              <span className="h-8 w-px bg-primary-foreground/20" />
+              <span className="font-body text-base text-primary-foreground/40">|</span>
               <img src={logoActivum} alt="Activum" className="h-16 opacity-80" />
             </div>
           </div>
