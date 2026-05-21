@@ -137,7 +137,7 @@ const Navbar = () => {
             </div>
 
             <div className="flex-1 flex flex-col md:flex-row">
-              <div className="flex-1 flex flex-col justify-center px-12 md:px-24">
+              <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-24">
                 <nav className="space-y-2">
                   {navLinks.map((link, i) => (
                     <motion.div
@@ -148,7 +148,7 @@ const Navbar = () => {
                     >
                       <Link
                         to={link.href}
-                        className={`block font-display text-2xl md:text-4xl py-2 whitespace-nowrap transition-colors duration-300 nav-link ${
+                        className={`block font-display text-xl sm:text-2xl md:text-4xl py-2 leading-tight break-words md:whitespace-nowrap transition-colors duration-300 nav-link ${
                           location.pathname === link.href
                             ? "text-gold"
                             : "text-primary-foreground/60 hover:text-primary-foreground"
