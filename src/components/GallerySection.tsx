@@ -240,10 +240,10 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
       <h2
         className="px-6 md:px-12 mb-10 md:mb-14"
         style={{
-          fontFamily: "'Roboto Serif', Georgia, serif",
+          fontFamily: "'Montserrat', sans-serif",
           fontWeight: 300,
-          fontSize: "clamp(36px, 5vw, 64px)",
-          lineHeight: 1.1,
+          fontSize: "clamp(28px, 4vw, 48px)",
+          lineHeight: 1.15,
           color: "#1F1D1A",
           letterSpacing: "-0.01em",
         }}
