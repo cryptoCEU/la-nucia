@@ -139,6 +139,7 @@ const ScrollEnabler = () => {
 const CostaBlancaMap = () => {
   const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 768);
   const [hovered, setHovered] = useState<string | null>(null);
+  const [nuciaHover, setNuciaHover] = useState(false);
   const [routeT, setRouteT] = useState(0); // 0..1 progressive draw
   const scrollerRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
