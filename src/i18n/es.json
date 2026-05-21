@@ -184,7 +184,7 @@
     "locations": [
       { "title": "La Nucía", "desc": "Oficina comercial en la propia promoción. Con cita previa." },
       { "title": "Alicante", "desc": "Oficina de Activum en el centro de Alicante. Con cita previa." },
-      { "title": "Madrid", "desc": "Visitas concertadas en Madrid para clientes nacionales." },
+      { "title": "Madrid", "desc": "Visitas concertadas en Madrid para clientes nacionales. Con cita previa." },
       { "title": "Online", "desc": "Visita virtual por videollamada, donde tú quieras." }
     ]
   },
