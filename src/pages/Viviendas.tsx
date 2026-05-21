@@ -17,7 +17,7 @@ import {
 } from "@/lib/animations";
 import { useHeroParallax } from "@/hooks/use-parallax";
 
-const typeImages = [habitacionImg, cocinaImg, salonImg];
+const typeImages = [salonImg, cocinaImg, terrazaImg];
 const featureIcons = [Thermometer, DoorOpen, ChefHat, Shield, Cpu, Leaf];
 
 const Viviendas = () => {
