@@ -6,7 +6,7 @@ import extFrontal from "@/assets/gallery/ext-frontal.webp";
 import extAtardecer from "@/assets/gallery/ext-atardecer.webp";
 import zcFitness from "@/assets/gallery/zc-fitness.webp";
 import zcComun from "@/assets/gallery/zc-comun.webp";
-import zcRecepcion from "@/assets/gallery/zc-recepcion.webp";
+import zcRecepcion from "@/assets/gallery/ext-entrada-noche.webp";
 import zcPiscina from "@/assets/gallery/zc-piscina.webp";
 
 type GalleryImage = {
