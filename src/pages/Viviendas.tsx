@@ -8,14 +8,16 @@ import FooterSection from "@/components/FooterSection";
 import AmenitiesCarousel from "@/components/AmenitiesCarousel";
 import buildingImage from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
-import heroImg from "@/assets/hero-nucia.jpg";
+import habitacionImg from "@/assets/carousel/habitacion.webp";
+import cocinaImg from "@/assets/carousel/cocina.webp";
+import salonImg from "@/assets/carousel/salon.webp";
 import {
   staggerContainer, staggerItem, heroText, scaleIn, fadeUp, clipReveal,
   viewportOnce
 } from "@/lib/animations";
 import { useHeroParallax } from "@/hooks/use-parallax";
 
-const typeImages = [buildingImage, interiorImg, heroImg];
+const typeImages = [habitacionImg, cocinaImg, salonImg];
 const featureIcons = [Thermometer, DoorOpen, ChefHat, Shield, Cpu, Leaf];
 
 const Viviendas = () => {
@@ -37,7 +39,7 @@ const Viviendas = () => {
       <Navbar />
       <main>
         {/* Hero */}
-        <section ref={hero.ref} className="relative h-[80vh] min-h-[600px] flex items-end overflow-hidden">
+        <section ref={hero.ref} className="relative h-[92vh] min-h-[720px] flex items-end overflow-hidden">
           <motion.div className="absolute inset-0" style={{ y: hero.bgY }}>
             <motion.img
               src={buildingImage}

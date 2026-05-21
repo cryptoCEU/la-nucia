@@ -11,6 +11,9 @@ import FixedImageWindow from "@/components/FixedImageWindow";
 import heroImage from "@/assets/hero-nucia.jpg";
 import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
+import habitacionImg from "@/assets/carousel/habitacion.webp";
+import cocinaImg from "@/assets/carousel/cocina.webp";
+import salonImg from "@/assets/carousel/salon.webp";
 import {
   fadeUp, fadeIn, scaleIn, slideRight, staggerContainer, staggerItem,
   heroText, viewportOnce, viewportOnceNear, slowTransition, clipReveal
@@ -79,7 +82,7 @@ const Index = () => {
             >
               <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
                 <div className="max-w-3xl">
-                  <p className="font-body text-xs tracking-[0.3em] uppercase text-gold mb-4">
+                  <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground mb-4">
                     {t("home.heroTag")}
                   </p>
                   <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-primary-foreground leading-[1.1] mb-6">
@@ -168,7 +171,7 @@ const Index = () => {
         </section>
 
         {/* ═══ FIXED IMAGE WINDOW (scroll-reveal band) ═══ */}
-        <FixedImageWindow phrase="Donde el Mediterráneo define el estilo de vida" />
+        <FixedImageWindow phrase={t("fixedImage.phrase")} />
 
         {/* ═══ PREVIEW: UBICACIÓN ═══ */}
         <section className="relative py-32 md:py-44 bg-primary overflow-hidden">
@@ -263,9 +266,9 @@ const Index = () => {
               className="grid md:grid-cols-3 gap-6 mb-12"
             >
               {([
-                { img: buildingImg, title: t("home.type2bed"), desc: t("home.type2desc") },
-                { img: interiorImg, title: t("home.type3bed"), desc: t("home.type3desc") },
-                { img: heroImage, title: t("home.type4bed"), desc: t("home.type4desc") },
+                { img: habitacionImg, title: t("home.type2bed"), desc: t("home.type2desc") },
+                { img: cocinaImg, title: t("home.type3bed"), desc: t("home.type3desc") },
+                { img: salonImg, title: t("home.type4bed"), desc: t("home.type4desc") },
               ]).map((item, i) => (
                 <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden cursor-pointer">
                   <Link to="/viviendas">
