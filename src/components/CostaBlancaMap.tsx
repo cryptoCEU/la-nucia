@@ -86,7 +86,7 @@ const poiPinIcon = (active: boolean) =>
   });
 
 const nuciaIcon = (isMobile: boolean) => {
-  const size = isMobile ? 30 : 36;
+  const size = isMobile ? 32 : 40;
   return L.divIcon({
     className: "cb-nucia-marker",
     html: `
@@ -97,10 +97,20 @@ const nuciaIcon = (isMobile: boolean) => {
         <span class="cb-nucia-label">La Nucía One</span>
       </div>
     `,
-    iconSize: [120, size + 28],
-    iconAnchor: [60, size / 2],
+    iconSize: [130, size + 28],
+    iconAnchor: [65, size / 2],
   });
 };
+
+// Small pulsing dot at the actual La Nucía location
+const nuciaDotIcon = () =>
+  L.divIcon({
+    className: "cb-nucia-dot-marker",
+    html: `<span class="cb-nucia-dot"></span>`,
+    iconSize: [14, 14],
+    iconAnchor: [7, 7],
+  });
+
 
 const routeDotIcon = (index: number) =>
   L.divIcon({
