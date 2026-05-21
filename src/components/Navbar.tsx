@@ -172,8 +172,8 @@ const Navbar = () => {
                     <p className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-2">
                       {t("nav.contactLabel")}
                     </p>
-                    <a href="mailto:obranueva@activum.es" className="font-body text-primary-foreground/80 hover:text-gold transition-colors block">
-                      obranueva@activum.es
+                    <a href="mailto:info@lanuciaone.com" className="font-body text-primary-foreground/80 hover:text-gold transition-colors block">
+                      info@lanuciaone.com
                     </a>
                     <a href="tel:+34865662845" className="font-body text-primary-foreground/80 hover:text-gold transition-colors block mt-1">
                       +34 865 662 845
