@@ -5,6 +5,7 @@ import cocinaImg from "@/assets/carousel/cocina.webp";
 import habitacionImg from "@/assets/carousel/habitacion.webp";
 import terrazaImg from "@/assets/carousel/terraza.webp";
 import banoImg from "@/assets/carousel/bano.webp";
+import solariumImg from "@/assets/gallery/zc-chill-out.webp";
 
 type Card = { title: string; src: string };
 
@@ -14,6 +15,7 @@ const cards: Card[] = [
   { title: "Habitación", src: habitacionImg },
   { title: "Terraza", src: terrazaImg },
   { title: "Baño", src: banoImg },
+  { title: "Solárium privado", src: solariumImg },
 ];
 
 const STYLES = `

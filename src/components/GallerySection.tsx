@@ -4,11 +4,10 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import extAerea from "@/assets/gallery/ext-aerea.webp";
 import extFrontal from "@/assets/gallery/ext-frontal.webp";
 import extAtardecer from "@/assets/gallery/ext-atardecer.webp";
-import extPiscina from "@/assets/gallery/ext-piscina.webp";
 import zcFitness from "@/assets/gallery/zc-fitness.webp";
 import zcComun from "@/assets/gallery/zc-comun.webp";
-import zcChillOut from "@/assets/gallery/zc-chill-out.webp";
 import zcRecepcion from "@/assets/gallery/zc-recepcion.webp";
+import zcPiscina from "@/assets/gallery/zc-piscina.webp";
 
 type GalleryImage = {
   src: string;
@@ -16,20 +15,20 @@ type GalleryImage = {
   eyebrow: string;
   title: string;
   description: string;
+  imgStyle?: React.CSSProperties;
 };
 
 const exterioresImages: GalleryImage[] = [
   { src: extAerea, alt: "Vista aérea", eyebrow: "EXTERIORES", title: "Vista aérea", description: "Volumetría curva del edificio integrada en la ladera, con vistas abiertas al mar y a la sierra de La Nucía." },
   { src: extFrontal, alt: "Fachada y piscina", eyebrow: "EXTERIORES", title: "Fachada y piscina", description: "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal." },
   { src: extAtardecer, alt: "Atardecer en la piscina", eyebrow: "EXTERIORES", title: "Atardecer en la piscina", description: "Luz cálida del atardecer reflejada en la lámina de agua, con las palmeras y la fachada curva como telón de fondo." },
-  { src: extPiscina, alt: "Piscina y jardines", eyebrow: "EXTERIORES", title: "Piscina y jardines", description: "Lámina de agua perimetral con tarima de madera, jardines de especies mediterráneas y palmeras que enmarcan la fachada curva." },
+  { src: zcRecepcion, alt: "Entrada", eyebrow: "EXTERIORES", title: "Entrada", description: "Acceso principal en madera retroiluminada, con jardín mediterráneo y la firma La Nucía ONE como bienvenida." },
 ];
 
 const zonasImages: GalleryImage[] = [
   { src: zcFitness, alt: "Sala fitness", eyebrow: "ZONAS COMUNES", title: "Sala fitness", description: "Gimnasio acristalado con maquinaria cardiovascular, peso libre y rocódromo. Iluminación natural y vistas a los jardines." },
   { src: zcComun, alt: "Sala común", eyebrow: "ZONAS COMUNES", title: "Sala común", description: "Espacio polivalente con cocina, comedor y zona de estar, abierto a la terraza ajardinada mediante grandes cristaleras." },
-  { src: zcChillOut, alt: "Zona chill out", eyebrow: "ZONAS COMUNES", title: "Zona chill out", description: "Terraza de relax al atardecer con tumbonas, sofás de exterior y vistas panorámicas sobre el conjunto residencial." },
-  { src: zcRecepcion, alt: "Recepción", eyebrow: "ZONAS COMUNES", title: "Recepción", description: "Acceso principal en madera retroiluminada, con jardín mediterráneo y la firma La Nucía ONE como bienvenida." },
+  { src: zcPiscina, alt: "Piscina", eyebrow: "ZONAS COMUNES", title: "Piscina", description: "Piscina exterior rodeada de palmeras y jardín, con tarima de madera y vistas a las terrazas escalonadas del edificio al atardecer.", imgStyle: { transform: "scale(1.25)", transformOrigin: "center 65%" } },
 ];
 
 
@@ -300,6 +299,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               src={img.src}
               alt={img.alt}
               className="lng-cell-img"
+              style={img.imgStyle}
               loading={i < 3 ? "eager" : "lazy"}
               draggable={false}
             />
@@ -347,7 +347,7 @@ const GallerySection = () => {
       <style>{STYLES}</style>
       <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} cols={2} />
       <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
-      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} cols={2} />
+      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} cols={3} rows={1} />
 
       {lightbox && (
         <div
