@@ -130,7 +130,7 @@ const Ubicacion = () => {
         </section>
 
         {/* Entorno Privilegiado — Costa Blanca Map */}
-        <section className="py-20 md:py-28 bg-[#F9F6F1]">
+        <section className="py-20 md:py-28 bg-white">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="mb-12">
               <p className="text-[#C9A96E] font-body text-xs tracking-[0.3em] uppercase mb-3">
