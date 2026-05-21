@@ -21,8 +21,10 @@ const Ubicacion = () => {
   const advantageIcons = [Mountain, ShoppingBag, Waves];
 
   const stats = [
+    { number: "10", label: t("ubicacionPage.statBenidorm") },
+    { number: "30", label: t("ubicacionPage.statAirport") },
+    { number: "8", label: t("ubicacionPage.statBeach") },
     { number: "300+", label: t("ubicacionPage.statSun") },
-    { number: "5", label: t("ubicacionPage.statShopping") },
   ];
 
   return (
