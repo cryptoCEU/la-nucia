@@ -26,7 +26,7 @@ const Galeria = () => {
               <motion.p variants={heroText()} className="font-body text-xs tracking-[0.2em] uppercase text-gold mb-3">
                 {t("galeriaPage.tag")}
               </motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.4] max-w-2xl">
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.6] max-w-2xl">
                 {t("galeriaPage.title1")}<br /><span className="italic">{t("galeriaPage.title2")}</span>
               </motion.h1>
             </motion.div>

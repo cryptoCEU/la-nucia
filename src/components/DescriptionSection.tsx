@@ -11,7 +11,7 @@ const DescriptionSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-80px" }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <p className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">{t("description.tag")}</p>
-            <h2 className="font-display text-3xl md:text-5xl text-foreground leading-[1.35] mb-6">
+            <h2 className="font-display text-3xl md:text-5xl text-foreground leading-[1.6] mb-6">
               {t("description.title1")}<br /><span className="italic">{t("description.title2")}</span>
             </h2>
             <p className="font-body text-lg text-primary mb-2">{t("description.locationText")}</p>

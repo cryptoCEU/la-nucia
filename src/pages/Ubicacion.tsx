@@ -50,7 +50,7 @@ const Ubicacion = () => {
               <motion.p variants={heroText()} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">
                 {t("ubicacionPage.tag")}
               </motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.4]" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.title") }} />
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.6]" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.title") }} />
             </motion.div>
           </motion.div>
         </section>
@@ -95,7 +95,7 @@ const Ubicacion = () => {
                 viewport={viewportOnce}
               >
                 <motion.p variants={fadeUp(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">{t("ubicacionPage.aboutTag")}</motion.p>
-                <motion.h2 variants={fadeUp(0.2)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="font-display text-3xl md:text-5xl text-foreground leading-[1.35] mb-8" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.aboutTitle") }} />
+                <motion.h2 variants={fadeUp(0.2)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="font-display text-3xl md:text-5xl text-foreground leading-[1.6] mb-8" dangerouslySetInnerHTML={{ __html: t("ubicacionPage.aboutTitle") }} />
                 <motion.p variants={fadeUp(0.35)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="font-body text-muted-foreground leading-relaxed mb-4">{t("ubicacionPage.aboutText1")}</motion.p>
                 <motion.p variants={fadeUp(0.45)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="font-body text-muted-foreground leading-relaxed">{t("ubicacionPage.aboutText2")}</motion.p>
               </motion.div>
@@ -136,7 +136,7 @@ const Ubicacion = () => {
               <p className="text-[#C9A96E] font-body text-xs tracking-[0.3em] uppercase mb-3">
                 {t("ubicacionPage.mapTag")}
               </p>
-              <h2 className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-[1.35] mb-4">
+              <h2 className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-[1.6] mb-4">
                 {t("ubicacionPage.mapTitle")}
               </h2>
               <p className="font-body text-[#6B6B6B] max-w-2xl leading-relaxed">
