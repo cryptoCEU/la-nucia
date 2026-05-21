@@ -148,7 +148,7 @@ const Navbar = () => {
                     >
                       <Link
                         to={link.href}
-                        className={`block font-display text-xl sm:text-2xl md:text-4xl py-2 leading-tight break-words md:whitespace-nowrap transition-colors duration-300 nav-link ${
+                        className={`block font-display text-xl sm:text-2xl md:text-4xl py-2 leading-[1.25] break-words md:whitespace-nowrap transition-colors duration-300 nav-link ${
                           location.pathname === link.href
                             ? "text-gold"
                             : "text-primary-foreground/60 hover:text-primary-foreground"
