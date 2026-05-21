@@ -185,12 +185,16 @@ const CostaBlancaMap = () => {
 
   const routeDotPositions = useMemo<[number, number][]>(() => {
     if (!activePin) return [];
-    const visibleSteps = Math.max(0, Math.floor(32 * routeT));
+    // Constant spacing in degrees → more dots for far pins, fewer for close ones
+    const dLat = activePin.lat - LA_NUCIA[0];
+    const dLng = activePin.lng - LA_NUCIA[1];
+    const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+    const SPACING = 0.012; // ~consistent visual gap between dots
+    const totalSteps = Math.max(4, Math.min(40, Math.round(dist / SPACING)));
+    const visibleSteps = Math.max(0, Math.floor(totalSteps * routeT));
     return Array.from({ length: visibleSteps }, (_, index) => {
-      const t = (index + 1) / 32;
-      const lat = LA_NUCIA[0] + (activePin.lat - LA_NUCIA[0]) * t;
-      const lng = LA_NUCIA[1] + (activePin.lng - LA_NUCIA[1]) * t;
-      return [lat, lng] as [number, number];
+      const t = (index + 1) / (totalSteps + 1);
+      return [LA_NUCIA[0] + dLat * t, LA_NUCIA[1] + dLng * t] as [number, number];
     });
   }, [activePin, routeT]);
 
