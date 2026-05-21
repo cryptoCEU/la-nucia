@@ -7,6 +7,8 @@ import extAtardecer from "@/assets/gallery/ext-atardecer.webp";
 import extPiscina from "@/assets/gallery/ext-piscina.webp";
 import zcFitness from "@/assets/gallery/zc-fitness.webp";
 import zcComun from "@/assets/gallery/zc-comun.webp";
+import zcChillOut from "@/assets/gallery/zc-chill-out.webp";
+import zcRecepcion from "@/assets/gallery/zc-recepcion.webp";
 
 type GalleryImage = {
   src: string;
@@ -26,6 +28,8 @@ const exterioresImages: GalleryImage[] = [
 const zonasImages: GalleryImage[] = [
   { src: zcFitness, alt: "Sala fitness", eyebrow: "ZONAS COMUNES", title: "Sala fitness", description: "Gimnasio acristalado con maquinaria cardiovascular, peso libre y rocódromo. Iluminación natural y vistas a los jardines." },
   { src: zcComun, alt: "Sala común", eyebrow: "ZONAS COMUNES", title: "Sala común", description: "Espacio polivalente con cocina, comedor y zona de estar, abierto a la terraza ajardinada mediante grandes cristaleras." },
+  { src: zcChillOut, alt: "Zona chill out", eyebrow: "ZONAS COMUNES", title: "Zona chill out", description: "Terraza de relax al atardecer con tumbonas, sofás de exterior y vistas panorámicas sobre el conjunto residencial." },
+  { src: zcRecepcion, alt: "Recepción", eyebrow: "ZONAS COMUNES", title: "Recepción", description: "Acceso principal en madera retroiluminada, con jardín mediterráneo y la firma La Nucía ONE como bienvenida." },
 ];
 
 
