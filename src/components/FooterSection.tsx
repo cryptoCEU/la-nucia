@@ -13,8 +13,8 @@ const FooterSection = () => {
           <div>
             <p className="font-body text-xs tracking-[0.2em] uppercase text-primary-foreground/40 mb-4">{t("footer.contact")}</p>
             <div className="space-y-3">
-              <a href="mailto:obranueva@activum.es" className="flex items-center gap-3 font-body text-primary-foreground/80 hover:text-gold transition-colors duration-500">
-                <Mail className="w-4 h-4 text-gold" /> obranueva@activum.es
+              <a href="mailto:info@lanuciaone.com" className="flex items-center gap-3 font-body text-primary-foreground/80 hover:text-gold transition-colors duration-500">
+                <Mail className="w-4 h-4 text-gold" /> info@lanuciaone.com
               </a>
               <a href="tel:+34865662845" className="flex items-center gap-3 font-body text-primary-foreground/80 hover:text-gold transition-colors duration-500">
                 <Phone className="w-4 h-4 text-gold" /> 865 662 845
@@ -32,7 +32,7 @@ const FooterSection = () => {
           </div>
           <div className="flex flex-col items-start md:items-end gap-3">
             <div className="flex items-center gap-4">
-              <span className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/70">Residential Management</span>
+              <span className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/70 whitespace-nowrap">Residential Management</span>
               <span className="h-8 w-px bg-primary-foreground/20" />
               <img src={logoActivum} alt="Activum" className="h-16 opacity-80" />
             </div>

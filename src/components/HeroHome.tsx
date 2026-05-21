@@ -34,7 +34,7 @@ const HeroHome = () => {
               <p className="font-body text-sm tracking-[0.2em] uppercase text-primary-foreground/60 mb-4">
                 {t("hero.subtitle")}
               </p>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-primary-foreground leading-[1.2] mb-8">
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium text-primary-foreground leading-[1.4] mb-8">
                 {t("hero.title1")}<br /><span className="italic">{t("hero.title2")}</span><br />{t("hero.title3")}
               </h1>
               <div className="flex flex-wrap gap-4">

@@ -47,7 +47,7 @@ const Contacto = () => {
               <motion.p variants={heroText()} className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-6">
                 {t("contactoPage.locationTag")}
               </motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.2] mb-6 max-w-3xl" dangerouslySetInnerHTML={{ __html: t("contactoPage.heroTitle") }} />
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.4] mb-6 max-w-3xl" dangerouslySetInnerHTML={{ __html: t("contactoPage.heroTitle") }} />
               <motion.p variants={heroText()} className="font-body text-primary-foreground/60 text-lg max-w-xl">
                 {t("contactoPage.heroSubtitle")}
               </motion.p>
@@ -60,7 +60,7 @@ const Contacto = () => {
             <div className="grid lg:grid-cols-[1fr_2fr] gap-16">
               <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
                 <motion.p variants={staggerItem} className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">{t("contactoPage.infoTag")}</motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-2xl md:text-3xl text-foreground leading-[1.25] mb-6" dangerouslySetInnerHTML={{ __html: t("contactoPage.infoTitle") }} />
+                <motion.h2 variants={staggerItem} className="font-display text-2xl md:text-3xl text-foreground leading-[1.35] mb-6" dangerouslySetInnerHTML={{ __html: t("contactoPage.infoTitle") }} />
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed">{t("contactoPage.infoSubtitle")}</motion.p>
               </motion.div>
 
