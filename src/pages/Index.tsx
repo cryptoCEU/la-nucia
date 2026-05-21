@@ -11,9 +11,9 @@ import FixedImageWindow from "@/components/FixedImageWindow";
 import heroImage from "@/assets/hero-nucia.jpg";
 import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
-import salonImg from "@/assets/carousel/salon.webp";
-import cocinaImg from "@/assets/carousel/cocina.webp";
-import terrazaImg from "@/assets/carousel/terraza.webp";
+import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
+import cocinaPeopleImg from "@/assets/carousel/cocina-people.webp";
+import salonPeopleImg from "@/assets/carousel/salon-people.webp";
 import {
   fadeUp, fadeIn, scaleIn, slideRight, staggerContainer, staggerItem,
   heroText, viewportOnce, viewportOnceNear, slowTransition, clipReveal
@@ -40,7 +40,7 @@ const Index = () => {
   const stats = [
     { number: "107", label: t("home.stat1Label") },
     { number: "9", label: t("home.stat2Label") },
-    { number: "300+", label: t("home.stat3Label") },
+    { number: "5", label: t("home.stat3Label") },
     { number: "10", label: t("home.stat4Label") },
   ];
 
@@ -266,9 +266,9 @@ const Index = () => {
               className="grid md:grid-cols-3 gap-6 mb-12"
             >
               {([
-                { img: salonImg, title: t("home.type2bed"), desc: t("home.type2desc") },
-                { img: cocinaImg, title: t("home.type3bed"), desc: t("home.type3desc") },
-                { img: terrazaImg, title: t("home.type4bed"), desc: t("home.type4desc") },
+                { img: habitacionPeopleImg, title: t("home.type2bed"), desc: t("home.type2desc") },
+                { img: cocinaPeopleImg, title: t("home.type3bed"), desc: t("home.type3desc") },
+                { img: salonPeopleImg, title: t("home.type4bed"), desc: t("home.type4desc") },
               ]).map((item, i) => (
                 <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden cursor-pointer">
                   <Link to="/viviendas">

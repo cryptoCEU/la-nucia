@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import salon2Img from "@/assets/carousel/salon-2.webp";
-import cocina2Img from "@/assets/carousel/cocina-2.webp";
+import salonImg from "@/assets/carousel/salon.webp";
+import cocinaImg from "@/assets/carousel/cocina.webp";
 import habitacionImg from "@/assets/carousel/habitacion.webp";
-import terraza2Img from "@/assets/carousel/terraza-2.webp";
+import terrazaImg from "@/assets/carousel/terraza.webp";
 import banoImg from "@/assets/carousel/bano.webp";
 
 type Card = { title: string; src: string };
 
 const cards: Card[] = [
-  { title: "Salón", src: salon2Img },
-  { title: "Cocina", src: cocina2Img },
+  { title: "Salón", src: salonImg },
+  { title: "Cocina", src: cocinaImg },
   { title: "Habitación", src: habitacionImg },
-  { title: "Terraza", src: terraza2Img },
+  { title: "Terraza", src: terrazaImg },
   { title: "Baño", src: banoImg },
 ];
 
