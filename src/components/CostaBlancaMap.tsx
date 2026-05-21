@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { MapContainer, TileLayer, Marker, Polyline, useMap, ZoomControl } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import logoIsotipo from "@/assets/logo-nucia-one.png";
+const logoIsotipo = "/favicon.png";
 
 type Pin = {
   id: string;
@@ -185,12 +185,16 @@ const CostaBlancaMap = () => {
 
   const routeDotPositions = useMemo<[number, number][]>(() => {
     if (!activePin) return [];
-    const visibleSteps = Math.max(0, Math.floor(32 * routeT));
+    // Constant spacing in degrees → more dots for far pins, fewer for close ones
+    const dLat = activePin.lat - LA_NUCIA[0];
+    const dLng = activePin.lng - LA_NUCIA[1];
+    const dist = Math.sqrt(dLat * dLat + dLng * dLng);
+    const SPACING = 0.012; // ~consistent visual gap between dots
+    const totalSteps = Math.max(4, Math.min(40, Math.round(dist / SPACING)));
+    const visibleSteps = Math.max(0, Math.floor(totalSteps * routeT));
     return Array.from({ length: visibleSteps }, (_, index) => {
-      const t = (index + 1) / 32;
-      const lat = LA_NUCIA[0] + (activePin.lat - LA_NUCIA[0]) * t;
-      const lng = LA_NUCIA[1] + (activePin.lng - LA_NUCIA[1]) * t;
-      return [lat, lng] as [number, number];
+      const t = (index + 1) / (totalSteps + 1);
+      return [LA_NUCIA[0] + dLat * t, LA_NUCIA[1] + dLng * t] as [number, number];
     });
   }, [activePin, routeT]);
 
@@ -253,43 +257,49 @@ const CostaBlancaMap = () => {
         .cb-nucia-wrap { width: 120px; display: flex; flex-direction: column; align-items: center; pointer-events: none; }
         .cb-nucia-ring {
           display: flex; align-items: center; justify-content: center;
-          border-radius: 50%; background: #0d3a2a;
-          box-shadow: 0 4px 14px rgba(13,58,42,0.35), 0 0 0 3px rgba(249,246,241,0.95);
+          border-radius: 50%; background: #F9F6F1;
+          box-shadow: 0 6px 18px rgba(13,58,42,0.35), 0 0 0 2px #0d3a2a, 0 0 0 5px rgba(249,246,241,0.95);
         }
-        .cb-nucia-ring img { object-fit: contain; filter: brightness(0) invert(1); }
+        .cb-nucia-ring img { object-fit: contain; }
         .cb-nucia-label {
           margin-top: 6px; font-family: 'Montserrat', sans-serif; font-weight: 700;
-          font-size: 10px; color: #0d3a2a; letter-spacing: 0.16em; text-transform: uppercase;
-          background: rgba(249,246,241,0.92); padding: 2px 8px; border-radius: 999px;
-          border: 1px solid rgba(13,58,42,0.18);
+          font-size: 10px; color: #F9F6F1; letter-spacing: 0.16em; text-transform: uppercase;
+          background: #0d3a2a; padding: 3px 10px; border-radius: 999px;
+          box-shadow: 0 2px 8px rgba(13,58,42,0.25);
         }
 
-        /* Small dot marking real La Nucía location */
+        /* Distinct accent dot marking real La Nucía location */
         .cb-nucia-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
         .cb-nucia-dot {
-          display: block; width: 14px; height: 14px; border-radius: 50%;
-          background: #0d3a2a;
-          box-shadow: 0 0 0 3px rgba(249,246,241,0.95), 0 2px 6px rgba(13,58,42,0.45);
+          display: block; width: 16px; height: 16px; border-radius: 50%;
+          background: #c9a84c;
+          box-shadow: 0 0 0 3px #F9F6F1, 0 0 0 5px #c9a84c, 0 2px 8px rgba(201,168,76,0.55);
           position: relative;
         }
         .cb-nucia-dot::after {
-          content: ""; position: absolute; inset: -6px; border-radius: 50%;
-          border: 2px solid rgba(13,58,42,0.35);
+          content: ""; position: absolute; inset: -8px; border-radius: 50%;
+          border: 2px solid rgba(201,168,76,0.55);
           animation: cb-nucia-pulse 2s ease-out infinite;
         }
         @keyframes cb-nucia-pulse {
-          0% { transform: scale(0.6); opacity: 0.8; }
-          100% { transform: scale(1.6); opacity: 0; }
+          0% { transform: scale(0.5); opacity: 0.9; }
+          100% { transform: scale(1.8); opacity: 0; }
         }
 
-        /* Progressive dotted route */
+        /* Refined leader line from real location to logo */
+        .cb-map-bleed .leaflet-overlay-pane svg path.cb-leader {
+          stroke-linecap: round;
+        }
+
+        /* Progressive dotted route — consistent spacing, refined dot */
         .cb-route-dot-marker { background: transparent !important; border: none !important; pointer-events: none; }
         .cb-route-dot {
-          display: block; width: 5px; height: 5px; border-radius: 50%;
-          background: #0d0d0d; box-shadow: 0 0 0 2px rgba(249,246,241,0.85);
-          animation: cb-route-dot-in .22s ease both;
+          display: block; width: 6px; height: 6px; border-radius: 50%;
+          background: #0d3a2a;
+          box-shadow: 0 0 0 2px #F9F6F1, 0 1px 3px rgba(13,58,42,0.4);
+          animation: cb-route-dot-in .28s cubic-bezier(0.34,1.56,0.64,1) both;
         }
-        @keyframes cb-route-dot-in { from { opacity: 0; transform: scale(0.35); } to { opacity: 1; transform: scale(1); } }
+        @keyframes cb-route-dot-in { from { opacity: 0; transform: scale(0.2); } to { opacity: 1; transform: scale(1); } }
 
         .cb-cards-wrap { width: 100%; margin-top: 24px; }
         .cb-cards-scroller {
@@ -360,7 +370,7 @@ const CostaBlancaMap = () => {
         {/* Leader line from real location to offset logo anchor */}
         <Polyline
           positions={[LA_NUCIA, NUCIA_LOGO_POS]}
-          pathOptions={{ color: "#0d3a2a", weight: 1.5, opacity: 0.85, dashArray: "4 4" }}
+          pathOptions={{ color: "#c9a84c", weight: 1.25, opacity: 0.9, dashArray: "2 5", lineCap: "round" }}
           interactive={false}
         />
 
