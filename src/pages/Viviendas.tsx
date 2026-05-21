@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, BedDouble, Bath, Maximize, Shield, Thermometer, ChefHat, DoorOpen, Cpu, Leaf, Download, FileText, Eye } from "lucide-react";
+import { ArrowRight, BedDouble, Bath, Maximize, Shield, Thermometer, ChefHat, DoorOpen, Cpu, Leaf, Download, FileText, Eye, Trees } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
