@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, FileText, Bot } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
@@ -15,49 +15,12 @@ const Contacto = () => {
   const { t } = useTranslation();
   const hero = useHeroParallax();
 
-  const handleJuliaClick = () => {
-    const widget = document.querySelector('elevenlabs-convai');
-    if (widget?.shadowRoot) {
-      const button = widget.shadowRoot.querySelector('button');
-      button?.click();
-    } else if (widget) {
-      (widget as HTMLElement).click();
-    }
-  };
-
-  const contactCards = [
-    {
-      icon: Phone,
-      title: t("contactoPage.contactTitle"),
-      content: (
-        <div className="space-y-2">
-          <a href="tel:+34865662845" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-500 block">{t("contactoPage.phone")}</a>
-          <a href="mailto:obranueva@activum.es" className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-500 block">{t("contactoPage.mail")}</a>
-        </div>
-      ),
-    },
-    {
-      icon: MapPin,
-      title: t("contactoPage.officeTitle"),
-      content: (
-        <div className="space-y-1">
-          <p className="font-body text-sm text-muted-foreground">{t("contactoPage.officeLocation")}</p>
-          <p className="font-body text-sm text-muted-foreground">{t("contactoPage.officeAppointment")}</p>
-        </div>
-      ),
-    },
-    {
-      icon: FileText,
-      title: t("contactoPage.formTitle"),
-      content: <p className="font-body text-sm text-muted-foreground">{t("contactoPage.formDesc")}</p>,
-    },
-    {
-      icon: Bot,
-      title: t("contactoPage.juliaTitle"),
-      content: <p className="font-body text-sm text-muted-foreground">{t("contactoPage.juliaDesc")}</p>,
-      onClick: handleJuliaClick,
-    },
-  ];
+  const locations = t("contactoPage.locations", { returnObjects: true }) as { title: string; desc: string }[];
+  const contactCards = locations.map((loc) => ({
+    icon: MapPin,
+    title: loc.title,
+    content: <p className="font-body text-sm text-muted-foreground">{loc.desc}</p>,
+  }));
 
   return (
     <>
@@ -112,8 +75,7 @@ const Contacto = () => {
                   <motion.div
                     key={i}
                     variants={staggerItem}
-                    onClick={card.onClick}
-                    className={`space-y-4 ${card.onClick ? "cursor-pointer rounded-2xl p-4 -m-4 transition-colors duration-500 hover:bg-primary/5" : ""}`}
+                    className="space-y-4"
                   >
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                       <card.icon className="w-5 h-5 text-primary" />

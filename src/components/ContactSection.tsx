@@ -12,26 +12,16 @@ const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    nombre: "", destinoVivienda: "", codigoPostal: "", edad: "",
-    dormitorios: [] as string[], idioma: "", presupuesto: "",
-    telefono: "", zonasComunes: [] as string[], email: "", privacidad: false,
+    nombre: "",
+    apellidos: "",
+    telefono: "",
+    email: "",
+    codigoPostal: "",
+    idioma: "",
+    privacidad: false,
   });
 
   const f = "contactSection.form";
-
-  const dormitoriosOptions = [t(`${f}.bed2`), t(`${f}.bed3`), t(`${f}.bed4`)];
-  const zonasOptions = [
-    t(`${f}.infinityPool`), t(`${f}.coworking`), t(`${f}.gym`),
-    t(`${f}.multipurpose`), t(`${f}.gardens`), t(`${f}.kids`),
-    t(`${f}.bbq`), t(`${f}.petCare`), t(`${f}.solarium`),
-  ];
-
-  const toggleMultiSelect = (field: "dormitorios" | "zonasComunes", value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: prev[field].includes(value) ? prev[field].filter((v) => v !== value) : [...prev[field], value],
-    }));
-  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +37,7 @@ const ContactSection = () => {
       });
       if (!res.ok) throw new Error("Error");
       toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
-      setFormData({ nombre: "", destinoVivienda: "", codigoPostal: "", edad: "", dormitorios: [], idioma: "", presupuesto: "", telefono: "", zonasComunes: [], email: "", privacidad: false });
+      setFormData({ nombre: "", apellidos: "", telefono: "", email: "", codigoPostal: "", idioma: "", privacidad: false });
     } catch {
       toast({ title: t(`${f}.errorTitle`), description: t(`${f}.errorSubmit`), variant: "destructive" });
     } finally {
@@ -74,9 +64,15 @@ const ContactSection = () => {
           onSubmit={handleSubmit}
           className="bg-card border border-border rounded-lg p-8 md:p-12 shadow-sm space-y-6"
         >
-          <div>
-            <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.name`)}</label>
-            <Input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} placeholder={t(`${f}.namePlaceholder`)} className="bg-background border-border font-body" />
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.firstName`)}</label>
+              <Input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} placeholder={t(`${f}.firstNamePlaceholder`)} className="bg-background border-border font-body" />
+            </div>
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.lastName`)}</label>
+              <Input required value={formData.apellidos} onChange={(e) => setFormData({ ...formData, apellidos: e.target.value })} placeholder={t(`${f}.lastNamePlaceholder`)} className="bg-background border-border font-body" />
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
@@ -92,32 +88,8 @@ const ContactSection = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.housingPurpose`)}</label>
-              <select value={formData.destinoVivienda} onChange={(e) => setFormData({ ...formData, destinoVivienda: e.target.value })} className={selectClass}>
-                <option value="">{t(`${f}.selectPlaceholder`)}</option>
-                <option value="primera">{t(`${f}.firstHome`)}</option>
-                <option value="segunda">{t(`${f}.secondHome`)}</option>
-                <option value="inversion">{t(`${f}.investment`)}</option>
-                <option value="reposicion">{t(`${f}.replacement`)}</option>
-              </select>
-            </div>
-            <div>
               <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.postalCode`)}</label>
               <Input value={formData.codigoPostal} onChange={(e) => setFormData({ ...formData, codigoPostal: e.target.value })} placeholder="03530" className="bg-background border-border font-body" />
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.age`)}</label>
-              <select value={formData.edad} onChange={(e) => setFormData({ ...formData, edad: e.target.value })} className={selectClass}>
-                <option value="">{t(`${f}.selectPlaceholder`)}</option>
-                <option value="<30">&gt; 30</option>
-                <option value="31-45">31 - 45</option>
-                <option value="46-55">46 - 55</option>
-                <option value="56-65">56 - 65</option>
-                <option value=">65">&lt; 65</option>
-              </select>
             </div>
             <div>
               <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.contactLanguage`)}</label>
@@ -127,40 +99,6 @@ const ContactSection = () => {
                   <option key={lang} value={lang}>{lang}</option>
                 ))}
               </select>
-            </div>
-          </div>
-
-          <div>
-            <label className="font-body text-sm text-muted-foreground mb-3 block">{t(`${f}.bedrooms`)}</label>
-            <div className="flex flex-wrap gap-3">
-              {dormitoriosOptions.map((opt) => (
-                <button key={opt} type="button" onClick={() => toggleMultiSelect("dormitorios", opt)}
-                  className={`px-4 py-2 rounded-md border text-sm font-body transition-all duration-500 ${formData.dormitorios.includes(opt) ? "bg-primary text-primary-foreground border-primary" : "bg-background text-foreground border-border hover:border-primary/50"}`}>
-                  {opt}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.budget`)}</label>
-            <select value={formData.presupuesto} onChange={(e) => setFormData({ ...formData, presupuesto: e.target.value })} className={selectClass}>
-              <option value="">{t(`${f}.selectPlaceholder`)}</option>
-              {["200K - 250K", "250K - 300K", "300K - 350K", "350K - 400K", "400K - 450K", "450K - 500K", "500K - 550K", "550K - 600K"].map((p) => (
-                <option key={p} value={p}>{p}</option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="font-body text-sm text-muted-foreground mb-3 block">{t(`${f}.commonAreas`)}</label>
-            <div className="flex flex-wrap gap-3">
-              {zonasOptions.map((opt) => (
-                <button key={opt} type="button" onClick={() => toggleMultiSelect("zonasComunes", opt)}
-                  className={`px-4 py-2 rounded-md border text-sm font-body transition-all duration-500 ${formData.zonasComunes.includes(opt) ? "bg-primary text-primary-foreground border-primary" : "bg-background text-foreground border-border hover:border-primary/50"}`}>
-                  {opt}
-                </button>
-              ))}
             </div>
           </div>
 
