@@ -7,7 +7,7 @@ const FooterSection = () => {
   const { t } = useTranslation();
 
   return (
-    <footer className="bg-ocean-dark py-16">
+    <footer className="relative z-10 bg-ocean-dark py-16">
       <div className="container max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           <div>
