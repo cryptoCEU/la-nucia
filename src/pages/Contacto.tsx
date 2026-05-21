@@ -41,14 +41,8 @@ const Contacto = () => {
           </motion.div>
           <motion.div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pb-16 pt-20" style={{ y: hero.textY, opacity: hero.opacity }}>
             <motion.div variants={staggerContainer(0.12, 0.3)} initial="hidden" animate="visible">
-              <motion.p variants={heroText()} className="font-body text-xs tracking-[0.2em] uppercase text-gold mb-2">
-                {t("contactoPage.tag")}
-              </motion.p>
-              <motion.p variants={heroText()} className="font-body text-sm tracking-[0.15em] uppercase text-primary-foreground/60 mb-6">
-                {t("contactoPage.locationTag")}
-              </motion.p>
               <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.4] mb-6 max-w-3xl" dangerouslySetInnerHTML={{ __html: t("contactoPage.heroTitle") }} />
-              <motion.p variants={heroText()} className="font-body text-primary-foreground/60 text-lg max-w-xl">
+              <motion.p variants={heroText()} className="font-body text-primary-foreground/60 text-lg max-w-3xl lg:max-w-none lg:whitespace-nowrap">
                 {t("contactoPage.heroSubtitle")}
               </motion.p>
             </motion.div>

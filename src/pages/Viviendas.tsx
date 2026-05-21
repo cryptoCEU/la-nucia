@@ -179,7 +179,7 @@ const Viviendas = () => {
           <div className="container max-w-4xl mx-auto px-6 text-center">
             <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
               <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-4">{t(`${v}.ctaTag`)}</motion.p>
-              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground mb-4" dangerouslySetInnerHTML={{ __html: t(`${v}.ctaTitle`) }} />
+              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-[1.55] mb-4" dangerouslySetInnerHTML={{ __html: t(`${v}.ctaTitle`) }} />
               <motion.p variants={staggerItem} className="font-body text-primary-foreground/60 mb-10 max-w-lg mx-auto">{t(`${v}.ctaSubtitle`)}</motion.p>
               <motion.div variants={staggerItem}>
                 <Link to="/contacto" className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700">
