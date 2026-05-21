@@ -58,7 +58,7 @@ const Ubicacion = () => {
         {/* Stats bar */}
         <section className="bg-primary border-t border-primary-foreground/10">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-2 divide-x divide-primary-foreground/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
