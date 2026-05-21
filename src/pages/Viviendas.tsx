@@ -57,7 +57,7 @@ const Viviendas = () => {
                 {t(`${v}.tag`)}
               </motion.p>
               <motion.h1 variants={heroText()} className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground leading-[1.2] mb-6 max-w-3xl">
-                {t(`${v}.heroTitle1`)}<br /><span className="italic">{t(`${v}.heroTitle2`)}</span>
+                {t(`${v}.heroTitle1`)} <span className="italic whitespace-nowrap">{t(`${v}.heroTitle2`)}</span>
               </motion.h1>
               <motion.p variants={heroText()} className="font-body text-primary-foreground/60 text-lg max-w-xl mb-8" dangerouslySetInnerHTML={{ __html: t(`${v}.heroSubtitle`) }} />
               <motion.div variants={heroText()}>
