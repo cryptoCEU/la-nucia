@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import heroImage from "@/assets/hero-nucia.jpg";
+import heroImage from "@/assets/hero-nucia.webp";
 
 const HeroHome = () => {
   const { t } = useTranslation();
