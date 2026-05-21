@@ -565,7 +565,7 @@ const NeighbourhoodMapSection = () => {
           </motion.p>
           <motion.h2
             variants={staggerItem}
-            className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-[1.35] mb-4"
+            className="font-display text-3xl md:text-5xl text-[#1A1A1A] leading-[1.6] mb-4"
           >
             Todo lo que necesitas, a tu alcance
           </motion.h2>
