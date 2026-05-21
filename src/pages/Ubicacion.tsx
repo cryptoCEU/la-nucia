@@ -21,8 +21,10 @@ const Ubicacion = () => {
   const advantageIcons = [Mountain, ShoppingBag, Waves];
 
   const stats = [
+    { number: "10", label: t("ubicacionPage.statBenidorm") },
+    { number: "30", label: t("ubicacionPage.statAirport") },
+    { number: "8", label: t("ubicacionPage.statBeach") },
     { number: "300+", label: t("ubicacionPage.statSun") },
-    { number: "5", label: t("ubicacionPage.statShopping") },
   ];
 
   return (
@@ -56,7 +58,7 @@ const Ubicacion = () => {
         {/* Stats bar */}
         <section className="bg-primary border-t border-primary-foreground/10">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
-            <div className="grid grid-cols-2 divide-x divide-primary-foreground/10">
+            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10">
               {stats.map((stat, i) => (
                 <motion.div
                   key={i}
@@ -128,7 +130,7 @@ const Ubicacion = () => {
         </section>
 
         {/* Entorno Privilegiado — Costa Blanca Map */}
-        <section className="py-20 md:py-28 bg-[#F9F6F1]">
+        <section className="py-20 md:py-28 bg-white">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <div className="mb-12">
               <p className="text-[#C9A96E] font-body text-xs tracking-[0.3em] uppercase mb-3">

@@ -60,7 +60,7 @@ const Contacto = () => {
             <div className="grid lg:grid-cols-[1fr_2fr] gap-16">
               <motion.div variants={staggerContainer(0.1)} initial="hidden" whileInView="visible" viewport={viewportOnce}>
                 <motion.p variants={staggerItem} className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mb-3">{t("contactoPage.infoTag")}</motion.p>
-                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-tight mb-6" dangerouslySetInnerHTML={{ __html: t("contactoPage.infoTitle") }} />
+                <motion.h2 variants={staggerItem} className="font-display text-2xl md:text-3xl text-foreground leading-tight mb-6" dangerouslySetInnerHTML={{ __html: t("contactoPage.infoTitle") }} />
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed">{t("contactoPage.infoSubtitle")}</motion.p>
               </motion.div>
 

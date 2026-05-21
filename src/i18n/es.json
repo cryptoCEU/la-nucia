@@ -34,8 +34,8 @@
     "locationTitle2": "de la ciudad del deporte.",
     "locationText": "Situado en un entorno donde el aire libre, el deporte y el bienestar forman parte de la vida cotidiana y, donde la evolución de la zona garantiza no sólo calidad de vida, sino también una proyección de valor del ámbito.",
     "locationCta": "Descubrir entorno",
-    "locationHighlights": ["Días de sol al año", "Minutos andando a La Nucía Shopping Centre"],
-    "locationNumbers": ["300+", "5"],
+    "locationHighlights": ["Min a Benidorm", "Min al aeropuerto", "Km a la playa", "Días de sol al año"],
+    "locationNumbers": ["10", "30", "8", "300+"],
     "homesTag": "Las viviendas",
     "homesTitle1": "Viviendas adaptadas a",
     "homesTitle2": "todas las necesidades",
@@ -184,7 +184,7 @@
     "locations": [
       { "title": "La Nucía", "desc": "Oficina comercial en la propia promoción. Con cita previa." },
       { "title": "Alicante", "desc": "Oficina de Activum en el centro de Alicante. Con cita previa." },
-      { "title": "Madrid", "desc": "Visitas concertadas en Madrid para clientes nacionales." },
+      { "title": "Madrid", "desc": "Visitas concertadas en Madrid para clientes nacionales. Con cita previa." },
       { "title": "Online", "desc": "Visita virtual por videollamada, donde tú quieras." }
     ]
   },
@@ -224,9 +224,9 @@
   },
   "viviendasPage": {
     "tag": "La Nucía One",
-    "heroTitle1": "Viviendas de 2, 3 y 4",
-    "heroTitle2": "dormitorios.",
-    "heroSubtitle": "Amplitud, bienestar y conexión con el exterior gracias a sus viviendas con <strong>grandes terrazas, bajos dúplex con terraza privada y áticos con solárium.</strong>",
+    "heroTitle1": "Viviendas de",
+    "heroTitle2": "2, 3 y 4 dormitorios.",
+    "heroSubtitle": "Amplitud, bienestar y conexión con el exterior gracias a sus viviendas con grandes terrazas, bajos dúplex y áticos con solárium.",
     "requestInfo": "Solicitar información",
     "downloadDossier": "Descargar dossier",
     "qualityReport": "Memoria de calidades",

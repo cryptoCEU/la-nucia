@@ -34,8 +34,8 @@
     "locationTitle2": "of the city of sport.",
     "locationText": "Set in surroundings where the outdoors, sport and wellbeing are part of everyday life, and where the area's growth guarantees not only quality of life but also a strong projection of value.",
     "locationCta": "Discover the setting",
-    "locationHighlights": ["Sunny days per year", "Min walking to La Nucía Shopping Centre"],
-    "locationNumbers": ["300+", "5"],
+    "locationHighlights": ["Min to Benidorm", "Min to airport", "Km to the beach", "Sunny days per year"],
+    "locationNumbers": ["10", "30", "8", "300+"],
     "homesTag": "The homes",
     "homesTitle1": "Homes adapted to",
     "homesTitle2": "every need",
@@ -184,7 +184,7 @@
     "locations": [
       { "title": "La Nucía", "desc": "Sales office at the development itself. By appointment." },
       { "title": "Alicante", "desc": "Activum office in central Alicante. By appointment." },
-      { "title": "Madrid", "desc": "Arranged visits in Madrid for national clients." },
+      { "title": "Madrid", "desc": "Arranged visits in Madrid for national clients. By appointment." },
       { "title": "Online", "desc": "Virtual visit by video call, wherever you are." }
     ]
   },
@@ -224,9 +224,9 @@
   },
   "viviendasPage": {
     "tag": "La Nucía One",
-    "heroTitle1": "Homes with 2, 3 and 4",
-    "heroTitle2": "bedrooms.",
-    "heroSubtitle": "Space, wellbeing and connection with the outdoors thanks to homes with <strong>large terraces, ground-floor duplexes with private terrace and penthouses with solarium.</strong>",
+    "heroTitle1": "Homes with",
+    "heroTitle2": "2, 3 and 4 bedrooms.",
+    "heroSubtitle": "Space, wellbeing and connection with the outdoors thanks to homes with large terraces, ground-floor duplexes and penthouses with solarium.",
     "requestInfo": "Request information",
     "downloadDossier": "Download brochure",
     "qualityReport": "Quality specifications",

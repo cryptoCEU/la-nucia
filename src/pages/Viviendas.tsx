@@ -8,16 +8,16 @@ import FooterSection from "@/components/FooterSection";
 import AmenitiesCarousel from "@/components/AmenitiesCarousel";
 import buildingImage from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
-import habitacionImg from "@/assets/carousel/habitacion.webp";
-import cocinaImg from "@/assets/carousel/cocina.webp";
 import salonImg from "@/assets/carousel/salon.webp";
+import cocinaImg from "@/assets/carousel/cocina.webp";
+import terrazaImg from "@/assets/carousel/terraza.webp";
 import {
   staggerContainer, staggerItem, heroText, scaleIn, fadeUp, clipReveal,
   viewportOnce
 } from "@/lib/animations";
 import { useHeroParallax } from "@/hooks/use-parallax";
 
-const typeImages = [habitacionImg, cocinaImg, salonImg];
+const typeImages = [salonImg, cocinaImg, terrazaImg];
 const featureIcons = [Thermometer, DoorOpen, ChefHat, Shield, Cpu, Leaf];
 
 const Viviendas = () => {

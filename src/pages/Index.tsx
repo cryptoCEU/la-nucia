@@ -11,9 +11,9 @@ import FixedImageWindow from "@/components/FixedImageWindow";
 import heroImage from "@/assets/hero-nucia.jpg";
 import buildingImg from "@/assets/building-render.jpg";
 import interiorImg from "@/assets/interior.jpg";
-import habitacionImg from "@/assets/carousel/habitacion.webp";
-import cocinaImg from "@/assets/carousel/cocina.webp";
 import salonImg from "@/assets/carousel/salon.webp";
+import cocinaImg from "@/assets/carousel/cocina.webp";
+import terrazaImg from "@/assets/carousel/terraza.webp";
 import {
   fadeUp, fadeIn, scaleIn, slideRight, staggerContainer, staggerItem,
   heroText, viewportOnce, viewportOnceNear, slowTransition, clipReveal
@@ -266,9 +266,9 @@ const Index = () => {
               className="grid md:grid-cols-3 gap-6 mb-12"
             >
               {([
-                { img: habitacionImg, title: t("home.type2bed"), desc: t("home.type2desc") },
+                { img: salonImg, title: t("home.type2bed"), desc: t("home.type2desc") },
                 { img: cocinaImg, title: t("home.type3bed"), desc: t("home.type3desc") },
-                { img: salonImg, title: t("home.type4bed"), desc: t("home.type4desc") },
+                { img: terrazaImg, title: t("home.type4bed"), desc: t("home.type4desc") },
               ]).map((item, i) => (
                 <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden cursor-pointer">
                   <Link to="/viviendas">
