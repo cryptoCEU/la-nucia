@@ -113,6 +113,27 @@ const ContactSection = () => {
             </div>
           </div>
 
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.purpose`)}</label>
+              <select value={formData.destino} onChange={(e) => setFormData({ ...formData, destino: e.target.value })} className={selectClass}>
+                <option value="">{t(`${f}.selectPlaceholder`)}</option>
+                {(t(`${f}.purposeOptions`, { returnObjects: true }) as string[]).map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.bedrooms`)}</label>
+              <select value={formData.dormitorios} onChange={(e) => setFormData({ ...formData, dormitorios: e.target.value })} className={selectClass}>
+                <option value="">{t(`${f}.selectPlaceholder`)}</option>
+                {(t(`${f}.bedroomsOptions`, { returnObjects: true }) as string[]).map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
           <div className="flex items-start gap-3">
             <Checkbox id="privacidad" checked={formData.privacidad} onCheckedChange={(checked) => setFormData({ ...formData, privacidad: checked === true })} className="mt-0.5" />
             <label htmlFor="privacidad" className="font-body text-sm text-muted-foreground leading-relaxed cursor-pointer">
