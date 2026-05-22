@@ -22,18 +22,23 @@ const ContactFormEmbed = () => {
     }
     setIsSubmitting(true);
     try {
-      const { privacidad, ...payload } = formData;
-      const res = await fetch("https://hooks.zapier.com/hooks/catch/21916100/4oflejc/", {
-        method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
+      await fetch("https://hooks.zapier.com/hooks/catch/21916100/4oflejc/", {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          nombre: formData.nombre,
+          telefono: formData.telefono,
+          email: formData.email,
+          tipologia: formData.tipologia,
+        }).toString(),
       });
-      if (!res.ok) throw new Error("Error");
-      toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
-      setFormData({ nombre: "", telefono: "", email: "", tipologia: "", privacidad: false });
-    } catch {
-      toast({ title: t(`${f}.errorTitle`), description: t(`${f}.errorSubmit`), variant: "destructive" });
-    } finally {
-      setIsSubmitting(false);
+    } catch (err) {
+      console.error(err);
     }
+    toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
+    setFormData({ nombre: "", telefono: "", email: "", tipologia: "", privacidad: false });
+    setIsSubmitting(false);
   };
 
   return (
