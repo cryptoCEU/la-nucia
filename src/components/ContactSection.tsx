@@ -32,20 +32,12 @@ const ContactSection = () => {
     setIsSubmitting(true);
     try {
       const { privacidad, ...payload } = formData;
-      const res = await fetch("https://form-la-nucia-lovable.vercel.app/api/webhook", {
+      const res = await fetch("https://hooks.zapier.com/hooks/catch/21916100/4oflejc/", {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Error");
 
-      fetch("https://hooks.zapier.com/hooks/catch/21916100/4oflejc/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          nombre: formData.nombre,
-          email: formData.email,
-          telefono: formData.telefono,
-        }),
-      }).catch((err) => console.error("Zapier webhook error:", err));
+
 
       toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
       setFormData({ nombre: "", apellidos: "", telefono: "", email: "", codigoPostal: "", idioma: "", privacidad: false });

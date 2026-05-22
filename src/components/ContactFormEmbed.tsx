@@ -23,7 +23,7 @@ const ContactFormEmbed = () => {
     setIsSubmitting(true);
     try {
       const { privacidad, ...payload } = formData;
-      const res = await fetch("https://form-la-nucia-lovable.vercel.app/api/webhook", {
+      const res = await fetch("https://hooks.zapier.com/hooks/catch/21916100/4oflejc/", {
         method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error("Error");
