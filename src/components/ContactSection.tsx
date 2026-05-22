@@ -44,13 +44,15 @@ const ContactSection = () => {
           email: formData.email,
           codigo_postal: formData.codigoPostal,
           idioma: formData.idioma,
+          destino_vivienda: formData.destino,
+          dormitorios: formData.dormitorios,
         }).toString(),
       });
     } catch (err) {
       console.error(err);
     }
     toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
-    setFormData({ nombre: "", apellidos: "", telefono: "", email: "", codigoPostal: "", idioma: "", privacidad: false });
+    setFormData({ nombre: "", apellidos: "", telefono: "", email: "", codigoPostal: "", idioma: "", destino: "", dormitorios: "", privacidad: false });
     setIsSubmitting(false);
   };
 
