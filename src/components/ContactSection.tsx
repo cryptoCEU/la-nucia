@@ -99,22 +99,6 @@ const ContactSection = () => {
 
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.postalCode`)}</label>
-              <Input value={formData.codigoPostal} onChange={(e) => setFormData({ ...formData, codigoPostal: e.target.value })} placeholder="03530" className="bg-background border-border font-body" />
-            </div>
-            <div>
-              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.contactLanguage`)}</label>
-              <select value={formData.idioma} onChange={(e) => setFormData({ ...formData, idioma: e.target.value })} className={selectClass}>
-                <option value="">{t(`${f}.selectPlaceholder`)}</option>
-                {["Castellano", "Alemán", "Catalán", "Croata", "Francés", "Inglés", "Polaco", "Ruso", "Sueco", "Ucraniano", "Otros"].map((lang) => (
-                  <option key={lang} value={lang}>{lang}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
               <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.purpose`)}</label>
               <select value={formData.destino} onChange={(e) => setFormData({ ...formData, destino: e.target.value })} className={selectClass}>
                 <option value="">{t(`${f}.selectPlaceholder`)}</option>
@@ -129,6 +113,22 @@ const ContactSection = () => {
                 <option value="">{t(`${f}.selectPlaceholder`)}</option>
                 {(t(`${f}.bedroomsOptions`, { returnObjects: true }) as string[]).map((opt) => (
                   <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.postalCode`)}</label>
+              <Input value={formData.codigoPostal} onChange={(e) => setFormData({ ...formData, codigoPostal: e.target.value })} placeholder="03530" className="bg-background border-border font-body" />
+            </div>
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.contactLanguage`)}</label>
+              <select value={formData.idioma} onChange={(e) => setFormData({ ...formData, idioma: e.target.value })} className={selectClass}>
+                <option value="">{t(`${f}.selectPlaceholder`)}</option>
+                {["Castellano", "Alemán", "Catalán", "Croata", "Francés", "Inglés", "Polaco", "Ruso", "Sueco", "Ucraniano", "Otros"].map((lang) => (
+                  <option key={lang} value={lang}>{lang}</option>
                 ))}
               </select>
             </div>
