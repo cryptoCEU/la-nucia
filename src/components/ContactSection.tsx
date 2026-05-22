@@ -18,6 +18,8 @@ const ContactSection = () => {
     email: "",
     codigoPostal: "",
     idioma: "",
+    destino: "",
+    dormitorios: "",
     privacidad: false,
   });
 
@@ -42,13 +44,15 @@ const ContactSection = () => {
           email: formData.email,
           codigo_postal: formData.codigoPostal,
           idioma: formData.idioma,
+          destino_vivienda: formData.destino,
+          dormitorios: formData.dormitorios,
         }).toString(),
       });
     } catch (err) {
       console.error(err);
     }
     toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
-    setFormData({ nombre: "", apellidos: "", telefono: "", email: "", codigoPostal: "", idioma: "", privacidad: false });
+    setFormData({ nombre: "", apellidos: "", telefono: "", email: "", codigoPostal: "", idioma: "", destino: "", dormitorios: "", privacidad: false });
     setIsSubmitting(false);
   };
 
@@ -104,6 +108,27 @@ const ContactSection = () => {
                 <option value="">{t(`${f}.selectPlaceholder`)}</option>
                 {["Castellano", "Alemán", "Catalán", "Croata", "Francés", "Inglés", "Polaco", "Ruso", "Sueco", "Ucraniano", "Otros"].map((lang) => (
                   <option key={lang} value={lang}>{lang}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.purpose`)}</label>
+              <select value={formData.destino} onChange={(e) => setFormData({ ...formData, destino: e.target.value })} className={selectClass}>
+                <option value="">{t(`${f}.selectPlaceholder`)}</option>
+                {(t(`${f}.purposeOptions`, { returnObjects: true }) as string[]).map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="font-body text-sm text-muted-foreground mb-2 block">{t(`${f}.bedrooms`)}</label>
+              <select value={formData.dormitorios} onChange={(e) => setFormData({ ...formData, dormitorios: e.target.value })} className={selectClass}>
+                <option value="">{t(`${f}.selectPlaceholder`)}</option>
+                {(t(`${f}.bedroomsOptions`, { returnObjects: true }) as string[]).map((opt) => (
+                  <option key={opt} value={opt}>{opt}</option>
                 ))}
               </select>
             </div>
