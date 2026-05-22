@@ -18,6 +18,8 @@ const ContactSection = () => {
     email: "",
     codigoPostal: "",
     idioma: "",
+    destino: "",
+    dormitorios: "",
     privacidad: false,
   });
 
