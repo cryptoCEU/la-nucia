@@ -40,11 +40,12 @@ const Index = () => {
   const heroTextOpacity = useTransform(heroProgress, [0.4, 0.5], [0, 1]);
   const locationParallax = useParallax({ speed: 0.25 });
 
-  const stats = [
-    { number: "107", label: t("home.stat1Label") },
-    { number: "9", label: t("home.stat2Label") },
-    { number: "5", label: t("home.stat3Label") },
-    { number: "10", label: t("home.stat4Label") },
+  const amenities = [
+    { icon: Waves, label: "Piscina infinity" },
+    { icon: Dumbbell, label: "Gimnasio equipado" },
+    { icon: Briefcase, label: "Sala de coworking" },
+    { icon: UtensilsCrossed, label: "Gastrobar" },
+    { icon: Baby, label: "Área infantil" },
   ];
 
   return (
