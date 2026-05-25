@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Waves, Dumbbell, Briefcase, UtensilsCrossed, Baby } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
@@ -40,11 +40,12 @@ const Index = () => {
   const heroTextOpacity = useTransform(heroProgress, [0.4, 0.5], [0, 1]);
   const locationParallax = useParallax({ speed: 0.25 });
 
-  const stats = [
-    { number: "107", label: t("home.stat1Label") },
-    { number: "9", label: t("home.stat2Label") },
-    { number: "5", label: t("home.stat3Label") },
-    { number: "10", label: t("home.stat4Label") },
+  const amenities = [
+    { icon: Waves, label: "Piscina infinity" },
+    { icon: Dumbbell, label: "Gimnasio equipado" },
+    { icon: Briefcase, label: "Sala de coworking" },
+    { icon: UtensilsCrossed, label: "Gastrobar" },
+    { icon: Baby, label: "Área infantil" },
   ];
 
   return (
@@ -116,7 +117,7 @@ const Index = () => {
         </section>
 
 
-        {/* ═══ STATS BAR ═══ */}
+        {/* ═══ AMENITIES BAR ═══ */}
         <section className="bg-primary border-t border-primary-foreground/10">
           <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
             <motion.div
@@ -124,12 +125,12 @@ const Index = () => {
               initial="hidden"
               whileInView="visible"
               viewport={viewportOnceNear}
-              className="grid grid-cols-2 md:grid-cols-4 divide-x divide-primary-foreground/10"
+              className="grid grid-cols-2 md:grid-cols-5 divide-x divide-primary-foreground/10"
             >
-              {stats.map((stat, i) => (
-                <motion.div key={i} variants={staggerItem} className="py-12 md:py-16 px-6 text-center">
-                  <AnimatedCounter value={stat.number} className="font-display text-4xl md:text-5xl text-gold block mb-2" />
-                  <p className="font-body text-xs md:text-sm text-primary-foreground/50 tracking-wide uppercase">{stat.label}</p>
+              {amenities.map(({ icon: Icon, label }, i) => (
+                <motion.div key={i} variants={staggerItem} className="py-12 md:py-16 px-6 text-center flex flex-col items-center">
+                  <Icon className="w-10 h-10 md:w-12 md:h-12 text-gold mb-4" strokeWidth={1.2} />
+                  <p className="font-body text-xs md:text-sm text-primary-foreground/70 tracking-[0.15em] uppercase">{label}</p>
                 </motion.div>
               ))}
             </motion.div>
