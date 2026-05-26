@@ -105,7 +105,7 @@ const STYLES = `
     opacity: 1;
   }
   .lng-overlay-box {
-    background: rgba(13, 58, 42, 0.78);
+    background: rgba(13, 58, 42, 0.55);
     backdrop-filter: blur(4px);
     border-radius: 4px;
     padding: 24px 32px;
@@ -276,7 +276,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               />
               <div className="lng-overlay">
                 <div className="lng-overlay-box">
-                  <p className="lng-overlay-eyebrow">{img.eyebrow}</p>
+                  
                   <h3 className="lng-overlay-title">{img.title}</h3>
                   <p className="lng-overlay-desc">{img.description}</p>
                 </div>
