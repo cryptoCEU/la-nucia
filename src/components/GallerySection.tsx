@@ -218,20 +218,32 @@ interface GalleryGridProps {
 const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
 
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
-  const [tappedIdx, setTappedIdx] = useState<number | null>(null);
+  const [visibleIdx, setVisibleIdx] = useState<Set<number>>(new Set());
+  const cellRefs = React.useRef<(HTMLDivElement | null)[]>([]);
   const isMobile = useIsMobile();
 
+  React.useEffect(() => {
+    if (!isMobile) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisibleIdx((prev) => {
+          const next = new Set(prev);
+          entries.forEach((entry) => {
+            const idx = Number((entry.target as HTMLElement).dataset.idx);
+            if (entry.isIntersecting) next.add(idx);
+            else next.delete(idx);
+          });
+          return next;
+        });
+      },
+      { threshold: 0.6 },
+    );
+    cellRefs.current.forEach((el) => el && observer.observe(el));
+    return () => observer.disconnect();
+  }, [isMobile, images.length]);
+
   const handleClick = (i: number) => {
-    if (isMobile) {
-      if (tappedIdx === i) {
-        onOpen(images, i);
-        setTappedIdx(null);
-      } else {
-        setTappedIdx(i);
-      }
-    } else {
-      onOpen(images, i);
-    }
+    onOpen(images, i);
   };
 
   return (
