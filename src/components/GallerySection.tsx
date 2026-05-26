@@ -65,7 +65,10 @@ const STYLES = `
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.35s ease;
+  }
+  .lng-cell.is-hidden .lng-cell-img {
+    opacity: 0;
   }
   .lng-expanded {
     position: absolute;
@@ -73,41 +76,7 @@ const STYLES = `
     z-index: 20;
     overflow: hidden;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.25s ease;
   }
-  .lng-grid-lines {
-    position: absolute;
-    inset: 0;
-    z-index: 25;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  .lng-grid-lines::before,
-  .lng-grid-lines::after {
-    content: "";
-    position: absolute;
-    background: #F5F3F2;
-  }
-  /* horizontal line between the two rows */
-  .lng-grid-lines::before {
-    left: 0;
-    right: 0;
-    top: calc(50% - 1px);
-    height: 2px;
-  }
-  /* vertical lines via box-shadow trick using a child span */
-  .lng-grid-lines > .v1,
-  .lng-grid-lines > .v2 {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #F5F3F2;
-  }
-  .lng-grid-lines > .v1 { left: calc(33.3333% - 1px); }
-  .lng-grid-lines > .v2 { left: calc(66.6666% - 1px); }
   .lng-expanded-img {
     position: absolute;
     inset: 0;
@@ -115,7 +84,7 @@ const STYLES = `
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.45s ease;
   }
   .lng-expanded-img.is-active {
     opacity: 1;
@@ -123,18 +92,17 @@ const STYLES = `
   .lng-overlay {
     position: absolute;
     inset: 0;
-    z-index: 25;
+    z-index: 40;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.1s ease;
+    transition: opacity 0.3s ease;
   }
-  .lng-overlay.is-visible {
+  .lng-cell.is-active .lng-overlay {
     opacity: 1;
-    transition: opacity 0.3s ease 0.2s;
   }
   .lng-overlay-box {
     background: rgba(13, 58, 42, 0.78);
@@ -171,14 +139,7 @@ const STYLES = `
     margin: 12px 0 0 0;
   }
 
-  /* Desktop: card on hover over the image (no takeover) */
-  @media (min-width: 768px) {
-    .lng-cell:hover .lng-overlay {
-      opacity: 1;
-    }
-  }
-
-  /* Mobile: no takeover */
+  /* Mobile: stack cells, overlay on scroll-into-view */
   @media (max-width: 767px) {
     .lng-gallery {
       grid-template-columns: 1fr;
@@ -193,7 +154,6 @@ const STYLES = `
     }
     .lng-overlay-title { font-size: 20px; margin-top: 4px; }
     .lng-overlay-desc { font-size: 13px; line-height: 1.55; margin-top: 8px; }
-    .lng-expanded { display: none; }
     .lng-cell.lng-tapped .lng-overlay {
       opacity: 1;
     }
@@ -210,9 +170,10 @@ interface GalleryGridProps {
 
 const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
 
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [visibleIdx, setVisibleIdx] = useState<Set<number>>(new Set());
   const cellRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
 
   React.useEffect(() => {
@@ -235,8 +196,24 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
     return () => observer.disconnect();
   }, [isMobile, images.length]);
 
+  // Close on outside click
+  React.useEffect(() => {
+    if (activeIdx === null) return;
+    const onDocClick = (e: MouseEvent) => {
+      if (!containerRef.current?.contains(e.target as Node)) {
+        setActiveIdx(null);
+      }
+    };
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [activeIdx]);
+
   const handleClick = (i: number) => {
-    onOpen(images, i);
+    if (isMobile) {
+      onOpen(images, i);
+      return;
+    }
+    setActiveIdx((prev) => (prev === i ? null : i));
   };
 
   return (
@@ -255,8 +232,8 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
         {title}
       </h2>
       <div
+        ref={containerRef}
         className={`lng-gallery ${cols === 2 ? "cols-2" : ""} ${rows === 1 ? "rows-1" : ""}`}
-        onMouseLeave={() => setHoverIdx(null)}
       >
         {/* Expanded preview layer (under the cells) */}
         <div className="lng-expanded" aria-hidden="true">
@@ -265,7 +242,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               key={i}
               src={img.src}
               alt=""
-              className={`lng-expanded-img ${hoverIdx === i ? "is-active" : ""}`}
+              className={`lng-expanded-img ${activeIdx === i ? "is-active" : ""}`}
               style={img.imgStyle}
               loading={i < 1 ? "eager" : "lazy"}
               draggable={false}
@@ -273,54 +250,40 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
           ))}
         </div>
 
-        {/* Grid separator lines (only visible on hover) */}
-        <div className="lng-grid-lines" aria-hidden="true">
-          <span className="v1" />
-          <span className="v2" />
-        </div>
-
-        {/* Overlay text for the currently hovered cell */}
-        {hoverIdx !== null && (
-          <div className={`lng-overlay is-visible`} aria-hidden="true">
-            <div className="lng-overlay-box">
-              <p className="lng-overlay-eyebrow">{images[hoverIdx].eyebrow}</p>
-              <h3 className="lng-overlay-title">{images[hoverIdx].title}</h3>
-              <p className="lng-overlay-desc">{images[hoverIdx].description}</p>
-            </div>
-          </div>
-        )}
 
         {/* Hotspot cells (always present as a static grid) */}
-        {images.map((img, i) => (
-          <div
-            key={i}
-            ref={(el) => (cellRefs.current[i] = el)}
-            data-idx={i}
-            className={`lng-cell ${visibleIdx.has(i) ? "lng-tapped" : ""}`}
-            onMouseEnter={() => !isMobile && setHoverIdx(i)}
-            onClick={() => handleClick(i)}
-            role="button"
-            tabIndex={0}
-            aria-label={`Abrir ${img.alt}`}
-          >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="lng-cell-img"
-              style={img.imgStyle}
-              loading={i < 3 ? "eager" : "lazy"}
-              draggable={false}
-            />
-            {/* Mobile-only overlay text per cell */}
-            <div className="lng-overlay">
-              <div className="lng-overlay-box">
-                <p className="lng-overlay-eyebrow">{img.eyebrow}</p>
-                <h3 className="lng-overlay-title">{img.title}</h3>
-                <p className="lng-overlay-desc">{img.description}</p>
+        {images.map((img, i) => {
+          const isActive = activeIdx === i;
+          const isHidden = activeIdx !== null && !isActive;
+          return (
+            <div
+              key={i}
+              ref={(el) => (cellRefs.current[i] = el)}
+              data-idx={i}
+              className={`lng-cell ${visibleIdx.has(i) ? "lng-tapped" : ""} ${isActive ? "is-active" : ""} ${isHidden ? "is-hidden" : ""}`}
+              onClick={() => handleClick(i)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Abrir ${img.alt}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="lng-cell-img"
+                style={img.imgStyle}
+                loading={i < 3 ? "eager" : "lazy"}
+                draggable={false}
+              />
+              <div className="lng-overlay">
+                <div className="lng-overlay-box">
+                  <p className="lng-overlay-eyebrow">{img.eyebrow}</p>
+                  <h3 className="lng-overlay-title">{img.title}</h3>
+                  <p className="lng-overlay-desc">{img.description}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
