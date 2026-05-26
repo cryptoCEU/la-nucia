@@ -63,26 +63,22 @@ const Index = () => {
           .home-main > section { position: relative; z-index: 10; }
           .home-main > .fiw-band { z-index: 5; }
         `}</style>
-        {/* ═══ HERO FULLSCREEN — sticky 300vh with two phases ═══ */}
-        <section ref={heroRef} className="relative h-[300vh]">
-          <div className="sticky top-0 h-screen w-full overflow-hidden">
-            {/* Layer 1: image (static during phase 1, Ken Burns during phase 2) */}
-            <motion.div
-              className="absolute -inset-[10%] z-0 will-change-transform"
-              style={{ scale: heroImgScale, rotate: heroImgRotate, x: heroImgX, y: heroImgY }}
-            >
+        {/* ═══ HERO FULLSCREEN ═══ */}
+        <section ref={heroRef} className="relative h-screen overflow-hidden">
+          <div className="absolute inset-0 w-full h-full">
+            {/* Layer 1: image */}
+            <div className="absolute inset-0 z-0">
               <img
                 src={heroImage}
                 alt="Promoción de obra nueva en La Nucía"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-bottom"
               />
-            </motion.div>
+            </div>
             {/* Layer 2: overlay gradient */}
             <div className="absolute inset-0 z-10 bg-gradient-to-t from-primary via-primary/50 to-primary/10 pointer-events-none" />
-            {/* Layer 3: text — fixed in place, fades in only during phase 2 */}
-            <motion.div
+            {/* Layer 3: text */}
+            <div
               className="absolute inset-0 z-20 flex flex-col justify-end pb-24 md:pb-32"
-              style={{ opacity: heroTextOpacity }}
             >
               <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
                 <div className="max-w-3xl">
@@ -112,7 +108,7 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
