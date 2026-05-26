@@ -8,7 +8,7 @@ const HeroSection = () => {
   return (
     <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src={heroImage} alt="Promoción de obra nueva en La Nucía, Alicante - Costa Mediterránea" className="w-full h-full object-cover" />
+        <img src={heroImage} alt="Promoción de obra nueva en La Nucía, Alicante - Costa Mediterránea" className="w-full h-full object-cover object-bottom" />
         <div className="absolute inset-0 bg-gradient-to-b from-ocean-dark/60 via-ocean-dark/40 to-ocean-dark/80" />
       </div>
 
