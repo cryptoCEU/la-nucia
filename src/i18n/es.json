@@ -244,7 +244,7 @@
     "types": [
       { "title": "2 Dormitorios", "description": "Distribución optimizada con amplias terrazas. Ideal para parejas o como inversión.", "areaFrom": "95", "bathrooms": "2", "terraceFrom": "17" },
       { "title": "3 Dormitorios", "description": "El equilibrio perfecto entre espacio y funcionalidad para toda la familia.", "areaFrom": "109", "bathrooms": "2", "terraceFrom": "16" },
-      { "title": "4 Dormitorios", "description": "Máximo espacio y confort con acabados premium.", "areaFrom": "178", "bathrooms": "2", "terraceFrom": "60" }
+      { "title": "4 Dormitorios", "description": "Máximo espacio y confort con acabados premium para toda la familia.", "areaFrom": "178", "bathrooms": "2", "terraceFrom": "60" }
     ],
     "bedrooms": "dormitorios",
     "bathrooms": "baños",
