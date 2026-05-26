@@ -261,6 +261,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               src={img.src}
               alt=""
               className={`lng-expanded-img ${hoverIdx === i ? "is-active" : ""}`}
+              style={img.imgStyle}
               loading={i < 1 ? "eager" : "lazy"}
               draggable={false}
             />
