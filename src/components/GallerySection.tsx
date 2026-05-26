@@ -67,6 +67,9 @@ const STYLES = `
     display: block;
     transition: opacity 0.35s ease;
   }
+  .lng-cell.is-hidden {
+    background: transparent;
+  }
   .lng-cell.is-hidden .lng-cell-img {
     opacity: 0;
   }
