@@ -137,7 +137,8 @@ const STYLES = `
     transition: opacity 0.3s ease 0.2s;
   }
   .lng-overlay-box {
-    background: #0d3a2a;
+    background: rgba(13, 58, 42, 0.78);
+    backdrop-filter: blur(4px);
     border-radius: 4px;
     padding: 24px 32px;
     max-width: 480px;
