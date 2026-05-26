@@ -19,9 +19,9 @@ type GalleryImage = {
 };
 
 const exterioresImages: GalleryImage[] = [
-  { src: extFrontal, alt: "Fachada y piscina", eyebrow: "EXTERIORES", title: "Fachada y piscina", description: "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal." },
+  { src: extFrontal, alt: "Fachada", eyebrow: "EXTERIORES", title: "Fachada", description: "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal.", imgStyle: { objectPosition: "center 80%" } },
   { src: zcRecepcion, alt: "Entrada", eyebrow: "EXTERIORES", title: "Entrada", description: "Acceso principal en madera retroiluminada, con jardín mediterráneo y la firma La Nucía ONE como bienvenida." },
-  { src: extAtardecer, alt: "Atardecer en la piscina", eyebrow: "EXTERIORES", title: "Atardecer en la piscina", description: "Luz cálida del atardecer reflejada en la lámina de agua, con las palmeras y la fachada curva como telón de fondo." },
+  { src: extAtardecer, alt: "Atardecer", eyebrow: "EXTERIORES", title: "Atardecer", description: "Luz cálida del atardecer reflejada en la lámina de agua, con las palmeras y la fachada curva como telón de fondo.", imgStyle: { objectPosition: "center 80%" } },
 ];
 
 const zonasImages: GalleryImage[] = [
