@@ -80,7 +80,9 @@ const Landing = () => {
 
         {/* Top bar with logo */}
         <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
-          <img src={logo} alt="La Nucía One" className="h-10 md:h-12 w-auto" />
+          <a href="/" aria-label="Ir a la home">
+            <img src={logo} alt="La Nucía One" className="h-10 md:h-12 w-auto cursor-pointer" />
+          </a>
         </div>
 
         {/* Content grid */}
