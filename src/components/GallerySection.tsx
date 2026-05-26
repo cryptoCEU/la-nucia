@@ -65,7 +65,10 @@ const STYLES = `
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: opacity 0.25s ease;
+    transition: opacity 0.35s ease;
+  }
+  .lng-cell.is-hidden .lng-cell-img {
+    opacity: 0;
   }
   .lng-expanded {
     position: absolute;
@@ -73,41 +76,7 @@ const STYLES = `
     z-index: 20;
     overflow: hidden;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.25s ease;
   }
-  .lng-grid-lines {
-    position: absolute;
-    inset: 0;
-    z-index: 25;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  .lng-grid-lines::before,
-  .lng-grid-lines::after {
-    content: "";
-    position: absolute;
-    background: #F5F3F2;
-  }
-  /* horizontal line between the two rows */
-  .lng-grid-lines::before {
-    left: 0;
-    right: 0;
-    top: calc(50% - 1px);
-    height: 2px;
-  }
-  /* vertical lines via box-shadow trick using a child span */
-  .lng-grid-lines > .v1,
-  .lng-grid-lines > .v2 {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #F5F3F2;
-  }
-  .lng-grid-lines > .v1 { left: calc(33.3333% - 1px); }
-  .lng-grid-lines > .v2 { left: calc(66.6666% - 1px); }
   .lng-expanded-img {
     position: absolute;
     inset: 0;
@@ -115,7 +84,7 @@ const STYLES = `
     height: 100%;
     object-fit: cover;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.45s ease;
   }
   .lng-expanded-img.is-active {
     opacity: 1;
@@ -123,18 +92,17 @@ const STYLES = `
   .lng-overlay {
     position: absolute;
     inset: 0;
-    z-index: 25;
+    z-index: 40;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 24px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.1s ease;
+    transition: opacity 0.3s ease;
   }
-  .lng-overlay.is-visible {
+  .lng-cell.is-active .lng-overlay {
     opacity: 1;
-    transition: opacity 0.3s ease 0.2s;
   }
   .lng-overlay-box {
     background: rgba(13, 58, 42, 0.78);
@@ -171,14 +139,7 @@ const STYLES = `
     margin: 12px 0 0 0;
   }
 
-  /* Desktop: card on hover over the image (no takeover) */
-  @media (min-width: 768px) {
-    .lng-cell:hover .lng-overlay {
-      opacity: 1;
-    }
-  }
-
-  /* Mobile: no takeover */
+  /* Mobile: stack cells, overlay on scroll-into-view */
   @media (max-width: 767px) {
     .lng-gallery {
       grid-template-columns: 1fr;
@@ -193,7 +154,6 @@ const STYLES = `
     }
     .lng-overlay-title { font-size: 20px; margin-top: 4px; }
     .lng-overlay-desc { font-size: 13px; line-height: 1.55; margin-top: 8px; }
-    .lng-expanded { display: none; }
     .lng-cell.lng-tapped .lng-overlay {
       opacity: 1;
     }
