@@ -287,6 +287,42 @@ const Landing = () => {
             </motion.div>
           </div>
         </section>
+          </div>
+        </section>
+
+        {/* ═══ ZONAS COMUNES ═══ */}
+        <section className="w-full py-16 md:py-24" style={{ background: "#F5F3F2" }}>
+          <style>{GALLERY_STYLES}</style>
+          <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={openLb} cols={3} rows={1} />
+        </section>
+
+        {/* ═══ CONTACTO ═══ */}
+        <ContactSection />
+
+        {lightbox && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+            onClick={closeLb}
+          >
+            <button onClick={closeLb} aria-label="Cerrar" className="absolute top-6 right-6 text-white p-2 hover:opacity-70">
+              <X className="w-6 h-6" />
+            </button>
+            <button onClick={(e) => { e.stopPropagation(); navLb(-1); }} aria-label="Anterior" className="absolute left-6 text-white p-2 hover:opacity-70">
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            <img
+              src={lightbox.list[lightbox.idx].src}
+              alt={lightbox.list[lightbox.idx].alt}
+              className="max-h-[85vh] max-w-[90vw] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button onClick={(e) => { e.stopPropagation(); navLb(1); }} aria-label="Siguiente" className="absolute right-6 text-white p-2 hover:opacity-70">
+              <ChevronRight className="w-8 h-8" />
+            </button>
+          </div>
+        )}
       </main>
     </>
   );
