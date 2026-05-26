@@ -22,7 +22,7 @@ const STYLES = `
 .amen-section{background:#f4faf0;padding:80px 0 96px;position:relative;font-family:'Montserrat',sans-serif;}
 .amen-header{padding:0 60px;margin-bottom:48px;}
 .amen-eyebrow{font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8F8D8C;margin:0 0 12px;}
-.amen-title{font-family:'TAN - PEARL','TAN Pearl',serif;font-weight:normal;font-size:clamp(32px,4vw,52px);color:#1F1D1A;letter-spacing:.02em;margin:0;line-height:1.1;}
+.amen-title{font-family:'TAN - PEARL','TAN Pearl',serif;font-weight:normal;font-size:clamp(32px,4vw,52px);color:#0d3a2a;letter-spacing:.02em;margin:0;line-height:1.1;}
 .amen-wrap{position:relative;}
 .amen-track{display:flex;gap:24px;overflow-x:scroll;scroll-snap-type:x mandatory;padding:8px 60px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;scroll-behavior:smooth;}
 .amen-track::-webkit-scrollbar{display:none;}
