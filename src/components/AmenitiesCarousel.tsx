@@ -22,7 +22,7 @@ const STYLES = `
 .amen-section{background:#f4faf0;padding:80px 0 96px;position:relative;font-family:'Montserrat',sans-serif;}
 .amen-header{padding:0 60px;margin-bottom:48px;}
 .amen-eyebrow{font-family:'Montserrat',sans-serif;font-weight:500;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#8F8D8C;margin:0 0 12px;}
-.amen-title{font-family:'TAN - PEARL','TAN Pearl',serif;font-weight:normal;font-size:clamp(32px,4vw,52px);color:#1F1D1A;letter-spacing:.02em;margin:0;line-height:1.1;}
+.amen-title{font-family:'TAN - PEARL','TAN Pearl',serif;font-weight:normal;font-size:clamp(32px,4vw,52px);color:#0d3a2a;letter-spacing:.02em;margin:0;line-height:1.1;}
 .amen-wrap{position:relative;}
 .amen-track{display:flex;gap:24px;overflow-x:scroll;scroll-snap-type:x mandatory;padding:8px 60px;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;scroll-behavior:smooth;}
 .amen-track::-webkit-scrollbar{display:none;}
@@ -35,7 +35,7 @@ const STYLES = `
 .amen-cap{flex:1;background:#F5F3F2;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .amen-cap-title{font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;letter-spacing:.01em;color:#1F1D1A;margin:0;}
 .amen-plus{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(31,29,26,0.35);background:transparent;color:#1F1D1A;font-size:20px;font-weight:300;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(0.22,1,0.36,1);padding:0;flex-shrink:0;}
-.amen-plus:hover{background:#8E2D44;border-color:#8E2D44;color:#F5F3F2;}
+.amen-plus:hover{background:#0d3a2a;border-color:#0d3a2a;color:#F5F3F2;}
 .amen-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#F5F3F2;border:1.5px solid rgba(31,29,26,0.18);color:#1F1D1A;box-shadow:0 2px 8px rgba(31,29,26,0.10);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(0.22,1,0.36,1);z-index:5;}
 .amen-arrow:hover{background:#8E2D44;color:#F5F3F2;border-color:#8E2D44;}
 .amen-arrow.prev{left:24px;}
