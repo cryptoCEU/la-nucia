@@ -1,14 +1,19 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { staggerContainer, heroText, fadeUp } from "@/lib/animations";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { staggerContainer, heroText, fadeUp, staggerItem, viewportOnce, scaleIn } from "@/lib/animations";
+import { useParallax } from "@/hooks/use-parallax";
 import logo from "@/assets/isotipo-nucia.svg";
+import heroImage from "@/assets/hero-nucia.jpg";
+import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
+import cocinaPeopleImg from "@/assets/carousel/cocina-people.webp";
+import salonPeopleImg from "@/assets/carousel/salon-people.webp";
 
 const Landing = () => {
   const { t } = useTranslation();
@@ -23,6 +28,7 @@ const Landing = () => {
     dormitorios: "",
     privacidad: false,
   });
+  const locationParallax = useParallax({ speed: 0.25 });
 
   const f = "contactSection.form";
 
@@ -66,102 +72,201 @@ const Landing = () => {
         description="Viviendas de obra nueva en La Nucía con 2, 3 y 4 dormitorios. Solicita información sin compromiso."
         path="/landing"
       />
-      <main className="relative min-h-screen w-full overflow-hidden bg-primary">
-        {/* Video background */}
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        >
-          <source src="/lanuciaone.mp4" type="video/mp4" />
-        </video>
-        
-
-        {/* Top bar with logo */}
-        <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
-          <a href="/" aria-label="Ir a la home">
-            <img src={logo} alt="La Nucía One" className="h-10 md:h-12 w-auto cursor-pointer" />
-          </a>
-        </div>
-
-        {/* Content grid */}
-        <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 py-10 md:py-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
-          {/* Hero text */}
-          <motion.div
-            variants={staggerContainer(0.13, 0.2)}
-            initial="hidden"
-            animate="visible"
-            className="text-primary-foreground"
+      <main className="relative w-full overflow-hidden bg-primary">
+        {/* ═══ HERO + FORM ═══ */}
+        <section className="relative min-h-screen w-full overflow-hidden">
+          {/* Video background */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover z-0"
           >
-            <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-4">
-              Viviendas de obra nueva
-            </motion.p>
-            <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6 text-primary">
-              A 10 minutos<br />de <span className="italic">Benidorm</span>.
-            </motion.h1>
-            <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
-              107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.
-            </motion.p>
-            <motion.div variants={heroText()} className="mt-8">
-              <a
-                href="/"
-                className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-primary border border-primary px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700"
-              >
-                Más información <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-              </a>
+            <source src="/lanuciaone.mp4" type="video/mp4" />
+          </video>
+
+          {/* Top bar with logo */}
+          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
+            <img src={logo} alt="La Nucía One" className="h-10 md:h-12 w-auto" />
+          </div>
+
+          {/* Content grid */}
+          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 py-10 md:py-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
+            {/* Hero text */}
+            <motion.div
+              variants={staggerContainer(0.13, 0.2)}
+              initial="hidden"
+              animate="visible"
+              className="text-primary-foreground"
+            >
+              <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-4">
+                Viviendas de obra nueva
+              </motion.p>
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6 text-primary">
+                A 10 minutos<br />de <span className="italic">Benidorm</span>.
+              </motion.h1>
+              <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
+                107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.
+              </motion.p>
             </motion.div>
-          </motion.div>
 
-          {/* Contact form */}
-          <motion.form
-            variants={fadeUp(0.4)}
-            initial="hidden"
-            animate="visible"
-            onSubmit={handleSubmit}
-            className="bg-ocean-dark/40 backdrop-blur-md border border-white/15 rounded-xl p-6 md:p-8 shadow-2xl space-y-4 w-full max-w-xl lg:ml-auto"
+            {/* Contact form */}
+            <motion.form
+              variants={fadeUp(0.4)}
+              initial="hidden"
+              animate="visible"
+              onSubmit={handleSubmit}
+              className="bg-ocean-dark/40 backdrop-blur-md border border-white/15 rounded-xl p-6 md:p-8 shadow-2xl space-y-4 w-full max-w-xl lg:ml-auto"
+            >
+              <div className="mb-2">
+                <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Conoce todos<br/>los detalles</h2>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-3">
+                <Input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} placeholder={t(`${f}.firstNamePlaceholder`)} className={inputClass} />
+                <Input required value={formData.apellidos} onChange={(e) => setFormData({ ...formData, apellidos: e.target.value })} placeholder={t(`${f}.lastNamePlaceholder`)} className={inputClass} />
+              </div>
+
+              <Input required type="tel" value={formData.telefono} onChange={(e) => setFormData({ ...formData, telefono: e.target.value })} placeholder={t(`${f}.phonePlaceholder`)} className={inputClass} />
+              <Input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder={t(`${f}.emailPlaceholder`)} className={inputClass} />
+
+              <div className="grid md:grid-cols-2 gap-3">
+                <select value={formData.destino} onChange={(e) => setFormData({ ...formData, destino: e.target.value })} className={selectClass}>
+                  <option value="" className="text-foreground">{t(`${f}.purpose`)}</option>
+                  {(t(`${f}.purposeOptions`, { returnObjects: true }) as string[]).map((opt) => (
+                    <option key={opt} value={opt} className="text-foreground">{opt}</option>
+                  ))}
+                </select>
+                <select value={formData.dormitorios} onChange={(e) => setFormData({ ...formData, dormitorios: e.target.value })} className={selectClass}>
+                  <option value="" className="text-foreground">{t(`${f}.bedrooms`)}</option>
+                  {(t(`${f}.bedroomsOptions`, { returnObjects: true }) as string[]).map((opt) => (
+                    <option key={opt} value={opt} className="text-foreground">{opt}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="flex items-start gap-3 pt-1">
+                <Checkbox id="privacidad-landing" checked={formData.privacidad} onCheckedChange={(checked) => setFormData({ ...formData, privacidad: checked === true })} className="mt-0.5 border-white/40 data-[state=checked]:bg-gold data-[state=checked]:border-gold" />
+                <label htmlFor="privacidad-landing" className="font-body text-xs text-primary-foreground/80 leading-relaxed cursor-pointer">
+                  {t(`${f}.privacy`)}{" "}
+                  <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" className="text-gold underline hover:text-gold/80 transition-colors">{t(`${f}.privacyLink`)}</a>
+                </label>
+              </div>
+
+              <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-body text-sm tracking-widest uppercase py-6 transition-all duration-500">
+                {isSubmitting ? t(`${f}.submitting`) : t(`${f}.submit`)}
+              </Button>
+            </motion.form>
+          </div>
+        </section>
+
+        {/* ═══ UBICACIÓN ═══ */}
+        <section className="relative py-32 md:py-44 bg-primary overflow-hidden">
+          <motion.div
+            ref={locationParallax.ref}
+            className="absolute inset-0 opacity-20"
+            style={{ y: locationParallax.y }}
+            initial={{ scale: 1.05 }}
+            whileInView={{ scale: 1 }}
+            viewport={viewportOnce}
+            transition={{ duration: 3, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="mb-2">
-              <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Conoce todos<br/>los detalles</h2>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-3">
-              <Input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} placeholder={t(`${f}.firstNamePlaceholder`)} className={inputClass} />
-              <Input required value={formData.apellidos} onChange={(e) => setFormData({ ...formData, apellidos: e.target.value })} placeholder={t(`${f}.lastNamePlaceholder`)} className={inputClass} />
-            </div>
-
-            <Input required type="tel" value={formData.telefono} onChange={(e) => setFormData({ ...formData, telefono: e.target.value })} placeholder={t(`${f}.phonePlaceholder`)} className={inputClass} />
-            <Input required type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} placeholder={t(`${f}.emailPlaceholder`)} className={inputClass} />
-
-            <div className="grid md:grid-cols-2 gap-3">
-              <select value={formData.destino} onChange={(e) => setFormData({ ...formData, destino: e.target.value })} className={selectClass}>
-                <option value="" className="text-foreground">{t(`${f}.purpose`)}</option>
-                {(t(`${f}.purposeOptions`, { returnObjects: true }) as string[]).map((opt) => (
-                  <option key={opt} value={opt} className="text-foreground">{opt}</option>
+            <img src={heroImage} alt="" className="w-full h-full object-cover" />
+          </motion.div>
+          <div className="absolute inset-0 bg-primary/80" />
+          <div className="relative z-10 container max-w-6xl mx-auto px-6">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <motion.div
+                variants={staggerContainer(0.12)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+              >
+                <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
+                  {t("home.locationTag")}
+                </motion.p>
+                <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-[1.9] mb-8">
+                  {t("home.locationTitle1")}<br />
+                  <span className="italic">{t("home.locationTitle2")}</span>
+                </motion.h2>
+                <motion.p variants={staggerItem} className="font-body text-primary-foreground/60 leading-relaxed mb-10">
+                  {t("home.locationText")}
+                </motion.p>
+              </motion.div>
+              <motion.div
+                variants={staggerContainer(0.08, 0.3)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportOnce}
+                className="grid grid-cols-2 gap-4"
+              >
+                {(t("home.locationHighlights", { returnObjects: true }) as string[]).map((item, i) => (
+                  <motion.div key={i} variants={staggerItem} className="border border-primary-foreground/10 p-6 backdrop-blur-sm">
+                    <AnimatedCounter
+                      value={(t("home.locationNumbers", { returnObjects: true }) as string[])[i]}
+                      className="font-display text-2xl text-gold block mb-2"
+                    />
+                    <p className="font-body text-sm text-primary-foreground/60">{item}</p>
+                  </motion.div>
                 ))}
-              </select>
-              <select value={formData.dormitorios} onChange={(e) => setFormData({ ...formData, dormitorios: e.target.value })} className={selectClass}>
-                <option value="" className="text-foreground">{t(`${f}.bedrooms`)}</option>
-                {(t(`${f}.bedroomsOptions`, { returnObjects: true }) as string[]).map((opt) => (
-                  <option key={opt} value={opt} className="text-foreground">{opt}</option>
-                ))}
-              </select>
+              </motion.div>
             </div>
+          </div>
+        </section>
 
-            <div className="flex items-start gap-3 pt-1">
-              <Checkbox id="privacidad-landing" checked={formData.privacidad} onCheckedChange={(checked) => setFormData({ ...formData, privacidad: checked === true })} className="mt-0.5 border-white/40 data-[state=checked]:bg-gold data-[state=checked]:border-gold" />
-              <label htmlFor="privacidad-landing" className="font-body text-xs text-primary-foreground/80 leading-relaxed cursor-pointer">
-                {t(`${f}.privacy`)}{" "}
-                <a href="/politica-de-privacidad" target="_blank" rel="noopener noreferrer" className="text-gold underline hover:text-gold/80 transition-colors">{t(`${f}.privacyLink`)}</a>
-              </label>
-            </div>
+        {/* ═══ VIVIENDAS ═══ */}
+        <section className="py-28 md:py-40 bg-background">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8">
+            <motion.div
+              variants={staggerContainer(0.1)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              className="text-center mb-16"
+            >
+              <motion.p variants={staggerItem} className="text-gold font-body text-xs tracking-[0.3em] uppercase mb-6">
+                {t("home.homesTag")}
+              </motion.p>
+              <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.9] mb-6">
+                {t("home.homesTitle1")}<br />
+                <span className="italic">{t("home.homesTitle2")}</span>
+              </motion.h2>
+              <motion.p variants={staggerItem} className="font-body text-muted-foreground max-w-xl mx-auto">
+                {t("home.homesText")}
+              </motion.p>
+            </motion.div>
 
-            <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-body text-sm tracking-widest uppercase py-6 transition-all duration-500">
-              {isSubmitting ? t(`${f}.submitting`) : t(`${f}.submit`)}
-            </Button>
-          </motion.form>
-        </div>
+            <motion.div
+              variants={staggerContainer(0.15, 0.1)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={viewportOnce}
+              className="grid md:grid-cols-3 gap-6"
+            >
+              {([
+                { img: habitacionPeopleImg, title: t("home.type2bed"), desc: t("home.type2desc") },
+                { img: cocinaPeopleImg, title: t("home.type3bed"), desc: t("home.type3desc") },
+                { img: salonPeopleImg, title: t("home.type4bed"), desc: t("home.type4desc") },
+              ]).map((item, i) => (
+                <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden">
+                  <div className="aspect-[3/4] overflow-hidden">
+                    <img
+                      src={item.img}
+                      alt={item.title as string}
+                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="font-display text-2xl text-primary-foreground mb-2">{item.title}</h3>
+                    <p className="font-body text-sm text-primary-foreground/60">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
       </main>
     </>
   );
