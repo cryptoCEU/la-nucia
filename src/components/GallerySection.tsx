@@ -301,7 +301,9 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
         {images.map((img, i) => (
           <div
             key={i}
-            className={`lng-cell ${tappedIdx === i ? "lng-tapped" : ""}`}
+            ref={(el) => (cellRefs.current[i] = el)}
+            data-idx={i}
+            className={`lng-cell ${visibleIdx.has(i) ? "lng-tapped" : ""}`}
             onMouseEnter={() => !isMobile && setHoverIdx(i)}
             onClick={() => handleClick(i)}
             role="button"
