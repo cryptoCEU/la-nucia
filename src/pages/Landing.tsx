@@ -291,7 +291,7 @@ const Landing = () => {
 
 
         {/* ═══ ZONAS COMUNES ═══ */}
-        <section className="w-full py-16 md:py-24" style={{ background: "#F5F3F2" }}>
+        <section className="w-full py-16 md:py-24 bg-background">
           <style>{GALLERY_STYLES}</style>
           <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={openLb} cols={3} rows={1} />
         </section>
