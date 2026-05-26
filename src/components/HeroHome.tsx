@@ -24,7 +24,7 @@ const HeroHome = () => {
     <section ref={wrapperRef} className="relative h-[200vh]">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col">
         <motion.div className="absolute inset-0" style={{ scale: imageScale }}>
-          <img src={heroImage} alt="Promoción de obra nueva en La Nucía, Alicante" className="w-full h-full object-cover" />
+          <img src={heroImage} alt="Promoción de obra nueva en La Nucía, Alicante" className="w-full h-full object-cover object-bottom" />
           <div className="absolute inset-0 bg-gradient-to-r from-ocean-dark/85 via-ocean-dark/60 to-ocean-dark/40" />
         </motion.div>
 
