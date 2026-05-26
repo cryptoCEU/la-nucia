@@ -103,6 +103,14 @@ const Landing = () => {
             <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
               107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.
             </motion.p>
+            <motion.div variants={heroText()} className="mt-8">
+              <a
+                href="/"
+                className="inline-block font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground border border-gold/70 hover:bg-gold hover:text-ocean-dark transition-colors px-8 py-3 rounded-sm"
+              >
+                Más información
+              </a>
+            </motion.div>
           </motion.div>
 
           {/* Contact form */}
