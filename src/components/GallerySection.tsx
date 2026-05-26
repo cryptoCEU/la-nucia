@@ -170,9 +170,10 @@ interface GalleryGridProps {
 
 const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
 
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [visibleIdx, setVisibleIdx] = useState<Set<number>>(new Set());
   const cellRefs = React.useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = React.useRef<HTMLDivElement | null>(null);
   const isMobile = useIsMobile();
 
   React.useEffect(() => {
@@ -195,8 +196,24 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
     return () => observer.disconnect();
   }, [isMobile, images.length]);
 
+  // Close on outside click
+  React.useEffect(() => {
+    if (activeIdx === null) return;
+    const onDocClick = (e: MouseEvent) => {
+      if (!containerRef.current?.contains(e.target as Node)) {
+        setActiveIdx(null);
+      }
+    };
+    document.addEventListener("mousedown", onDocClick);
+    return () => document.removeEventListener("mousedown", onDocClick);
+  }, [activeIdx]);
+
   const handleClick = (i: number) => {
-    onOpen(images, i);
+    if (isMobile) {
+      onOpen(images, i);
+      return;
+    }
+    setActiveIdx((prev) => (prev === i ? null : i));
   };
 
   return (
@@ -215,8 +232,8 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
         {title}
       </h2>
       <div
+        ref={containerRef}
         className={`lng-gallery ${cols === 2 ? "cols-2" : ""} ${rows === 1 ? "rows-1" : ""}`}
-        onMouseLeave={() => setHoverIdx(null)}
       >
         {/* Expanded preview layer (under the cells) */}
         <div className="lng-expanded" aria-hidden="true">
@@ -225,7 +242,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               key={i}
               src={img.src}
               alt=""
-              className={`lng-expanded-img ${hoverIdx === i ? "is-active" : ""}`}
+              className={`lng-expanded-img ${activeIdx === i ? "is-active" : ""}`}
               style={img.imgStyle}
               loading={i < 1 ? "eager" : "lazy"}
               draggable={false}
@@ -233,22 +250,6 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
           ))}
         </div>
 
-        {/* Grid separator lines (only visible on hover) */}
-        <div className="lng-grid-lines" aria-hidden="true">
-          <span className="v1" />
-          <span className="v2" />
-        </div>
-
-        {/* Overlay text for the currently hovered cell */}
-        {hoverIdx !== null && (
-          <div className={`lng-overlay is-visible`} aria-hidden="true">
-            <div className="lng-overlay-box">
-              <p className="lng-overlay-eyebrow">{images[hoverIdx].eyebrow}</p>
-              <h3 className="lng-overlay-title">{images[hoverIdx].title}</h3>
-              <p className="lng-overlay-desc">{images[hoverIdx].description}</p>
-            </div>
-          </div>
-        )}
 
         {/* Hotspot cells (always present as a static grid) */}
         {images.map((img, i) => (
