@@ -137,36 +137,36 @@ const STYLES = `
     transition: opacity 0.3s ease 0.2s;
   }
   .lng-overlay-box {
-    background: rgba(31, 29, 26, 0.62);
+    background: #0d3a2a;
     border-radius: 4px;
     padding: 24px 32px;
     max-width: 480px;
     text-align: left;
-    backdrop-filter: blur(2px);
   }
   .lng-overlay-eyebrow {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 11px;
     letter-spacing: 0.18em;
-    color: rgba(245,243,242,0.6);
+    color: rgba(244,250,240,0.7);
     text-transform: uppercase;
     margin: 0;
   }
   .lng-overlay-title {
-    font-family: 'Roboto Serif', Georgia, serif;
-    font-weight: 300;
+    font-family: 'TAN - PEARL', 'TAN Pearl', serif;
+    font-weight: normal;
     font-size: 28px;
-    color: #F5F3F2;
-    margin: 8px 0 0 0;
-    line-height: 1.2;
+    color: #f4faf0;
+    margin: 10px 0 0 0;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
   }
   .lng-overlay-desc {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.7;
-    color: rgba(245,243,242,0.82);
+    color: rgba(244,250,240,0.88);
     margin: 12px 0 0 0;
   }
 
