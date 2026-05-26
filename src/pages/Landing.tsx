@@ -77,7 +77,7 @@ const Landing = () => {
         >
           <source src="/lanuciaone.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-ocean-dark/85 via-ocean-dark/55 to-ocean-dark/10 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-ocean-dark/95 via-ocean-dark/75 to-ocean-dark/25 z-[1]" />
 
         {/* Top bar with logo */}
         <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
@@ -123,7 +123,6 @@ const Landing = () => {
             className="bg-ocean-dark/40 backdrop-blur-md border border-white/15 rounded-xl p-6 md:p-8 shadow-2xl space-y-4 w-full max-w-xl lg:ml-auto"
           >
             <div className="mb-2">
-              <p className="text-gold font-body text-xs tracking-[0.2em] uppercase mb-2">{t("contactSection.tag")}</p>
               <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Conoce todos<br/>los detalles</h2>
             </div>
 
