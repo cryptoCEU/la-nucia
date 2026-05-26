@@ -151,8 +151,8 @@ const Index = () => {
                   {t("home.aboutTag")}
                 </motion.p>
                 <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-foreground leading-[1.9] mb-8">
-                  <span className="whitespace-nowrap">{t("home.aboutTitle1")}</span><br />
-                  <span className="italic whitespace-nowrap">{t("home.aboutTitle2")}</span>
+                  {t("home.aboutTitle1")}<br />
+                  <span className="italic">{t("home.aboutTitle2")}</span>
                 </motion.h2>
                 <motion.p variants={staggerItem} className="font-body text-muted-foreground leading-relaxed mb-4">
                   {t("home.aboutText1")}
