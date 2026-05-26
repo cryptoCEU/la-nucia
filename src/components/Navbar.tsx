@@ -95,9 +95,9 @@ const Navbar = () => {
             <LanguageSelector className="hidden md:flex" />
             <a
               href="tel:+34865662845"
-              className="hidden md:flex items-center gap-2 text-primary-foreground/80 hover:text-gold transition-colors font-body text-sm"
+              className="hidden md:flex items-center gap-2 text-primary-foreground/80 hover:text-gold transition-colors font-body text-base"
             >
-              <Phone className="w-4 h-4" />
+              <Phone className="w-[18px] h-[18px]" />
               865 662 845
             </a>
             <button
