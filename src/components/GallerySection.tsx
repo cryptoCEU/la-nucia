@@ -27,7 +27,7 @@ const exterioresImages: GalleryImage[] = [
 const zonasImages: GalleryImage[] = [
   { src: zcFitness, alt: "Sala fitness", eyebrow: "ZONAS COMUNES", title: "Sala fitness", description: "Gimnasio acristalado con maquinaria cardiovascular, peso libre y rocódromo. Iluminación natural y vistas a los jardines." },
   { src: zcComun, alt: "Sala común", eyebrow: "ZONAS COMUNES", title: "Sala común", description: "Espacio polivalente con cocina, comedor y zona de estar, abierto a la terraza ajardinada mediante grandes cristaleras." },
-  { src: zcPiscina, alt: "Piscina", eyebrow: "ZONAS COMUNES", title: "Piscina", description: "Piscina exterior rodeada de palmeras y jardín, con tarima de madera y vistas a las terrazas escalonadas del edificio al atardecer.", imgStyle: { transform: "scale(1.25)", transformOrigin: "center 65%" } },
+  { src: zcPiscina, alt: "Piscina", eyebrow: "ZONAS COMUNES", title: "Piscina", description: "Piscina exterior rodeada de palmeras y jardín, con tarima de madera y vistas a las terrazas escalonadas del edificio al atardecer.", imgStyle: { objectPosition: "center 85%" } },
 ];
 
 
@@ -261,6 +261,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               src={img.src}
               alt=""
               className={`lng-expanded-img ${hoverIdx === i ? "is-active" : ""}`}
+              style={img.imgStyle}
               loading={i < 1 ? "eager" : "lazy"}
               draggable={false}
             />
