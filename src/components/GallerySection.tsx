@@ -173,7 +173,7 @@ interface GalleryGridProps {
   rows?: 1 | 2;
 }
 
-const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
+export const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
 
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [visibleIdx, setVisibleIdx] = useState<Set<number>>(new Set());
