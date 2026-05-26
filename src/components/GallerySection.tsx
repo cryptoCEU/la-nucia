@@ -216,7 +216,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
       onOpen(images, i);
       return;
     }
-    setActiveIdx((prev) => (prev === i ? null : i));
+    onOpen(images, i);
   };
 
   return (
@@ -237,6 +237,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
       <div
         ref={containerRef}
         className={`lng-gallery ${cols === 2 ? "cols-2" : ""} ${rows === 1 ? "rows-1" : ""}`}
+        onMouseLeave={() => !isMobile && setActiveIdx(null)}
       >
         {/* Expanded preview layer (under the cells) */}
         <div className="lng-expanded" aria-hidden="true">
@@ -264,6 +265,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
               ref={(el) => (cellRefs.current[i] = el)}
               data-idx={i}
               className={`lng-cell ${visibleIdx.has(i) ? "lng-tapped" : ""} ${isActive ? "is-active" : ""} ${isHidden ? "is-hidden" : ""}`}
+              onMouseEnter={() => !isMobile && setActiveIdx(i)}
               onClick={() => handleClick(i)}
               role="button"
               tabIndex={0}
