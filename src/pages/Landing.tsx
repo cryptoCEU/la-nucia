@@ -157,7 +157,7 @@ const Landing = () => {
               </label>
             </div>
 
-            <Button type="submit" disabled={isSubmitting} className="w-full bg-gold text-ocean-dark hover:bg-gold/90 font-body text-sm tracking-widest uppercase py-6 transition-all duration-500">
+            <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-body text-sm tracking-widest uppercase py-6 transition-all duration-500">
               {isSubmitting ? t(`${f}.submitting`) : t(`${f}.submit`)}
             </Button>
           </motion.form>
