@@ -23,7 +23,7 @@ const Ubicacion = () => {
   const stats = [
     { number: "10", label: t("ubicacionPage.statBenidorm") },
     { number: "45", label: t("ubicacionPage.statAirport") },
-    { number: "8", label: t("ubicacionPage.statBeach") },
+    { number: "15", label: t("ubicacionPage.statBeach") },
     { number: "5", label: t("ubicacionPage.statSun") },
   ];
 
