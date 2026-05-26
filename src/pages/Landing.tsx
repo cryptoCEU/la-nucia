@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -106,9 +107,9 @@ const Landing = () => {
             <motion.div variants={heroText()} className="mt-8">
               <a
                 href="/"
-                className="inline-block font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground border border-gold/70 hover:bg-gold hover:text-ocean-dark transition-colors px-8 py-3 rounded-sm"
+                className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
               >
-                Más información
+                Más información <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
               </a>
             </motion.div>
           </motion.div>
