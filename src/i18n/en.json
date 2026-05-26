@@ -244,7 +244,7 @@
     "types": [
       { "title": "2 Bedrooms", "description": "Optimised layout with spacious terraces. Ideal for couples or as an investment.", "areaFrom": "95", "bathrooms": "2", "terraceFrom": "17" },
       { "title": "3 Bedrooms", "description": "The perfect balance between space and functionality for the whole family.", "areaFrom": "109", "bathrooms": "2", "terraceFrom": "16" },
-      { "title": "4 Bedrooms", "description": "Maximum space and comfort with premium finishes.", "areaFrom": "178", "bathrooms": "2", "terraceFrom": "60" }
+      { "title": "4 Bedrooms", "description": "Maximum space and comfort with premium finishes for the whole family.", "areaFrom": "178", "bathrooms": "2", "terraceFrom": "60" }
     ],
     "bedrooms": "bedrooms",
     "bathrooms": "bathrooms",
