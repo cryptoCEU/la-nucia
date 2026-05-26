@@ -63,18 +63,6 @@ const Navbar = () => {
 
   return (
     <>
-      {isHome && (
-        <motion.img
-          src={logoNuciaOne}
-          alt="La Nucía One"
-          onLoad={(e) => {
-            const img = e.currentTarget as HTMLImageElement;
-            if (img.naturalHeight) setAspect(img.naturalWidth / img.naturalHeight);
-          }}
-          style={{ top: logoTop, left: logoLeft, height: logoHeight }}
-          className="fixed z-[60] opacity-90 pointer-events-none will-change-transform"
-        />
-      )}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || !isHome
@@ -83,13 +71,9 @@ const Navbar = () => {
         }`}
       >
         <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
-          {!isHome ? (
-            <Link to="/" className="flex items-center gap-3">
-              <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
-            </Link>
-          ) : (
-            <Link to="/" aria-label="La Nucía One" className="block w-12 h-12" />
-          )}
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
+          </Link>
 
           <div className="flex items-center gap-6">
             <LanguageSelector className="hidden md:flex" />
