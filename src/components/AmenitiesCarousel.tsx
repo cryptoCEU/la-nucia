@@ -134,7 +134,7 @@ export default function AmenitiesCarousel() {
     <section className="amen-section" aria-label="Amenities">
       <style>{STYLES}</style>
       <div className="amen-header">
-        <p className="amen-eyebrow">AMENITIES</p>
+        <p className="amen-eyebrow">ESTANCIAS</p>
         <h2 className="amen-title">Espacios diseñados para vivir</h2>
       </div>
       <div className="amen-wrap">
