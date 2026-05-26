@@ -98,7 +98,7 @@ const Landing = () => {
             <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-gold mb-4">
               Viviendas de obra nueva
             </motion.p>
-            <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6">
+            <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6 text-primary">
               A 10 minutos<br />de <span className="italic">Benidorm</span>.
             </motion.h1>
             <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
@@ -107,7 +107,7 @@ const Landing = () => {
             <motion.div variants={heroText()} className="mt-8">
               <a
                 href="/"
-                className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
+                className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-primary border border-primary px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700"
               >
                 Más información <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
               </a>
