@@ -287,8 +287,8 @@ const Landing = () => {
             </motion.div>
           </div>
         </section>
-          </div>
-        </section>
+
+
 
         {/* ═══ ZONAS COMUNES ═══ */}
         <section className="w-full py-16 md:py-24" style={{ background: "#F5F3F2" }}>
