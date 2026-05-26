@@ -93,13 +93,13 @@ const Landing = () => {
             className="text-primary-foreground"
           >
             <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-gold mb-4">
-              {t("hero.subtitle")}
+              Viviendas de obra nueva
             </motion.p>
             <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6">
-              {t("hero.title1")}<br /><span className="italic">{t("hero.title2")}</span><br />{t("hero.title3")}
+              A 10 minutos<br />de <span className="italic">Benidorm</span>.
             </motion.h1>
             <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
-              Viviendas de 2, 3 y 4 dormitorios con piscina, zonas comunes y vistas al Mediterráneo. Solicita información sin compromiso.
+              107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.
             </motion.p>
           </motion.div>
 
