@@ -171,17 +171,10 @@ const STYLES = `
     margin: 12px 0 0 0;
   }
 
-  /* Desktop: hover takeover */
+  /* Desktop: card on hover over the image (no takeover) */
   @media (min-width: 768px) {
-    .lng-gallery:hover .lng-expanded,
-    .lng-gallery:hover .lng-grid-lines {
+    .lng-cell:hover .lng-overlay {
       opacity: 1;
-    }
-    .lng-gallery:hover .lng-cell {
-      background: transparent;
-    }
-    .lng-gallery:hover .lng-cell .lng-cell-img {
-      opacity: 0;
     }
   }
 
