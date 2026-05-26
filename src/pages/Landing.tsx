@@ -77,7 +77,7 @@ const Landing = () => {
         >
           <source src="/lanuciaone.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-ocean-dark z-[1]" />
+        
 
         {/* Top bar with logo */}
         <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
