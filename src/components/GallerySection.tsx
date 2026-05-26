@@ -257,7 +257,7 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
         {/* Hotspot cells (always present as a static grid) */}
         {images.map((img, i) => {
           const isActive = activeIdx === i;
-          const isHidden = activeIdx !== null && !isActive;
+          const isHidden = activeIdx !== null;
           return (
             <div
               key={i}
