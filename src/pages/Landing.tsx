@@ -115,7 +115,7 @@ const Landing = () => {
           >
             <div className="mb-2">
               <p className="text-gold font-body text-xs tracking-[0.2em] uppercase mb-2">{t("contactSection.tag")}</p>
-              <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Deja tu contacto<br/>y te llamamos</h2>
+              <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Conoce todos<br/>los detalles</h2>
             </div>
 
             <div className="grid md:grid-cols-2 gap-3">
