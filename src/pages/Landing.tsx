@@ -33,6 +33,22 @@ const Landing = () => {
     privacidad: false,
   });
   const locationParallax = useParallax({ speed: 0.25 });
+  const [lightbox, setLightbox] = useState<{ list: typeof zonasImages; idx: number } | null>(null);
+  const openLb = useCallback((list: typeof zonasImages, idx: number) => setLightbox({ list, idx }), []);
+  const closeLb = useCallback(() => setLightbox(null), []);
+  const navLb = useCallback((dir: number) => {
+    setLightbox((lb) => (lb ? { ...lb, idx: (lb.idx + dir + lb.list.length) % lb.list.length } : lb));
+  }, []);
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowRight") navLb(1);
+      if (e.key === "ArrowLeft") navLb(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, closeLb, navLb]);
 
   const f = "contactSection.form";
 
