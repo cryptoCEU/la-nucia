@@ -252,36 +252,38 @@ const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridP
 
 
         {/* Hotspot cells (always present as a static grid) */}
-        {images.map((img, i) => (
-          <div
-            key={i}
-            ref={(el) => (cellRefs.current[i] = el)}
-            data-idx={i}
-            className={`lng-cell ${visibleIdx.has(i) ? "lng-tapped" : ""}`}
-            onMouseEnter={() => !isMobile && setHoverIdx(i)}
-            onClick={() => handleClick(i)}
-            role="button"
-            tabIndex={0}
-            aria-label={`Abrir ${img.alt}`}
-          >
-            <img
-              src={img.src}
-              alt={img.alt}
-              className="lng-cell-img"
-              style={img.imgStyle}
-              loading={i < 3 ? "eager" : "lazy"}
-              draggable={false}
-            />
-            {/* Mobile-only overlay text per cell */}
-            <div className="lng-overlay">
-              <div className="lng-overlay-box">
-                <p className="lng-overlay-eyebrow">{img.eyebrow}</p>
-                <h3 className="lng-overlay-title">{img.title}</h3>
-                <p className="lng-overlay-desc">{img.description}</p>
+        {images.map((img, i) => {
+          const isActive = activeIdx === i;
+          const isHidden = activeIdx !== null && !isActive;
+          return (
+            <div
+              key={i}
+              ref={(el) => (cellRefs.current[i] = el)}
+              data-idx={i}
+              className={`lng-cell ${visibleIdx.has(i) ? "lng-tapped" : ""} ${isActive ? "is-active" : ""} ${isHidden ? "is-hidden" : ""}`}
+              onClick={() => handleClick(i)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Abrir ${img.alt}`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="lng-cell-img"
+                style={img.imgStyle}
+                loading={i < 3 ? "eager" : "lazy"}
+                draggable={false}
+              />
+              <div className="lng-overlay">
+                <div className="lng-overlay-box">
+                  <p className="lng-overlay-eyebrow">{img.eyebrow}</p>
+                  <h3 className="lng-overlay-title">{img.title}</h3>
+                  <p className="lng-overlay-desc">{img.description}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
