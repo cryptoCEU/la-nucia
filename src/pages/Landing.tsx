@@ -9,6 +9,10 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { staggerContainer, heroText, fadeUp, staggerItem, viewportOnce, scaleIn } from "@/lib/animations";
 import { useParallax } from "@/hooks/use-parallax";
+import { GalleryGrid, zonasImages, GALLERY_STYLES } from "@/components/GallerySection";
+import ContactSection from "@/components/ContactSection";
+import { useCallback, useEffect } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import logo from "@/assets/isotipo-nucia.svg";
 import heroImage from "@/assets/hero-nucia.jpg";
 import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
@@ -29,6 +33,22 @@ const Landing = () => {
     privacidad: false,
   });
   const locationParallax = useParallax({ speed: 0.25 });
+  const [lightbox, setLightbox] = useState<{ list: typeof zonasImages; idx: number } | null>(null);
+  const openLb = useCallback((list: typeof zonasImages, idx: number) => setLightbox({ list, idx }), []);
+  const closeLb = useCallback(() => setLightbox(null), []);
+  const navLb = useCallback((dir: number) => {
+    setLightbox((lb) => (lb ? { ...lb, idx: (lb.idx + dir + lb.list.length) % lb.list.length } : lb));
+  }, []);
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLb();
+      if (e.key === "ArrowRight") navLb(1);
+      if (e.key === "ArrowLeft") navLb(-1);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox, closeLb, navLb]);
 
   const f = "contactSection.form";
 
@@ -267,6 +287,42 @@ const Landing = () => {
             </motion.div>
           </div>
         </section>
+
+
+
+        {/* ═══ ZONAS COMUNES ═══ */}
+        <section className="w-full py-16 md:py-24" style={{ background: "#F5F3F2" }}>
+          <style>{GALLERY_STYLES}</style>
+          <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={openLb} cols={3} rows={1} />
+        </section>
+
+        {/* ═══ CONTACTO ═══ */}
+        <ContactSection />
+
+        {lightbox && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4"
+            onClick={closeLb}
+          >
+            <button onClick={closeLb} aria-label="Cerrar" className="absolute top-6 right-6 text-white p-2 hover:opacity-70">
+              <X className="w-6 h-6" />
+            </button>
+            <button onClick={(e) => { e.stopPropagation(); navLb(-1); }} aria-label="Anterior" className="absolute left-6 text-white p-2 hover:opacity-70">
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+            <img
+              src={lightbox.list[lightbox.idx].src}
+              alt={lightbox.list[lightbox.idx].alt}
+              className="max-h-[85vh] max-w-[90vw] object-contain"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button onClick={(e) => { e.stopPropagation(); navLb(1); }} aria-label="Siguiente" className="absolute right-6 text-white p-2 hover:opacity-70">
+              <ChevronRight className="w-8 h-8" />
+            </button>
+          </div>
+        )}
       </main>
     </>
   );

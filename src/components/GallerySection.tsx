@@ -24,11 +24,13 @@ const exterioresImages: GalleryImage[] = [
   { src: extAtardecer, alt: "Atardecer", eyebrow: "EXTERIORES", title: "Atardecer", description: "Luz cálida del atardecer reflejada en la lámina de agua, con las palmeras y la fachada curva como telón de fondo.", imgStyle: { objectPosition: "center 80%" } },
 ];
 
-const zonasImages: GalleryImage[] = [
+export const zonasImages: GalleryImage[] = [
   { src: zcFitness, alt: "Sala fitness", eyebrow: "ZONAS COMUNES", title: "Sala fitness", description: "Gimnasio acristalado con maquinaria cardiovascular, peso libre y rocódromo. Iluminación natural y vistas a los jardines." },
   { src: zcComun, alt: "Sala común", eyebrow: "ZONAS COMUNES", title: "Sala común", description: "Espacio polivalente con cocina, comedor y zona de estar, abierto a la terraza ajardinada mediante grandes cristaleras." },
   { src: zcPiscina, alt: "Piscina", eyebrow: "ZONAS COMUNES", title: "Piscina", description: "Piscina exterior rodeada de palmeras y jardín, con tarima de madera y vistas a las terrazas escalonadas del edificio al atardecer.", imgStyle: { objectPosition: "center 85%" } },
 ];
+
+export { STYLES as GALLERY_STYLES };
 
 
 
@@ -171,7 +173,7 @@ interface GalleryGridProps {
   rows?: 1 | 2;
 }
 
-const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
+export const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: GalleryGridProps) => {
 
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [visibleIdx, setVisibleIdx] = useState<Set<number>>(new Set());
