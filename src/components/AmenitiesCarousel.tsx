@@ -35,7 +35,7 @@ const STYLES = `
 .amen-cap{flex:1;background:#F5F3F2;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
 .amen-cap-title{font-family:'Montserrat',sans-serif;font-weight:300;font-size:17px;letter-spacing:.01em;color:#1F1D1A;margin:0;}
 .amen-plus{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(31,29,26,0.35);background:transparent;color:#1F1D1A;font-size:20px;font-weight:300;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(0.22,1,0.36,1);padding:0;flex-shrink:0;}
-.amen-plus:hover{background:#8E2D44;border-color:#8E2D44;color:#F5F3F2;}
+.amen-plus:hover{background:#0d3a2a;border-color:#0d3a2a;color:#F5F3F2;}
 .amen-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:#F5F3F2;border:1.5px solid rgba(31,29,26,0.18);color:#1F1D1A;box-shadow:0 2px 8px rgba(31,29,26,0.10);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(0.22,1,0.36,1);z-index:5;}
 .amen-arrow:hover{background:#8E2D44;color:#F5F3F2;border-color:#8E2D44;}
 .amen-arrow.prev{left:24px;}
