@@ -95,7 +95,7 @@ const Landing = () => {
             animate="visible"
             className="text-primary-foreground"
           >
-            <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-gold mb-4">
+            <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-4">
               Viviendas de obra nueva
             </motion.p>
             <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6 text-primary">
