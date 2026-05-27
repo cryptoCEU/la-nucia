@@ -12,7 +12,7 @@ import { useParallax } from "@/hooks/use-parallax";
 import { GalleryGrid, zonasImages, GALLERY_STYLES } from "@/components/GallerySection";
 import ContactSection from "@/components/ContactSection";
 import { useCallback, useEffect } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import logo from "@/assets/isotipo-nucia.svg";
 import heroImage from "@/assets/hero-nucia.jpg";
 import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
@@ -115,13 +115,13 @@ const Landing = () => {
           </div>
 
           {/* Content grid */}
-          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 py-10 md:py-16 grid lg:grid-cols-2 gap-40 md:gap-16 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
-            {/* Hero text */}
+          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 md:py-16 lg:grid lg:grid-cols-2 lg:gap-16 lg:items-center lg:min-h-[calc(100vh-6rem)]">
+            {/* Hero text — full viewport on mobile */}
             <motion.div
               variants={staggerContainer(0.13, 0.2)}
               initial="hidden"
               animate="visible"
-              className="text-primary-foreground"
+              className="text-primary-foreground min-h-[calc(100vh-6rem)] lg:min-h-0 flex flex-col justify-center relative pb-24 lg:pb-0"
             >
               <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-2 md:mb-4">
                 Viviendas de obra nueva
@@ -132,7 +132,17 @@ const Landing = () => {
               <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
                 107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.
               </motion.p>
+
+              {/* Scroll indicator (mobile only) */}
+              <motion.div
+                variants={heroText()}
+                className="lg:hidden absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/80"
+              >
+                <span className="font-body text-[10px] tracking-[0.3em] uppercase">Descubre más</span>
+                <ChevronDown className="w-5 h-5 animate-bounce" strokeWidth={1.5} />
+              </motion.div>
             </motion.div>
+
 
             {/* Contact form */}
             <motion.form
@@ -140,8 +150,9 @@ const Landing = () => {
               initial="hidden"
               animate="visible"
               onSubmit={handleSubmit}
-              className="bg-ocean-dark/20 md:bg-ocean-dark/40 backdrop-blur-md border border-white/15 rounded-xl p-6 md:p-8 shadow-2xl space-y-4 w-full max-w-xl lg:ml-auto"
+              className="bg-ocean-dark/20 md:bg-ocean-dark/40 backdrop-blur-md border border-white/15 rounded-xl p-6 md:p-8 shadow-2xl space-y-4 w-full max-w-xl lg:ml-auto mt-8 mb-12 lg:my-0"
             >
+
               <div className="mb-2">
                 <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Conoce todos<br/>los detalles</h2>
               </div>
