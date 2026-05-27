@@ -150,8 +150,9 @@ const Landing = () => {
               initial="hidden"
               animate="visible"
               onSubmit={handleSubmit}
-              className="bg-ocean-dark/20 md:bg-ocean-dark/40 backdrop-blur-md border border-white/15 rounded-xl p-6 md:p-8 shadow-2xl space-y-4 w-full max-w-xl lg:ml-auto"
+              className="bg-ocean-dark/20 md:bg-ocean-dark/40 backdrop-blur-md border border-white/15 rounded-xl p-6 md:p-8 shadow-2xl space-y-4 w-full max-w-xl lg:ml-auto mt-8 mb-12 lg:my-0"
             >
+
               <div className="mb-2">
                 <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Conoce todos<br/>los detalles</h2>
               </div>
