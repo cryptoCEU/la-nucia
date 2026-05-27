@@ -1,0 +1,20 @@
+# La Nucía One
+
+> Promoción de obra nueva en La Nucía, Alicante: 107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex, a 10 minutos de Benidorm.
+
+La Nucía One es un proyecto residencial premium situado en un entorno natural y tranquilo de la Costa Blanca, próximo a Benidorm, las principales playas, el aeropuerto de Alicante y la Ciudad Deportiva Camilo Cano. El sitio ofrece información sobre tipologías de viviendas, calidades, ubicación, galería de imágenes y un canal de contacto para agendar visitas privadas en La Nucía, Alicante, Madrid u Online.
+
+## Pages
+
+- [Inicio](/): Presentación de la promoción, ubicación y propuesta de valor.
+- [Viviendas](/viviendas): Tipologías de 2, 3 y 4 dormitorios, áticos y dúplex.
+- [Ubicación](/ubicacion): Entorno, distancias clave y mapa interactivo de La Nucía.
+- [Galería](/galeria): Imágenes de exteriores, zonas comunes e interiores.
+- [Características](/caracteristicas): Memoria de calidades y especificaciones técnicas.
+- [Contacto](/contacto): Formulario para agendar una visita privada sin compromiso.
+
+## Optional
+
+- [Aviso legal](/aviso-legal): Información legal de la entidad promotora.
+- [Política de privacidad](/politica-privacidad): Tratamiento de datos personales.
+- [Política de cookies](/politica-cookies): Uso de cookies en el sitio.
