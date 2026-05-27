@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
+import graciasBg from "@/assets/gracias-bg.png";
 
 declare global {
   interface Window { dataLayer?: Record<string, unknown>[]; }
