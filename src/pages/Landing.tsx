@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import SEO from "@/components/SEO";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,35 @@ import heroImage from "@/assets/hero-nucia.jpg";
 import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
 import cocinaPeopleImg from "@/assets/carousel/cocina-people.webp";
 import salonPeopleImg from "@/assets/carousel/salon-people.webp";
+
+type HomeItem = { img: string; title: string; desc: string };
+
+const MobileHorizontalScroll = ({ items }: { items: HomeItem[] }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  // Translate across (n-1)/n of the track width
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", `-${(100 * (items.length - 1)) / items.length}%`]);
+  return (
+    <div ref={ref} className="md:hidden relative -mx-4" style={{ height: `${items.length * 100}vh` }}>
+      <div className="sticky top-0 h-screen overflow-hidden flex items-center">
+        <motion.div style={{ x, width: `${items.length * 100}%` }} className="flex h-[80vh]">
+          {items.map((item, i) => (
+            <div key={i} className="relative h-full px-3" style={{ width: `${100 / items.length}%` }}>
+              <div className="relative h-full overflow-hidden">
+                <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="font-display text-2xl text-primary-foreground mb-2">{item.title}</h3>
+                  <p className="font-body text-sm text-primary-foreground/70">{item.desc}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+};
 
 const Landing = () => {
   const { t } = useTranslation();
@@ -282,34 +311,41 @@ const Landing = () => {
               </motion.p>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer(0.15, 0.1)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              className="grid md:grid-cols-3 gap-6"
-            >
-              {([
+            {(() => {
+              const items = [
                 { img: habitacionPeopleImg, title: t("home.type2bed"), desc: t("home.type2desc") },
                 { img: cocinaPeopleImg, title: t("home.type3bed"), desc: t("home.type3desc") },
                 { img: salonPeopleImg, title: t("home.type4bed"), desc: t("home.type4desc") },
-              ]).map((item, i) => (
-                <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden">
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.title as string}
-                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="font-display text-2xl text-primary-foreground mb-2">{item.title}</h3>
-                    <p className="font-body text-sm text-primary-foreground/60">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+              ];
+              return (
+                <>
+                  {/* Desktop / tablet: original grid */}
+                  <motion.div
+                    variants={staggerContainer(0.15, 0.1)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                    className="hidden md:grid md:grid-cols-3 gap-6"
+                  >
+                    {items.map((item, i) => (
+                      <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden">
+                        <div className="aspect-[3/4] overflow-hidden">
+                          <img src={item.img} alt={item.title as string} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                          <h3 className="font-display text-2xl text-primary-foreground mb-2">{item.title}</h3>
+                          <p className="font-body text-sm text-primary-foreground/60">{item.desc}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  {/* Mobile: vertical scroll drives horizontal pan */}
+                  <MobileHorizontalScroll items={items} />
+                </>
+              );
+            })()}
           </div>
         </section>
 
