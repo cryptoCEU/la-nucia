@@ -35,7 +35,7 @@ const Viviendas = () => {
 
   return (
     <>
-      <SEO title="Viviendas" description="Descubre las viviendas de 2, 3 y 4 dormitorios en La Nucía One." path="/viviendas" />
+      <SEO title="Viviendas de 2, 3 y 4 dormitorios" description="Pisos, áticos y dúplex de obra nueva en La Nucía: viviendas de 2, 3 y 4 dormitorios con amplias terrazas, calidades premium y zonas comunes." path="/viviendas" />
       <Navbar />
       <main>
         {/* Hero */}
