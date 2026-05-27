@@ -36,8 +36,9 @@ const Gracias = () => {
   return (
     <>
       <SEO
-        title="Gracias por tu interés — La Nucía One"
+        title="Gracias por tu interés"
         description="Hemos recibido tu solicitud. Nuestro equipo te contactará en menos de 24 horas."
+        path="/gracias"
         noindex
       />
       {!isLanding && <Navbar />}
