@@ -107,7 +107,7 @@ const Landing = () => {
           </video>
 
           {/* Horizontal gradient overlay for text readability */}
-          <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary/75 via-primary/40 to-transparent" />
+          <div className="absolute inset-0 z-[1] bg-gradient-to-b from-primary/75 via-primary/40 to-transparent md:bg-gradient-to-r md:from-primary/75 md:via-primary/40 md:to-transparent" />
 
           {/* Top bar with logo */}
           <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
@@ -115,7 +115,7 @@ const Landing = () => {
           </div>
 
           {/* Content grid */}
-          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 py-10 md:py-16 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
+          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 py-10 md:py-16 grid lg:grid-cols-2 gap-24 md:gap-16 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
             {/* Hero text */}
             <motion.div
               variants={staggerContainer(0.13, 0.2)}
