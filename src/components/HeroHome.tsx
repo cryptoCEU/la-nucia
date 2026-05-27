@@ -9,7 +9,7 @@ const HeroHome = () => {
   return (
     <section className="relative h-screen overflow-hidden flex flex-col">
       <div className="absolute inset-0">
-        <img src={heroImage} alt="Promoción de obra nueva en La Nucía, Alicante" className="w-full h-full object-cover" style={{ objectPosition: "center 90%" }} />
+        <img src={heroImage} alt="Promoción de obra nueva en La Nucía, Alicante" width={1920} height={1080} fetchPriority="high" decoding="async" className="w-full h-full object-cover" style={{ objectPosition: "center 90%" }} />
         <div className="absolute inset-0 bg-gradient-to-r from-ocean-dark/85 via-ocean-dark/60 to-ocean-dark/40" />
       </div>
 
