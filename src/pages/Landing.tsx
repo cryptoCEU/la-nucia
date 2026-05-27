@@ -115,7 +115,7 @@ const Landing = () => {
           </div>
 
           {/* Content grid */}
-          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 py-10 md:py-16 grid lg:grid-cols-2 gap-24 md:gap-16 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
+          <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 py-10 md:py-16 grid lg:grid-cols-2 gap-40 md:gap-16 lg:gap-16 items-center min-h-[calc(100vh-6rem)]">
             {/* Hero text */}
             <motion.div
               variants={staggerContainer(0.13, 0.2)}
@@ -123,10 +123,10 @@ const Landing = () => {
               animate="visible"
               className="text-primary-foreground"
             >
-              <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-4">
+              <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-2 md:mb-4">
                 Viviendas de obra nueva
               </motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6 text-primary-foreground">
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.3] md:leading-[1.9] mb-3 md:mb-6 text-primary-foreground">
                 A 10 minutos<br />de <span className="italic">Benidorm</span>.
               </motion.h1>
               <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
