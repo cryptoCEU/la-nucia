@@ -5,14 +5,16 @@ interface SEOProps {
   description: string;
   path: string;
   noindex?: boolean;
+  jsonLd?: object | object[];
 }
 
 const SITE_URL = "https://lanuciaone.com";
 const OG_IMAGE = "https://storage.googleapis.com/gpt-engineer-file-uploads/Jp480xi4dGVjAsdbkQd6qztuOUW2/social-images/social-1779802174835-Screenshot_2026-05-26_at_15.29.26.webp";
 
-const SEO = ({ title, description, path, noindex = false }: SEOProps) => {
+const SEO = ({ title, description, path, noindex = false, jsonLd }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
   const fullTitle = path === "/" ? title : `${title} | La Nucía One`;
+  const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   return (
     <Helmet>
@@ -35,6 +37,10 @@ const SEO = ({ title, description, path, noindex = false }: SEOProps) => {
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={OG_IMAGE} />
+
+      {schemas.map((schema, i) => (
+        <script key={i} type="application/ld+json">{JSON.stringify(schema)}</script>
+      ))}
     </Helmet>
   );
 };
