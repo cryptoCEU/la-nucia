@@ -29,7 +29,7 @@ const Ubicacion = () => {
 
   return (
     <>
-      <SEO title="Ubicación Privilegiada" description="La Nucía One se encuentra en una ubicación privilegiada en la Costa Blanca." path="/ubicacion" />
+      <SEO title="Ubicación en La Nucía, Costa Blanca" description="Ubicación privilegiada en La Nucía, Alicante: a 10 min de Benidorm, 15 min de las playas y 45 min del aeropuerto. Entorno natural y servicios a un paso." path="/ubicacion" />
       <Navbar />
       <main>
         {/* Hero */}
