@@ -106,6 +106,9 @@ const Landing = () => {
             <source src="/lanuciaone.mp4" type="video/mp4" />
           </video>
 
+          {/* Horizontal gradient overlay for text readability */}
+          <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary via-primary/70 to-transparent" />
+
           {/* Top bar with logo */}
           <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
             <img src={logo} alt="La Nucía One" className="h-10 md:h-12 w-auto" />
@@ -123,7 +126,7 @@ const Landing = () => {
               <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-4">
                 Viviendas de obra nueva
               </motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6 text-primary">
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.9] mb-6 text-primary-foreground">
                 A 10 minutos<br />de <span className="italic">Benidorm</span>.
               </motion.h1>
               <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
