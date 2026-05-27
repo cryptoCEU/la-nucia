@@ -50,6 +50,15 @@ const Landing = () => {
     return () => window.removeEventListener("keydown", onKey);
   }, [lightbox, closeLb, navLb]);
 
+  // Hide ElevenLabs widget on this page only
+  useEffect(() => {
+    const style = document.createElement("style");
+    style.setAttribute("data-hide-convai", "true");
+    style.textContent = "elevenlabs-convai{display:none !important;}";
+    document.head.appendChild(style);
+    return () => { style.remove(); };
+  }, []);
+
   const f = "contactSection.form";
 
   const handleSubmit = async (e: React.FormEvent) => {
