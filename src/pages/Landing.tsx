@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SEO from "@/components/SEO";
@@ -51,6 +52,7 @@ const MobileHorizontalScroll = ({ items }: { items: HomeItem[] }) => {
 const Landing = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
@@ -115,9 +117,8 @@ const Landing = () => {
     } catch (err) {
       console.error(err);
     }
-    toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
-    setFormData({ nombre: "", apellidos: "", telefono: "", email: "", destino: "", dormitorios: "", privacidad: false });
     setIsSubmitting(false);
+    navigate("/gracias?from=landing");
   };
 
   const selectClass = "w-full h-11 rounded-md border border-white/20 bg-white/10 backdrop-blur-sm px-3 font-body text-sm text-white placeholder:text-white/60 focus:outline-none focus:border-gold transition-colors";

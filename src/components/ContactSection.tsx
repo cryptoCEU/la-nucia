@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -10,6 +11,7 @@ import { staggerContainer, staggerItem, fadeUp, viewportOnce } from "@/lib/anima
 const ContactSection = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",
@@ -51,9 +53,8 @@ const ContactSection = () => {
     } catch (err) {
       console.error(err);
     }
-    toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
-    setFormData({ nombre: "", apellidos: "", telefono: "", email: "", codigoPostal: "", idioma: "", destino: "", dormitorios: "", privacidad: false });
     setIsSubmitting(false);
+    navigate("/gracias?from=contacto");
   };
 
   const selectClass = "w-full h-10 rounded-md border border-border bg-background px-3 font-body text-sm text-foreground";

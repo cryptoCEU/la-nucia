@@ -1,27 +1,39 @@
 ## Objetivo
-En la landing, en la vista móvil, la primera pantalla (sin scroll) debe mostrar únicamente los textos del hero y un indicador de scroll en la parte inferior. El formulario queda debajo del fold y aparece al hacer scroll.
+Crear una página de agradecimiento a la que se redirija al usuario tras enviar cualquier formulario (Contacto, embed y Landing), para poder medir conversiones desde Google Tag Manager mediante un Page View dedicado.
 
-## Cambios en `src/pages/Landing.tsx`
+## Cambios
 
-1. **Layout del hero en móvil**
-   - Cambiar el grid de la sección hero para que en móvil ocupe dos "pantallas" verticales: bloque de textos con `min-h-screen` (centrado verticalmente) y formulario en una segunda sección con altura natural.
-   - En desktop (`md:`) mantener el grid actual de 2 columnas y altura única.
+### 1. Nueva página `src/pages/Gracias.tsx`
+- Layout editorial coherente con el resto del sitio (Navbar + Footer en versión Contacto; en versión Landing, sin navbar para no romper el flujo).
+- Contenido:
+  - Eyebrow "Solicitud recibida"
+  - H1 TAN-PEARL verde oscuro: "Gracias por tu interés"
+  - Texto: "Hemos recibido tu solicitud. Nuestro equipo te contactará en menos de 24 horas para agendar tu visita en Alicante, Madrid u Online."
+  - CTA "Volver al inicio" con estilo `btn-primary` + shimmer.
+- SEO: `noindex` (vía Helmet) — no queremos indexar la página de gracias.
+- Envía un `dataLayer.push({ event: 'form_submitted', form_source: <origen> })` al montar, además del Page View que GTM ya capta por la ruta.
+- Soporta query param `?from=contacto|contacto-embed|landing` para distinguir el origen en GTM.
 
-2. **Indicador de scroll (solo móvil)**
-   - Añadir al final del bloque de textos, posicionado en la parte inferior del viewport en móvil, un pequeño indicador animado:
-     - Texto corto en mayúsculas tipo "Descubre más" (con i18n simple en español) con tracking amplio.
-     - Icono `ChevronDown` de lucide-react con animación `animate-bounce` suave.
-   - Oculto en `md:hidden`.
-   - Color blanco/dorado coherente con el resto de la landing.
+### 2. Registrar ruta en `src/App.tsx`
+- `<Route path="/gracias" element={<Gracias />} />`
 
-3. **Espaciados**
-   - Eliminar el `gap-40` grande entre textos y form en móvil (ya no es necesario porque el form pasa a otra "pantalla").
-   - Mantener el comportamiento desktop sin cambios visuales.
+### 3. Redirección en los 3 formularios
+En cada `handleSubmit` tras el `await fetch(...)` con éxito:
+- Sustituir el `toast` de éxito + reset por `navigate('/gracias?from=<origen>')`.
+- Mantener el `toast` de error en el catch.
+- Orígenes:
+  - `src/components/ContactSection.tsx` → `from=contacto`
+  - `src/components/ContactFormEmbed.tsx` → `from=contacto-embed`
+  - `src/pages/Landing.tsx` → `from=landing`
+- Añadir `useNavigate` donde falte.
 
-4. **Degradado del video**
-   - Mantener el degradado vertical actual en móvil y horizontal en desktop. Sin cambios.
+### 4. GTM
+No hay que tocar el contenedor desde el código. La página `/gracias` quedará disponible para que configures en GTM:
+- Trigger: Page View donde Page Path = `/gracias`
+- (Opcional) Trigger por `event = form_submitted` con variable `form_source`.
 
-## Lo que NO cambia
-- Contenido del hero ni del formulario.
-- Resto de secciones de la landing (Ubicación, Viviendas, Galería, Contacto).
-- Comportamiento en desktop/tablet.
+## Detalles técnicos
+- React Router v6: `useNavigate()` ya se usa en otras vistas.
+- Helmet ya está disponible (`react-helmet-async`).
+- No se cambia la lógica de Zapier (sigue `no-cors` + `x-www-form-urlencoded`); la redirección ocurre tras resolverse el `fetch`.
+- El widget de ElevenLabs sigue oculto en Landing; en `/gracias` se mostrará con normalidad salvo que llegues desde `from=landing` (en cuyo caso lo ocultamos también para mantener coherencia visual).

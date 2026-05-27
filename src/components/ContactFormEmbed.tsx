@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -8,6 +9,7 @@ import { useTranslation } from "react-i18next";
 const ContactFormEmbed = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "", telefono: "", email: "", tipologia: "", privacidad: false,
@@ -36,9 +38,8 @@ const ContactFormEmbed = () => {
     } catch (err) {
       console.error(err);
     }
-    toast({ title: t(`${f}.successTitle`), description: t(`${f}.successDesc`) });
-    setFormData({ nombre: "", telefono: "", email: "", tipologia: "", privacidad: false });
     setIsSubmitting(false);
+    navigate("/gracias?from=contacto-embed");
   };
 
   return (
