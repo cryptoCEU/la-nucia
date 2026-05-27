@@ -107,7 +107,7 @@ const Landing = () => {
           </video>
 
           {/* Horizontal gradient overlay for text readability */}
-          <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary via-primary/70 to-transparent" />
+          <div className="absolute inset-0 z-[1] bg-gradient-to-r from-primary/75 via-primary/40 to-transparent" />
 
           {/* Top bar with logo */}
           <div className="relative z-10 container max-w-[1600px] mx-auto px-4 md:px-8 pt-6 md:pt-8">
