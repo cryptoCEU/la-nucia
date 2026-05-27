@@ -23,15 +23,14 @@ const Gracias = () => {
     });
   }, [from]);
 
-  // En contexto landing ocultamos el widget de ElevenLabs igual que en /landing
+  // Ocultar el widget de ElevenLabs en la página de gracias
   useEffect(() => {
-    if (!isLanding) return;
     const style = document.createElement("style");
     style.setAttribute("data-hide-convai", "true");
     style.textContent = "elevenlabs-convai{display:none !important;}";
     document.head.appendChild(style);
     return () => { style.remove(); };
-  }, [isLanding]);
+  }, []);
 
   return (
     <>
