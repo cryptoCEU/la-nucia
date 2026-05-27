@@ -35,7 +35,33 @@ const Viviendas = () => {
 
   return (
     <>
-      <SEO title="Viviendas de 2, 3 y 4 dormitorios" description="Pisos, áticos y dúplex de obra nueva en La Nucía: viviendas de 2, 3 y 4 dormitorios con amplias terrazas, calidades premium y zonas comunes." path="/viviendas" />
+      <SEO
+        title="Viviendas de 2, 3 y 4 dormitorios"
+        description="Pisos, áticos y dúplex de obra nueva en La Nucía: viviendas de 2, 3 y 4 dormitorios con amplias terrazas, calidades premium y zonas comunes."
+        path="/viviendas"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "RealEstateListing",
+          name: "Viviendas La Nucía One",
+          description: "107 viviendas de obra nueva de 2, 3 y 4 dormitorios con amplias terrazas, calidades premium y zonas comunes en La Nucía, Alicante.",
+          url: "https://lanuciaone.com/viviendas",
+          image: "https://storage.googleapis.com/gpt-engineer-file-uploads/Jp480xi4dGVjAsdbkQd6qztuOUW2/social-images/social-1779802174835-Screenshot_2026-05-26_at_15.29.26.webp",
+          numberOfRooms: "2-4",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "La Nucía",
+            addressRegion: "Alicante",
+            addressCountry: "ES",
+          },
+          provider: {
+            "@type": "Organization",
+            name: "La Nucía One",
+            url: "https://lanuciaone.com",
+            email: "info@lanuciaone.com",
+            telephone: "+34865662845",
+          },
+        }}
+      />
       <Navbar />
       <main>
         {/* Hero */}
