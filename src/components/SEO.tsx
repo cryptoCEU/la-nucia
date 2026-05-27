@@ -7,8 +7,8 @@ interface SEOProps {
   noindex?: boolean;
 }
 
-const SITE_URL = "https://la-nucia.lovable.app";
-const OG_IMAGE = "https://storage.googleapis.com/gpt-engineer-file-uploads/Jp480xi4dGVjAsdbkQd6qztuOUW2/social-images/social-1773000947056-Screenshot_2026-03-08_at_21.15.32.webp";
+const SITE_URL = "https://lanuciaone.com";
+const OG_IMAGE = "https://storage.googleapis.com/gpt-engineer-file-uploads/Jp480xi4dGVjAsdbkQd6qztuOUW2/social-images/social-1779802174835-Screenshot_2026-05-26_at_15.29.26.webp";
 
 const SEO = ({ title, description, path, noindex = false }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
