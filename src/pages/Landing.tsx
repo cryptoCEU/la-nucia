@@ -121,7 +121,7 @@ const Landing = () => {
               variants={staggerContainer(0.13, 0.2)}
               initial="hidden"
               animate="visible"
-              className="text-primary-foreground min-h-[calc(100vh-6rem)] lg:min-h-0 flex flex-col justify-center relative pb-24 lg:pb-0"
+              className="text-primary-foreground min-h-[calc(100vh-6rem)] lg:min-h-0 flex flex-col justify-end lg:justify-center pb-16 lg:pb-0 text-center lg:text-left items-center lg:items-start"
             >
               <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-2 md:mb-4">
                 Viviendas de obra nueva
@@ -136,12 +136,13 @@ const Landing = () => {
               {/* Scroll indicator (mobile only) */}
               <motion.div
                 variants={heroText()}
-                className="lg:hidden absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/80"
+                className="lg:hidden mt-8 flex flex-col items-center gap-2 text-primary-foreground/80"
               >
                 <span className="font-body text-[10px] tracking-[0.3em] uppercase">Descubre más</span>
                 <ChevronDown className="w-5 h-5 animate-bounce" strokeWidth={1.5} />
               </motion.div>
             </motion.div>
+
 
 
             {/* Contact form */}
