@@ -12,7 +12,7 @@ import { useParallax } from "@/hooks/use-parallax";
 import { GalleryGrid, zonasImages, GALLERY_STYLES } from "@/components/GallerySection";
 import ContactSection from "@/components/ContactSection";
 import { useCallback, useEffect } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import logo from "@/assets/isotipo-nucia.svg";
 import heroImage from "@/assets/hero-nucia.jpg";
 import habitacionPeopleImg from "@/assets/carousel/habitacion-people.webp";
