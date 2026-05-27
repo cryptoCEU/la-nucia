@@ -282,34 +282,41 @@ const Landing = () => {
               </motion.p>
             </motion.div>
 
-            <motion.div
-              variants={staggerContainer(0.15, 0.1)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportOnce}
-              className="grid md:grid-cols-3 gap-6"
-            >
-              {([
+            {(() => {
+              const items = [
                 { img: habitacionPeopleImg, title: t("home.type2bed"), desc: t("home.type2desc") },
                 { img: cocinaPeopleImg, title: t("home.type3bed"), desc: t("home.type3desc") },
                 { img: salonPeopleImg, title: t("home.type4bed"), desc: t("home.type4desc") },
-              ]).map((item, i) => (
-                <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden">
-                  <div className="aspect-[3/4] overflow-hidden">
-                    <img
-                      src={item.img}
-                      alt={item.title as string}
-                      className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="font-display text-2xl text-primary-foreground mb-2">{item.title}</h3>
-                    <p className="font-body text-sm text-primary-foreground/60">{item.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+              ];
+              return (
+                <>
+                  {/* Desktop / tablet: original grid */}
+                  <motion.div
+                    variants={staggerContainer(0.15, 0.1)}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={viewportOnce}
+                    className="hidden md:grid md:grid-cols-3 gap-6"
+                  >
+                    {items.map((item, i) => (
+                      <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden">
+                        <div className="aspect-[3/4] overflow-hidden">
+                          <img src={item.img} alt={item.title as string} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-6">
+                          <h3 className="font-display text-2xl text-primary-foreground mb-2">{item.title}</h3>
+                          <p className="font-body text-sm text-primary-foreground/60">{item.desc}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </motion.div>
+
+                  {/* Mobile: vertical scroll drives horizontal pan */}
+                  <MobileHorizontalScroll items={items} />
+                </>
+              );
+            })()}
           </div>
         </section>
 
