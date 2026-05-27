@@ -54,6 +54,24 @@ const Index = () => {
         title="La Nucía One | Obra Nueva en La Nucía, Alicante"
         description="Promoción de 107 viviendas de obra nueva en La Nucía, Alicante. Pisos de 2, 3 y 4 dormitorios con piscina, terrazas y vistas al Mediterráneo."
         path="/"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": "https://lanuciaone.com/#listing",
+          name: "La Nucía One",
+          description: "Promoción de 107 viviendas de obra nueva de 2, 3 y 4 dormitorios en La Nucía, Alicante.",
+          url: "https://lanuciaone.com/",
+          telephone: "+34865662845",
+          email: "info@lanuciaone.com",
+          image: "https://storage.googleapis.com/gpt-engineer-file-uploads/Jp480xi4dGVjAsdbkQd6qztuOUW2/social-images/social-1779802174835-Screenshot_2026-05-26_at_15.29.26.webp",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "La Nucía",
+            addressRegion: "Alicante",
+            addressCountry: "ES",
+          },
+          areaServed: "La Nucía, Alicante, España",
+        }}
       />
       <Navbar />
       <main className="home-main">
