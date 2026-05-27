@@ -17,7 +17,7 @@ const Galeria = () => {
 
   return (
     <>
-      <SEO title="Galería de Imágenes" description="Galería de imágenes de La Nucía One." path="/galeria" />
+      <SEO title="Galería de Imágenes" description="Descubre La Nucía One a través de imágenes: fachada, interiores, piscina infinity, zonas comunes y vistas al entorno natural de la Costa Blanca." path="/galeria" />
       <Navbar />
       <main>
         <section className="relative min-h-[90vh] flex items-end overflow-hidden bg-primary">
