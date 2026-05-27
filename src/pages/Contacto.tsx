@@ -24,7 +24,7 @@ const Contacto = () => {
 
   return (
     <>
-      <SEO title="Contacto" description="Contacta con nosotros para más información sobre La Nucía One." path="/contacto" />
+      <SEO title="Contacto" description="Solicita información sobre La Nucía One: viviendas de obra nueva en La Nucía, Alicante. Agenda una visita privada con nuestro equipo comercial." path="/contacto" />
       <Navbar />
       <main>
         <section ref={hero.ref} className="relative h-[60vh] min-h-[400px] flex items-end overflow-hidden">

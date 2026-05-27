@@ -98,8 +98,9 @@ const Landing = () => {
     <>
       <SEO
         title="La Nucía One — Solicita información"
-        description="Viviendas de obra nueva en La Nucía con 2, 3 y 4 dormitorios. Solicita información sin compromiso."
+        description="Viviendas de obra nueva en La Nucía con 2, 3 y 4 dormitorios, amplias terrazas y zonas comunes premium. Solicita información sin compromiso."
         path="/landing"
+        noindex
       />
       <main className="relative w-full overflow-hidden bg-primary">
         {/* ═══ HERO + FORM ═══ */}
