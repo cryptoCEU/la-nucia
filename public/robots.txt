@@ -50,4 +50,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://la-nucia.lovable.app/sitemap.xml
+Sitemap: https://lanuciaone.com/sitemap.xml
