@@ -63,7 +63,7 @@ const Gracias = () => {
             <span className="text-white">Madrid</span> u{" "}
             <span className="text-white">Online</span>.
           </p>
-          <Link
+          <LLink
             to="/"
             className="btn-primary btn-shimmer inline-flex items-center gap-2 px-8 py-4 bg-gold text-primary font-body text-sm tracking-widest uppercase rounded-md hover:bg-gold/90 transition-all duration-700"
           >

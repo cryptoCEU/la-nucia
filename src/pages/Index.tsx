@@ -112,13 +112,13 @@ const Index = () => {
                     {t("home.heroSubtitle")}
                   </p>
                   <div className="flex flex-wrap gap-4">
-                    <Link
+                    <LLink
                       to="/viviendas"
                       className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
                     >
                       {t("home.discoverHomes")} <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
                     </LLink>
-                    <Link
+                    <LLink
                       to="/contacto"
                       className="inline-flex items-center gap-3 border border-primary-foreground/20 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-700"
                     >
@@ -225,7 +225,7 @@ const Index = () => {
                   {t("home.locationText")}
                 </motion.p>
                 <motion.div variants={staggerItem}>
-                  <Link
+                  <LLink
                     to="/ubicacion"
                     className="inline-flex items-center gap-3 border border-primary-foreground/20 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-700 group"
                   >
@@ -315,7 +315,7 @@ const Index = () => {
               viewport={viewportOnce}
               className="text-center"
             >
-              <Link
+              <LLink
                 to="/viviendas"
                 className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700 group"
               >
@@ -347,7 +347,7 @@ const Index = () => {
                   {t("home.galleryText")}
                 </motion.p>
                 <motion.div variants={staggerItem}>
-                  <Link
+                  <LLink
                     to="/galeria"
                     className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 font-body text-sm tracking-[0.15em] uppercase hover:bg-primary/90 transition-all duration-700 group"
                   >
@@ -404,7 +404,7 @@ const Index = () => {
                 {t("home.contactText")}
               </motion.p>
               <motion.div variants={staggerItem} className="flex flex-wrap gap-4 justify-center">
-                <Link
+                <LLink
                   to="/contacto"
                   className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
                 >

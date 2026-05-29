@@ -132,7 +132,7 @@ const Navbar = () => {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.1 + i * 0.08 }}
                     >
-                      <Link
+                      <LLink
                         to={link.href}
                         className={`block font-display text-xl sm:text-2xl md:text-4xl py-2 leading-[1.9] break-words md:whitespace-nowrap transition-colors duration-300 nav-link ${
                           location.pathname === link.href
