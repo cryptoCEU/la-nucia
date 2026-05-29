@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 import extFrontal from "@/assets/gallery/ext-frontal.webp";
@@ -18,19 +19,44 @@ type GalleryImage = {
   imgStyle?: React.CSSProperties;
 };
 
-const exterioresImages: GalleryImage[] = [
-  { src: extFrontal, alt: "Fachada", eyebrow: "EXTERIORES", title: "Fachada", description: "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal.", imgStyle: { objectPosition: "center 80%" } },
-  { src: zcRecepcion, alt: "Entrada", eyebrow: "EXTERIORES", title: "Entrada", description: "Acceso principal en madera retroiluminada, con jardín mediterráneo y la firma La Nucía ONE como bienvenida." },
-  { src: extAtardecer, alt: "Atardecer", eyebrow: "EXTERIORES", title: "Atardecer", description: "Luz cálida del atardecer reflejada en la lámina de agua, con las palmeras y la fachada curva como telón de fondo.", imgStyle: { objectPosition: "center 80%" } },
+const exteriorImageAssets = [extFrontal, zcRecepcion, extAtardecer];
+const exteriorStyles: (React.CSSProperties | undefined)[] = [
+  { objectPosition: "center 80%" },
+  undefined,
+  { objectPosition: "center 80%" },
 ];
 
-export const zonasImages: GalleryImage[] = [
-  { src: zcFitness, alt: "Sala fitness", eyebrow: "ZONAS COMUNES", title: "Sala fitness", description: "Gimnasio acristalado con maquinaria cardiovascular, peso libre y rocódromo. Iluminación natural y vistas a los jardines." },
-  { src: zcComun, alt: "Sala común", eyebrow: "ZONAS COMUNES", title: "Sala común", description: "Espacio polivalente con cocina, comedor y zona de estar, abierto a la terraza ajardinada mediante grandes cristaleras." },
-  { src: zcPiscina, alt: "Piscina", eyebrow: "ZONAS COMUNES", title: "Piscina", description: "Piscina exterior rodeada de palmeras y jardín, con tarima de madera y vistas a las terrazas escalonadas del edificio al atardecer.", imgStyle: { objectPosition: "center 85%" } },
+const zonasImageAssets = [zcFitness, zcComun, zcPiscina];
+const zonasStyles: (React.CSSProperties | undefined)[] = [
+  undefined,
+  undefined,
+  { objectPosition: "center 85%" },
 ];
+
+const useGalleryImages = () => {
+  const { t } = useTranslation();
+  const exteriores = (t("gallerySection.exteriores", { returnObjects: true }) as Array<Omit<GalleryImage, "src" | "imgStyle">>).map(
+    (item, i) => ({ ...item, src: exteriorImageAssets[i], imgStyle: exteriorStyles[i] }) as GalleryImage,
+  );
+  const zonas = (t("gallerySection.zonas", { returnObjects: true }) as Array<Omit<GalleryImage, "src" | "imgStyle">>).map(
+    (item, i) => ({ ...item, src: zonasImageAssets[i], imgStyle: zonasStyles[i] }) as GalleryImage,
+  );
+  return { exteriores, zonas };
+};
+
+// Backwards compat for Landing.tsx which imports zonasImages directly
+export const zonasImages: GalleryImage[] = zonasImageAssets.map((src, i) => ({
+  src,
+  alt: ["Sala fitness", "Sala común", "Piscina"][i],
+  eyebrow: "ZONAS COMUNES",
+  title: ["Sala fitness", "Sala común", "Piscina"][i],
+  description: "",
+  imgStyle: zonasStyles[i],
+}));
 
 export { STYLES as GALLERY_STYLES };
+
+
 
 
 
