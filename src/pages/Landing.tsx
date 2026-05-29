@@ -125,7 +125,10 @@ const Landing = () => {
   const selectClass = "w-full h-11 rounded-md border border-white/20 bg-white/10 backdrop-blur-sm px-3 font-body text-sm text-white placeholder:text-white/60 focus:outline-none focus:border-gold transition-colors";
   const inputClass = "bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-gold h-11";
 
+  return (
+    <>
       <SEO
+
         title={t("landingPage.seoTitle")}
         description={t("landingPage.seoDescription")}
         path="/landing"
