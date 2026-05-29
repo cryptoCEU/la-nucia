@@ -155,13 +155,13 @@ export default function AmenitiesCarousel() {
           {cards.map((c, i) => (
             <article key={i} className="amen-card">
               <div className="amen-img">
-                <img src={c.src} alt={c.title} loading={i < 2 ? "eager" : "lazy"} draggable={false} />
+                <img src={c.src} alt={t(`carousel.items.${c.key}`)} loading={i < 2 ? "eager" : "lazy"} draggable={false} />
               </div>
               <div className="amen-cap">
-                <p className="amen-cap-title">{c.title}</p>
+                <p className="amen-cap-title">{t(`carousel.items.${c.key}`)}</p>
                 <button
                   className="amen-plus"
-                  aria-label={`Ampliar ${c.title}`}
+                  aria-label={`${t("carousel.expand")} ${t(`carousel.items.${c.key}`)}`}
                   onClick={(e) => {
                     if (drag.current.moved) { e.preventDefault(); return; }
                     setLbIdx(i);
