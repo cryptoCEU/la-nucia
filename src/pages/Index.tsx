@@ -42,11 +42,11 @@ const Index = () => {
   const locationParallax = useParallax({ speed: 0.25 });
 
   const amenities = [
-    { icon: Waves, label: "Piscina infinity" },
-    { icon: Dumbbell, label: "Gimnasio equipado" },
-    { icon: Briefcase, label: "Sala de coworking" },
-    { icon: UtensilsCrossed, label: "Gastrobar" },
-    { icon: Baby, label: "Área infantil" },
+    { icon: Waves, label: t("home.amenities.pool") },
+    { icon: Dumbbell, label: t("home.amenities.gym") },
+    { icon: Briefcase, label: t("home.amenities.coworking") },
+    { icon: UtensilsCrossed, label: t("home.amenities.gastrobar") },
+    { icon: Baby, label: t("home.amenities.kids") },
   ];
 
   return (

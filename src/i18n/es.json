@@ -13,6 +13,13 @@
     "byAppointment": "(con cita previa)"
   },
   "home": {
+    "amenities": {
+      "pool": "Piscina infinity",
+      "gym": "Gimnasio equipado",
+      "coworking": "Sala de coworking",
+      "gastrobar": "Gastrobar",
+      "kids": "Área infantil"
+    },
     "heroTag": "Viviendas de obra nueva",
     "heroTitle1": "A 10 minutos",
     "heroTitle2": "de Benidorm.",
