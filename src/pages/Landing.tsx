@@ -125,11 +125,9 @@ const Landing = () => {
   const selectClass = "w-full h-11 rounded-md border border-white/20 bg-white/10 backdrop-blur-sm px-3 font-body text-sm text-white placeholder:text-white/60 focus:outline-none focus:border-gold transition-colors";
   const inputClass = "bg-white/10 backdrop-blur-sm border-white/20 text-white placeholder:text-white/60 focus:border-gold h-11";
 
-  return (
-    <>
       <SEO
-        title="La Nucía One — Solicita información"
-        description="Viviendas de obra nueva en La Nucía con 2, 3 y 4 dormitorios, amplias terrazas y zonas comunes premium. Solicita información sin compromiso."
+        title={t("landingPage.seoTitle")}
+        description={t("landingPage.seoDescription")}
         path="/landing"
         noindex
       />
@@ -165,13 +163,11 @@ const Landing = () => {
               className="text-primary-foreground min-h-[calc(100vh-6rem)] lg:min-h-0 flex flex-col justify-center pb-0 text-center lg:text-left items-center lg:items-start"
             >
               <motion.p variants={heroText()} className="font-body text-xs md:text-sm tracking-[0.2em] uppercase text-primary-foreground mb-2 md:mb-4">
-                Viviendas de obra nueva
+                {t("landingPage.heroTag")}
               </motion.p>
-              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.3] md:leading-[1.9] mb-3 md:mb-6 text-primary-foreground">
-                A 10 minutos<br />de <span className="italic">Benidorm</span>.
-              </motion.h1>
+              <motion.h1 variants={heroText()} className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.3] md:leading-[1.9] mb-3 md:mb-6 text-primary-foreground" dangerouslySetInnerHTML={{ __html: t("landingPage.heroTitle") }} />
               <motion.p variants={heroText()} className="font-body text-base md:text-lg text-primary-foreground/80 max-w-md leading-relaxed">
-                107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.
+                {t("landingPage.heroSubtitle")}
               </motion.p>
 
               {/* Scroll indicator (mobile only) */}
@@ -179,7 +175,7 @@ const Landing = () => {
                 variants={heroText()}
                 className="lg:hidden mt-8 flex flex-col items-center gap-2 text-primary-foreground/80"
               >
-                <span className="font-body text-[10px] tracking-[0.3em] uppercase">Descubre más</span>
+                <span className="font-body text-[10px] tracking-[0.3em] uppercase">{t("landingPage.scrollMore")}</span>
                 <ChevronDown className="w-5 h-5 animate-bounce" strokeWidth={1.5} />
               </motion.div>
             </motion.div>
@@ -196,8 +192,9 @@ const Landing = () => {
             >
 
               <div className="mb-2">
-                <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]">Conoce todos<br/>los detalles</h2>
+                <h2 className="font-display text-2xl md:text-3xl text-primary-foreground leading-[1.4]" dangerouslySetInnerHTML={{ __html: t("landingPage.formTitle") }} />
               </div>
+
 
               <div className="grid md:grid-cols-2 gap-3">
                 <Input required value={formData.nombre} onChange={(e) => setFormData({ ...formData, nombre: e.target.value })} placeholder={t(`${f}.firstNamePlaceholder`)} className={inputClass} />
