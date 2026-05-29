@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { staggerContainer, heroText, fadeUp, staggerItem, viewportOnce, scaleIn } from "@/lib/animations";
 import { useParallax } from "@/hooks/use-parallax";
-import { GalleryGrid, zonasImages, GALLERY_STYLES } from "@/components/GallerySection";
+import { GalleryGrid, zonasImages, GALLERY_STYLES, useGalleryImages } from "@/components/GallerySection";
 import ContactSection from "@/components/ContactSection";
 import { useCallback, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
