@@ -63,6 +63,7 @@ const CARD_STEP_TABLET = 320 + 24;
 const CARD_STEP_MOBILE = 300 + 24;
 
 export default function AmenitiesCarousel() {
+  const { t } = useTranslation();
   const trackRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
