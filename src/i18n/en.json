@@ -311,5 +311,37 @@
   },
   "fixedImage": {
     "phrase": "Where the everyday\nbecomes extraordinary."
+  },
+  "gallerySection": {
+    "exterioresTitle": "Exteriors",
+    "zonasTitle": "Common Areas",
+    "exteriores": [
+      { "alt": "Facade", "eyebrow": "EXTERIORS", "title": "Facade", "description": "Cascading facade with wooden slats and undulating slabs over the main reflecting pool." },
+      { "alt": "Entrance", "eyebrow": "EXTERIORS", "title": "Entrance", "description": "Main entrance in backlit wood, with Mediterranean garden and the La Nucía ONE signature as a welcome." },
+      { "alt": "Sunset", "eyebrow": "EXTERIORS", "title": "Sunset", "description": "Warm sunset light reflected on the pool, with palm trees and the curved facade as a backdrop." }
+    ],
+    "zonas": [
+      { "alt": "Fitness room", "eyebrow": "COMMON AREAS", "title": "Fitness room", "description": "Glass-walled gym with cardio equipment, free weights and a climbing wall. Natural light and garden views." },
+      { "alt": "Common room", "eyebrow": "COMMON AREAS", "title": "Common room", "description": "Multipurpose space with kitchen, dining and lounge area, opening onto the landscaped terrace through large windows." },
+      { "alt": "Pool", "eyebrow": "COMMON AREAS", "title": "Pool", "description": "Outdoor pool surrounded by palms and gardens, with wooden decking and views of the building's terraced levels at sunset." }
+    ]
+  },
+  "landingPage": {
+    "seoTitle": "La Nucía One — Request information",
+    "seoDescription": "New-build homes in La Nucía. Just 10 minutes from Benidorm. Request information with no obligation.",
+    "heroTag": "New-build homes",
+    "heroTitle": "10 minutes<br />from <span class=\"italic\">Benidorm</span>.",
+    "heroSubtitle": "107 homes with 2, 3 and 4 bedrooms, large terraces, penthouses and duplexes.",
+    "scrollMore": "Discover more",
+    "formTitle": "Discover every<br/>detail"
+  },
+  "graciasPage": {
+    "seoTitle": "Thank you — La Nucía One",
+    "seoDescription": "We've received your request. Our team will be in touch with you shortly.",
+    "eyebrow": "REQUEST RECEIVED",
+    "title": "Thank you for your interest",
+    "body": "We've received your request. Our sales team will get in touch within 24 hours to answer your questions and arrange a visit.",
+    "cta": "Back to home"
   }
 }
+
