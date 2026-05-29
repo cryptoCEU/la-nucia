@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
@@ -17,10 +18,10 @@ const AvisoLegal = () => {
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">
-        <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
+        <LLink to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           {t("legalPages.backHome")}
-        </Link>
+        </LLink>
 
         <h1 className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("avisoLegal.title")}</h1>
 
@@ -75,7 +76,7 @@ const AvisoLegal = () => {
 
           <h2 className="font-display text-xl md:text-2xl text-foreground mt-10">PROTECCIÓN DE DATOS</h2>
           <p>
-            Todo lo relativo al tratamiento de sus datos personales, se encuentra recogido en la <Link to="/politica-de-privacidad" className="text-primary hover:text-ocean-light">política de privacidad</Link>.
+            Todo lo relativo al tratamiento de sus datos personales, se encuentra recogido en la <LLink to="/politica-de-privacidad" className="text-primary hover:text-ocean-light">política de privacidad</LLink>.
           </p>
 
           <h2 className="font-display text-xl md:text-2xl text-foreground mt-10">CONTENIDOS. PROPIEDAD INTELECTUAL E INDUSTRIAL</h2>

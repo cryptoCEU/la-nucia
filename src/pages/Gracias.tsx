@@ -1,18 +1,20 @@
 import { useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import SEO from "@/components/SEO";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import graciasBg from "@/assets/gracias-bg.png";
 
 const Gracias = () => {
+  const { t } = useTranslation();
   const [params] = useSearchParams();
   const from = params.get("from") || "unknown";
   const isLanding = from === "landing";
 
-  // Ocultar el widget de ElevenLabs en la página de gracias
   useEffect(() => {
     const style = document.createElement("style");
     style.setAttribute("data-hide-convai", "true");
@@ -24,19 +26,14 @@ const Gracias = () => {
   return (
     <>
       <SEO
-        title="Gracias por tu interés"
-        description="Hemos recibido tu solicitud. Nuestro equipo te contactará en menos de 24 horas."
+        title={t("graciasPage.seoTitle")}
+        description={t("graciasPage.seoDescription")}
         path="/gracias"
         noindex
       />
       {!isLanding && <Navbar />}
       <main className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden">
-        <img
-          src={graciasBg}
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <img src={graciasBg} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/55 to-primary/80 backdrop-blur-[2px]" />
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -50,25 +47,21 @@ const Gracias = () => {
             </div>
           </div>
           <p className="text-gold font-body text-sm tracking-[0.2em] uppercase mb-4">
-            Solicitud recibida
+            {t("graciasPage.eyebrow")}
           </p>
           <h1 className="font-display text-4xl md:text-6xl text-white leading-[1.35] mb-6">
-            Gracias por tu interés
+            {t("graciasPage.title")}
           </h1>
           <p className="font-body text-base md:text-lg text-white/85 leading-relaxed mb-10 max-w-xl mx-auto">
-            Hemos recibido tu solicitud correctamente. Nuestro equipo se pondrá en
-            contacto contigo en menos de 24 horas para agendar tu visita en{" "}
-            <span className="text-white">Alicante</span>,{" "}
-            <span className="text-white">Madrid</span> u{" "}
-            <span className="text-white">Online</span>.
+            {t("graciasPage.body")}
           </p>
-          <Link
+          <LLink
             to="/"
             className="btn-primary btn-shimmer inline-flex items-center gap-2 px-8 py-4 bg-gold text-primary font-body text-sm tracking-widest uppercase rounded-md hover:bg-gold/90 transition-all duration-700"
           >
-            Volver al inicio
+            {t("graciasPage.cta")}
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </LLink>
         </motion.div>
       </main>
       {!isLanding && <FooterSection />}

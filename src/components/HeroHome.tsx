@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { useTranslation } from "react-i18next";
 import heroImage from "@/assets/hero-nucia.webp";
 
@@ -22,12 +23,12 @@ const HeroHome = () => {
             {t("hero.title1")}<br /><span className="italic">{t("hero.title2")}</span><br />{t("hero.title3")}
           </h1>
           <div className="flex flex-wrap gap-4">
-            <Link to="/caracteristicas" className="inline-flex items-center gap-2 bg-primary-foreground/10 border border-primary-foreground/20 px-6 py-3 text-primary-foreground font-body text-sm tracking-wider uppercase hover:bg-primary-foreground/20 transition-colors">
+            <LLink to="/caracteristicas" className="inline-flex items-center gap-2 bg-primary-foreground/10 border border-primary-foreground/20 px-6 py-3 text-primary-foreground font-body text-sm tracking-wider uppercase hover:bg-primary-foreground/20 transition-colors">
               {t("hero.discoverMore")} <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link to="/contacto" className="inline-flex items-center gap-2 border border-primary-foreground/20 px-6 py-3 text-primary-foreground font-body text-sm tracking-wider uppercase hover:border-gold hover:text-gold transition-colors">
+            </LLink>
+            <LLink to="/contacto" className="inline-flex items-center gap-2 border border-primary-foreground/20 px-6 py-3 text-primary-foreground font-body text-sm tracking-wider uppercase hover:border-gold hover:text-gold transition-colors">
               {t("hero.contact")} <ArrowRight className="w-4 h-4" />
-            </Link>
+            </LLink>
           </div>
         </div>
       </div>

@@ -312,5 +312,37 @@
   },
   "fixedImage": {
     "phrase": "Donde lo cotidiano,\nse vuelve extraordinario."
+  },
+  "gallerySection": {
+    "exterioresTitle": "Exteriores",
+    "zonasTitle": "Zonas Comunes",
+    "exteriores": [
+      { "alt": "Fachada", "eyebrow": "EXTERIORES", "title": "Fachada", "description": "Fachada en cascada con lamas de madera y forjados ondulados sobre la lámina de agua principal." },
+      { "alt": "Entrada", "eyebrow": "EXTERIORES", "title": "Entrada", "description": "Acceso principal en madera retroiluminada, con jardín mediterráneo y la firma La Nucía ONE como bienvenida." },
+      { "alt": "Atardecer", "eyebrow": "EXTERIORES", "title": "Atardecer", "description": "Luz cálida del atardecer reflejada en la lámina de agua, con las palmeras y la fachada curva como telón de fondo." }
+    ],
+    "zonas": [
+      { "alt": "Sala fitness", "eyebrow": "ZONAS COMUNES", "title": "Sala fitness", "description": "Gimnasio acristalado con maquinaria cardiovascular, peso libre y rocódromo. Iluminación natural y vistas a los jardines." },
+      { "alt": "Sala común", "eyebrow": "ZONAS COMUNES", "title": "Sala común", "description": "Espacio polivalente con cocina, comedor y zona de estar, abierto a la terraza ajardinada mediante grandes cristaleras." },
+      { "alt": "Piscina", "eyebrow": "ZONAS COMUNES", "title": "Piscina", "description": "Piscina exterior rodeada de palmeras y jardín, con tarima de madera y vistas a las terrazas escalonadas del edificio al atardecer." }
+    ]
+  },
+  "landingPage": {
+    "seoTitle": "La Nucía One — Solicita información",
+    "seoDescription": "Viviendas de obra nueva en La Nucía. A 10 minutos de Benidorm. Solicita información sin compromiso.",
+    "heroTag": "Viviendas de obra nueva",
+    "heroTitle": "A 10 minutos<br />de <span class=\"italic\">Benidorm</span>.",
+    "heroSubtitle": "107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.",
+    "scrollMore": "Descubre más",
+    "formTitle": "Conoce todos<br/>los detalles"
+  },
+  "graciasPage": {
+    "seoTitle": "Gracias — La Nucía One",
+    "seoDescription": "Hemos recibido tu solicitud. Nuestro equipo se pondrá en contacto contigo a la mayor brevedad.",
+    "eyebrow": "SOLICITUD RECIBIDA",
+    "title": "Gracias por tu interés",
+    "body": "Hemos recibido tu solicitud correctamente. Nuestro equipo comercial se pondrá en contacto contigo en menos de 24 horas para resolver tus dudas y acordar una visita.",
+    "cta": "Volver al inicio"
   }
 }
+

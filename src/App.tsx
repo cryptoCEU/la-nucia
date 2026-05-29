@@ -20,31 +20,40 @@ import CustomCursor from "./components/CustomCursor";
 import ScrollToTop from "./components/ScrollToTop";
 import LoadingScreen from "./components/LoadingScreen";
 import PageTransition from "./components/PageTransition";
+import LocaleSync from "./components/LocaleSync";
 import { useLenisScroll } from "./hooks/use-lenis";
 
 const queryClient = new QueryClient();
+
+const appRoutes = (
+  <>
+    <Route index element={<Index />} />
+    <Route path="landing" element={<Landing />} />
+    <Route path="caracteristicas" element={<Caracteristicas />} />
+    <Route path="viviendas" element={<Viviendas />} />
+    <Route path="galeria" element={<Galeria />} />
+    <Route path="ubicacion" element={<Ubicacion />} />
+    <Route path="contacto" element={<Contacto />} />
+    <Route path="gracias" element={<Gracias />} />
+    <Route path="politica-de-privacidad" element={<PrivacyPolicy />} />
+    <Route path="aviso-legal" element={<AvisoLegal />} />
+    <Route path="politica-de-cookies" element={<PoliticaCookies />} />
+    <Route path="*" element={<NotFound />} />
+  </>
+);
 
 const AppInner = () => {
   useLenisScroll();
   return (
     <>
+      <LocaleSync />
       <ScrollToTop />
       <LoadingScreen />
       <CustomCursor />
       <PageTransition>
         <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/landing" element={<Landing />} />
-          <Route path="/caracteristicas" element={<Caracteristicas />} />
-          <Route path="/viviendas" element={<Viviendas />} />
-          <Route path="/galeria" element={<Galeria />} />
-          <Route path="/ubicacion" element={<Ubicacion />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/gracias" element={<Gracias />} />
-          <Route path="/politica-de-privacidad" element={<PrivacyPolicy />} />
-          <Route path="/aviso-legal" element={<AvisoLegal />} />
-          <Route path="/politica-de-cookies" element={<PoliticaCookies />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/en">{appRoutes}</Route>
+          <Route path="/">{appRoutes}</Route>
         </Routes>
       </PageTransition>
     </>
