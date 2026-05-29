@@ -432,9 +432,9 @@ const CostaBlancaMap = () => {
               onMouseEnter={() => setHovered(p.id)}
               onMouseLeave={() => setHovered((h) => (h === p.id ? null : h))}
             >
-              <div className="cat">{p.category}</div>
+              <div className="cat">{tCat(p.category)}</div>
               <div className="name">{p.name}</div>
-              <div className="desc">{p.description}</div>
+              <div className="desc">{tDesc(p.id, p.description)}</div>
               <div className="meta">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm14 0a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM3 17V9l2-5h12l3 5v8" />
