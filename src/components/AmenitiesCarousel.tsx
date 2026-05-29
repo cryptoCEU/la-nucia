@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import salonImg from "@/assets/carousel/salon.webp";
 import cocinaImg from "@/assets/carousel/cocina.webp";
@@ -7,16 +8,17 @@ import terrazaImg from "@/assets/carousel/terraza.webp";
 import banoImg from "@/assets/carousel/bano.webp";
 import solariumImg from "@/assets/gallery/zc-chill-out.webp";
 
-type Card = { title: string; src: string };
+type Card = { key: string; src: string };
 
 const cards: Card[] = [
-  { title: "Salón", src: salonImg },
-  { title: "Cocina", src: cocinaImg },
-  { title: "Habitación", src: habitacionImg },
-  { title: "Terraza", src: terrazaImg },
-  { title: "Baño", src: banoImg },
-  { title: "Solárium privado", src: solariumImg },
+  { key: "livingRoom", src: salonImg },
+  { key: "kitchen", src: cocinaImg },
+  { key: "bedroom", src: habitacionImg },
+  { key: "terrace", src: terrazaImg },
+  { key: "bathroom", src: banoImg },
+  { key: "solarium", src: solariumImg },
 ];
+
 
 const STYLES = `
 .amen-section{background:#f4faf0;padding:80px 0 96px;position:relative;font-family:'Montserrat',sans-serif;}
