@@ -323,6 +323,8 @@ export const GalleryGrid = ({ title, images, onOpen, cols = 3, rows = 2 }: Galle
 };
 
 const GallerySection = () => {
+  const { t } = useTranslation();
+  const { exteriores, zonas } = useGalleryImages();
   const [lightbox, setLightbox] = useState<{ list: GalleryImage[]; idx: number } | null>(null);
 
   const open = useCallback((list: GalleryImage[], idx: number) => {
@@ -349,9 +351,10 @@ const GallerySection = () => {
   return (
     <div style={{ background: "#F5F3F2" }} className="w-full py-16 md:py-24">
       <style>{STYLES}</style>
-      <GalleryGrid title="Exteriores" images={exterioresImages} onOpen={open} cols={3} rows={1} />
+      <GalleryGrid title={t("gallerySection.exterioresTitle")} images={exteriores} onOpen={open} cols={3} rows={1} />
       <div style={{ height: "clamp(80px, 10vw, 120px)" }} />
-      <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={open} cols={3} rows={1} />
+      <GalleryGrid title={t("gallerySection.zonasTitle")} images={zonas} onOpen={open} cols={3} rows={1} />
+
 
       {lightbox && (
         <div
