@@ -7,22 +7,10 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import graciasBg from "@/assets/gracias-bg.png";
 
-declare global {
-  interface Window { dataLayer?: Record<string, unknown>[]; }
-}
-
 const Gracias = () => {
   const [params] = useSearchParams();
   const from = params.get("from") || "unknown";
   const isLanding = from === "landing";
-
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "form_submitted",
-      form_source: from,
-    });
-  }, [from]);
 
   // Ocultar el widget de ElevenLabs en la página de gracias
   useEffect(() => {
