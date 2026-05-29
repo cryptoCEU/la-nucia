@@ -137,8 +137,8 @@ export default function AmenitiesCarousel() {
     <section className="amen-section" aria-label="Amenities">
       <style>{STYLES}</style>
       <div className="amen-header">
-        <p className="amen-eyebrow">ESTANCIAS</p>
-        <h2 className="amen-title">Espacios diseñados para vivir</h2>
+        <p className="amen-eyebrow">{t("carousel.eyebrow")}</p>
+        <h2 className="amen-title">{t("carousel.title")}</h2>
       </div>
       <div className="amen-wrap">
         <button className="amen-arrow prev" aria-label="Anterior" onClick={() => scrollBy(-1)} disabled={atStart}>
