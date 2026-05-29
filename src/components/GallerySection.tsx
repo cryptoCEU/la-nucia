@@ -33,7 +33,7 @@ const zonasStyles: (React.CSSProperties | undefined)[] = [
   { objectPosition: "center 85%" },
 ];
 
-const useGalleryImages = () => {
+export const useGalleryImages = () => {
   const { t } = useTranslation();
   const exteriores = (t("gallerySection.exteriores", { returnObjects: true }) as Array<Omit<GalleryImage, "src" | "imgStyle">>).map(
     (item, i) => ({ ...item, src: exteriorImageAssets[i], imgStyle: exteriorStyles[i] }) as GalleryImage,
