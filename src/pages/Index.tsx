@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Waves, Dumbbell, Briefcase, UtensilsCrossed, Baby } from "lucide-react";
 import { Link } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
@@ -116,13 +117,13 @@ const Index = () => {
                       className="btn-primary btn-shimmer inline-flex items-center gap-3 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700"
                     >
                       {t("home.discoverHomes")} <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-                    </Link>
+                    </LLink>
                     <Link
                       to="/contacto"
                       className="inline-flex items-center gap-3 border border-primary-foreground/20 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-700"
                     >
                       {t("home.contactUs")}
-                    </Link>
+                    </LLink>
                   </div>
                 </div>
               </div>
@@ -230,7 +231,7 @@ const Index = () => {
                   >
                     {t("home.locationCta")}
                     <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-                  </Link>
+                  </LLink>
                 </motion.div>
               </motion.div>
               <motion.div
@@ -289,7 +290,7 @@ const Index = () => {
                 { img: salonPeopleImg, title: t("home.type4bed"), desc: t("home.type4desc") },
               ]).map((item, i) => (
                 <motion.div key={i} variants={staggerItem} className="group relative overflow-hidden cursor-pointer">
-                  <Link to="/viviendas">
+                  <LLink to="/viviendas">
                     <div className="aspect-[3/4] overflow-hidden">
                       <img
                         src={item.img}
@@ -302,7 +303,7 @@ const Index = () => {
                       <h3 className="font-display text-2xl text-primary-foreground mb-2">{item.title}</h3>
                       <p className="font-body text-sm text-primary-foreground/60">{item.desc}</p>
                     </div>
-                  </Link>
+                  </LLink>
                 </motion.div>
               ))}
             </motion.div>
@@ -320,7 +321,7 @@ const Index = () => {
               >
                 {t("home.homesCta")}
                 <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-              </Link>
+              </LLink>
             </motion.div>
           </div>
         </section>
@@ -352,7 +353,7 @@ const Index = () => {
                   >
                     {t("home.galleryCta")}
                     <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-                  </Link>
+                  </LLink>
                 </motion.div>
               </motion.div>
               <motion.div
@@ -409,7 +410,7 @@ const Index = () => {
                 >
                   {t("home.contactCta")}
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </LLink>
                 <a
                   href="tel:+34865662845"
                   className="inline-flex items-center gap-3 border border-primary-foreground/20 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:border-gold hover:text-gold transition-all duration-700"

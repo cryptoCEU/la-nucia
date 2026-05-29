@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocaleNavigate } from "@/components/LLink";
+import { LLink } from "@/components/LLink";
 import { useTranslation } from "react-i18next";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SEO from "@/components/SEO";
@@ -52,7 +53,7 @@ const MobileHorizontalScroll = ({ items }: { items: HomeItem[] }) => {
 const Landing = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const navigate = useNavigate();
+  const navigate = useLocaleNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",

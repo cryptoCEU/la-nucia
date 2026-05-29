@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, BedDouble, Bath, Maximize, Shield, Thermometer, ChefHat, DoorOpen, Cpu, Leaf, Download, FileText, Eye, Trees } from "lucide-react";
 import { Link } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
 import SEO from "@/components/SEO";
@@ -87,9 +88,9 @@ const Viviendas = () => {
               </motion.h1>
               <motion.p variants={heroText()} className="font-body text-primary-foreground/60 text-lg max-w-xl mb-8" dangerouslySetInnerHTML={{ __html: t(`${v}.heroSubtitle`) }} />
               <motion.div variants={heroText()}>
-                <Link to="/contacto" className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700">
+                <LLink to="/contacto" className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700">
                   {t(`${v}.requestInfo`)} <ArrowRight className="w-4 h-4" />
-                </Link>
+                </LLink>
               </motion.div>
             </motion.div>
           </motion.div>
@@ -208,9 +209,9 @@ const Viviendas = () => {
               <motion.h2 variants={staggerItem} className="font-display text-3xl md:text-5xl text-primary-foreground leading-[1.9] mb-4" dangerouslySetInnerHTML={{ __html: t(`${v}.ctaTitle`) }} />
               <motion.p variants={staggerItem} className="font-body text-primary-foreground/60 mb-10 max-w-lg mx-auto">{t(`${v}.ctaSubtitle`)}</motion.p>
               <motion.div variants={staggerItem}>
-                <Link to="/contacto" className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700">
+                <LLink to="/contacto" className="inline-flex items-center gap-2 bg-gold/20 border border-gold/40 px-8 py-4 text-primary-foreground font-body text-sm tracking-[0.15em] uppercase hover:bg-gold/30 hover:border-gold/60 transition-all duration-700">
                   {t(`${v}.requestInfo`)} <ArrowRight className="w-4 h-4" />
-                </Link>
+                </LLink>
               </motion.div>
             </motion.div>
             <motion.p variants={fadeUp(0.5)} initial="hidden" whileInView="visible" viewport={viewportOnce} className="mt-12 font-body text-[11px] text-primary-foreground/30 leading-relaxed italic max-w-2xl mx-auto">

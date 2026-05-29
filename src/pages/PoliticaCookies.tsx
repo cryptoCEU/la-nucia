@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
@@ -17,10 +18,10 @@ const PoliticaCookies = () => {
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">
-        <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
+        <LLink to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           {t("legalPages.backHome")}
-        </Link>
+        </LLink>
 
         <h1 className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("politicaCookies.title")}</h1>
 
@@ -114,7 +115,7 @@ const PoliticaCookies = () => {
             Si tiene dudas acerca de esta política de cookies, puede contactar con ACTIVUM GESTION DE PROYECTOS INMOBILIARIOS S.L. a través del siguiente correo electrónico: <a href="mailto:protecciondedatos@activum.es">protecciondedatos@activum.es</a>
           </p>
           <p>
-            Puede acudir a la <Link to="/politica-de-privacidad">Política de Privacidad</Link> para obtener más información sobre el tratamiento de sus datos personales mediante el uso de cookies.
+            Puede acudir a la <LLink to="/politica-de-privacidad">Política de Privacidad</LLink> para obtener más información sobre el tratamiento de sus datos personales mediante el uso de cookies.
           </p>
 
           <p className="text-xs text-muted-foreground/60 mt-8">Última revisión: 11 de noviembre de 2021</p>

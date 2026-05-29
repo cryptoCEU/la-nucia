@@ -1,5 +1,6 @@
 import { Phone, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { useTranslation } from "react-i18next";
 import logoActivum from "@/assets/logo-activum.png";
 
@@ -45,9 +46,9 @@ const FooterSection = () => {
             {t("footer.rights", { year: new Date().getFullYear() })}
           </p>
           <div className="flex items-center gap-6">
-            <Link to="/aviso-legal" className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-500">{t("footer.legalNotice")}</Link>
-            <Link to="/politica-de-privacidad" className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-500">{t("footer.privacyPolicy")}</Link>
-            <Link to="/politica-de-cookies" className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-500">{t("footer.cookiePolicy")}</Link>
+            <LLink to="/aviso-legal" className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-500">{t("footer.legalNotice")}</LLink>
+            <LLink to="/politica-de-privacidad" className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-500">{t("footer.privacyPolicy")}</LLink>
+            <LLink to="/politica-de-cookies" className="font-body text-xs text-primary-foreground/30 hover:text-primary-foreground/60 transition-colors duration-500">{t("footer.cookiePolicy")}</LLink>
           </div>
         </div>
       </div>

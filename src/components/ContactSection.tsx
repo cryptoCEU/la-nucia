@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocaleNavigate } from "@/components/LLink";
+import { LLink } from "@/components/LLink";
 import { motion } from "framer-motion";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,7 @@ import { staggerContainer, staggerItem, fadeUp, viewportOnce } from "@/lib/anima
 const ContactSection = () => {
   const { t } = useTranslation();
   const { toast } = useToast();
-  const navigate = useNavigate();
+  const navigate = useLocaleNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     nombre: "",

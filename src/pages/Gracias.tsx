@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import SEO from "@/components/SEO";
@@ -68,7 +69,7 @@ const Gracias = () => {
           >
             Volver al inicio
             <ArrowRight className="w-4 h-4" />
-          </Link>
+          </LLink>
         </motion.div>
       </main>
       {!isLanding && <FooterSection />}

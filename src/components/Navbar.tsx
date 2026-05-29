@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Phone, X, Menu } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { useTranslation } from "react-i18next";
 import logoNuciaOne from "@/assets/isotipo-nucia.svg";
 import LanguageSelector from "./LanguageSelector";
@@ -71,9 +72,9 @@ const Navbar = () => {
         }`}
       >
         <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-3">
+          <LLink to="/" className="flex items-center gap-3">
             <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
-          </Link>
+          </LLink>
 
           <div className="flex items-center gap-6">
             <LanguageSelector className="hidden md:flex" />
@@ -105,9 +106,9 @@ const Navbar = () => {
             className="fixed inset-0 z-[100] bg-primary flex flex-col"
           >
             <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
-              <Link to="/" className="flex items-center gap-3">
+              <LLink to="/" className="flex items-center gap-3">
                 <img src={logoNuciaOne} alt="La Nucía One" className="h-16 opacity-90" />
-              </Link>
+              </LLink>
               <div className="flex items-center gap-6">
                 <LanguageSelector />
                 <button
@@ -139,7 +140,7 @@ const Navbar = () => {
                         }`}
                       >
                         {link.label}
-                      </Link>
+                      </LLink>
                     </motion.div>
                   ))}
                 </nav>

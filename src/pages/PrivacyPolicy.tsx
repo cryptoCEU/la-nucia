@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import Navbar from "@/components/Navbar";
@@ -17,10 +18,10 @@ const PrivacyPolicy = () => {
       <Navbar />
       <div className="min-h-screen bg-background pt-32 pb-16 md:pt-40 md:pb-24">
       <div className="container max-w-3xl mx-auto px-6">
-        <Link to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
+        <LLink to="/" className="inline-flex items-center gap-2 text-primary hover:text-ocean-light font-body text-sm mb-10 transition-colors">
           <ArrowLeft className="w-4 h-4" />
           {t("legalPages.backHome")}
-        </Link>
+        </LLink>
 
         <h1 className="font-display text-3xl md:text-5xl text-foreground mb-10">{t("politicaPrivacidad.title")}</h1>
 

@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { LLink } from "@/components/LLink";
 import { useEffect } from "react";
 
 const NotFound = () => {
