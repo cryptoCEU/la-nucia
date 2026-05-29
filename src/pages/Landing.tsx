@@ -65,6 +65,7 @@ const Landing = () => {
     privacidad: false,
   });
   const locationParallax = useParallax({ speed: 0.25 });
+  const { zonas: zonasI18n } = useGalleryImages();
   const [lightbox, setLightbox] = useState<{ list: typeof zonasImages; idx: number } | null>(null);
   const openLb = useCallback((list: typeof zonasImages, idx: number) => setLightbox({ list, idx }), []);
   const closeLb = useCallback(() => setLightbox(null), []);
