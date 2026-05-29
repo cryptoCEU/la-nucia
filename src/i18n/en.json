@@ -13,6 +13,13 @@
     "byAppointment": "(by appointment)"
   },
   "home": {
+    "amenities": {
+      "pool": "Infinity pool",
+      "gym": "Equipped gym",
+      "coworking": "Coworking room",
+      "gastrobar": "Gastrobar",
+      "kids": "Kids area"
+    },
     "heroTag": "La Nucía, Costa Blanca",
     "heroTitle1": "Where the everyday",
     "heroTitle2": "becomes extraordinary.",
