@@ -138,6 +138,9 @@ const ScrollEnabler = () => {
 };
 
 const CostaBlancaMap = () => {
+  const { t } = useTranslation();
+  const tCat = (c: string) => t(`map.categories.${c}`, { defaultValue: c });
+  const tDesc = (id: string, def: string) => t(`map.pois.${id}`, { defaultValue: def });
   const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 768);
   const [hovered, setHovered] = useState<string | null>(null);
   const [nuciaHover, setNuciaHover] = useState(false);
