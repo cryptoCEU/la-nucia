@@ -114,6 +114,47 @@
       { "alt": "Panoramic views from the terrace", "label": "Terrace" }
     ]
   },
+  "map": {
+    "categories": {
+      "Municipio": "Town",
+      "Capital": "Capital",
+      "Aeropuerto": "Airport",
+      "Cultural": "Culture",
+      "Deporte": "Sports",
+      "Comercial": "Shopping",
+      "Golf": "Golf",
+      "Gastronomía": "Gastronomy",
+      "Playa": "Beach",
+      "Ocio": "Leisure",
+      "Puerto": "Marina",
+      "Naturaleza": "Nature"
+    },
+    "pois": {
+      "finestrat": "Mediterranean village at the foot of Puig Campana.",
+      "polop": "Historic inland village of the Marina Baixa.",
+      "altea": "Whitewashed old town and marina.",
+      "benidorm": "Tourist capital of the Costa Blanca.",
+      "villajoyosa": "Colourful houses and chocolate-making tradition.",
+      "alicante": "Mediterranean capital with port and old town.",
+      "aeropuerto": "Alicante-Elche international gateway.",
+      "auditorio": "Landmark auditorium of the Marina Baixa.",
+      "deportiva": "European-class sports complex.",
+      "comercial": "Shops and services of the Marina Baixa.",
+      "museo": "Heritage and tradition of La Nucía.",
+      "captivador": "Golf course between mountains and sea.",
+      "mercadolanucia": "Sunday market of local produce.",
+      "polopcastillo": "Historic viewpoint over the Marina Baixa.",
+      "poniente": "Fine sand and seafront promenade in Benidorm.",
+      "levante": "Benidorm's most iconic beach.",
+      "terra": "Theme park next to Benidorm.",
+      "puertoaltea": "Marina with seafront promenade.",
+      "cascoaltea": "Cobbled streets and the blue dome.",
+      "torres": "Quiet beach in Villajoyosa.",
+      "castillo": "Fortress with views over Alicante.",
+      "puertoben": "Fishing and sports harbour.",
+      "islabenidorm": "Marine reserve off the bay."
+    }
+  },
   "carousel": {
     "eyebrow": "ROOMS",
     "title": "Spaces designed for living",

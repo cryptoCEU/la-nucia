@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { MapContainer, TileLayer, Marker, Polyline, useMap, ZoomControl } from "react-leaflet";
 import L, { LatLngBoundsExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -137,6 +138,9 @@ const ScrollEnabler = () => {
 };
 
 const CostaBlancaMap = () => {
+  const { t } = useTranslation();
+  const tCat = (c: string) => t(`map.categories.${c}`, { defaultValue: c });
+  const tDesc = (id: string, def: string) => t(`map.pois.${id}`, { defaultValue: def });
   const [isMobile, setIsMobile] = useState(typeof window !== "undefined" && window.innerWidth < 768);
   const [hovered, setHovered] = useState<string | null>(null);
   const [nuciaHover, setNuciaHover] = useState(false);
@@ -428,9 +432,9 @@ const CostaBlancaMap = () => {
               onMouseEnter={() => setHovered(p.id)}
               onMouseLeave={() => setHovered((h) => (h === p.id ? null : h))}
             >
-              <div className="cat">{p.category}</div>
+              <div className="cat">{tCat(p.category)}</div>
               <div className="name">{p.name}</div>
-              <div className="desc">{p.description}</div>
+              <div className="desc">{tDesc(p.id, p.description)}</div>
               <div className="meta">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm14 0a2 2 0 1 1 4 0 2 2 0 0 1-4 0zM3 17V9l2-5h12l3 5v8" />
