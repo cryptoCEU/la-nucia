@@ -114,6 +114,19 @@
       { "alt": "Panoramic views from the terrace", "label": "Terrace" }
     ]
   },
+  "carousel": {
+    "eyebrow": "ROOMS",
+    "title": "Spaces designed for living",
+    "expand": "Expand",
+    "items": {
+      "livingRoom": "Living room",
+      "kitchen": "Kitchen",
+      "bedroom": "Bedroom",
+      "terrace": "Terrace",
+      "bathroom": "Bathroom",
+      "solarium": "Private solarium"
+    }
+  },
   "calidades": {
     "tag": "Qualities",
     "title": "Distinction and <i>innovation</i>",

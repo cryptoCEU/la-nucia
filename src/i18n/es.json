@@ -114,6 +114,19 @@
       { "alt": "Vistas panorámicas desde la terraza", "label": "Terraza" }
     ]
   },
+  "carousel": {
+    "eyebrow": "ESTANCIAS",
+    "title": "Espacios diseñados para vivir",
+    "expand": "Ampliar",
+    "items": {
+      "livingRoom": "Salón",
+      "kitchen": "Cocina",
+      "bedroom": "Habitación",
+      "terrace": "Terraza",
+      "bathroom": "Baño",
+      "solarium": "Solárium privado"
+    }
+  },
   "calidades": {
     "tag": "Calidades",
     "title": "Distinción e <i>innovación</i>",

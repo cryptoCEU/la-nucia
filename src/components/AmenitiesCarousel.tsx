@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import salonImg from "@/assets/carousel/salon.webp";
 import cocinaImg from "@/assets/carousel/cocina.webp";
@@ -7,16 +8,17 @@ import terrazaImg from "@/assets/carousel/terraza.webp";
 import banoImg from "@/assets/carousel/bano.webp";
 import solariumImg from "@/assets/gallery/zc-chill-out.webp";
 
-type Card = { title: string; src: string };
+type Card = { key: string; src: string };
 
 const cards: Card[] = [
-  { title: "Salón", src: salonImg },
-  { title: "Cocina", src: cocinaImg },
-  { title: "Habitación", src: habitacionImg },
-  { title: "Terraza", src: terrazaImg },
-  { title: "Baño", src: banoImg },
-  { title: "Solárium privado", src: solariumImg },
+  { key: "livingRoom", src: salonImg },
+  { key: "kitchen", src: cocinaImg },
+  { key: "bedroom", src: habitacionImg },
+  { key: "terrace", src: terrazaImg },
+  { key: "bathroom", src: banoImg },
+  { key: "solarium", src: solariumImg },
 ];
+
 
 const STYLES = `
 .amen-section{background:#f4faf0;padding:80px 0 96px;position:relative;font-family:'Montserrat',sans-serif;}
@@ -61,6 +63,7 @@ const CARD_STEP_TABLET = 320 + 24;
 const CARD_STEP_MOBILE = 300 + 24;
 
 export default function AmenitiesCarousel() {
+  const { t } = useTranslation();
   const trackRef = useRef<HTMLDivElement>(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
@@ -134,8 +137,8 @@ export default function AmenitiesCarousel() {
     <section className="amen-section" aria-label="Amenities">
       <style>{STYLES}</style>
       <div className="amen-header">
-        <p className="amen-eyebrow">ESTANCIAS</p>
-        <h2 className="amen-title">Espacios diseñados para vivir</h2>
+        <p className="amen-eyebrow">{t("carousel.eyebrow")}</p>
+        <h2 className="amen-title">{t("carousel.title")}</h2>
       </div>
       <div className="amen-wrap">
         <button className="amen-arrow prev" aria-label="Anterior" onClick={() => scrollBy(-1)} disabled={atStart}>
@@ -152,13 +155,13 @@ export default function AmenitiesCarousel() {
           {cards.map((c, i) => (
             <article key={i} className="amen-card">
               <div className="amen-img">
-                <img src={c.src} alt={c.title} loading={i < 2 ? "eager" : "lazy"} draggable={false} />
+                <img src={c.src} alt={t(`carousel.items.${c.key}`)} loading={i < 2 ? "eager" : "lazy"} draggable={false} />
               </div>
               <div className="amen-cap">
-                <p className="amen-cap-title">{c.title}</p>
+                <p className="amen-cap-title">{t(`carousel.items.${c.key}`)}</p>
                 <button
                   className="amen-plus"
-                  aria-label={`Ampliar ${c.title}`}
+                  aria-label={`${t("carousel.expand")} ${t(`carousel.items.${c.key}`)}`}
                   onClick={(e) => {
                     if (drag.current.moved) { e.preventDefault(); return; }
                     setLbIdx(i);
@@ -183,7 +186,7 @@ export default function AmenitiesCarousel() {
           ><ChevronLeft size={36} strokeWidth={1.2} /></button>
           <img
             src={cards[lbIdx].src}
-            alt={cards[lbIdx].title}
+            alt={t(`carousel.items.${cards[lbIdx].key}`)}
             className="amen-lb-img"
             onClick={(e) => e.stopPropagation()}
           />
