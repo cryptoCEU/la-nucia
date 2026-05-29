@@ -11,7 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { staggerContainer, heroText, fadeUp, staggerItem, viewportOnce, scaleIn } from "@/lib/animations";
 import { useParallax } from "@/hooks/use-parallax";
-import { GalleryGrid, zonasImages, GALLERY_STYLES } from "@/components/GallerySection";
+import { GalleryGrid, zonasImages, GALLERY_STYLES, useGalleryImages } from "@/components/GallerySection";
 import ContactSection from "@/components/ContactSection";
 import { useCallback, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
@@ -65,6 +65,7 @@ const Landing = () => {
     privacidad: false,
   });
   const locationParallax = useParallax({ speed: 0.25 });
+  const { zonas: zonasI18n } = useGalleryImages();
   const [lightbox, setLightbox] = useState<{ list: typeof zonasImages; idx: number } | null>(null);
   const openLb = useCallback((list: typeof zonasImages, idx: number) => setLightbox({ list, idx }), []);
   const closeLb = useCallback(() => setLightbox(null), []);
@@ -356,7 +357,7 @@ const Landing = () => {
         {/* ═══ ZONAS COMUNES ═══ */}
         <section className="w-full py-16 md:py-24 bg-background">
           <style>{GALLERY_STYLES}</style>
-          <GalleryGrid title="Zonas Comunes" images={zonasImages} onOpen={openLb} cols={3} rows={1} />
+          <GalleryGrid title={t("gallerySection.zonasTitle")} images={zonasI18n} onOpen={openLb} cols={3} rows={1} />
         </section>
 
         {/* ═══ CONTACTO ═══ */}
