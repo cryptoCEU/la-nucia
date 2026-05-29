@@ -12,7 +12,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const isHome = location.pathname === "/" || location.pathname === "/landing";
+  const pathNoLocale = location.pathname.startsWith("/en") ? location.pathname.slice(3) || "/" : location.pathname;
+  const isHome = pathNoLocale === "/" || pathNoLocale === "/landing";
 
   const navLinks = [
     { label: t("nav.home"), href: "/" },
