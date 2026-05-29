@@ -186,7 +186,7 @@ export default function AmenitiesCarousel() {
           ><ChevronLeft size={36} strokeWidth={1.2} /></button>
           <img
             src={cards[lbIdx].src}
-            alt={cards[lbIdx].title}
+            alt={t(`carousel.items.${cards[lbIdx].key}`)}
             className="amen-lb-img"
             onClick={(e) => e.stopPropagation()}
           />
