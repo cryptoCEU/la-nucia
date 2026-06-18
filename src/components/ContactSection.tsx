@@ -50,6 +50,7 @@ const ContactSection = () => {
           idioma: formData.idioma,
           destino_vivienda: formData.destino,
           dormitorios: formData.dormitorios,
+          ...getTrackingPayload(),
         }).toString(),
       });
     } catch (err) {
