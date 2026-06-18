@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 import { staggerContainer, staggerItem, fadeUp, viewportOnce } from "@/lib/animations";
+import { getTrackingPayload } from "@/lib/utm";
 
 const ContactSection = () => {
   const { t } = useTranslation();
@@ -49,6 +50,7 @@ const ContactSection = () => {
           idioma: formData.idioma,
           destino_vivienda: formData.destino,
           dormitorios: formData.dormitorios,
+          ...getTrackingPayload(),
         }).toString(),
       });
     } catch (err) {

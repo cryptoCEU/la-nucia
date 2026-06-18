@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { captureUtms } from "@/lib/utm";
 
 /**
  * Sincroniza el idioma de i18n con el prefijo de la URL.
@@ -9,7 +10,11 @@ import { useTranslation } from "react-i18next";
  */
 const LocaleSync = () => {
   const { i18n } = useTranslation();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    captureUtms();
+  }, [search]);
 
   useEffect(() => {
     const isEn = pathname === "/en" || pathname.startsWith("/en/");

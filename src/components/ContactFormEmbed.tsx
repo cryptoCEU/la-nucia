@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
+import { getTrackingPayload } from "@/lib/utm";
 
 const ContactFormEmbed = () => {
   const { t } = useTranslation();
@@ -34,6 +35,7 @@ const ContactFormEmbed = () => {
           telefono: formData.telefono,
           email: formData.email,
           tipologia: formData.tipologia,
+          ...getTrackingPayload(),
         }).toString(),
       });
     } catch (err) {
