@@ -35,6 +35,7 @@ const ContactFormEmbed = () => {
           telefono: formData.telefono,
           email: formData.email,
           tipologia: formData.tipologia,
+          ...getTrackingPayload(),
         }).toString(),
       });
     } catch (err) {
