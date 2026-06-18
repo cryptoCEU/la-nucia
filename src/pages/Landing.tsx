@@ -13,6 +13,7 @@ import { staggerContainer, heroText, fadeUp, staggerItem, viewportOnce, scaleIn 
 import { useParallax } from "@/hooks/use-parallax";
 import { GalleryGrid, zonasImages, GALLERY_STYLES, useGalleryImages } from "@/components/GallerySection";
 import ContactSection from "@/components/ContactSection";
+import { getTrackingPayload } from "@/lib/utm";
 import { useCallback, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import logo from "@/assets/isotipo-nucia.svg";
