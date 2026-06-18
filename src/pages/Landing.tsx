@@ -114,6 +114,7 @@ const Landing = () => {
           destino_vivienda: formData.destino,
           dormitorios: formData.dormitorios,
           origen: "landing-campañas",
+          ...getTrackingPayload(),
         }).toString(),
       });
     } catch (err) {
