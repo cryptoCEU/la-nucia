@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
-mapboxgl.accessToken = "pk.eyJ1Ijoiam9zZWdsIiwiYSI6ImNseDBrcHJhNzAyMzEyaXFzbDhrMWRqbXMifQ.4I6tkdFj7pZ5qDXnUHJ4iQ";
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
 const MapComponent = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
