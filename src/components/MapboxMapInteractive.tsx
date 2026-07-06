@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Skeleton } from "@/components/ui/skeleton";
 
-mapboxgl.accessToken = "pk.eyJ1Ijoiam9zZWdsIiwiYSI6ImNseDBrcHJhNzAyMzEyaXFzbDhrMWRqbXMifQ.4I6tkdFj7pZ5qDXnUHJ4iQ";
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
 /* ── POI data ── */
 interface POI {
