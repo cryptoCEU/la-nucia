@@ -108,9 +108,15 @@ const Index = () => {
                     {t("home.heroTitle1")}{" "}
                     <span className="italic">{t("home.heroTitle2")}</span>
                   </h1>
-                  <p className="font-body text-primary-foreground/60 text-base md:text-lg max-w-xl mb-8">
+                  <p className="font-body text-primary-foreground/60 text-base md:text-lg max-w-xl mb-6">
                     {t("home.heroSubtitle")}
                   </p>
+                  <div className="inline-flex items-center gap-3 bg-gold/95 text-primary px-5 py-3 md:px-7 md:py-4 rounded-sm shadow-lg shadow-gold/20 mb-8">
+                    <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                    <span className="font-body text-sm md:text-base lg:text-lg font-semibold tracking-wide">
+                      {t("home.promoBanner")}
+                    </span>
+                  </div>
                   <div className="flex flex-wrap gap-4">
                     <LLink
                       to="/viviendas"
