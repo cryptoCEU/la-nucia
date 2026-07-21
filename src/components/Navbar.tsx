@@ -72,6 +72,13 @@ const Navbar = () => {
             : "bg-transparent"
         }`}
       >
+        <div className="bg-gold text-primary py-2">
+          <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-center gap-2 md:gap-4 text-center">
+            <span className="font-body text-xs md:text-sm font-medium tracking-wide">
+              {t("nav.promoBanner")}
+            </span>
+          </div>
+        </div>
         <div className="container max-w-[1600px] mx-auto px-4 md:px-8 flex items-center justify-between h-20">
           <LLink to="/" className="flex items-center gap-3">
             <img src={logoNuciaOne} alt="La Nucía One" className={`opacity-90 transition-all duration-400 ${scrolled ? "h-12" : "h-16"}`} />
