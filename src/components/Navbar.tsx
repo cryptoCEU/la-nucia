@@ -66,6 +66,14 @@ const Navbar = () => {
   return (
     <>
       <header
+        className={`fixed top-0 left-0 right-0 z</thinking>
+        <function=code--line_replace>
+        <parameter name="file_path">src/components/Navbar.tsx</parameter>
+        <parameter name="first_replaced_line">66</parameter>
+        <parameter name="last_replaced_line">98</parameter>
+        <parameter name="old_content">  return (
+    <>
+      <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || !isHome
             ? "bg-primary/95 backdrop-blur-md shadow-lg"
