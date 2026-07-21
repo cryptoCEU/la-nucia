@@ -10,8 +10,7 @@
     "close": "Cerrar",
     "contactLabel": "Contacto",
     "salesOffice": "Oficina de ventas",
-    "byAppointment": "(con cita previa)",
-    "promoBanner": "40% vendido de la 1º fase · Inicio de obras último trimestre del 2026"
+    "byAppointment": "(con cita previa)"
   },
   "home": {
     "amenities": {
@@ -25,6 +24,7 @@
     "heroTitle1": "A 10 minutos",
     "heroTitle2": "de Benidorm.",
     "heroSubtitle": "107 viviendas de 2, 3 y 4 dormitorios con amplias terrazas, áticos y dúplex.",
+    "promoBanner": "40% vendido de la 1º fase · Inicio de obras último trimestre del 2026",
     "discoverHomes": "Descubre las viviendas",
     "contactUs": "Contacto",
     "stat1Label": "Viviendas",
