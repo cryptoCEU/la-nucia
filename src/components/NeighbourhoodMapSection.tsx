@@ -318,7 +318,7 @@ const NeighbourhoodMapSection = () => {
 
     const map = new ml.Map({
       container: mapContainer.current,
-      style: `https://basemaps.cartocdn.com/gl/positron-gl-style/style.json?api_key=${import.meta.env.VITE_CARTO_API_KEY}`,
+      style: `https://basemaps.cartocdn.com/gl/positron-gl-style/style.json?key=${import.meta.env.VITE_CARTO_API_KEY}`,
       center: [-0.12765, 38.60001],
       zoom: 14,
       minZoom: 11,
