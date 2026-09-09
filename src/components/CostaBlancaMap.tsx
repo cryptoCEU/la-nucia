@@ -362,7 +362,7 @@ const CostaBlancaMap = () => {
       >
         <TileLayer
           attribution=""
-          url={`https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?api_key=${import.meta.env.VITE_CARTO_API_KEY}`}
+          url={`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${import.meta.env.VITE_CARTO_API_KEY}`}
         />
         <ZoomControl position="bottomright" />
         <ScrollEnabler />
