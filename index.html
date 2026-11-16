@@ -60,26 +60,11 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "La Nucía One",
-    "url": "https://lanuciaone.com",
-    "logo": "https://lanuciaone.com/favicon.ico",
-    "description": "Promoción de obra nueva de 107 viviendas de 2, 3 y 4 dormitorios en La Nucía, Alicante.",
-    "email": "info@lanuciaone.com",
-    "telephone": "+34865662845",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "La Nucía",
-      "addressRegion": "Alicante",
-      "addressCountry": "ES"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+34865662845",
-      "email": "info@lanuciaone.com",
-      "contactType": "sales",
-      "availableLanguage": ["Spanish", "English"]
-    }
+    "@type": "WebPage",
+    "name": "La Nucía ONE · Una actualización sobre el proyecto",
+    "url": "https://lanuciaone.com/",
+    "description": "La promoción La Nucía ONE finalmente no se desarrollará. Si sigues buscando vivienda en la Costa Blanca, escríbenos a obranueva@activum.es.",
+    "publisher": { "@type": "Organization", "name": "Activum", "email": "obranueva@activum.es" }
   }
   </script>
 </head>
@@ -91,21 +76,5 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      (function () {
-        var widget = document.querySelector('elevenlabs-convai');
-        if (!widget) return;
-        var mq = window.matchMedia('(max-width: 767px)');
-        var apply = function () {
-          if (mq.matches) {
-            widget.setAttribute('action-text', ' ');
-          } else {
-            widget.removeAttribute('action-text');
-          }
-        };
-        apply();
-        mq.addEventListener ? mq.addEventListener('change', apply) : mq.addListener(apply);
-      })();
-    </script>
   </body>
 </html>
