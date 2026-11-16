@@ -1,76 +1,9 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
-import Landing from "./pages/Landing";
-import Caracteristicas from "./pages/Caracteristicas";
-import Viviendas from "./pages/Viviendas";
-import Galeria from "./pages/Galeria";
-import Ubicacion from "./pages/Ubicacion";
-import Contacto from "./pages/Contacto";
-import Gracias from "./pages/Gracias";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import AvisoLegal from "./pages/AvisoLegal";
-import PoliticaCookies from "./pages/PoliticaCookies";
-import NotFound from "./pages/NotFound";
-import CustomCursor from "./components/CustomCursor";
-import ScrollToTop from "./components/ScrollToTop";
-import LoadingScreen from "./components/LoadingScreen";
-import PageTransition from "./components/PageTransition";
-import LocaleSync from "./components/LocaleSync";
-import { useLenisScroll } from "./hooks/use-lenis";
-
-const queryClient = new QueryClient();
-
-const appRoutes = (
-  <>
-    <Route index element={<Index />} />
-    <Route path="landing" element={<Landing />} />
-    <Route path="caracteristicas" element={<Caracteristicas />} />
-    <Route path="viviendas" element={<Viviendas />} />
-    <Route path="galeria" element={<Galeria />} />
-    <Route path="ubicacion" element={<Ubicacion />} />
-    <Route path="contacto" element={<Contacto />} />
-    <Route path="gracias" element={<Gracias />} />
-    <Route path="politica-de-privacidad" element={<PrivacyPolicy />} />
-    <Route path="aviso-legal" element={<AvisoLegal />} />
-    <Route path="politica-de-cookies" element={<PoliticaCookies />} />
-    <Route path="*" element={<NotFound />} />
-  </>
-);
-
-const AppInner = () => {
-  useLenisScroll();
-  return (
-    <>
-      <LocaleSync />
-      <ScrollToTop />
-      <LoadingScreen />
-      <CustomCursor />
-      <PageTransition>
-        <Routes>
-          <Route path="/en">{appRoutes}</Route>
-          <Route path="/">{appRoutes}</Route>
-        </Routes>
-      </PageTransition>
-    </>
-  );
-};
 
 const App = () => (
   <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <AppInner />
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <Index />
   </HelmetProvider>
 );
 
