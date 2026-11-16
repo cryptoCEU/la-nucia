@@ -5,7 +5,7 @@ const Index = () => (
   <main className="min-h-screen flex items-center justify-center bg-primary text-primary-foreground px-6 py-20">
     <Helmet>
       <title>La Nucía ONE · Una actualización sobre el proyecto</title>
-      <meta name="description" content="La promoción La Nucía ONE finalmente no se desarrollará. Contacta con obranueva@activum.es para otras opciones en la Costa Blanca." />
+      <meta name="description" content="La promoción La Nucía ONE finalmente no se desarrollará. Si sigues buscando vivienda en la Costa Blanca, escríbenos a obranueva@activum.es." />
     </Helmet>
     <section className="max-w-2xl text-center">
       <img src={logo} alt="La Nucía ONE" className="h-16 mx-auto mb-12 object-contain" />
